@@ -5,3 +5,6 @@
 .. |instructor_2_name| replace:: Kai Yang
 .. |instructor_2_email| replace:: hky2 (at) uw (dot) edu
 
+.. |repo-url| replace:: https://github.com/UWPCE-PythonCert/IntroPython2016a
+
+.. |discussion-forum| replace:: https://canvas.uw.edu/courses/1026775/discussion_topics

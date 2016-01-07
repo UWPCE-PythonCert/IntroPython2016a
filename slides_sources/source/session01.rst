@@ -88,14 +88,11 @@ Also there are some excercise descriptions and supplemental materials.
 
 The source of these materials are in the class gitHub repo:
 
-https://github.com/UWPCE-PythonCert/IntroToPython
+|repo-url|
 
-Class email list: We will be using this list to communicate for this class:
+Online forum:
 
-programming-in-python@googlegroups.com
-
-You should have (or will soon) received and email invitation to join
-the mailing list.
+|discussion-forum|
 
 
 Class Structure
