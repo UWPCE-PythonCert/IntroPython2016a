@@ -7,11 +7,11 @@
 make html
 
 # copy to other repo (on the gh-pages branch)
-cp -R build/html/ ../../IntroToPython.gh-pages
+cp -R build/html/ ../../IntroPython2016a-gh-pages
 
-cd ../../IntroToPython.gh-pages
+cd ../../IntroPython2016a-gh-pages
 git checkout gh-pages
-git add * # in case there are new files added
+git add . # in case there are new files added
 git commit -a -m "updating presentation materials"
 git pull -s ours
 git push
