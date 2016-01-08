@@ -7,4 +7,10 @@
 
 .. |repo-url| replace:: https://github.com/UWPCE-PythonCert/IntroPython2016a
 
+.. |gh-pages-url| replace::  Coming soon to a URL near you!
+
+.. |cms| replace:: https://canvas.uw.edu/courses/1026775
+
 .. |discussion-forum| replace:: https://canvas.uw.edu/courses/1026775/discussion_topics
+
+.. |office-hours-time| replace:: 10 a.m. to noon on Sundays

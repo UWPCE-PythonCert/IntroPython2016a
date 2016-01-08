@@ -80,19 +80,19 @@ Intro to Python
 Course Materials Online
 -----------------------
 
-A rendered HTML copy of the slides for this course may be found online at:
+An HTML rendered version of the slides for this course is online at:
 
-http://uwpce-pythoncert.github.io/IntroToPython
+|gh-pages-url|
 
-Also there are some excercise descriptions and supplemental materials.
+Note also the excercise descriptions and supplemental materials.
 
 The source of these materials are in the class gitHub repo:
 
 |repo-url|
 
-Online forum:
+The course content management system:
 
-|discussion-forum|
+|cms|
 
 
 Class Structure
@@ -127,21 +127,15 @@ Homework:
 Mailing list and Office Hours
 ------------------------------
 
-**Mailing list:**
+**Discussion forum for questions and support:**
 
-We've set up a google group -- you will all be invited to join:
-
-``programming-in-python@googlegroups.com``
+|discussion-forum|
 
 **Office Hours:**
 
-I generally will hold "office hours" at a coffee shop for a couple hours
-each weekend.
+We will generally hold office hours |office-hours-time|
 
-Maria can do some as well.
-
-What are good times for you?
-
+Location, location, location?
 
 
 Lightning Talks
@@ -491,6 +485,15 @@ Particularly when you are first learning, you don't want too much done for you.
 
 YAGNI
 
+Why No IDE?
+-----------
+
+That said... go get the educational edition of PyCharm:
+
+https://www.jetbrains.com/pycharm-edu/
+
+Which is awesome.
+
 
 Setting Up Your Environment
 ===========================
@@ -592,7 +595,6 @@ Specifically, you'll want to pay attention to the information about
 
 .. ifslides::
 
-    Let's see a quick demo of what it can do for you.
 
 
 The very basics of iPython
