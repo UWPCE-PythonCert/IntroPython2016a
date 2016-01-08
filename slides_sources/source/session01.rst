@@ -469,8 +469,6 @@ http://www.sublimetext.com/
 Why No IDE?
 -----------
 
-I am often asked this question.
-
 An IDE does not give you much that you can't get with a good editor plus a good interpreter.
 
 An IDE often weighs a great deal
@@ -478,12 +476,6 @@ An IDE often weighs a great deal
 Setting up IDEs to work with different projects can be challenging and time-consuming.
 
 Particularly when you are first learning, you don't want too much done for you.
-
-.. nextslide::
-
-.. rst-class:: center large
-
-YAGNI
 
 Why No IDE?
 -----------
