@@ -11,5 +11,4 @@ See the Syllabus for more detail.
 
 Class lecture materials are available in a rendered version from:
 
-http://UWPCE-PythonCert.github.io/IntroToPython
-
+http://uwpce-pythoncert.github.io/IntroPython2016a
