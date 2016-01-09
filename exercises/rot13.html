@@ -1,0 +1,167 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>ROT13 &mdash; Intro to Python</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+    <link rel="stylesheet" href="../_static/custom.css"
+          type="text/css" />
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Intro to Python" href="../index.html" />
+    <link rel="up" title="Exercises" href="index.html" />
+    <link rel="next" title="Mailroom" href="mailroom.html" />
+    <link rel="prev" title="String Formatting Lab" href="string_formatting.html" /> 
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+<!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+<hgroup class="auto-fadein">
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+  <p data-config-presenter><!-- populated from slide_config.json --></p>
+</hgroup>
+</slide>
+
+  
+    <slide class="title-slide segue nobackground level-1" id="rot13">
+    <hgroup>
+      <h1>ROT13</h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="goal">
+    <hgroup>
+      <h2>Goal</h2>
+    </hgroup>
+    <article class="">
+      <p>Get used to working with the number values for characters</p>
+<p>Get a bit of practice with string methods and string processing</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="rot13-encryption">
+    <hgroup>
+      <h2>ROT13 encryption</h2>
+    </hgroup>
+    <article class="">
+      <p>The ROT13 encryption scheme is a simple substitution cypher where each letter
+in a text is replace by the letter 13 away from it (imagine the alphabet as a
+circle, so it wraps around).</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="the-task">
+    <hgroup>
+      <h2>The task</h2>
+    </hgroup>
+    <article class="">
+      <p>Add a python module named <code class="docutils literal"><span class="pre">rot13.py</span></code> to the session03 dir in your student dir. This module should provide at least one function called <code class="docutils literal"><span class="pre">rot13</span></code> that takes any amount of text and returns that same text encrypted by ROT13.</p>
+<p>This function should preserve whitespace, punctuation and capitalization.</p>
+<p>Your module should include an <code class="docutils literal"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code> block with tests (asserts) that demonstrate that your <code class="docutils literal"><span class="pre">rot13</span></code> function and any helper functions you add work properly.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id1">
+    <hgroup>
+      <h2>A bit more</h2>
+    </hgroup>
+    <article class="">
+      <p>There is a &quot;short-cut&quot; available that will help you accomplish this task. Some
+spelunking in <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#string-methods">the documentation for strings</a> should help you to find it. If
+you do find it, using it is completely fair game.</p>
+<p>As usual, add your new file to your local clone right away.  Make commits
+early and often and include commit messages that are descriptive and concise.</p>
+<p>When you are done, if you want me to review it, push your changes to github
+and issue a pull request.</p>
+<p>try decrypting this:</p>
+<p>&quot;Zntargvp sebz bhgfvqr arne pbeare&quot;</p>
+
+
+
+
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+  <article class="flexbox vleft auto-fadein">
+    <h2>Thank You!</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

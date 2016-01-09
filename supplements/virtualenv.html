@@ -1,0 +1,526 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Working with Virtualenv &mdash; Intro to Python</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+    <link rel="stylesheet" href="../_static/custom.css"
+          type="text/css" />
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Intro to Python" href="../index.html" />
+    <link rel="up" title="Supplemental Materials" href="index.html" />
+    <link rel="next" title="Turning Sublime Text Into a Lightweight Python IDE" href="sublime_as_ide.html" />
+    <link rel="prev" title="Setting Up Python For Linux" href="python_for_linux.html" /> 
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+<!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+<hgroup class="auto-fadein">
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+  <p data-config-presenter><!-- populated from slide_config.json --></p>
+</hgroup>
+</slide>
+
+  
+    <slide class="title-slide segue nobackground level-1" id="working-with-virtualenv">
+    <hgroup>
+      <h1>Working with Virtualenv</h1>
+    </hgroup>
+    <article class="">
+      <p class="medium">&quot;For every non-standard package installed in a system Python, the gods kill a
+kitten&quot;</p>
+<ul class="medium simple">
+<li>me</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="reasons-why">
+    <hgroup>
+      <h2>Reasons Why</h2>
+    </hgroup>
+    <article class="">
+      <ul class="left simple">
+<li>As a working developer you will need to install packages that aren't in the
+Python standard Library</li>
+<li>As a working developer you often need to install <em>different</em> versions of the
+<em>same</em> library for different projects</li>
+<li>Conflicts arising from having the wrong version of a dependency installed can
+cause long-term nightmares</li>
+<li>Use <a class="reference external" href="http://www.virtualenv.org/">virtualenv</a> ...</li>
+<li><strong>Always</strong></li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="installing-virtualenv">
+    <hgroup>
+      <h3>Installing Virtualenv</h3>
+    </hgroup>
+    <article class="">
+      <p>The best way is to install directly in your system Python (one exception to the
+rule).</p>
+<p>To do so you will have to have <a class="reference external" href="http://www.pip-installer.org">pip</a> installed.</p>
+<p>Try the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>which pip
+/usr/local/bin/pip
+</pre></div>
+</div>
+<p>If the <code class="docutils literal"><span class="pre">which</span></code> command returns no value for you, then <code class="docutils literal"><span class="pre">pip</span></code> is not
+installed in your system. To fix this, follow <a class="reference external" href="http://www.pip-installer.org/en/latest/installing.html">the instructions here</a>.</p>
+<p>Once you have <code class="docutils literal"><span class="pre">pip</span></code> installed in your system, you can use it to install
+<a class="reference external" href="http://www.virtualenv.org/">virtualenv</a>. Because you are installing it into your system python, you will
+most likely need <code class="docutils literal"><span class="pre">superuser</span></code> privileges to do so:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>sudo pip install virtualenv
+Downloading/unpacking virtualenv
+  Downloading virtualenv-1.11.2-py2.py3-none-any.whl <span class="o">(</span>2.8MB<span class="o">)</span>: 2.8MB downloaded
+Installing collected packages: virtualenv
+Successfully installed virtualenv
+Cleaning up...
+</pre></div>
+</div>
+<p>Great.  Once that's done, you should find that you have a <code class="docutils literal"><span class="pre">virtualenv</span></code>
+command available to you from your shell:</p>
+<div class="highlight-bash"><div class="highlight"><pre>$ virtualenv --help
+Usage: virtualenv [OPTIONS] DEST_DIR
+
+Options:
+  --version             show program&#39;s version number and exit
+  -h, --help            ...
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="using-virtualenv">
+    <hgroup>
+      <h2>Using Virtualenv</h2>
+    </hgroup>
+    <article class="">
+      <p class="left">Creating a new virtualenv is very very simple:</p>
+<div class="left highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>virtualenv <span class="o">[</span>options<span class="o">]</span> &lt;ENV&gt;
+</pre></div>
+</div>
+<p class="left"><code class="docutils literal"><span class="pre">&lt;ENV&gt;</span></code> is just the name of the environment you want to create. It's
+arbitrary. Let's make one for demonstration purposes:</p>
+<div class="left highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>virtualenv demoenv
+New python executable in demoenv/bin/python
+Installing setuptools, pip...done.
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="what-happened">
+    <hgroup>
+      <h3>What Happened?</h3>
+    </hgroup>
+    <article class="">
+      <p>When you ran that command, a couple of things took place:</p>
+<ul class="simple">
+<li>A new directory with your requested name was created</li>
+<li>A new Python executable was created in &lt;ENV&gt;/bin (&lt;ENV&gt;/Scripts on Windows)</li>
+<li>The new Python was cloned from your system Python (where virtualenv was
+installed)</li>
+<li>The new Python was isolated from any libraries installed in the old Python</li>
+<li>Setuptools was installed so you have <code class="docutils literal"><span class="pre">easy_install</span></code> for this new python</li>
+<li>Pip was installed so you have <code class="docutils literal"><span class="pre">pip</span></code> for this new python</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="activation">
+    <hgroup>
+      <h3>Activation</h3>
+    </hgroup>
+    <article class="">
+      <p>The virtual environment you just created, <code class="docutils literal"><span class="pre">demoenv</span></code> contains an executable
+Python command, but if you do a quick check to see which Python executable is
+found by your terminal, you'll see that it is not the one:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>which python
+/usr/bin/python
+</pre></div>
+</div>
+<p>You can execute the new Python by explicitly pointing to it:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./demoenv/bin/python -V
+Python 2.7.5
+</pre></div>
+</div>
+<p>but that's tedious and hard to remember. Instead, <code class="docutils literal"><span class="pre">activate</span></code> your virtualenv
+using the <code class="docutils literal"><span class="pre">source</span></code> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">source </span>demoenv/bin/activate
+<span class="o">(</span>demoenv<span class="o">)</span><span class="nv">$ </span>which python
+/Users/cewing/demoenv/bin/python
+</pre></div>
+</div>
+<p>There.  That's better. Now whenever you run the <code class="docutils literal"><span class="pre">python</span></code> command, the
+executable that will be used will be the new one in your <code class="docutils literal"><span class="pre">demoenv</span></code>.</p>
+<p>Notice also that the your shell prompt has changed. It indicates which
+<code class="docutils literal"><span class="pre">virtualenv</span></code> is currently active. Little clues like that really help you to
+keep things straight when you've got a lot of projects going on, so it's nice
+the makers of virtualenv thought of it.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="installing-packages">
+    <hgroup>
+      <h3>Installing Packages</h3>
+    </hgroup>
+    <article class="">
+      <p>Now that your virtualenv is active, not only has your <code class="docutils literal"><span class="pre">python</span></code> executable been
+hijacked, so have <code class="docutils literal"><span class="pre">pip</span></code> and <code class="docutils literal"><span class="pre">easy_install</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>demoenv<span class="o">)</span><span class="nv">$ </span>which pip
+/Users/cewing/demoenv/bin/pip
+<span class="o">(</span>demoenv<span class="o">)</span><span class="nv">$ </span>which easy_install
+/Users/cewing/demoenv/bin/easy_install
+</pre></div>
+</div>
+<p>This means that using these tools to install packages will install them <em>into
+your virtual environment only</em> and not into the system Python.  Let's see this
+in action. We'll install a package called <code class="docutils literal"><span class="pre">docutils</span></code> that provides support
+for converting ReStructuredText documents into other formats like HTML, LaTeX
+and more:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>demoenv<span class="o">)</span><span class="nv">$ </span>pip install docutils
+Downloading/unpacking docutils
+  Downloading docutils-0.11.tar.gz <span class="o">(</span>1.6MB<span class="o">)</span>: 1.6MB downloaded
+  Running setup.py <span class="o">(</span>path:/Users/cewing/demoenv/build/docutils/setup.py<span class="o">)</span> egg_info <span class="k">for</span> package docutils
+    ...
+    changing mode of /Users/cewing/demoenv/bin/rst2xml.py to 755
+    changing mode of /Users/cewing/demoenv/bin/rstpep2html.py to 755
+Successfully installed docutils
+Cleaning up...
+</pre></div>
+</div>
+<p>And now, when we fire up our Python interpreter, the docutils package is
+available to us:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="go">(demoenv)$ python</span>
+<span class="go">Python 2.7.5 (default, Aug 25 2013, 00:04:04)</span>
+<span class="go">[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin</span>
+<span class="go">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">docutils</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">docutils</span><span class="o">.</span><span class="n">__path__</span>
+<span class="go">[&#39;/Users/cewing/demoenv/lib/python2.7/site-packages/docutils&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">^</span><span class="n">d</span>
+<span class="go">(demoenv)$</span>
+</pre></div>
+</div>
+<p>There's one other interesting side-effect of installing software with
+<code class="docutils literal"><span class="pre">virtualenv</span></code>. The <code class="docutils literal"><span class="pre">docutils</span></code> package provides a number of executable
+scripts when it is installed: <code class="docutils literal"><span class="pre">rst2html.py</span></code>, <code class="docutils literal"><span class="pre">rst2latex.py</span></code> and so on.
+These scripts are set up to execute using the Python with which they were
+built.  What this means is that running these scripts will use the Python
+executable in your virtualenv, <em>even if that virtualenv is not active</em>!</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="deactivation">
+    <hgroup>
+      <h3>Deactivation</h3>
+    </hgroup>
+    <article class="">
+      <p>So you've got a virtual environment created.  And you've activated it so that
+you can install packages and use them. Eventually you'll need to move on to
+some other project. This likely means that you'll need to stop working with
+this <code class="docutils literal"><span class="pre">virtualenv</span></code> and switch to another (it's a good idea to keep a separate
+<code class="docutils literal"><span class="pre">virtualenv</span></code> for every project you work on).</p>
+<p>When a <code class="docutils literal"><span class="pre">virtualenv</span></code> is active, all you have to do is use the <code class="docutils literal"><span class="pre">deactivate</span></code>
+command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>demoenv<span class="o">)</span><span class="nv">$ </span>deactivate
+<span class="nv">$ </span>which python
+/usr/bin/python
+</pre></div>
+</div>
+<p>Note that your shell prompt returns to normal, and now the executable Python
+found when you check <code class="docutils literal"><span class="pre">python</span></code> is the system one again.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="cleaning-up">
+    <hgroup>
+      <h3>VirtualenvWrapper</h3>
+    </hgroup>
+    <article class="">
+      <p>The final great advantage that <code class="docutils literal"><span class="pre">virtualenv</span></code> confers on you as a developer is
+the ability to easily remove a batch of installed Python software from your
+system. Consider a situation where you installed a library that breaks your
+Python (it happens).  If you are working in your system Python, you now have to
+figure out what that package installed, where, and go clean it out manually.
+With <code class="docutils literal"><span class="pre">virtualenv</span></code> the process is as simple as removing the directory that
+virtualenv created when you started out. Let's do that with our <code class="docutils literal"><span class="pre">demoenv</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rm -rf demoenv
+</pre></div>
+</div>
+<p>And that's it.  The entire environment and all the packages you installed into
+it are now gone. There's no traces left to pollute your world.</p>
+<div class="section level-4" id="virtualenvwrapper">
+<p>So you have this great tool that allows you to build isolated environments in
+which you can install Python software. Several questions arise when considering
+this.</p>
+<ul class="simple">
+<li>Where should such environments be placed?</li>
+<li>How can the environments be tied to the projects you are working on?</li>
+<li>Once you have more than a trivial number of projects, how can you keep track
+of all these virtualenvs?</li>
+</ul>
+<p>Like any good tool, <code class="docutils literal"><span class="pre">virtualenv</span></code> does not impose on you any particular way of
+working. You can place your environments into the directories where you are
+building the project to which they apply. You can keep them all in a single
+global location. You can build a random path generator that drops them
+wherever.</p>
+<p>But any of these methods lead inevetably to chaos. They require too much from
+you. It would be better if you could manage your virtual environments easily
+and intuitively.</p>
+<p>With <a class="reference external" href="http://virtualenvwrapper.readthedocs.org">virtualenvwrapper</a> you can.</p>
+</div>
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="installation">
+    <hgroup>
+      <h3>Installation</h3>
+    </hgroup>
+    <article class="">
+      <p>Let's start by installing the package in our system Python, alongside
+<code class="docutils literal"><span class="pre">virtualenv</span></code> (again, you'll need <code class="docutils literal"><span class="pre">superuser</span></code> to do this):</p>
+<div class="highlight-bash"><div class="highlight"><pre>$ sudo pip install virtualenvwrapper
+Downloading/unpacking virtualenvwrapper
+  Downloading virtualenvwrapper-4.2.tar.gz (125kB): 125kB downloaded
+  Running setup.py (path:/private/tmp/pip_build_root/virtualenvwrapper/setup.py) egg_info for package virtualenvwrapper
+  ...
+Successfully installed virtualenvwrapper virtualenv-clone stevedore
+Cleaning up...
+$
+</pre></div>
+</div>
+<p>Once that's finished, you'll need to wire the system up by letting your shell
+know that the commands it provides are present. Add the following lines to your
+shell startup file (<code class="docutils literal"><span class="pre">.profile</span></code>, <code class="docutils literal"><span class="pre">.bash-profile</span></code>, ...):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">WORKON_HOME</span><span class="o">=</span>~/.virtualenvs
+<span class="nb">source</span> /usr/local/bin/virtualenvwrapper.sh
+</pre></div>
+</div>
+<p>This will create a new environmental variable, <code class="docutils literal"><span class="pre">WORKON_HOME</span></code>, that determines
+where new virtual environments will be created. The actual name is completely
+arbitrary.</p>
+<p>You'll need to be sure that the location you set exists:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir ~/.virtualenvs
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="using-mkvirtualenv">
+    <hgroup>
+      <h3>Using <code class="docutils literal"><span class="pre">mkvirtualenv</span></code></h3>
+    </hgroup>
+    <article class="">
+      <p>When you've done that, start a new terminal and you'll have access to the
+<code class="docutils literal"><span class="pre">mkvirtualenv</span></code> command:</p>
+<div class="highlight-bash"><div class="highlight"><pre>$ mkvirtualenv testenv
+New python executable in testenv/bin/python
+Installing setuptools, pip...done.
+(testenv)$ ls ~/.virtualenvs
+testenv
+(testenv)$ which python
+/Users/cewing/.virtualenvs/testenv/bin/python
+(testenv)$
+</pre></div>
+</div>
+<p>Notice a couple of things:</p>
+<ul class="simple">
+<li>The new environment you asked for was created in <code class="docutils literal"><span class="pre">WORKON_HOME</span></code></li>
+<li>The new environment was <em>immedately</em> activated for you</li>
+</ul>
+<p>That's a nice feature, eh? No more needing to remember to <code class="docutils literal"><span class="pre">activate</span></code> the env
+you just created to install packages.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="using-workon">
+    <hgroup>
+      <h3>Using <code class="docutils literal"><span class="pre">workon</span></code></h3>
+    </hgroup>
+    <article class="">
+      <p>In addition to this nice little feature, you can also use the <code class="docutils literal"><span class="pre">workon</span></code>
+command to see which environments you have, and to switch from one to another:</p>
+<div class="highlight-bash"><div class="highlight"><pre>(testenv)$ workon
+testenv
+(testenv)$ mkvirtualenv number2
+New python executable in number2/bin/python
+Installing setuptools, pip...done.
+(number2)$ workon
+number2
+testenv
+(number2)$ workon testenv
+(testenv)$
+</pre></div>
+</div>
+<p>Sweet!</p>
+<p>The same <code class="docutils literal"><span class="pre">deactivate</span></code> command can get you back to your system environment:</p>
+<div class="highlight-bash"><div class="highlight"><pre>(testenv)$ deactivate
+$
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="using-mkproject">
+    <hgroup>
+      <h3>A Few Last Words</h3>
+    </hgroup>
+    <article class="">
+      <p>That takes care of deciding where to put new environments. It also clears up
+the question of how to remember which ones you have and how to start them up
+and switch between them. But we still have to figure out how to remember which
+environment goes with which project.</p>
+<p>That's what the <code class="docutils literal"><span class="pre">mkproject</span></code> command is for.</p>
+<p>First, go back to your shell startup file and add a new environmental variable:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">PROJECT_HOME</span><span class="o">=</span>~/projects <span class="c">#&lt;- this line here is new</span>
+<span class="nb">export </span><span class="nv">WORKON_HOME</span><span class="o">=</span>~/.virtualenvs
+<span class="nb">source</span> /usr/local/bin/virtualenvwrapper.sh
+</pre></div>
+</div>
+<p>Then, make sure the directory you named exists:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkdir ~/projects
+</pre></div>
+</div>
+<p>After all that, fire up a new shell to pick up the changes and try this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>mkproject foo
+New python executable in foo/bin/python
+Installing setuptools, pip...done.
+Creating /Users/cewing/projects/foo
+Setting project <span class="k">for</span> foo to /Users/cewing/projects/foo
+<span class="o">(</span>foo<span class="o">)</span><span class="nv">$ </span>which python
+/Users/cewing/.virtualenvs/foo/bin/python
+<span class="o">(</span>foo<span class="o">)</span><span class="nv">$ </span><span class="nb">pwd</span>
+/Users/cewing/projects/foo
+<span class="o">(</span>foo<span class="o">)</span><span class="nv">$ </span>ls -a <span class="nv">$VIRTUAL_ENV</span>
+.       .Python     bin     lib
+..      .project    include
+<span class="o">(</span>foo<span class="o">)</span><span class="nv">$ </span>more <span class="nv">$VIRTUAL_ENV</span>/.project
+/Users/cewing/projects/foo
+</pre></div>
+</div>
+<p>Whoa! That command did a lot:</p>
+<ul class="simple">
+<li>Created a new <code class="docutils literal"><span class="pre">virtualenv</span></code> in your <code class="docutils literal"><span class="pre">$WORKON_HOME</span></code></li>
+<li>Created a new project directory in your <code class="docutils literal"><span class="pre">$PROJECT_HOME</span></code></li>
+<li>Placed a <code class="docutils literal"><span class="pre">.project</span></code> file in your home directory with a path leading to the
+associated project directory</li>
+<li>Activated the new virtualenv for you</li>
+<li>Automatically moved your present working directory to the new project
+directory.</li>
+</ul>
+<p>And now, you can begin working on your <code class="docutils literal"><span class="pre">foo</span></code> project, secure that you will be
+installing packages into the right environment.</p>
+<div class="section level-4" id="a-few-last-words">
+<p>This quick introduction is <strong>by no means</strong> an exhaustive manual for either of
+the packages we've talked about. There is a great deal more that they can do.
+In particular, <code class="docutils literal"><span class="pre">virtualenvwrapper</span></code> is highly customizable, with support for
+custom scripts to be hooked into every stage of the <code class="docutils literal"><span class="pre">virtualenv</span></code> workflow.</p>
+<p>I urge you to read the documentation for <a class="reference external" href="http://www.virtualenv.org/">virtualenv</a> and <a class="reference external" href="http://virtualenvwrapper.readthedocs.org">virtualenvwrapper</a>
+yourself to find out more.</p>
+</div>
+
+
+
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+  <article class="flexbox vleft auto-fadein">
+    <h2>Thank You!</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Comprehensions Lab &mdash; Intro to Python</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+    <link rel="stylesheet" href="../_static/custom.css"
+          type="text/css" />
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Intro to Python" href="../index.html" />
+    <link rel="up" title="Exercises" href="index.html" />
+    <link rel="next" title="lambda and keyword Magic" href="lambda_magic.html" />
+    <link rel="prev" title="Exceptions Lab" href="exceptions_lab.html" /> 
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+<!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+<hgroup class="auto-fadein">
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+  <p data-config-presenter><!-- populated from slide_config.json --></p>
+</hgroup>
+</slide>
+
+  
+    <slide class="title-slide segue nobackground level-1" id="comprehensions-lab">
+    <hgroup>
+      <h1>Comprehensions Lab</h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="playing-with-comprehensions">
+    <hgroup>
+      <h2>Playing with Comprehensions</h2>
+    </hgroup>
+    <article class="">
+      <p class="large left">Goal:</p>
+<p class="medium left">Getting Familiar with list, set and dict comprehensions</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="list-comprehensions">
+    <hgroup>
+      <h3>List comprehensions</h3>
+    </hgroup>
+    <article class="">
+      <p>Note: this is a bit of a &quot;backwards&quot; exercise --
+we show you code, you figure out what it does.</p>
+<p>As a result, not much to submit -- don't worry about it -- you'll have
+a chance to use these in other exercises.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">feast</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;lambs&#39;</span><span class="p">,</span> <span class="s">&#39;sloths&#39;</span><span class="p">,</span> <span class="s">&#39;orangutans&#39;</span><span class="p">,</span>
+<span class="go">             &#39;breakfast cereals&#39;, &#39;fruit bats&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">[</span><span class="n">delicacy</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">delicacy</span> <span class="ow">in</span> <span class="n">feast</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+<p>(figure it out before you try it)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="filtering-lists-with-list-comprehensions">
+    <hgroup>
+      <h3>Filtering lists with list comprehensions</h3>
+    </hgroup>
+    <article class="">
+      <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">feast</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;spam&#39;</span><span class="p">,</span> <span class="s">&#39;sloths&#39;</span><span class="p">,</span> <span class="s">&#39;orangutans&#39;</span><span class="p">,</span> <span class="s">&#39;breakfast cereals&#39;</span><span class="p">,</span>
+<span class="go">            &#39;fruit bats&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comp</span> <span class="o">=</span> <span class="p">[</span><span class="n">delicacy</span> <span class="k">for</span> <span class="n">delicacy</span> <span class="ow">in</span> <span class="n">feast</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">delicacy</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">feast</span><span class="p">)</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comp</span><span class="p">)</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+<p>(figure it out first!)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="unpacking-tuples-in-list-comprehensions">
+    <hgroup>
+      <h3>Unpacking tuples in list comprehensions</h3>
+    </hgroup>
+    <article class="">
+      <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">list_of_tuples</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&#39;lumberjack&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#39;inquisition&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s">&#39;spam&#39;</span><span class="p">)]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">[</span> <span class="n">skit</span> <span class="o">*</span> <span class="n">number</span> <span class="k">for</span> <span class="n">number</span><span class="p">,</span> <span class="n">skit</span> <span class="ow">in</span> <span class="n">list_of_tuples</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comprehension</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="double-list-comprehensions">
+    <hgroup>
+      <h3>Double list comprehensions</h3>
+    </hgroup>
+    <article class="">
+      <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">eggs</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;poached egg&#39;</span><span class="p">,</span> <span class="s">&#39;fried egg&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">meats</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;lite spam&#39;</span><span class="p">,</span> <span class="s">&#39;ham spam&#39;</span><span class="p">,</span> <span class="s">&#39;fried spam&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> \
+<span class="go">[ &#39;{0} and {1}&#39;.format(egg, meat) for egg in eggs for meat in meats]</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">comprehension</span><span class="p">)</span>
+<span class="go">???</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="set-comprehensions">
+    <hgroup>
+      <h3>Set comprehensions</h3>
+    </hgroup>
+    <article class="">
+      <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span> <span class="o">=</span> <span class="p">{</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="s">&#39;aabbbcccc&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">comprehension</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="dictionary-comprehensions">
+    <hgroup>
+      <h3>Dictionary comprehensions</h3>
+    </hgroup>
+    <article class="">
+      <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">dict_of_weapons</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;first&#39;</span><span class="p">:</span> <span class="s">&#39;fear&#39;</span><span class="p">,</span>
+<span class="go">                       &#39;second&#39;: &#39;surprise&#39;,</span>
+<span class="go">                       &#39;third&#39;:&#39;ruthless efficiency&#39;,</span>
+<span class="go">                       &#39;forth&#39;:&#39;fanatical devotion&#39;,</span>
+<span class="go">                       &#39;fifth&#39;: None}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dict_comprehension</span> <span class="o">=</span> \
+<span class="go">{ k.upper(): weapon for k, weapon in dict_of_weapons.iteritems() if weapon}</span>
+</pre></div>
+</div>
+<p>What is the output of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;first&#39;</span> <span class="ow">in</span> <span class="n">dict_comprehension</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s">&#39;FIRST&#39;</span> <span class="ow">in</span> <span class="n">dict_comprehension</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">dict_of_weapons</span><span class="p">)</span>
+<span class="go">???</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">dict_comprehension</span><span class="p">)</span>
+<span class="go">???</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="other-resources">
+    <hgroup>
+      <h3>Other resources</h3>
+    </hgroup>
+    <article class="">
+      <p>See also:</p>
+<p><a class="reference external" href="https://github.com/gregmalcolm/python_koans">https://github.com/gregmalcolm/python_koans</a></p>
+<p>Specifically (for comprehensions):</p>
+<p><a class="reference external" href="https://github.com/gregmalcolm/python_koans/blob/master/python3/koans/about_comprehension.py">https://github.com/gregmalcolm/python_koans/blob/master/python3/koans/about_comprehension.py</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="count-even-numbers">
+    <hgroup>
+      <h3>Count Even Numbers</h3>
+    </hgroup>
+    <article class="">
+      <p>Use test-driven development!</p>
+<p>This is from CodingBat &quot;count_evens&quot; (<a class="reference external" href="http://codingbat.com/prob/p189616">http://codingbat.com/prob/p189616</a>)</p>
+<p><em>Using a list comprehension</em>, return the number of even integers in the given array.</p>
+<p>Note: the % &quot;mod&quot; operator computes the remainder, e.g. <code class="docutils literal"><span class="pre">5</span> <span class="pre">%</span> <span class="pre">2</span></code> is 1.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">count_evens</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="n">count_evens</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="n">count_evens</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">count_evens</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+   <span class="n">one_line_comprehension_here</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="dict-and-set-comprehensions">
+    <hgroup>
+      <h3><code class="docutils literal"><span class="pre">dict</span></code> and <code class="docutils literal"><span class="pre">set</span></code> comprehensions</h3>
+    </hgroup>
+    <article class="">
+      <p>Let's revisiting the dict/set lab -- see how much you can do with
+comprehensions instead.</p>
+<p>(<a class="reference internal" href="dict_lab.html#exercise-dict-lab"><span>Dictionary and Set Lab</span></a>)</p>
+<p>Specifically,  look at these:</p>
+<p>First a slightly bigger, more interesting (or at least bigger..) dict:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">food_prefs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Chris&quot;</span><span class="p">,</span>
+              <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;Seattle&quot;</span><span class="p">,</span>
+              <span class="s">&quot;cake&quot;</span><span class="p">:</span> <span class="s">&quot;chocolate&quot;</span><span class="p">,</span>
+              <span class="s">&quot;fruit&quot;</span><span class="p">:</span> <span class="s">&quot;mango&quot;</span><span class="p">,</span>
+              <span class="s">&quot;salad&quot;</span><span class="p">:</span> <span class="s">&quot;greek&quot;</span><span class="p">,</span>
+              <span class="s">&quot;pasta&quot;</span><span class="p">:</span> <span class="s">&quot;lasagna&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id1">
+    <hgroup>
+      <h3>Working with this dict:</h3>
+    </hgroup>
+    <article class="">
+      <p>1. Print the dict by passing it to a string format method, so that you
+get something like:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&quot;Chris is from Seattle, and he likes chocolate cake, mango fruit,</dt>
+<dd>greek salad, and lasagna pasta&quot;</dd>
+</dl>
+</div></blockquote>
+<p>2. Using a list comprehension, build a dictionary of numbers from zero
+to fifteen and the hexadecimal equivalent (string is fine).
+(the <code class="docutils literal"><span class="pre">hex()</span></code> function gives you the hexidecimal representation of a number.)</p>
+<ol class="arabic simple" start="3">
+<li>Do the previous entirely with a dict comprehension -- should be a one-liner</li>
+</ol>
+<p>4. Using the dictionary from item 1: Make a dictionary using the same
+keys but with the number of 'a's in each value. You can do this either
+by editing the dict in place, or making a new one. If you edit in place,
+make a copy first!</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id2">
+    <hgroup>
+      <h3><code class="docutils literal"><span class="pre">dict</span></code> and <code class="docutils literal"><span class="pre">set</span></code> comprehensions</h3>
+    </hgroup>
+    <article class="">
+      <p>5. Create sets s2, s3 and s4 that contain numbers from zero through twenty,
+divisible 2, 3 and 4.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Do this with one set comprehension for each set.</li>
+<li>What if you had a lot more than 3? -- Don't Repeat Yourself (DRY)<ul>
+<li>create a sequence that holds all three sets</li>
+<li>loop through that sequence to build the sets up -- so no repeated code.</li>
+</ul>
+</li>
+<li>Extra credit:  do it all as a one-liner by nesting a set comprehension
+inside a list comprehension. (OK, that may be getting carried away!)</li>
+</ol>
+</div></blockquote>
+
+
+
+
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+  <article class="flexbox vleft auto-fadein">
+    <h2>Thank You!</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

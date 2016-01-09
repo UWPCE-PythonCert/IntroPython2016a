@@ -1,0 +1,730 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Packages and Packaging &mdash; Intro to Python</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+    <link rel="stylesheet" href="../_static/custom.css"
+          type="text/css" />
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Intro to Python" href="../index.html" />
+    <link rel="up" title="Supplemental Materials" href="index.html" />
+    <link rel="prev" title="Unicode" href="unicode.html" /> 
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+<!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+<hgroup class="auto-fadein">
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+  <p data-config-presenter><!-- populated from slide_config.json --></p>
+</hgroup>
+</slide>
+
+  
+    <slide class="title-slide segue nobackground level-1" id="packages-and-packaging">
+    <hgroup>
+      <h1>Packages and Packaging</h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="modules-and-packages">
+    <hgroup>
+      <h2>Modules and Packages</h2>
+    </hgroup>
+    <article class="">
+      <p>A module is a file (<code class="docutils literal"><span class="pre">something.py</span></code>) with python code in it</p>
+<p>A package is a directory with an <code class="docutils literal"><span class="pre">__init__.py</span></code>  file in it</p>
+<p>And usually other modules, packages, etc...</p>
+<div class="highlight-python"><div class="highlight"><pre>my_package
+    __init__.py
+    module_a.py
+    module_b.py
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">my_package</span>
+</pre></div>
+</div>
+<p>runs the code <code class="docutils literal"><span class="pre">my_package/__init__.py</span></code> (if there is any)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id1">
+    <hgroup>
+      <h2>Modules and Packages</h2>
+    </hgroup>
+    <article class="">
+      <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>(demo)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="installing-python">
+    <hgroup>
+      <h2>Installing Python</h2>
+    </hgroup>
+    <article class="">
+      <p>Linux:</p>
+<p>Usually part of the system -- just use it.</p>
+<p>Windows:</p>
+<p>Use the python.org version:</p>
+<ul class="simple">
+<li>System Wide</li>
+<li>Can install multiple versions if need be</li>
+<li>Third party binaries for it.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id2">
+    <hgroup>
+      <h2>Installing Python</h2>
+    </hgroup>
+    <article class="">
+      <p>OS-X:</p>
+<p>Comes with the system, but:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Apple has never upgraded within a release</li>
+<li>There are non-open source components</li>
+<li>Third party packages may or may not support it</li>
+<li>Apple does use it -- so don't mess with it</li>
+<li>I usually recommend the <code class="docutils literal"><span class="pre">python.org</span></code> version</li>
+</ul>
+</div></blockquote>
+<p>(Also Macports, Fink, Home Brew...)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="distributions">
+    <hgroup>
+      <h2>Distributions</h2>
+    </hgroup>
+    <article class="">
+      <p>There are also a few &quot;curated&quot; distributions:</p>
+<p>These provide python and a package management system for hard-to-buid packages.</p>
+<p>Widely used by the scipy community
+(lots of hard to build stuff that needs to work together...)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Anaconda (<a class="reference external" href="https://store.continuum.io/cshop/anaconda/">https://store.continuum.io/cshop/anaconda/</a>)</li>
+<li>Canopy (<a class="reference external" href="https://www.enthought.com/products/canopy/">https://www.enthought.com/products/canopy/</a>)</li>
+<li>ActivePython (<a class="reference external" href="http://www.activestate.com/activepython">http://www.activestate.com/activepython</a>)</li>
+</ul>
+</div></blockquote>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="installing-packages">
+    <hgroup>
+      <h2>Installing Packages</h2>
+    </hgroup>
+    <article class="">
+      <p>Every Python installation has its own stdlib and <code class="docutils literal"><span class="pre">site-packages</span></code> folder</p>
+<p><code class="docutils literal"><span class="pre">site-packages</span></code>  is the default place for third-party packages</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="finding-packages">
+    <hgroup>
+      <h2>Finding Packages</h2>
+    </hgroup>
+    <article class="">
+      <p>The Python Package Index:</p>
+<p><strong>PyPi</strong></p>
+<p><a class="reference external" href="http://pypi.python.org/pypi">http://pypi.python.org/pypi</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id3">
+    <hgroup>
+      <h2>Installing Packages</h2>
+    </hgroup>
+    <article class="">
+      <p class="medium"><strong>From source</strong></p>
+<ul class="simple">
+<li>(<code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">install</span></code> )</li>
+<li>With the system installer (apt-get, yum, etc...)</li>
+</ul>
+<p class="medium"><strong>From binaries:</strong></p>
+<ul class="simple">
+<li>Windows: MSI installers</li>
+<li>OS-X: dmg installers (make sure to get compatible packages)</li>
+<li>And now: binary wheels -- (More and more of those available)</li>
+<li><code class="docutils literal"><span class="pre">pip</span></code> should find appropriate binary wheels if they are there.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id7">
+    <hgroup>
+      <h2>Installing Packages</h2>
+    </hgroup>
+    <article class="">
+      <p>In the beginning, there was the <code class="docutils literal"><span class="pre">distutils</span></code>:</p>
+<p>But <code class="docutils literal"><span class="pre">distutils</span></code>  is missing some key features:</p>
+<ul class="simple">
+<li>package versioning</li>
+<li>package discovery</li>
+<li>auto-install</li>
+</ul>
+<ul class="simple">
+<li>And then came <code class="docutils literal"><span class="pre">PyPi</span></code></li>
+<li>And then came <code class="docutils literal"><span class="pre">setuptools</span></code></li>
+<li>But that wasn't well maintained...</li>
+<li>Then there was <code class="docutils literal"><span class="pre">distribute/pip</span></code></li>
+<li>Which has now been merged back into <code class="docutils literal"><span class="pre">setuptools</span></code></li>
+</ul>
+<p>Now it's pretty stable: pip+setuptools: use them.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id4">
+    <hgroup>
+      <h2>Installing Packages</h2>
+    </hgroup>
+    <article class="">
+      <p>Actually, it's still a bit of a mess</p>
+<p>But getting better, and the mess is <em>almost</em> cleaned up.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="current-state-of-packaging">
+    <hgroup>
+      <h2>Current State of Packaging</h2>
+    </hgroup>
+    <article class="">
+      <p>To build packages: distutils</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://docs.python.org/2/distutils/">http://docs.python.org/2/distutils/</a></li>
+</ul>
+</div></blockquote>
+<p>For more features: setuptools</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://pythonhosted.org/setuptools/">https://pythonhosted.org/setuptools/</a></li>
+</ul>
+</div></blockquote>
+<p>To install packages: pip</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://pip.pypa.io/en/latest/installing.html">https://pip.pypa.io/en/latest/installing.html</a></li>
+</ul>
+</div></blockquote>
+<p>For binary packages: wheels</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.python.org/dev/peps/pep-0427/">http://www.python.org/dev/peps/pep-0427/</a></li>
+</ul>
+</div></blockquote>
+<p>(installable by pip)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="compiled-packages">
+    <hgroup>
+      <h2>Compiled Packages</h2>
+    </hgroup>
+    <article class="">
+      <p>Biggest issue is with compiled extensions:</p>
+<blockquote>
+<div><ul class="simple">
+<li>(C/C++, Fortran, etc.)</li>
+<li>You need the right compiler set up</li>
+</ul>
+</div></blockquote>
+<p>Dependencies:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Here's were it gets really ugly</li>
+<li>Particularly on Windows</li>
+</ul>
+</div></blockquote>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id8">
+    <hgroup>
+      <h2>Compiled Packages</h2>
+    </hgroup>
+    <article class="">
+      <p><strong>Linux</strong></p>
+<p>Pretty straightforward:</p>
+<ol class="arabic simple">
+<li>Is there a system package?</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>use it (apt-get install the_package)</li>
+</ul>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p class="first">Try <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code>: it may just work!</p>
+</li>
+<li><p class="first">Install the dependencies, build from source:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py build
+
+python setup.py install
+</pre></div>
+</div>
+</li>
+</ol>
+<p>(may need &quot;something-devel&quot; packages)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id9">
+    <hgroup>
+      <h2>Compiled Packages</h2>
+    </hgroup>
+    <article class="">
+      <p><strong>Windows</strong></p>
+<p>Sometimes simpler:</p>
+<ol class="arabic simple">
+<li>A lot of packages have Windows binaries:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Usually for python.org builds</li>
+<li>Excellent source: <a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></li>
+<li>Make sure you get 32 or 64 bit consistent</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>But if no binaries:</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>Hope the dependencies are available!</li>
+<li>Set up the compiler</li>
+</ul>
+</div></blockquote>
+<p>MS now has a compiler just for python!</p>
+<p><a class="reference external" href="http://www.microsoft.com/en-us/download/details.aspx?id=44266">http://www.microsoft.com/en-us/download/details.aspx?id=44266</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id10">
+    <hgroup>
+      <h2>Compiled Packages</h2>
+    </hgroup>
+    <article class="">
+      <p><strong>OS-X</strong></p>
+<dl class="docutils">
+<dt>Lots of Python versions:</dt>
+<dd><ul class="first last simple">
+<li>Apple's built-in (different for each version of OS)</li>
+<li>python.org builds</li>
+<li>32+64 bit Intel (and even PPC still kicking around)</li>
+<li>Macports</li>
+<li>Homebrew</li>
+</ul>
+</dd>
+</dl>
+<p>Binary Installers (dmg or wheel) have to match python version</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id11">
+    <hgroup>
+      <h2>Compiled Packages</h2>
+    </hgroup>
+    <article class="">
+      <p><strong>OS-X</strong></p>
+<p>If you have to build it yourself</p>
+<p>Xcode compiler (the right version)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Version 3.* for 32 bit PPC+Intel</li>
+<li>Version &gt; 4.* for 32+64 bit Intel</li>
+</ul>
+</div></blockquote>
+<p>(make sure to get the SDKs for older versions)</p>
+<p>If extra dependencies:</p>
+<blockquote>
+<div><ul class="simple">
+<li>macports or homebrew often easiest way to build them</li>
+</ul>
+</div></blockquote>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="final-recommendations">
+    <hgroup>
+      <h2>Final Recommendations</h2>
+    </hgroup>
+    <article class="">
+      <p>First try: <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code></p>
+<p>If that doesn't work:</p>
+<p>Read the docs of the package you want to install</p>
+<p>Do what they say</p>
+<p>(Or use Anaconda or Canopy)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="virtualenv">
+    <hgroup>
+      <h2>virtualenv</h2>
+    </hgroup>
+    <article class="">
+      <p><code class="docutils literal"><span class="pre">virtualenv</span></code> is a tool to create isolated Python environments.</p>
+<p>Very useful for developing multiple apps</p>
+<p>Or deploying more than one app on one system</p>
+<p><a class="reference external" href="http://www.virtualenv.org/en/latest/index.html">http://www.virtualenv.org/en/latest/index.html</a>}</p>
+<p>Remember the notes from the beginning of class? <a class="reference internal" href="virtualenv.html#virtualenv-section"><span>Working with Virtualenv</span></a></p>
+<p>(Cris will probably make you do this next class)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-1" id="distributing">
+    <hgroup>
+      <h1>Distributing</h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id5">
+    <hgroup>
+      <h2>Distributing</h2>
+    </hgroup>
+    <article class="">
+      <p>What if you need to distribute you own:</p>
+<p>Scripts</p>
+<p>Libraries</p>
+<p>Applications</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="scripts">
+    <hgroup>
+      <h2>Scripts</h2>
+    </hgroup>
+    <article class="">
+      <p>Often you can just copy, share, or check in the script to source
+control and call it good.</p>
+<p>But only if it's a single file, and doesn't need anything non-standard</p>
+<p>When the script needs more than just the stdlib</p>
+<p>(or your company standard environment)</p>
+<p>You have an application, not a script</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="libraries">
+    <hgroup>
+      <h2>Libraries</h2>
+    </hgroup>
+    <article class="">
+      <p>When you read the distutils docs, it's usually libraries they're talking about</p>
+<p>Scripts + library is the same...</p>
+<p>(<a class="reference external" href="http://docs.python.org/distutils/">http://docs.python.org/distutils/</a>)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="distutils">
+    <hgroup>
+      <h2>distutils</h2>
+    </hgroup>
+    <article class="">
+      <p><code class="docutils literal"><span class="pre">distutils</span></code>  makes it easy to do the easy stuff:</p>
+<p>Distribute and install to multiple platforms, etc.</p>
+<p>Even binaries, installers and compiled packages</p>
+<p>(Except dependencies)</p>
+<p>(<a class="reference external" href="http://docs.python.org/distutils/">http://docs.python.org/distutils/</a>)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="distutils-basics">
+    <hgroup>
+      <h2>distutils basics</h2>
+    </hgroup>
+    <article class="">
+      <p>It's all in the <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">file</span></code>:</p>
+<p>(<a class="reference external" href="http://docs.python.org/distutils/">http://docs.python.org/distutils/</a>)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="id6">
+    <hgroup>
+      <h2>distutils basics</h2>
+    </hgroup>
+    <article class="">
+      <p>Once your setup.py is written, you can:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py ...
+build         build everything needed to install
+install       install everything from build directory
+sdist         create a source distribution
+              (tarball, zip file, etc.)
+bdist         create a built (binary) distribution
+bdist_rpm     create an RPM distribution
+bdist_wininst create an executable installer for MS Windows
+upload        upload binary package to PyPI
+</pre></div>
+</div>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="wheels">
+    <hgroup>
+      <h2>wheels</h2>
+    </hgroup>
+    <article class="">
+      <p>&quot;wheels&quot; are the &quot;new&quot; package format for python.</p>
+<p>A wheel is essentially a zip file of the entire package, ready to be
+unpacked in the right place on installation.</p>
+<p><code class="docutils literal"><span class="pre">pip</span></code> will look for wheels for OS-X and Windows on PyPi, and auto-install
+them if they exist</p>
+<p>This is particularly nice for packages with non-python dependencies.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="more-complex-packaging">
+    <hgroup>
+      <h2>More complex packaging</h2>
+    </hgroup>
+    <article class="">
+      <p>For a complex package:</p>
+<p>You want to use a well structured setup:</p>
+<p><a class="reference external" href="http://the-hitchhikers-guide-to-packaging.readthedocs.org/en/latest/">http://the-hitchhikers-guide-to-packaging.readthedocs.org/en/latest/</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="develop-mode">
+    <hgroup>
+      <h2>develop mode</h2>
+    </hgroup>
+    <article class="">
+      <p>While you are developing your package, Installing it is a pain.</p>
+<p>But you want your code to be able to import, etc. as though it were installed</p>
+<p><code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">develop</span></code>  installs links to your code, rather than copies
+-- so it looks like it's installed, but it's using the original source</p>
+<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code></p>
+<p>You need <code class="docutils literal"><span class="pre">setuptools</span></code> and a setup.py  to use it.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="applications">
+    <hgroup>
+      <h2>Applications</h2>
+    </hgroup>
+    <article class="">
+      <p>For a complete application:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Web apps</li>
+<li>GUI apps</li>
+</ul>
+</div></blockquote>
+<p>Multiple options:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Virtualenv + VCS</li>
+<li>zc.buildout ( <a class="reference external" href="http://www.buildout.org/">http://www.buildout.org/</a>}</li>
+<li>System packages (rpm, deb, ...)</li>
+<li>Bundles...</li>
+</ul>
+</div></blockquote>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="bundles">
+    <hgroup>
+      <h2>Bundles</h2>
+    </hgroup>
+    <article class="">
+      <p>Bundles are Python + all your code + plus all the dependencies --
+all in one single &quot;bundle&quot;</p>
+<p>Most popular on Windows and OS-X</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">py2exe</span>
+<span class="n">py2app</span>
+<span class="n">pyinstaller</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>User doesn't even have to know it's python</p>
+<p>Examples:</p>
+<blockquote>
+<div><p><a class="reference external" href="http://www.bitpim.org/">http://www.bitpim.org/</a></p>
+<p><a class="reference external" href="http://response.restoration.noaa.gov/nucos">http://response.restoration.noaa.gov/nucos</a></p>
+</div></blockquote>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="lab">
+    <hgroup>
+      <h2>LAB</h2>
+    </hgroup>
+    <article class="">
+      <p>Write a setup.py for a script of yours</p>
+<blockquote>
+<div><ul class="simple">
+<li>Ideally, your script relies on at least one other module</li>
+<li>At a minimum, you'll need to specify <code class="docutils literal"><span class="pre">scripts</span></code></li>
+<li>and probably <code class="docutils literal"><span class="pre">py_modules</span></code></li>
+<li>try:<ul>
+<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">build</span></code></li>
+<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></li>
+<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">sdist</span></code></li>
+</ul>
+</li>
+<li>EXTRA: install <code class="docutils literal"><span class="pre">setuptools</span></code><ul>
+<li>use: <code class="docutils literal"><span class="pre">from</span> <span class="pre">setuptools</span> <span class="pre">import</span> <span class="pre">setup</span></code></li>
+<li>try: `` python setup.py develop``</li>
+</ul>
+</li>
+<li>EXTRA2: install <code class="docutils literal"><span class="pre">wheel</span></code><ul>
+<li><code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">bdist_wheel</span></code></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p>(my example: <code class="docutils literal"><span class="pre">Examples/Session09/capitalize</span></code>)</p>
+
+
+
+
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+  <article class="flexbox vleft auto-fadein">
+    <h2>Thank You!</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

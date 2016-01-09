@@ -1,0 +1,261 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>List Lab &mdash; Intro to Python</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+    <link rel="stylesheet" href="../_static/custom.css"
+          type="text/css" />
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Intro to Python" href="../index.html" />
+    <link rel="up" title="Exercises" href="index.html" />
+    <link rel="next" title="String Formatting Lab" href="string_formatting.html" />
+    <link rel="prev" title="Slicing Lab" href="slicing.html" /> 
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+<!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+<hgroup class="auto-fadein">
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+  <p data-config-presenter><!-- populated from slide_config.json --></p>
+</hgroup>
+</slide>
+
+  
+    <slide class="title-slide segue nobackground level-1" id="list-lab">
+    <hgroup>
+      <h1>List Lab</h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="learning-about-lists">
+    <hgroup>
+      <h2>Learning about lists</h2>
+    </hgroup>
+    <article class="">
+      <p>After:</p>
+<p><a class="reference external" href="http://www.upriss.org.uk/python/session5.html">http://www.upriss.org.uk/python/session5.html</a></p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="goal">
+    <hgroup>
+      <h3>Goal:</h3>
+    </hgroup>
+    <article class="">
+      <p>Learn the basic ins and outs of Python lists.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="hint">
+    <hgroup>
+      <h3>hint</h3>
+    </hgroup>
+    <article class="">
+      <p>to query the user for info at the command line, you use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&quot;a prompt for the user &gt; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">response</span></code> will be a string of whatever the user types (until a &lt;return&gt;).</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="procedure">
+    <hgroup>
+      <h3>Procedure</h3>
+    </hgroup>
+    <article class="">
+      <p>In your student dir in the IntroPython2015 repo, create a <code class="docutils literal"><span class="pre">session02</span></code> dir and put in a new <code class="docutils literal"><span class="pre">list_lab.py</span></code> file.</p>
+<p>The file should be an executable python script. That is to say that one
+should be able to run the script directly like so:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./list_lab.py
+</pre></div>
+</div>
+<p>(At least on OS-X and Linux)</p>
+<p>-- you do that with this command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>chmod +x list_lab.py
+</pre></div>
+</div>
+<p>(The +x means make this executable)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id1">
+    <hgroup>
+      <h3>Procedure</h3>
+    </hgroup>
+    <article class="">
+      <p>Add the file to your clone of the repository and commit changes frequently
+while working on the following tasks. When you are done, push your changes to
+GitHub and issue a pull request.</p>
+<p>(if you are struggling with git -- just write the code for now)</p>
+<p>When the script is run, it should accomplish the following four series of
+actions:</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id2">
+    <hgroup>
+      <h3>Series 1</h3>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Create a list that contains &quot;Apples&quot;, &quot;Pears&quot;, &quot;Oranges&quot; and &quot;Peaches&quot;.</li>
+<li>Display the list.</li>
+<li>Ask the user for another fruit and add it to the end of the list.</li>
+<li>Display the list.</li>
+<li>Ask the user for a number and display the number back to the user and the
+fruit corresponding to that number (on a 1-is-first basis).</li>
+<li>Add another fruit to the beginning of the list using &quot;+&quot; and display the
+list.</li>
+<li>Add another fruit to the beginning of the list using insert() and display the list.</li>
+<li>Display all the fruits that begin with &quot;P&quot;, using a for loop.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id3">
+    <hgroup>
+      <h3>Series 2</h3>
+    </hgroup>
+    <article class="">
+      <p>Using the list created in series 1 above:</p>
+<ul class="simple">
+<li>Display the list.</li>
+<li>Remove the last fruit from the list.</li>
+<li>Display the list.</li>
+<li>Ask the user for a fruit to delete and find it and delete it.</li>
+<li>(Bonus: Multiply the list times two. Keep asking until a match is found. Once found, delete all occurrences.)</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id4">
+    <hgroup>
+      <h3>Series 3</h3>
+    </hgroup>
+    <article class="">
+      <p>Again, using the list from series 1:</p>
+<ul class="simple">
+<li>Ask the user for input displaying a line like &quot;Do you like apples?&quot;</li>
+<li>for each fruit in the list (making the fruit all lowercase).</li>
+<li>For each &quot;no&quot;, delete that fruit from the list.</li>
+<li>For any answer that is not &quot;yes&quot; or &quot;no&quot;, prompt the user to answer with one
+of those two values (a while loop is good here):</li>
+<li>Display the list.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id5">
+    <hgroup>
+      <h3>Series 4</h3>
+    </hgroup>
+    <article class="">
+      <p>Once more, using the list from series 1:</p>
+<ul class="simple">
+<li>Make a copy of the list and reverse the letters in each fruit in the copy.</li>
+<li>Delete the last item of the original list. Display the original list and the
+copy.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+  <article class="flexbox vleft auto-fadein">
+    <h2>Thank You!</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

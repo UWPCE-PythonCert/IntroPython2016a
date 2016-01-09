@@ -1,0 +1,238 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+--><!DOCTYPE html>
+
+
+<html>
+<head>
+  <title>Dictionary and Set Lab &mdash; Intro to Python</title>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="hieroglyph-title" data-config-title>
+  <meta name="hieroglyph-subtitle" data-config-subtitle>
+  <meta name="hieroglyph-presenter" data-config-presenter>
+
+  
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/default.css">
+  <link rel="stylesheet" media="all"
+        href="../_static/theme/css/hieroglyph.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)"
+        href="../_static/theme/css/phone.css">
+
+    
+    <link rel="stylesheet" href="../_static/custom.css"
+          type="text/css" />
+    
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+
+    <script data-main="../_static/js/slides"
+            src="../_static/js/require-1.0.8.min.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <link rel="top" title="Intro to Python" href="../index.html" />
+    <link rel="up" title="Exercises" href="index.html" />
+    <link rel="next" title="Kata Fourteen: Tom Swift Under Milk Wood" href="kata_fourteen.html" />
+    <link rel="prev" title="Mailroom" href="mailroom.html" /> 
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+<!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+<hgroup class="auto-fadein">
+  <h1 data-config-title><!-- populated from slide_config.json --></h1>
+  <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+  <p data-config-presenter><!-- populated from slide_config.json --></p>
+</hgroup>
+</slide>
+
+  
+    <slide class="title-slide segue nobackground level-1" id="dictionary-and-set-lab">
+    <hgroup>
+      <h1>Dictionary and Set Lab</h1>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-2" id="learning-about-dictionaries-and-sets">
+    <hgroup>
+      <h2>Learning about dictionaries and sets</h2>
+    </hgroup>
+    <article class="">
+      
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="goal">
+    <hgroup>
+      <h3>Goal:</h3>
+    </hgroup>
+    <article class="">
+      <p>Learn the basic ins and outs of Python dictionaries and sets.</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="procedure">
+    <hgroup>
+      <h3>Procedure</h3>
+    </hgroup>
+    <article class="">
+      <p>In your student dir in the IntroPython2015 repo, create a <code class="docutils literal"><span class="pre">session04</span></code> dir and put in a new <code class="docutils literal"><span class="pre">dict_lab.py</span></code> file.</p>
+<p>The file should be an executable python script. That is to say that one
+should be able to run the script directly like so:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./dict_lab.py
+</pre></div>
+</div>
+<p>(At least on OS-X and Linux)</p>
+<p>-- you do that with this command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>chmod +x dict_lab.py
+</pre></div>
+</div>
+<p>(The +x means make this executable)</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id1">
+    <hgroup>
+      <h3>Procedure</h3>
+    </hgroup>
+    <article class="">
+      <p>Add the file to your clone of the repository and commit changes frequently
+while working on the following tasks. When you are done, push your changes to
+GitHub and issue a pull request.</p>
+<p>(if you are struggling with git -- just write the code for now)</p>
+<p>When the script is run, it should accomplish the following four series of
+actions:</p>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id2">
+    <hgroup>
+      <h3>Dictionaries 1</h3>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Create a dictionary containing &quot;name&quot;, &quot;city&quot;, and &quot;cake&quot; for &quot;Chris&quot; from &quot;Seattle&quot; who likes &quot;Chocolate&quot;.</li>
+<li>Display the dictionary.</li>
+<li>Delete the entry for &quot;cake&quot;.</li>
+<li>Display the dictionary.</li>
+<li>Add an entry for &quot;fruit&quot; with &quot;Mango&quot; and display the dictionary.<ul>
+<li>Display the dictionary keys.</li>
+<li>Display the dictionary values.</li>
+<li>Display whether or not &quot;cake&quot; is a key in the dictionary (i.e. False) (now).</li>
+<li>Display whether or not &quot;Mango&quot; is a value in the dictionary (i.e. True).</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id3">
+    <hgroup>
+      <h3>Dictionaries 2</h3>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Using the dictionary from item 1: Make a dictionary using the same keys but
+with the number of 't's in each value.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id4">
+    <hgroup>
+      <h3>Sets</h3>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Create sets s2, s3 and s4 that contain numbers from zero through twenty,
+divisible 2, 3 and 4.</li>
+<li>Display the sets.</li>
+<li>Display if s3 is a subset of s2 (False)</li>
+<li>and if s4 is a subset of s2 (True).</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>  <slide class="level-3" id="id5">
+    <hgroup>
+      <h3>Sets 2</h3>
+    </hgroup>
+    <article class="">
+      <ul class="simple">
+<li>Create a set with the letters in 'Python' and add 'i' to the set.</li>
+<li>Create a frozenset with the letters in 'marathon'</li>
+<li>display the union and intersection of the two sets.</li>
+</ul>
+
+
+
+
+    </article>
+  </slide>
+
+
+  <slide class="thank-you-slide segue nobackground">
+  <article class="flexbox vleft auto-fadein">
+    <h2>Thank You!</h2>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
