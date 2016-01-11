@@ -7,7 +7,7 @@
 
 .. |repo-url| replace:: https://github.com/UWPCE-PythonCert/IntroPython2016a
 
-.. |gh-pages-url| replace::  Coming soon to a URL near you!
+.. |gh-pages-url| replace::  http://uwpce-pythoncert.github.io/IntroPython2016a/
 
 .. |cms| replace:: https://canvas.uw.edu/courses/1026775
 
