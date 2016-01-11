@@ -1774,6 +1774,7 @@ And in python2, you can get the behavior of py3 with "true division"::
 
 For the most part, you just need to be a bit careful with the rare cases where py2 code counts on integer division.
 
+
 Other py2/py3 differences
 -------------------------
 
@@ -1791,6 +1792,14 @@ Tasks and reading by next week
 
 
 Task 1
+------
+
+Make sure you have a working development.  See the links from class.  
+
+:ref:`setting_up_your_environment`
+
+
+Task 2
 ------
 
 **Set Up a Great Dev Environment**
@@ -1824,6 +1833,18 @@ Also make sure you've got iPython working, if you didn't get to that in class.
 Task 3
 ------
 
+**Python Pushups**
+
+To get a bit of exercise solving some puzzles with Python, work on the Python
+exercises at "Coding Bat": http://codingbat.com/python
+
+There are 8 sets of puzzles. Do as many as you can, but try to at least
+get all the "Warmups" done.
+
+
+Task 4
+------
+
 **Explore Errors**
 
 * Create a new directory in your working dir for the class::
@@ -1848,17 +1869,6 @@ Task 3
     reference
 
 .. _Built In Exceptions: https://docs.python.org/3/library/exceptions.html
-
-Task 2
-------
-
-**Python Pushups**
-
-To get a bit of exercise solving some puzzles with Python, work on the Python
-exercises at "Coding Bat": http://codingbat.com/python
-
-There are 8 sets of puzzles. Do as many as you can, but try to at least
-get all the "Warmups" done.
 
 
 Reading, etc.
