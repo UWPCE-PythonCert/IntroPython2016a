@@ -1887,7 +1887,7 @@ So take a bit of time to figure out which resource works for you.
 
 But here are few to get you started this week:
 
-*Think Python:* Chapters 1–7 (http://greenteapress.com/thinkpython/)
+*Think Python:* Chapters 1–7 (http://greenteapress.com/thinkpython2/)
 
 *Dive Into Python:* Chapters 1–2 (http://www.diveintopython3.net/)
 
