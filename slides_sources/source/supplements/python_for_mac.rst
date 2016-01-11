@@ -43,7 +43,8 @@ Oddly, this does NOT install a ``python`` command, but rather a ``python3`` comm
   $ cd /Library/Frameworks/Python.framework/Versions/3.5/bin
   $ ln -s python3.5 python
 
-(or an alias in your shell -- an Unix geeks here?)
+(Or an alias in your shell -- any Unix geeks here?)
+
 
 Terminal
 ---------
@@ -55,6 +56,7 @@ The built-in "terminal" application works fine. Find it in:
   /Applications/Utilities/Terminal
 
 Drag it to the dock to easy access.
+
 
 git
 ----
