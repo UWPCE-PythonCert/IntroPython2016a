@@ -314,6 +314,7 @@ If you are comfortable with either of these -- go for it.
 
 If not, you can use the "git Bash" shell -- which is much like the bash shell on OS-X and Linux.
 
+
 Your Interpreter
 ----------------
 
@@ -332,6 +333,7 @@ That last thing you see, ``>>>`` is the "Python prompt".
 
 This is where you type code.
 
+
 LAB: Getting set up
 -------------------
 
@@ -339,11 +341,12 @@ Before we move on -- we need to get all of us on the same page, with the tools w
 
 You will find instructions for how to get python, etc, up and running on your machine here:
 
-**Windows:** ::ref:`python_for_windows`
+**Linux:** ::ref:`python_for_linux`
 
 **OS-X:** ::ref:`python_for_mac`
 
-**Linux:** ::ref:`python_for_linux`
+**Windows:** ::ref:`python_for_windows`
+
 
 Python in the Interpreter
 -------------------------
@@ -1794,9 +1797,13 @@ Tasks and reading by next week
 Task 1
 ------
 
-Make sure you have a working development.  See the links from class.  
+Make sure you have a working development.
 
-:ref:`setting_up_your_environment`
+**Linux:** ::ref:`python_for_linux`
+
+**OS-X:** ::ref:`python_for_mac`
+
+**Windows:** ::ref:`python_for_windows`
 
 
 Task 2
@@ -1826,8 +1833,6 @@ linting.
 If you are not using SublimeText, look for plugins that accomplish the same
 goals for your own editor.  If none are available, please consider a change of
 editor.
-
-Also make sure you've got iPython working, if you didn't get to that in class.
 
 
 Task 3
@@ -1924,7 +1929,7 @@ Next week, we'll:
 Office Hours
 ------------
 
-We will have office hours on either Saturday or Sunday from 10:00 to noon.
+We will have office hours |office-hours-time|.
 
 Preferences?  
 
