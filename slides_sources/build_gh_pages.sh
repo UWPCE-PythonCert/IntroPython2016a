@@ -10,7 +10,8 @@ make html
 cp -R build/html/ ../../IntroPython2016a-ghpages
 cd ../../IntroPython2016a-ghpages
 git checkout gh-pages
-git add . # in case there are new files added
+touch .nojekyll  # Make sure the repo has this file in its root, otherwise it will not render on github.io
+git add *  # in case there are new files added
 git commit -a -m "updating presentation materials"
 git pull -s ours
 git push
