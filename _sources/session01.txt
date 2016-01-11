@@ -1797,7 +1797,7 @@ Tasks and reading by next week
 Task 1
 ------
 
-Make sure you have a working development.
+Make sure you have a working development environment.
 
 **Linux:** ::ref:`python_for_linux`
 
