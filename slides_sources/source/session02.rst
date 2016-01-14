@@ -482,13 +482,13 @@ Making a Decision
 .. code-block:: python
 
     if a:
-        print 'a'
+        print('a')
     elif b:
-        print 'b'
+        print('b')
     elif c:
-        print 'c'
+        print('c')
     else:
-        print 'that was unexpected'
+        print('that was unexpected')
 
 
 .. nextslide:: if
@@ -498,15 +498,15 @@ What's the difference between these two?
 .. code-block:: python
 
     if a:
-        print 'a'
+        print('a')
     elif b:
-        print 'b'
+        print('b')
 
     ## versus...
     if a:
-        print 'a'
+        print('a')
     if b:
-        print 'b'
+        print('b')
 
 
 
@@ -1209,7 +1209,7 @@ LAB: Booleans
 
     Experiment with ``locals`` by adding this statement one of the functions you wrote today::
 
-        print locals()
+        print(locals())
 
 
 Code Structure, Modules, and Namespaces
@@ -1245,7 +1245,7 @@ You can put a one-liner after the colon:
 .. code-block:: ipython
 
     In [167]: x = 12
-    In [168]: if x > 4: print x
+    In [168]: if x > 4: print(x)
     12
 
 But this should only be done if it makes your code **more** readable.
