@@ -322,7 +322,7 @@ Start by making sure you are on your own master branch:
     $ git checkout master
 
 This is **really really** important.  Take the time to ensure you are where you
-think you are, iow, not on a remote. Use git status to find out where you are, if necesary.
+think you are, in other words, not on a remote. Use git status to see where you are.
 
 .. nextslide:: Merging Upstream Changes
 
@@ -387,12 +387,12 @@ You can incorporate this into your daily workflow: ::
 Because of the way we have set up the class, you will be able
 to see all work submitted to us from everyone in the class in 
 the students directory on your machine. This is not a bad thing.
-And the files tend to be small. 
+The files tend to be small. 
 
 We encourage sharing of knowledge in this class. Helping your
 fellow students will also help you to better understand. Share 
-your code, and get use to giving/receiving feedback on how to 
-improve your code, if you are not already.
+your code, and get used to giving and receiving feedback on how
+to improve your code, if you are not already.
 
 
 LAB: Grid Printer
@@ -455,7 +455,7 @@ Lightning Talk:
 
 .. rst-class:: center medium
 
-Brendan Fogarty
+
 
 
 Beyond Printing
@@ -606,7 +606,7 @@ Lightning Talk:
 
 .. rst-class:: center medium
 
-Bruce Bauman
+
 
 
 More on Functions
@@ -963,7 +963,7 @@ Lightning Talk:
 
 .. rst-class:: center medium
 
-Michelle Yu
+
 
 
 Boolean Expressions
