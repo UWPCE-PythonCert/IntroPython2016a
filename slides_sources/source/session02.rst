@@ -27,11 +27,11 @@ Lightning Talks Today:
 
 |
 |
-| Brendan Fogarty
+| 
 |
-| Bruce Bauman
+| 
 |
-| Michelle Yu
+| 
 |
 |
 
@@ -74,9 +74,9 @@ What is git?
 
     A "version control system"
 
-    A history of everything everyone does to 'your' code
+    A history of everything everyone does to your code
 
-    A graph of "states" in which the code has existed
+    A graph of states in which the code has existed
 
     That last one is a bit tricky, and is not necessary to understand right out of the gate. When you are ready, you can look at this supplement to gain a better understanding:
 
@@ -136,8 +136,8 @@ With git, you work with *local* repositories and *remotes* that they are connect
     .. code-block:: bash
 
         $ git remote -v
-        origin  https://github.com/UWPCE-PythonCert/IntroPython2015.git (fetch)
-        origin  https://github.com/UWPCE-PythonCert/IntroPython2015.git (push)
+        origin  https://github.com/UWPCE-PythonCert/IntroPython2016a (fetch)
+        origin  https://github.com/UWPCE-PythonCert/IntroPython2016a (push)
 
     This shows that the local repo on my machine *originated* from the one in
     the UWPCE-PythonCert gitHub account (don't worry that it shows it twice, they should be the same)
