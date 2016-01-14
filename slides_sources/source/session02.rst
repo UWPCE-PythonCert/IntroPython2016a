@@ -273,13 +273,13 @@ When you add a *remote* (existing git repository), it creates a directory with t
 
     .. code-block:: bash
 
-        $ git remote add upstream https://github.com/UWPCE-PythonCert/IntroPython2015.git
+        $ git remote add upstream https://github.com/UWPCE-PythonCert/IntroPython2016a.git
 
         $ git remote -v
-        origin  https://github.com/PythonCHB/IntroPython2015.git (fetch)
-        origin  https://github.com/PythonCHB/IntroPython2015.git (push)
-        upstream    https://github.com/UWPCE-PythonCert/IntroPython2015.git (fetch)
-        upstream    https://github.com/UWPCE-PythonCert/IntroPython2015.git (push)
+        origin https://github.com/UWPCE-PythonCert/IntroPython2016a.git (fetch)
+        origin https://github.com/UWPCE-PythonCert/IntroPython2016a.git (push)
+        upstream https://github.com/UWPCE-PythonCert/IntroPython2016a.git (fetch)
+        upstream https://github.com/UWPCE-PythonCert/IntroPython2016a.git (push)
 
 .. nextslide::
 
