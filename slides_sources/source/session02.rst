@@ -1516,11 +1516,13 @@ Next Class
 * Strings and String Formatting
 
 * Lightning talks by:
-  - Eric Rosko
-  - Michael Waddle
-  - Robert Stevens Alford
+  
+|
+|  
+|
+|
 
-Office hours: Sunday 10:00 -- 12:00
+Office hours: |office-hours-time|
 
 
 Homework
