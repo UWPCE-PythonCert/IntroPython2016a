@@ -13,4 +13,4 @@ Within your personal directory we recommend a series of sub directorys which mir
 
 Keep each week's work in the corresonding directory.
 
-Use git to share your work with the the instructors and the rest of the class.
+Use git to share your work with the the instructors and the rest of the class.#Python Code for UWPCE-PYTHON cert class
