@@ -15,4 +15,3 @@ Keep each week's work in the corresonding directory.
 
 Use git to share your work with the the instructors and the rest of the class.
 
-TEST
