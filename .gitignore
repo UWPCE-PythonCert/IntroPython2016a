@@ -19,3 +19,4 @@ slides_sources/build
 
 # pycache
 __pycache__/*
+/.project
