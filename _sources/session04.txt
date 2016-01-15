@@ -35,11 +35,7 @@ Lightning Talks Today:
 
 .. rst-class:: mlarge
 
- Andrey Gusev
 
- Cheryl Ohashi
-
- Maxwell MacCamy
 
 
 ==============================
@@ -654,7 +650,7 @@ Lightning Talk
 --------------
 
 |
-| Maxwell MacCamy
+| 
 |
 
 
