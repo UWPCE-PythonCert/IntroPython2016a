@@ -44,9 +44,7 @@ Lightning Talks Today:
 
 .. rst-class:: medium
 
-    Austin Scara
 
-    Marty Pitts
 
 
 ============
@@ -499,11 +497,7 @@ Lightning Talks
 
 .. rst-class:: medium
 
-|
-|    Austin Scara
-|
-|    Marty Pitts
-|
+
 
 
 =================
