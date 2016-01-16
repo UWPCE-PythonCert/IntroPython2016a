@@ -1,6 +1,8 @@
 IntroToPython
 ==============
 
+This is for Julie Stiehl
+
 students directory
 
 Make for yourself a personal directory within this directory.
@@ -14,4 +16,3 @@ Within your personal directory we recommend a series of sub directorys which mir
 Keep each week's work in the corresonding directory.
 
 Use git to share your work with the the instructors and the rest of the class.
-
