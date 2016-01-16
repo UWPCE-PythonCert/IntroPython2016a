@@ -11,6 +11,8 @@ if n > 0:
             s += 'Buzz'
         if len(s) > 0:
             print(s)
+        else:
+            print(i)
 else:
     print('Sorry, but "{}" is not a natural number!'.format(n))
 
