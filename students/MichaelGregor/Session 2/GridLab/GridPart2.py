@@ -1,22 +1,26 @@
+import math
 
 def main():
     print_grid(3)
 
-def print_grid(spaces=3, dimensions=2):
+def print_grid(size=3):
     ''' This function builds the grid based on the dimensions and size of the box provided
 
-    :param spaces: The number of spaces between the walls of each box(default=3)
-    :type dimensions: int
-    :param dimensions: The value squared to give the full dimensions of the grid (default=2)
-    :type dimensions: int
+    :param size: The total size square of the grid. (default=3)
+    :type size: int
     :return: None
     '''
+    size = size / 2
+    size = (int(size))
 
-    for x in range(dimensions):
-        print_line(dimensions, spaces, isLine=True)
-        for x in range(spaces):
-            print_line(dimensions, spaces, isLine=False)
-    print_line(dimensions, spaces, isLine=True)
+    print_line(2,size, isLine=True)
+    for x in range(size):
+        print_line(2,size, isLine=False)
+    print_line(2,size, isLine=True)
+    for x in range(size):
+        print_line(2,size, isLine=False)
+    print_line(2,size, isLine=True)
+
 
 def print_line(num_plus, num_dash, isLine):
     '''
