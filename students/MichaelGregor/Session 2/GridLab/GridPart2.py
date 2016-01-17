@@ -1,7 +1,7 @@
 import math
 
 def main():
-    print_grid(3)
+    print_grid(16)
 
 def print_grid(size=3):
     ''' This function builds the grid based on the dimensions and size of the box provided
@@ -10,16 +10,16 @@ def print_grid(size=3):
     :type size: int
     :return: None
     '''
+    # Extremely hacky way of getting the correct sizing.  There must be a better way to do this.
     size = size / 2
     size = (int(size))
 
-    print_line(2,size, isLine=True)
-    for x in range(size):
-        print_line(2,size, isLine=False)
-    print_line(2,size, isLine=True)
-    for x in range(size):
-        print_line(2,size, isLine=False)
-    print_line(2,size, isLine=True)
+    # We only want 4 squares, regardless of size, so we hard code the number of iterations for the first for loop.
+    for x in range(2):
+        print_line(2,size, isLine=True)
+        for x in range(size):
+            print_line(2,size, isLine=False)
+    print_line(2, size, isLine=True)
 
 
 def print_line(num_plus, num_dash, isLine):
