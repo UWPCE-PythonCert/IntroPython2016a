@@ -1,4 +1,4 @@
-# Admittatily this is not my own work.  I simply could figure it out nor do I under stand how this works yet :)
+# Admittedly this is not my own work.  I simply could figure it out nor do I under stand how this works yet :/
 def main():
     fibonacci(7)
 
