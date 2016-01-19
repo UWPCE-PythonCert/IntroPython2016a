@@ -6,8 +6,8 @@
 def print_grid(n, m):
 
     """
-       This function takes two natural number arguments, n and m.  It and prints
-       a grid with n by n squares where each square has the width of m characters.
+       This function takes two natural number arguments, n and m.  It prints a
+       grid with n by n squares where each square has the width of m characters.
     """
 
     # Initialize the grid before drawing.
