@@ -273,13 +273,13 @@ When you add a *remote* (existing git repository), it creates a directory with t
 
     .. code-block:: bash
 
-        $ git remote add upstream https://github.com/UWPCE-PythonCert/IntroPython2015.git
+        $ git remote add upstream https://github.com/UWPCE-PythonCert/IntroPython2016a.git
 
         $ git remote -v
-        origin  https://github.com/PythonCHB/IntroPython2015.git (fetch)
-        origin  https://github.com/PythonCHB/IntroPython2015.git (push)
-        upstream    https://github.com/UWPCE-PythonCert/IntroPython2015.git (fetch)
-        upstream    https://github.com/UWPCE-PythonCert/IntroPython2015.git (push)
+        origin https://github.com/UWPCE-PythonCert/IntroPython2016a.git (fetch)
+        origin https://github.com/UWPCE-PythonCert/IntroPython2016a.git (push)
+        upstream https://github.com/UWPCE-PythonCert/IntroPython2016a.git (fetch)
+        upstream https://github.com/UWPCE-PythonCert/IntroPython2016a.git (push)
 
 .. nextslide::
 
@@ -322,7 +322,7 @@ Start by making sure you are on your own master branch:
     $ git checkout master
 
 This is **really really** important.  Take the time to ensure you are where you
-think you are, iow, not on a remote. Use git status to find out where you are, if necesary.
+think you are, in other words, not on a remote. Use git status to see where you are.
 
 .. nextslide:: Merging Upstream Changes
 
@@ -387,12 +387,12 @@ You can incorporate this into your daily workflow: ::
 Because of the way we have set up the class, you will be able
 to see all work submitted to us from everyone in the class in 
 the students directory on your machine. This is not a bad thing.
-And the files tend to be small. 
+The files tend to be small. 
 
 We encourage sharing of knowledge in this class. Helping your
 fellow students will also help you to better understand. Share 
-your code, and get use to giving/receiving feedback on how to 
-improve your code, if you are not already.
+your code, and get used to giving and receiving feedback on how
+to improve your code, if you are not already.
 
 
 LAB: Grid Printer
@@ -455,7 +455,7 @@ Lightning Talk:
 
 .. rst-class:: center medium
 
-Brendan Fogarty
+
 
 
 Beyond Printing
@@ -482,13 +482,13 @@ Making a Decision
 .. code-block:: python
 
     if a:
-        print 'a'
+        print('a')
     elif b:
-        print 'b'
+        print('b')
     elif c:
-        print 'c'
+        print('c')
     else:
-        print 'that was unexpected'
+        print('that was unexpected')
 
 
 .. nextslide:: if
@@ -498,15 +498,15 @@ What's the difference between these two?
 .. code-block:: python
 
     if a:
-        print 'a'
+        print('a')
     elif b:
-        print 'b'
+        print('b')
 
     ## versus...
     if a:
-        print 'a'
+        print('a')
     if b:
-        print 'b'
+        print('b')
 
 
 
@@ -606,7 +606,7 @@ Lightning Talk:
 
 .. rst-class:: center medium
 
-Bruce Bauman
+
 
 
 More on Functions
@@ -963,7 +963,7 @@ Lightning Talk:
 
 .. rst-class:: center medium
 
-Michelle Yu
+
 
 
 Boolean Expressions
@@ -1209,7 +1209,7 @@ LAB: Booleans
 
     Experiment with ``locals`` by adding this statement one of the functions you wrote today::
 
-        print locals()
+        print(locals())
 
 
 Code Structure, Modules, and Namespaces
@@ -1245,7 +1245,7 @@ You can put a one-liner after the colon:
 .. code-block:: ipython
 
     In [167]: x = 12
-    In [168]: if x > 4: print x
+    In [168]: if x > 4: print(x)
     12
 
 But this should only be done if it makes your code **more** readable.
@@ -1516,11 +1516,13 @@ Next Class
 * Strings and String Formatting
 
 * Lightning talks by:
-  - Eric Rosko
-  - Michael Waddle
-  - Robert Stevens Alford
+  
+|
+|  
+|
+|
 
-Office hours: Sunday 10:00 -- 12:00
+Office hours: |office-hours-time|
 
 
 Homework
