@@ -45,11 +45,11 @@ Lightning Talks Today:
 
 .. rst-class:: mlarge
 
-   Eric Rosko
+   John Rudolph
 
-   Michael Waddle
+   Mike Schincariol
 
-   Robert Alford
+   (who else?)
 
 
 Sequences
@@ -455,12 +455,11 @@ Slicing LAB
 Lightning Talks
 ----------------
 
-|
-| Eric Rosko
-|
-|
-| Michael Waddle
-|
+   John Rudolph
+
+   Mike Schincariol
+
+   (who else?)
 
 
 Lists, Tuples...
@@ -1116,7 +1115,7 @@ Lightning Talk
 ---------------
 
 |
-| Robert Alford
+| 
 |
 
 
