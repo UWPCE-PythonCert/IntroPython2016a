@@ -16,3 +16,5 @@ try:
 	fizzbuzz(1, stop)
 except:
 	print('You did not enter that value as an integer! Try again')
+
+# what happens if I input a 0? 
