@@ -22,5 +22,3 @@ def FizzBuzz(n):
 
 
 FizzBuzz(100)
-
-# Let's walk through this if we have time before or after next class! -- Summer
