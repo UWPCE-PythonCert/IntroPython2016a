@@ -43,3 +43,40 @@ if __name__ == '__main__':
     if item in fruit:
         fruit.remove(item)
     print(fruit)
+
+
+    # Again, using the list from series 1:
+    #
+    # Ask the user for input displaying a line like “Do you like apples?”
+    # for each fruit in the list (making the fruit all lowercase).
+
+    for item in fruit[:]:
+        done = False
+        while not done:
+            prompt = 'Do you like ' + item.lower() + '?  Yes or no? '
+            response = input(prompt)
+
+            # For each “no”, delete that fruit from the list.
+            if 'no' in response.lower():
+                fruit.remove(item)
+                done = True
+            if 'yes' in response.lower():
+                done = True
+    # Display the list.
+    print(fruit)
+
+
+    # Once more, using the list from series 1:
+    #
+    # Make a copy of the list and reverse the letters in each fruit in the copy.
+
+    fruit_reversed = []
+    for item in fruit[:]:
+        item_reversed = item[::-1]
+        fruit_reversed.append(item_reversed)
+
+
+    # Delete the last item of the original list. Display the original list and the copy.
+    fruit.pop()
+    print(fruit)
+    print(fruit_reversed)
