@@ -1,0 +1,16 @@
+def test(a):
+    if a == 5:
+        print("that's the value I'm looking for!")
+    elif a == 7:
+         print("that's an OK number")
+    else:
+        print("that number won't do!")
+
+ test(5)
+that's the value I'm looking for!
+
+In [14]: test(7)
+that's an OK number
+
+In [15]: test(14)
+that number won't do!
