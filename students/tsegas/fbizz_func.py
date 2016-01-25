@@ -25,7 +25,7 @@ def fizzbuzz(number):
             print(n)
             dthr = 0
             dfiv = 0
-         if (dthr == 1 and dfiv ==0):
+         if (dthr == 1 and dfiv ==0): # can you simplify this with 'OR'? 
          	 print('FIZZ')
          if (dthr == 0 and dfiv ==1):
          	 print('BUZZ')
