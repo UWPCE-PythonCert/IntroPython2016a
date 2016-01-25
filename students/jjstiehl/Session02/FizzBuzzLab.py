@@ -5,7 +5,7 @@ Notes: this is close but not quite correct
 '''
 
 def fizzbuzz(n):
-        a = 0
+        a = 0 # can you use range here to apply this function to integers between 1 and 100? 
         while a<n:
             print (a)
             a+=1
