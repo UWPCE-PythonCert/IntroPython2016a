@@ -11,12 +11,12 @@ def getnumref(let):
 		if ord(let) + 13 <= ord('Z'):
 			return ord(let) + 13
 		else:
-			return ord(let) - ord('Z') + ord('A') +13
+			return ord(let) - ord('Z') + ord('A') +12
 	elif ord('a') <= ord(let) <= ord('z'):
 		if ord(let) + 13 <= ord('z'):
 			return ord(let) + 13
 		else:
-			return ord(let) - ord('z') + ord('a') + 13
+			return ord(let) - ord('z') + ord('a') + 12
 	else:
 		return ord(let)
 
@@ -34,5 +34,20 @@ def rot13(string):
 	return s
 
 
-print(rot13('Zntargvp sebz bhgfvqr arne pbeare'))
+if __name__ == '__main__':
+	print('Zntargvp sebz bhgfvqr arne pbeare', 'ROT13: ', 
+		rot13('Zntargvp sebz bhgfvqr arne pbeare'))
+	
+	print('Blajhkajhds!!! *&^*&^*^POP', 'ROT13: ', 
+		rot13('Blajhkajhds!!! *&^*&^*^POP'))
+
+	print('1111 22222 AAAA ZZZZ aaa zzzzz', 'ROT13: ', 
+		rot13('1111 22222 AAAA ZZZZ aaa zzzzz'))
+
+	print('abcdefghijklmnopqrstuvwxyz', 'ROT13: ', 
+		rot13('abcdefghijklmnopqrstuvwxyz'))
+
+	print('lmnop LMNOP', 'ROT13: ', 
+		rot13('lmnop LMNOP'))
+
 
