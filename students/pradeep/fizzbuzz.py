@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import sys
-def FizzBuzz(n):
+def FizzBuzz(n): #great job! 
 	for i in range(1,n+1):
 		if i%3 == 0 and i%5 ==0:
 			print "FizBuzz"
@@ -11,7 +11,7 @@ def FizzBuzz(n):
 		else:
 			print i
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
 	if(len(sys.argv) != 2) :
 		print "Please enter one and only one number as parameter"
 	        exit()
