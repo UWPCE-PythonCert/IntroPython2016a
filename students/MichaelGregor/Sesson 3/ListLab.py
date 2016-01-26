@@ -9,6 +9,7 @@ print(food)
 foodLength = len(food)
 
 index_to_find = (int(input("Give me a number: ")))
+#Check to make sure they give a valid input
 while index_to_find > foodLength:
     index_to_find = (int(input("There are only {} items in the list, give me another number: ".format(foodLength))))
 
@@ -30,6 +31,8 @@ print(food)
 
 doublefood = food * 2
 removeFood = input("Give me a food to remove: ")
+
+#Check to make sure they give a valid input
 while removeFood not in doublefood:
     removeFood = input("That food isn't in the list, give me another food: ")
 while removeFood in doublefood:
@@ -39,14 +42,28 @@ print(doublefood)
 
 print(food)
 
+#Iterate through each food item
 for item in food:
-    foodOpinion = input("Do you like {}? ".format(item))
-    foodOpinion = foodOpinion.lower()
+    foodOpinion = ""
+    # Validate that they give us yes or no answer only
+    while not (foodOpinion == "yes" or foodOpinion == "no"):
+        foodOpinion = input("Do you like {}? Yes or No?".format(item))
+        foodOpinion = foodOpinion.lower()
+
     if foodOpinion == "yes":
         continue
     elif foodOpinion == "no":
         food.remove(item)
-    else
 
 print(food)
 
+newFood = []
+
+#Iterate though each food item, reverse the letters and put into a new list
+for item in food:
+    item = item[::-1]
+    newFood.append((item))
+
+print(newFood)
+food.pop()
+print(food)
