@@ -1,7 +1,7 @@
 def rot13(text):
 
     # Create the translations tables to feed to str.translate()
-    lc_first_half = "abcdefghijklm"
+    lc_first_half  = "abcdefghijklm"
     lc_second_half = "nopqrstuvwxyz"
     lc_translate = str.maketrans(lc_first_half + lc_second_half,
                                  lc_second_half + lc_first_half)
@@ -31,8 +31,14 @@ def rot13(text):
     return retval
 
 
-# If not called as a function, ask the user for input.
+# If not called as a function, run some tests
 if __name__ == "__main__":
-    inp = input("Text to convert -> ")
-    result = rot13(inp)
-    print("Answer: {}".format(result))
+    test_val = '"Hello World"'
+    result = rot13(test_val)
+    assert(result == '"Uryyb Jbeyq"')
+    print("Test {0} OK: {1} -> {2}".format(1, test_val, result))
+
+    test_val = '"Zntargvp sebz bhgfvqr arne pbeare"'
+    result = rot13(test_val)
+    assert(result == '"Magnetic from outside near corner"')
+    print("Test {0} OK: {1} -> {2}".format(2, test_val, result))
