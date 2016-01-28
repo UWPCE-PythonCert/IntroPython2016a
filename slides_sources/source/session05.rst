@@ -15,6 +15,27 @@ Announcements
 Review/Questions
 ================
 
+
+Homework
+--------
+
+Let's take a look.
+
+
+================
+Topics for Today
+================
+
+
+
+Lightning Talks
+---------------------
+
+.. rst-class:: medium
+
+
+
+
 Review of Previous Class
 ------------------------
 
