@@ -1,0 +1,11 @@
+Jinja2
+MarkupSafe
+Pygments
+Sphinx
+docutils
+sphinx-rtd-theme
+hieroglyph
+#-e git+https://github.com/nyergler/hieroglyph.git#egg=hieroglyph
+libsass
+ipython
+
