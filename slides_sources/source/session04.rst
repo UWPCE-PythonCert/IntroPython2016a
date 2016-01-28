@@ -392,7 +392,7 @@ Let's play a bit with Python lists...
 
 
 Lightning Talk
----------------
+==============
 
 .. rst-class:: center large
 
@@ -1563,7 +1563,7 @@ Have some fun with dictionaries and sets!
 
 
 Lightning Talk
---------------
+==============
 
 .. rst-class:: center large
 
