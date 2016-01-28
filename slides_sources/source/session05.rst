@@ -4,11 +4,10 @@
 Session Five: Exceptions, Testing, Comprehensions
 *************************************************
 
-======================
-Lightning Talks Today:
-======================
 
-.. rst-class:: medium
+=============
+Announcements
+=============
 
 
 
