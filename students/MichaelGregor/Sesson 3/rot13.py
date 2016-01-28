@@ -47,77 +47,84 @@ def main():
 
 def main():
 
-    encrypted = rot13("Wow This might Work")
+    encrypted = rot13("Zntargvp sebz bhgfvqr arne pbeare", decrypt=True)
 
     print(encrypted)
 
 
-def rot13(phrase):
+def rot13(phrase, decrypt):
 
     encoded_phrase = ""
 
-    # Iterate through each character in phrase
     for character in phrase:
 
-        # Preform check on whether or not character is a letter and if its upper case
         letter = character.isalpha()
         case = character.isupper()
 
-        # If its a letter, we begin doing 'encryption' on the character
+
         if letter is True:
 
-            # If its an upper case letter the ascii's integer will be lower than the lower case numbers
-            # What this does is allows us to always be adding ascii's integers to provide us a way to 'loop'
-            # around the alphabetic circle so to speak
             if case is True:
 
-                asc = ord(character)
-                # We have to handle the situation of when adding 13 ascii integers will move into non-alpha characters
-                # by skipping over them.  This helps us 'loop' around the alphabet
-                if asc > 77:
-                     asc = asc + 19
+                if decrypt is True:
+                    character = character.lower()
+                    asc = ord(character)
 
-                     # When we jump over the non-alpha characters for ascii integers 91-96, we end up into lower case
-                     # alpha characters.  We need to preserve the original case, so we bring it back to upper case.
-                     encoded = (chr(asc)).upper()
+                    if asc < 110:
+                        asc = asc - 19
+                        encoded = chr(asc)
 
-                # If adding 13 ascii integers won't move us past alpha characters, simply add 13
-                else:
-                    asc = asc + 13
-                    encoded = chr(asc)
+                    else:
+                        asc = asc - 13
+                        encoded = (chr(asc)).upper()
 
-                # We append our encrypted character to the encrypted string and return to the for loop
+                elif decrypt is False:
+                    asc = ord(character)
+
+                    if asc > 77:
+                        asc = asc + 19
+
+                        encoded = (chr(asc)).upper()
+
+                    else:
+                        asc = asc + 13
+                        encoded = chr(asc)
+
                 encoded_phrase = encoded_phrase + encoded
 
             elif case is False:
 
-                # We send the lower case letter to upper to preserve the simplicity of our looping around the alphabet.
-                character = character.upper()
-                asc = ord(character)
+                if decrypt is True:
+                    asc = ord(character)
 
-                # We have to handle the situation of when adding 13 ascii integers will move into non-alpha characters
-                # by skipping over them.  This helps us 'loop' around the alphabet
-                if asc > 77:
-                    asc = asc + 19
-                    encoded = chr(asc)
-                else:
-                    asc = asc + 13
-                    encoded = chr(asc)
+                    if asc < 110:
+                        asc = asc - 19
 
-                # We need to preserve the lower case element of the character if we didn't have a need to 'loop' around
-                # the alphabet
-                encoded = encoded.lower()
+                        encoded = (chr(asc)).lower()
+
+                    else:
+                        asc = asc - 13
+                        encoded = chr(asc)
+
+                elif decrypt is False:
+                    character = character.upper()
+                    asc = ord(character)
+
+                    if asc > 77:
+                        asc = asc + 19
+                        encoded = chr(asc)
+                    else:
+                        asc = asc + 13
+                        encoded = chr(asc)
+
+                    encoded = encoded.lower()
 
                 encoded_phrase = encoded_phrase + encoded
 
-        # If it isn't a letter, simply add the character to the encrypted phrase to preserve spacing and/or punctuation.
         else:
-
             encoded_phrase = encoded_phrase + character
 
     return encoded_phrase
-            
-
 
 if __name__ == '__main__':
     main()
