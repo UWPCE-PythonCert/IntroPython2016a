@@ -1,46 +1,959 @@
 .. include:: include.rst
 
-*******************************************
-Session Four: Dictionaries, Sets, and Files
-*******************************************
+*************************************************
+Session Four: Exceptions, Testing, Comprehensions
+*************************************************
 
 
-================
+
+Announcements
+=============
+
+
+
 Review/Questions
 ================
 
-Review of Previous Classes
+
+Homework
+--------
+
+Let's take a look.
+
+
+Topics for Today
+================
+
+
+
+Lightning Talks
+---------------------
+
+.. rst-class:: medium
+
+  Chi Ho
+
+  Tom Gaffney
+
+  Anybody else ready?  I'll be asking for volunteers at the end of class.
+
+
+
+Lists and Mutable Sequence Methods
+==================================
+
+.. rst-class:: left
+
+In addition to all the methods supported by sequences we've seen above, mutable sequences (the List), have a number of other methods that are
+used to change the list.
+
+You can find all these in the Standard Library Documentation:
+
+https://docs.python.org/3/library/stdtypes.html#typesseq-mutable
+
+Assignment
+-----------
+
+You've already seen changing a single element of a list by assignment.
+
+Pretty much the same as "arrays" in most languages:
+
+.. code-block:: ipython
+
+    In [100]: list = [1, 2, 3]
+    In [101]: list[2] = 10
+    In [102]: list
+    Out[102]: [1, 2, 10]
+
+
+Growing the List
+----------------
+
+``.append()``, ``.insert()``, ``.extend()``
+
+.. code-block:: ipython
+
+    In [74]: food = ['spam', 'eggs', 'ham']
+    In [75]: food.append('sushi')
+    In [76]: food
+    Out[76]: ['spam', 'eggs', 'ham', 'sushi']
+    In [77]: food.insert(0, 'beans')
+    In [78]: food
+    Out[78]: ['beans', 'spam', 'eggs', 'ham', 'sushi']
+    In [79]: food.extend(['bread', 'water'])
+    In [80]: food
+    Out[80]: ['beans', 'spam', 'eggs', 'ham', 'sushi', 'bread', 'water']
+
+
+.. nextslide:: More on Extend
+
+You can pass any sequence to ``.extend()``:
+
+.. code-block:: ipython
+
+    In [85]: food
+    Out[85]: ['beans', 'spam', 'eggs', 'ham', 'sushi', 'bread', 'water']
+    In [86]: food.extend('spaghetti')
+    In [87]: food
+    Out[87]:
+    ['beans', 'spam', 'eggs', 'ham', 'sushi', 'bread', 'water',
+     's', 'p', 'a', 'g', 'h', 'e', 't', 't', 'i']
+
+
+Shrinking the List
+------------------
+
+``.pop()``, ``.remove()``
+
+.. code-block:: ipython
+
+    In [203]: food = ['spam', 'eggs', 'ham', 'toast']
+    In [204]: food.pop()
+    Out[204]: 'toast'
+    In [205]: food.pop(0)
+    Out[205]: 'spam'
+    In [206]: food
+    Out[206]: ['eggs', 'ham']
+    In [207]: food.remove('ham')
+    In [208]: food
+    Out[208]: ['eggs']
+
+.. nextslide:: Removing Chunks of a List
+
+You can also delete *slices* of a list with the ``del`` keyword:
+
+.. code-block:: ipython
+
+    In [92]: nums = range(10)
+    In [93]: nums
+    Out[93]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    In [94]: del nums[1:6:2]
+    In [95]: nums
+    Out[95]: [0, 2, 4, 6, 7, 8, 9]
+    In [96]: del nums[-3:]
+    In [97]: nums
+    Out[97]: [0, 2, 4, 6]
+
+
+Copying Lists
+-------------
+
+You can make copies of part of a list using *slicing*:
+
+.. code-block:: ipython
+
+    In [227]: food = ['spam', 'eggs', 'ham', 'sushi']
+    In [228]: some_food = food[1:3]
+    In [229]: some_food[1] = 'bacon'
+    In [230]: food
+    Out[230]: ['spam', 'eggs', 'ham', 'sushi']
+    In [231]: some_food
+    Out[231]: ['eggs', 'bacon']
+
+If you provide *no* arguments to the slice, it makes a copy of the entire list:
+
+.. code-block:: ipython
+
+    In [232]: food
+    Out[232]: ['spam', 'eggs', 'ham', 'sushi']
+    In [233]: food2 = food[:]
+    In [234]: food is food2
+    Out[234]: False
+
+
+.. nextslide:: Shallow Copies
+
+The copy of a list made this way is a *shallow copy*.
+
+The list is itself a new object, but the objects it contains are not.
+
+*Mutable* objects in the list can be mutated in both copies:
+
+.. code-block:: ipython
+
+    In [249]: food = ['spam', ['eggs', 'ham']]
+    In [251]: food_copy = food[:]
+    In [252]: food[1].pop()
+    Out[252]: 'ham'
+    In [253]: food
+    Out[253]: ['spam', ['eggs']]
+    In [256]: food.pop(0)
+    Out[256]: 'spam'
+    In [257]: food
+    Out[257]: [['eggs']]
+    In [258]: food_copy
+    Out[258]: ['spam', ['eggs']]
+
+
+.. nextslide:: Copies Solve Problems
+
+Consider this common pattern:
+
+.. code-block:: python
+
+    for x in somelist:
+        if should_be_removed(x):
+            somelist.remove(x)
+
+This looks benign enough, but changing a list while you are iterating over it can be the cause of some pernicious bugs.
+
+.. nextslide:: The Problem
+
+For example:
+
+.. code-block:: ipython
+
+    In [27]: l = list(range(10))
+    In [28]: l
+    Out[28]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    In [29]: for item in l:
+       ....:     l.remove(item)
+       ....:
+    
+.. nextslide:: Was this what you expected?
+
+For example:
+
+.. code-block:: ipython
+
+    In [27]: l = list(range(10))
+    In [28]: l
+    Out[28]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    In [29]: for item in l:
+       ....:     l.remove(item)
+       ....:
+    In [30]: l
+    Out[30]: [1, 3, 5, 7, 9]
+
+.. nextslide:: The Solution
+
+Iterate over a copy, and mutate the original:
+
+.. code-block:: ipython
+
+    In [33]: l = list(range(10))
+
+    In [34]: for item in l[:]:
+       ....:     l.remove(item)
+       ....:
+    In [35]: l
+    Out[35]: []
+
+
+.. nextslide:: Just Say It, Already
+
+Okay, so we've done this a bunch already, but let's state it out loud.
+
+You can iterate over a sequence.
+
+.. code-block:: python
+
+    for element in sequence:
+        do_something(element)
+
+which is what we mean when we say a sequence is an "iterable".
+
+Again, we'll touch more on this in a short while, but first a few more words about Lists and Tuples.
+
+
+Miscellaneous List Methods
 --------------------------
 
-  * Sequences
 
-    - Slicing
-    - Lists
-    - Tuples
-    - tuple vs lists - which to use?
+These methods change a list in place and are not available on immutable sequence types.
 
-  * interating
+``.reverse()``
 
-    - for
-    - while
+.. code-block:: ipython
 
-      - break and continue
+    In [129]: food = ['spam', 'eggs', 'ham']
+    In [130]: food.reverse()
+    In [131]: food
+    Out[131]: ['ham', 'eggs', 'spam']
 
-    - else with loops
+``.sort()``
 
-Any questions?
+.. code-block:: ipython
 
-Lightning Talks Today:
-----------------------
+    In [132]: food.sort()
+    In [133]: food
+    Out[133]: ['eggs', 'ham', 'spam']
 
-.. rst-class:: mlarge
-
+Because these methods mutate the list in place, they have a return value of ``None``
 
 
+.. nextslide:: Custom Sorting
 
-==============================
+``.sort()`` can take an optional ``key`` parameter.
+
+It should be a function that takes one parameter (list items one at a time) and returns something that can be used for sorting:
+
+.. code-block:: ipython
+
+    In [137]: def third_letter(string):
+       .....:     return string[2]
+       .....:
+    In [138]: food.sort(key=third_letter)
+    In [139]: food
+    Out[139]: ['spam', 'eggs', 'ham']
+
+
+
+List Performance
+----------------
+
+.. rst-class:: build
+
+* indexing is fast and constant time: O(1)
+* ``x in l`` is proportional to n: O(n)
+* visiting all is proportional to n: O(n)
+* operating on the end of list is fast and constant time: O(1)
+
+  * append(), pop()
+
+* operating on the front (or middle) of the list depends on n: O(n)
+
+  * ``pop(0)``, ``insert(0, v)``
+  * But, reversing is fast. ``Also, collections.deque``
+
+ http://wiki.python.org/moin/TimeComplexity
+
+
+Choosing Lists or Tuples
+------------------------
+
+Here are a few guidelines on when to choose a list or a tuple:
+
+* If it needs to mutable: list
+
+* If it needs to be immutable: tuple
+
+  * (safety when passing to a function)
+
+Otherwise ... taste and convention
+
+
+Convention
+-----------
+
+
+Lists are Collections (homogeneous):
+-- contain values of the same type
+-- simplifies iterating, sorting, etc
+
+tuples are mixed types:
+-- Group multiple values into one logical thing
+-- Kind of like simple C structs.
+
+
+Other Considerations
+--------------------
+
+.. rst-class:: build
+
+* Do the same operation to each element?
+
+  * list
+
+* Small collection of values which make a single logical item?
+
+  * tuple
+
+* To document that these values won't change?
+
+  * tuple
+
+* Build it iteratively?
+
+  * list
+
+* Transform, filter, etc?
+
+  * list
+
+
+More Documentation
+------------------
+
+For more information, read the list docs:
+
+https://docs.python.org/3.5/library/stdtypes.html#mutable-sequence-types
+
+(actually any mutable sequence....)
+
+
+List Lab
+---------
+
+Let's play a bit with Python lists...
+
+:ref:`exercise_list_lab`
+
+
+
+Lightning Talk
+---------------
+
+.. rst-class:: center large
+
+Chi Ho
+
+
+
+Iteration
+=========
+
+.. rst-class:: build
+
+Repetition, Repetition, Repetition, Repe...
+
+
+For Loops
+---------
+
+We've seen simple iteration over a sequence with ``for ... in``:
+
+.. code-block:: ipython
+
+    In [170]: for x in "a string":
+       .....:         print(x)
+       .....:
+    a
+    s
+    t
+    r
+    i
+    n
+    g
+
+
+.. nextslide:: No Indexing Required
+
+Contrast this with other languages, where you must build and use an ``index``:
+
+.. code-block:: javascript
+
+    for(var i = 0; i < arr.length; i++) {
+        var value = arr[i];
+        alert(i + ") " + value);
+
+If you *do* need an index, you can use ``enumerate``:
+
+.. code-block:: ipython
+
+    In [140]: for idx, letter in enumerate('Python'):
+       .....:     print(idx, letter, end=' ')
+       .....:
+    0 P 1 y 2 t 3 h 4 o 5 n
+
+
+``range`` and ``for`` Loops
+---------------------------
+
+The ``range`` builtin is useful for looping a known number of times:
+
+.. code-block:: ipython
+
+    In [171]: for i in range(5):
+       .....:     print(i)
+       .....:
+    0
+    1
+    2
+    3
+    4
+
+But you don't really need to do anything at all with ``i``
+
+.. nextslide::
+
+In fact, it's a common convension to make this clear with a "nothing" name:
+
+.. code-block:: ipython
+
+    In [21]: for __ in range(5):
+       ....:     print("*")
+       ....:
+    *
+    *
+    *
+    *
+    *
+
+
+.. nextslide:: No Namespace
+
+Be alert that a loop does not create a local namespace:
+
+.. code-block:: ipython
+
+    In [172]: x = 10
+    In [173]: for x in range(3):
+       .....:     pass
+       .....:
+    In [174]: x
+    Out[174]: 2
+
+
+.. nextslide:: Loop Control
+
+Sometimes you want to interrupt or alter the flow of control through a loop.
+
+Loops can be controlled in two ways, with ``break`` and ``continue``
+
+
+.. nextslide:: Break
+
+The ``break`` keyword will cause a loop to immediately terminate:
+
+.. code-block:: ipython
+
+    In [141]: for i in range(101):
+       .....:     print(i)
+       .....:     if i > 50:
+       .....:         break
+       .....:
+    0 1 2 3 4 5... 46 47 48 49 50 51
+
+.. nextslide:: Continue
+
+The ``continue`` keyword will skip later statements in the loop block, but
+allow iteration to continue:
+
+.. code-block:: ipython
+
+    In [143]: for in in range(101):
+       .....:     if i > 50:
+       .....:         break
+       .....:     if i < 25:
+       .....:         continue
+       .....:     print(i, end=' ')
+       .....:
+       25 26 27 28 29 ... 41 42 43 44 45 46 47 48 49 50
+
+.. nextslide:: else
+
+For loops can also take an optional ``else`` block.
+
+Executed only when the loop exits normally (not via break):
+
+.. code-block:: ipython
+
+    In [147]: for x in range(10):
+       .....:     if x == 11:
+       .....:         break
+       .....: else:
+       .....:     print('finished')
+    finished
+    In [148]: for x in range(10):
+       .....:     if x == 5:
+       .....:         print(x)
+       .....:         break
+       .....: else:
+       .....:     print('finished')
+    5
+
+This is a really nice unique Python feature!
+
+
+While Loops
+-----------
+
+The ``while`` keyword is for when you don't know how many loops you need.
+
+It continues to execute the body until condition is not ``True``::
+
+    while a_condition:
+       some_code
+       in_the_body
+
+.. nextslide:: ``while`` vs. ``for``
+
+``while``  is more general than ``for``
+
+-- you can always express ``for`` as ``while``, but not always vice-versa.
+
+``while``  is more error-prone -- requires some care to terminate
+
+loop body must make progress, so condition can become ``False``
+
+potential error -- infinite loops:
+
+.. code-block:: python
+
+    i = 0;
+    while i < 5:
+        print(i)
+
+
+.. nextslide:: Terminating a while Loop
+
+Use ``break``:
+
+.. code-block:: ipython
+
+    In [150]: while True:
+       .....:     i += 1
+       .....:     if i > 10:
+       .....:         break
+       .....:     print(i)
+       .....:
+    1 2 3 4 5 6 7 8 9 10
+
+.. nextslide:: Terminating a while Loop
+
+Set a flag:
+
+.. code-block:: ipython
+
+    In [156]: import random
+    In [157]: keep_going = True
+    In [158]: while keep_going:
+       .....:     num = random.choice(range(5))
+       .....:     print(num)
+       .....:     if num == 3:
+       .....:         keep_going = False
+       .....:
+    3
+
+.. nextslide:: Terminating a While Loop
+
+Use a condition:
+
+.. code-block:: ipython
+
+    In [161]: while i < 10:
+       .....:     i += random.choice(range(4))
+       .....:     print(i)
+       .....:
+    0 0 2 3 4 6 8 8 8 9 12
+
+
+Similarities
+------------
+
+Both ``for`` and ``while`` loops can use ``break`` and ``continue`` for
+internal flow control.
+
+Both ``for`` and ``while`` loops can have an optional ``else`` block
+
+In both loops, the statements in the ``else`` block are only executed if the
+loop terminates normally (no ``break``)
+
+
+String Features
+================
+
+.. rst-class:: center large
+
+  Fun with Strings
+
+Strings
+---------
+
+A string literal creates a string type
+
+(we've seen this already...)
+
+::
+
+    "this is a string"
+
+    'So is this'
+
+    """and this also"""
+
+You can also use ``str()``
+
+.. code-block:: ipython
+
+    In [256]: str(34)
+    Out[256]: '34'
+
+
+
+String Methods
+--------------
+
+String objects have a lot of methods.
+
+Here are just a few:
+
+String Manipulations
+---------------------
+
+``split`` and ``join``:
+
+.. code-block:: ipython
+
+    In [167]: csv = "comma, separated, values"
+    In [168]: csv.split(', ')
+    Out[168]: ['comma', 'separated', 'values']
+    In [169]: psv = '|'.join(csv.split(', '))
+    In [170]: psv
+    Out[170]: 'comma|separated|values'
+
+
+Case Switching
+--------------
+
+.. code-block:: ipython
+
+    In [171]: sample = 'A long string of words'
+    In [172]: sample.upper()
+    Out[172]: 'A LONG STRING OF WORDS'
+    In [173]: sample.lower()
+    Out[173]: 'a long string of words'
+    In [174]: sample.swapcase()
+    Out[174]: 'a LONG STRING OF WORDS'
+    In [175]: sample.title()
+    Out[175]: 'A Long String Of Words'
+
+
+Testing
+--------
+
+.. code-block:: ipython
+
+    In [181]: number = "12345"
+    In [182]: number.isnumeric()
+    Out[182]: True
+    In [183]: number.isalnum()
+    Out[183]: True
+    In [184]: number.isalpha()
+    Out[184]: False
+    In [185]: fancy = "Th!$ $tr!ng h@$ $ymb0l$"
+    In [186]: fancy.isalnum()
+    Out[186]: False
+
+
+String Literals
+-----------------
+
+Common Escape Sequences::
+
+    \\  Backslash (\)
+    \a  ASCII Bell (BEL)
+    \b  ASCII Backspace (BS)
+    \n  ASCII Linefeed (LF)
+    \r  ASCII Carriage Return (CR)
+    \t  ASCII Horizontal Tab (TAB)
+    \ooo  Character with octal value ooo
+    \xhh  Character with hex value hh
+
+for example -- for tab-separted values:
+
+.. code-block:: ipython
+
+    In [25]: s = "these\tare\tseparated\tby\ttabs"
+
+    In [26]: print(s)
+    these   are separated    by  tabs
+
+https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals
+https://docs.python.org/3/library/stdtypes.html#string-methods
+
+Raw Strings
+------------
+
+Add an ``r`` in front of the string literal:
+
+Escape Sequences Ignored
+
+.. code-block:: ipython
+
+    In [408]: print("this\nthat")
+    this
+    that
+    In [409]: print(r"this\nthat")
+    this\nthat
+
+**Gotcha**
+
+.. code-block:: ipython
+
+    In [415]: r"\"
+    SyntaxError: EOL while scanning string literal
+
+(handy for regex, windows paths...)
+
+
+Ordinal values
+--------------
+
+Characters in strings are stored as numeric values:
+
+* "ASCII" values: 1-127
+
+* Unicode values -- 1 - 1,114,111 (!!!)
+
+To get the value:
+
+.. code-block:: ipython
+
+    In [109]: for i in 'Chris':
+       .....:     print(ord(i), end=' ')
+    67 104 114 105 115
+    In [110]: for i in (67,104,114,105,115):
+       .....:     print(chr(i), end='')
+    Chris
+
+(these days, stick with ASCII, or use full Unicode: more on that in a few weeks)
+
+
+Building Strings
+-----------------
+
+You can, but please don't do this:
+
+.. code-block:: python
+
+    'Hello ' + name + '!'
+
+(I know -- we did that in the grid_printing excercise)
+
+Do this instead:
+
+.. code-block:: python
+
+    'Hello {}!'.format(name)
+
+It's much faster and safer, and easier to modify as code gets complicated.
+
+https://docs.python.org/3/library/string.html#string-formatting
+
+Old and New string formatting
+-----------------------------
+
+back in early python days, there was the string formatting operator: ``%``
+
+.. code-block:: python
+
+    " a string: %s and a number: %i "%("text", 45)
+
+This is very similar to C-style string formatting (`sprintf`).
+
+It's still around, and handy --- but ...
+
+The "new" ``format()`` method is more powerful and flexible, so we'll focus on that in this class.
+
+.. nextslide:: String Formatting
+
+The string ``format()`` method:
+
+.. code-block:: ipython
+
+    In [62]: "A decimal integer is: {:d}".format(34)
+    Out[62]: 'A decimal integer is: 34'
+
+    In [63]: "a floating point is: {:f}".format(34.5)
+    Out[63]: 'a floating point is: 34.500000'
+
+    In [64]: "a string is the default: {}".format("anything")
+    Out[64]: 'a string is the default: anything'
+
+
+Multiple placeholders:
+-----------------------
+
+.. code-block:: ipython
+
+    In [65]: "the number is {} is {}".format('five', 5)
+    Out[65]: 'the number is five is 5'
+
+    In [66]: "the first 3 numbers are {}, {}, {}".format(1,2,3)
+    Out[66]: 'the first 3 numbers are 1, 2, 3'
+
+The counts must agree:
+
+.. code-block:: ipython
+
+    In [67]: "string with {} formatting {}".format(1)
+    ---------------------------------------------------------------------------
+    IndexError                                Traceback (most recent call last)
+    <ipython-input-67-a079bc472aca> in <module>()
+    ----> 1 "string with {} formatting {}".format(1)
+
+    IndexError: tuple index out of range
+
+
+Named placeholders:
+-------------------
+
+.. code-block:: ipython
+
+
+    In [69]: "Hello, {name}, whaddaya know?".format(name="Joe")
+    Out[69]: 'Hello, Joe, whaddaya know?'
+
+You can use values more than once, and skip values:
+
+.. code-block:: ipython
+
+    In [73]: "Hi, {name}. Howzit, {name}?".format(name='Bob')
+    Out[73]: 'Hi, Bob. Howzit, Bob?'
+
+.. nextslide::
+
+The format operator works with string variables, too:
+
+.. code-block:: ipython
+
+    In [80]: s = "{:d} / {:d} = {:f}"
+
+    In [81]: a, b = 12, 3
+
+    In [82]: s.format(a, b, a/b)
+    Out[82]: '12 / 3 = 4.000000'
+
+So you can dynamically build a format string
+
+Complex Formatting
+------------------
+
+There is a complete syntax for specifying all sorts of options.
+
+It's well worth your while to spend some time getting to know this
+`formatting language`_. You can accomplish a great deal just with this.
+
+.. _formatting language: https://docs.python.org/3/library/string.html#format-specification-mini-language
+
+
+One Last Trick
+---------------
+
+.. rst-class:: left
+
+For some of the exercises, you'll need to interact with a user at the
+command line.
+
+There's a nice built in function to do this - ``input``:
+
+.. code-block:: ipython
+
+    In [85]: fred = input('type something-->')
+    type something-->I've typed something
+
+    In [86]: print(fred)
+    I've typed something
+
+This will display a prompt to the user, allowing them to input text and
+allowing you to bind that input to a symbol.
+
+
+String Formatting LAB
+---------------------
+
+Let's play with these a bit:
+
+:ref:`exercise_string_formatting`
+
+
+Dictionaries and Sets
+=====================
+
 Handy hints for/from Homework
-==============================
+-----------------------------
 
 .. rst-class:: mlarge
 
@@ -176,9 +1089,10 @@ I'll cover next week ...
 (Asserts get ignored if optimization is turned on!)
 
 
-=================
+
 A little warm up
-=================
+================
+
 
 Fun with strings
 ------------------
@@ -188,7 +1102,7 @@ Fun with strings
     - for an arbitrary number of numbers...
 
 
-=====================
+
 Dictionaries and Sets
 =====================
 
@@ -541,7 +1455,8 @@ Use explicit copy method to get a copy
 
 
 Sets
------
+====
+
 
 ``set``  is an unordered collection of distinct values
 
@@ -639,7 +1554,8 @@ immutable -- for use as a key in a dict
 
 
 LAB: Dictionaries and Sets lab
-==============================
+------------------------------
+
 
 Have some fun with dictionaries and sets!
 
@@ -649,306 +1565,24 @@ Have some fun with dictionaries and sets!
 Lightning Talk
 --------------
 
-|
-| 
-|
+.. rst-class:: center large
 
+Tom Gaffney
 
-========================
-File Reading and Writing
-========================
 
-Files
------
-
-Text Files
-
-.. code-block:: python
-
-    f = open('secrets.txt')
-    secret_data = f.read()
-    f.close()
-
-``secret_data`` is a string
-
-NOTE: these days, you probably need to use Unicode for text -- we'll get to that next week
-
-.. nextslide::
-
-Binary Files
-
-.. code-block:: python
-
-    f = open('secrets.bin', 'rb')
-    secret_data = f.read()
-    f.close()
-
-``secret_data`` is a byte string
-
-(with arbitrary bytes in it -- well, not arbitrary -- whatever is in the file.)
-
-(See the ``struct``  module to unpack binary data )
-
-
-.. nextslide::
-
-
-File Opening Modes
-
-.. code-block:: python
-
-    f = open('secrets.txt', [mode])
-    'r', 'w', 'a'
-    'rb', 'wb', 'ab'
-    r+, w+, a+
-    r+b, w+b, a+b
-
-
-These follow the Unix conventions, and aren't all that well documented
-in the Python docs. But these BSD docs make it pretty clear:
-
-http://www.manpagez.com/man/3/fopen/
-
-**Gotcha** -- 'w' modes always clear the file
-
-.. nextslide:: Text File Notes
-
-Text is default
-
-  * Newlines are translated: ``\r\n -> \n``
-  *   -- reading and writing!
-  * Use \*nix-style in your code: ``\n``
-
-
-Gotcha:
-
-  * no difference between text and binary on \*nix
-  * breaks on Windows
-
-
-File Reading
-------------
-
-Reading part of a file
-
-.. code-block:: python
-
-    header_size = 4096
-    f = open('secrets.txt')
-    secret_header = f.read(header_size)
-    secret_rest = f.read()
-    f.close()
-
-.. nextslide::
-
-
-Common Idioms
-
-.. code-block:: python
-
-    for line in open('secrets.txt'):
-        print(line)
-
-(the file object is an iterator!)
-
-.. code-block:: python
-
-    f = open('secrets.txt')
-    while True:
-        line = f.readline()
-        if not line:
-            break
-        do_something_with_line()
-
-.. nextslide::
-
-We will learn more about the keyword with later, but for now, just understand
-the syntax and the advantage over the try-finally block:
-
-.. code-block:: python
-
- with open('workfile', 'r') as f:
-     read_data = f.read()
- f.closed
- True
-
-
-File Writing
-------------
-
-.. code-block:: python
-
-    outfile = open('output.txt', 'w')
-    for i in range(10):
-        outfile.write("this is line: %i\n"%i)
-    outfile.close()
-
-    with open('output.txt', 'w'):
-        for i in range(10):
-           f.write("this is line: %i\n"%i)
-
-
-File Methods
-------------
-
-Commonly Used Methods
-
-.. code-block:: python
-
-    f.read() f.readline()  f.readlines()
-
-    f.write(str) f.writelines(seq)
-
-    f.seek(offset)   f.tell() # for binary files, mostly
-
-    f.close()
-
-StringIO
---------
-
-.. code-block:: python
-
-    In [417]: import io
-    In [420]: f = io.StringIO()
-    In [421]: f.write("somestuff")
-    In [422]: f.seek(0)
-    In [423]: f.read()
-    Out[423]: 'somestuff'
-    Out[424]: stuff = f.getvalue()
-    Out[425]: f.close()
-
-(handy for testing file handling code...)
-
-There is also cStringIO -- a bit faster.
-
-.. code-block:: python
-
-    from cStringIO import StringIO
-
-=====================
-Paths and Directories
-=====================
-
-Paths
------
-
-Paths are generally handled with simple strings (or Unicode strings)
-
-Relative paths:
-
-.. code-block:: python
-
-    'secret.txt'
-    './secret.txt'
-
-Absolute paths:
-
-.. code-block:: python
-
-    '/home/chris/secret.txt'
-
-
-Either work with ``open()`` , etc.
-
-(working directory only makes sense with command-line programs...)
-
-os module
-----------
-
-.. code-block:: python
-
-    os.getcwd()
-    os.chdir(path)
-    os.path.abspath()
-    os.path.relpath()
-
-
-.. nextslide:: os.path module
-
-.. code-block:: python
-
-    os.path.split()
-    os.path.splitext()
-    os.path.basename()
-    os.path.dirname()
-    os.path.join()
-
-
-(all platform independent)
-
-.. nextslide:: directories
-
-.. code-block:: python
-
-    os.listdir()
-    os.mkdir()
-    os.walk()
-
-(higher level stuff in ``shutil``  module)
-
-pathlib
--------
-
-``pathlib`` is a package for handling paths in an OO way:
-
-http://pathlib.readthedocs.org/en/pep428/
-
-All the stuff in os.path and more:
-
-.. code-block:: ipython
-
-    In [64]: import pathlib
-    In [65]: pth = pathlib.Path('./')
-    In [66]: pth.is_dir()
-    Out[66]: True
-    In [67]: pth.absolute()
-    Out[67]: PosixPath('/Users/Chris/PythonStuff/UWPCE/IntroPython2015')
-    In [68]: for f in pth.iterdir():
-                 print(f)
-    junk2.txt
-    junkfile.txt
-    ...
-
-===
-LAB
-===
-
-Files Lab: If there is time.
-
-Files Lab
----------
-
-In the class repo, in:
-
-``Examples\students.txt``
-
-You will find the list I generated of all the students in the class, and
-what programming languages they have used in the past.
-
-Write a little script that reads that file, and generates a list of all
-the languages that have been used.
-
-Extra credit: keep track of how many students specified each language.
-
-If you've got git set up right, ``git pull upstream master`` should update
-your repo. Otherwise, you can get it from gitHub:
-
-``https://github.com/UWPCE-PythonCert/IntroPython2015/blob/master/Examples/students.txt``
-
-
-=========
 Homework
-=========
+========
+
 
 Recommended Reading:
 ---------------------
   * Dive Into Python: Chapt. 13,14
 
+
 Assignments:
 -------------
 
- * Finish the dict/sets lab
- * Finish the Exceptions lab
+ * Finish lab exercises
  * Coding kata: trigrams
  * Paths and files
  * Update mailroom with dicts and exceptions
@@ -982,28 +1616,4 @@ Text and files and dicts, and...
 * This is intentionally open-ended and underspecified. There are many interesting decisions to make.
 
 * Experiment with different lengths for the lookup key. (3 words, 4 words, 3 letters, etc)
-
-
-Paths and File Processing
---------------------------
-
-* write a program which prints the full path to all files in the current
-  directory, one per line
-
-* write a program which copies a file from a source, to a destination
-  (without using shutil, or the OS copy command)
-
-  - advanced: make it work for any size file: i.e. don't read the entire
-    contents of the file into memory at once.
-
-  - Note that if you want it to do any kind of file, you need to open the files in binary mode:
-    ``open(filename, 'rb')`` (or ``'wb'`` for writing.)
-
-* update mailroom from last week to:
-
-  - Use dicts where appropriate
-  - Write a full set of letters to everyone to individual files on disk
-  - See if you can use a dict to switch between the users selections
-  - Try to use a dict and the .format() method to do the letter as one
-    big template -- rather than building up a big string in parts.
 
