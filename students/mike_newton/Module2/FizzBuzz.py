@@ -24,11 +24,11 @@ print("This script will accept a user defined natural number and count to that"
 #Ask user to input an integer
 while True:
 	try:
-		N = int(input("Please enter an integer value of N that you would like to count to:  "))
+		N = int(input("Please enter an integer value of N that you would like to count to:  ")) 
 		break
 	#If user doesn't input an integer value, prompt them to try again
 	except ValueError:
-		print("That wasn't an integer!  Try again...")
+		print("That wasn't an integer!  Try again...") # what if I just press Enter without entering anything? 
 
 for i in range(1,N+1):
     if i % 5 == 0 and i % 3 == 0:
