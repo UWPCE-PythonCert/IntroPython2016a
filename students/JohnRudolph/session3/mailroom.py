@@ -27,7 +27,33 @@ def createDonors(numDonors):
 
 	return donorList
 
+numDonors = 5
+# dreate the initial list of donors
+donorList = createDonors(numDonors)
 
-print(createDonors(5))
+#create an empty dictionary - will be populated in loop below
+ownerDic = {}
+#populate donor dict from donorlist
+for donor in donorList:
+	donor_name = donor[0]
+	donations = donor[1:]
+	ownerDic[donor_name] = donations
+
+#Add an error handler so that user has to input a valid action
+index_check = None
+while index_check is None:
+	getAction = str(input("Input Action: 'Send a Thank You' or 'Create a Report\n"))
+	if getAction.lower() != ('send a thank you' or 'create a report'):
+		print("Invalid Action: Try Again!")
+	else:
+		index_check = True
+
+print(getAction)
+		
+
+
+
+
+
 
 
