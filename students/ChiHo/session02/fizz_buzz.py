@@ -12,13 +12,14 @@ def fizz_buzz(n):
        Numbers divisible by both factors should display "FizzBuzz".
     """
 
-    message = ''
+    message = '' # can you simplify this by just using a print statement for each if/elif/else statement? 
     for i in range(1, n+1):
         is_divisible = False
-        if i % 3 == 0: # divisible by 3
+        # you need to add logic here, similar to below, for when i is disivible by 3 AND by 5 :) 
+        if i % 3 == 0: # divisible by 3 
             message += 'Fizz\n'
             is_divisible = True
-        if i % 5 == 0: # divisible by 5
+        if i % 5 == 0: # divisible by 5      # any difference if you use if/elif/else instead of three if statments? 
             message += 'Buzz\n'
             is_divisible = True
         if not is_divisible: # not divisible by 3 and/or 5
