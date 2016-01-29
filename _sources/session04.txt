@@ -1,14 +1,12 @@
 .. include:: include.rst
 
-*************************************************
-Session Four: Exceptions, Testing, Comprehensions
-*************************************************
-
+***********************************************************
+Session Four: Lists, Iteration, Strings, Dictionaries, Sets
+***********************************************************
 
 
 Announcements
 =============
-
 
 
 Review/Questions
@@ -23,6 +21,16 @@ Let's take a look.
 
 Topics for Today
 ================
+
+.. rst-class:: build left
+
+*  Lists
+*  Iteration
+*  Strings
+*  Dictionaries
+*  Sets
+
+  Driving toward the mailroom.
 
 
 
@@ -39,17 +47,17 @@ Lightning Talks
 
 
 
-Lists and Mutable Sequence Methods
-==================================
+Lists
+=====
 
 .. rst-class:: left
 
-In addition to all the methods supported by sequences we've seen above, mutable sequences (the List), have a number of other methods that are
-used to change the list.
+In addition to all the methods supported by sequences we've already seen, mutable sequences such as Lists have a number of other methods.
 
 You can find all these in the Standard Library Documentation:
 
 https://docs.python.org/3/library/stdtypes.html#typesseq-mutable
+
 
 Assignment
 -----------
@@ -100,8 +108,8 @@ You can pass any sequence to ``.extend()``:
      's', 'p', 'a', 'g', 'h', 'e', 't', 't', 'i']
 
 
-Shrinking the List
-------------------
+Shrinking a List
+----------------
 
 ``.pop()``, ``.remove()``
 
@@ -259,7 +267,6 @@ Again, we'll touch more on this in a short while, but first a few more words abo
 Miscellaneous List Methods
 --------------------------
 
-
 These methods change a list in place and are not available on immutable sequence types.
 
 ``.reverse()``
@@ -392,7 +399,7 @@ Let's play a bit with Python lists...
 
 
 Lightning Talk
----------------
+==============
 
 .. rst-class:: center large
 
@@ -435,7 +442,8 @@ Contrast this with other languages, where you must build and use an ``index``:
 
     for(var i = 0; i < arr.length; i++) {
         var value = arr[i];
-        alert(i + ") " + value);
+        alert(i + value);
+    }
 
 If you *do* need an index, you can use ``enumerate``:
 
@@ -479,20 +487,6 @@ In fact, it's a common convension to make this clear with a "nothing" name:
     *
     *
     *
-
-
-.. nextslide:: No Namespace
-
-Be alert that a loop does not create a local namespace:
-
-.. code-block:: ipython
-
-    In [172]: x = 10
-    In [173]: for x in range(3):
-       .....:     pass
-       .....:
-    In [174]: x
-    Out[174]: 2
 
 
 .. nextslide:: Loop Control
@@ -641,27 +635,32 @@ In both loops, the statements in the ``else`` block are only executed if the
 loop terminates normally (no ``break``)
 
 
-String Features
-================
+Lightning Talk
+==============
 
 .. rst-class:: center large
 
-  Fun with Strings
+Tom Gaffney
+
 
 Strings
----------
+=======
 
-A string literal creates a string type
+.. rst-class:: left
 
-(we've seen this already...)
+Quick review: a string literal creates a string type:
 
-::
+.. code-block:: python
 
     "this is a string"
 
     'So is this'
 
+    "And maybe y'all need somthing like this!"
+
     """and this also"""
+
+.. rst-class:: left
 
 You can also use ``str()``
 
@@ -775,8 +774,6 @@ Escape Sequences Ignored
     In [415]: r"\"
     SyntaxError: EOL while scanning string literal
 
-(handy for regex, windows paths...)
-
 
 Ordinal values
 --------------
@@ -800,27 +797,6 @@ To get the value:
 
 (these days, stick with ASCII, or use full Unicode: more on that in a few weeks)
 
-
-Building Strings
------------------
-
-You can, but please don't do this:
-
-.. code-block:: python
-
-    'Hello ' + name + '!'
-
-(I know -- we did that in the grid_printing excercise)
-
-Do this instead:
-
-.. code-block:: python
-
-    'Hello {}!'.format(name)
-
-It's much faster and safer, and easier to modify as code gets complicated.
-
-https://docs.python.org/3/library/string.html#string-formatting
 
 Old and New string formatting
 -----------------------------
@@ -941,6 +917,14 @@ This will display a prompt to the user, allowing them to input text and
 allowing you to bind that input to a symbol.
 
 
+Fun with strings
+----------------
+
+* Rewrite: ``the first 3 numbers are: %i, %i, %i"%(1,2,3)``
+
+    - for an arbitrary number of numbers...
+
+
 String Formatting LAB
 ---------------------
 
@@ -949,165 +933,9 @@ Let's play with these a bit:
 :ref:`exercise_string_formatting`
 
 
-Dictionaries and Sets
-=====================
+Dictionaries
+============
 
-Handy hints for/from Homework
------------------------------
-
-.. rst-class:: mlarge
-
-  You almost never need to loop through the indexes of a sequence
-
-nifty for loop tricks
----------------------
-
-**tuple unpacking:**
-
-remember this?
-
-.. code-block:: python
-
-    x, y = 3, 4
-
-You can do that in a for loop, also:
-
-.. code-block:: ipython
-
-  In [4]: l = [(1, 2), (3, 4), (5, 6)]
-
-  In [5]: for i, j in l:
-              print("i:%i, j:%i"%(i, j))
-
-  i:1, j:2
-  i:3, j:4
-  i:5, j:6
-
-(Mailroom example)
-
-
-Looping through two loops at once:
-----------------------------------
-
-.. rst-class:: mlarge
-
-  ``zip``
-
-.. code-block:: ipython
-
-    In [10]: l1 = [1, 2, 3]
-
-    In [11]: l2 = [3, 4, 5]
-
-    In [12]: for i, j in zip(l1, l2):
-       ....:     print("i:%i, j:%i"%(i, j))
-       ....:
-    i:1, j:3
-    i:2, j:4
-    i:3, j:5
-
-Can be more than two:
-
-.. code-block:: python
-
-  for i, j, k, l in zip(l1, l2, l3, l4):
-
-
-Need the index and the item?
-----------------------------
-
-.. rst-class:: mlarge
-
-  ``enumerate``
-
-.. code-block:: ipython
-
-    In [2]: l = ['this', 'that', 'the other']
-
-    In [3]: for i, item in enumerate(l):
-       ...:     print("the %ith item is: %s"%(i, item))
-       ...:
-    the 0th item is: this
-    the 1th item is: that
-    the 2th item is: the other
-
-
-
-Homework Comments
------------------
-
-Building up a long string.
-
-The obvious thing to do is something like::
-
-  msg = ""
-  for piece in list_of_stuff:
-      msg += piece
-
-But: strings are immutable -- python needs to create a new string each time you add a piece -- not efficient::
-
-   msg = []
-   for piece in list_of_stuff:
-       msg.append(piece)
-   " ".join(msg)
-
-appending to lists is efficient -- and so is the join() method of strings.
-
-.. nextslide::
-
-.. rst-class:: center mlarge
-
-You can put a mutable item in an immutable object!
-
-(demo)
-
-.. nextslide:: A couple small things:
-
-|
-| Use string formatting
-|
-| The ``sum()`` function
-|
-| Deleting from list (list_lab)
-|
-
-.. nextslide::
-
-What is ``assert`` for?
-
-Testing -- NOT for issues expected to happen operationally::
-
-    assert m >= 0
-
-in operational code should be::
-
-    if m < 0:
-        raise ValueError
-
-I'll cover next week ...
-
-(Asserts get ignored if optimization is turned on!)
-
-
-
-A little warm up
-================
-
-
-Fun with strings
-------------------
-
-* Rewrite: ``the first 3 numbers are: %i, %i, %i"%(1,2,3)``
-
-    - for an arbitrary number of numbers...
-
-
-
-Dictionaries and Sets
-=====================
-
-Dictionary
-----------
 Python calls it a ``dict``
 
 Other languages call it:
@@ -1556,22 +1384,147 @@ immutable -- for use as a key in a dict
 LAB: Dictionaries and Sets lab
 ------------------------------
 
-
 Have some fun with dictionaries and sets!
 
 :ref:`exercise_dict_lab`
 
 
-Lightning Talk
---------------
-
-.. rst-class:: center large
-
-Tom Gaffney
-
-
 Homework
 ========
+
+Handy hints for/from Homework
+-----------------------------
+
+.. rst-class:: mlarge
+
+  You almost never need to loop through the indexes of a sequence
+
+nifty for loop tricks
+---------------------
+
+**tuple unpacking:**
+
+remember this?
+
+.. code-block:: python
+
+    x, y = 3, 4
+
+You can do that in a for loop, also:
+
+.. code-block:: ipython
+
+  In [4]: l = [(1, 2), (3, 4), (5, 6)]
+
+  In [5]: for i, j in l:
+              print("i:%i, j:%i"%(i, j))
+
+  i:1, j:2
+  i:3, j:4
+  i:5, j:6
+
+(Mailroom example)
+
+
+Looping through two loops at once:
+----------------------------------
+
+.. rst-class:: mlarge
+
+  ``zip``
+
+.. code-block:: ipython
+
+    In [10]: l1 = [1, 2, 3]
+
+    In [11]: l2 = [3, 4, 5]
+
+    In [12]: for i, j in zip(l1, l2):
+       ....:     print("i:%i, j:%i"%(i, j))
+       ....:
+    i:1, j:3
+    i:2, j:4
+    i:3, j:5
+
+Can be more than two:
+
+.. code-block:: python
+
+  for i, j, k, l in zip(l1, l2, l3, l4):
+
+
+Need the index and the item?
+----------------------------
+
+.. rst-class:: mlarge
+
+  ``enumerate``
+
+.. code-block:: ipython
+
+    In [2]: l = ['this', 'that', 'the other']
+
+    In [3]: for i, item in enumerate(l):
+       ...:     print("the %ith item is: %s"%(i, item))
+       ...:
+    the 0th item is: this
+    the 1th item is: that
+    the 2th item is: the other
+
+
+Homework Comments
+-----------------
+
+Building up a long string.
+
+The obvious thing to do is something like::
+
+  msg = ""
+  for piece in list_of_stuff:
+      msg += piece
+
+But: strings are immutable -- python needs to create a new string each time you add a piece -- not efficient::
+
+   msg = []
+   for piece in list_of_stuff:
+       msg.append(piece)
+   " ".join(msg)
+
+appending to lists is efficient -- and so is the join() method of strings.
+
+.. nextslide::
+
+.. rst-class:: center mlarge
+
+You can put a mutable item in an immutable object!
+
+
+.. nextslide:: A couple small things:
+
+|
+| Use string formatting
+|
+| The ``sum()`` function
+|
+| Deleting from list (list_lab)
+|
+
+.. nextslide::
+
+What is ``assert`` for?
+
+Testing -- NOT for issues expected to happen operationally::
+
+    assert m >= 0
+
+in operational code should be::
+
+    if m < 0:
+        raise ValueError
+
+I'll cover next week ...
+
+(Asserts get ignored if optimization is turned on!)
 
 
 Recommended Reading:
