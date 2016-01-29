@@ -56,12 +56,9 @@ def sum_series(n, startnum1=0,startnum2=1):
     return startnum1
 
 
-n = int(input("Type in the number of the nth value in the sequence you want."))
-assert (n>0), "Need to have a positve number for the nth value."
-
+n = int(input("Type in the number in the sequence you want."))
 startnum1 = int(input("Type in the starting number."))
 startnum2 = int(input("Type in the second starting number."))
-assert (startnum1 > 0 or startnum2 > 0), "Both starting numbers cannont have zero values."
 
 print("\n",fibinacci_n.__doc__, ":")
 print ("\tThe", n, "'th number in the fibinacci sequence is: ", fibinacci_n(n))
@@ -69,4 +66,5 @@ print("\n",lucas_n.__doc__, ":")
 print ("\tThe", n, "'th number in the lucas sequence is: ",lucas_n(n))
 print("\n",sum_series.__doc__)
 print ("\tThe", n, "'th number in a made up series is:",sum_series(n,startnum1,startnum2), "(for starting numbers:)",startnum1,startnum2)
+
 
