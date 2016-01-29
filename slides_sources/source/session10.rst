@@ -1,8 +1,14 @@
 .. include:: include.rst
 
-*******************************************************
-Session Ten: Decorators and Context Managers -- Wrap Up
-*******************************************************
+===========
+Session Ten
+===========
+
+.. rst-class:: large centered
+
+  Going from Driver 
+  to Mechanic
+
 
 =====================
 Web Development Class
@@ -10,43 +16,87 @@ Web Development Class
 
 .. rst-class:: large centered
 
+  Python 200
   Internet Programming in Python
 
-  Cris Ewing
+  Guest speaker
 
 ================
 Review/Questions
 ================
 
-Review of Previous Class
-------------------------
+.. rst-class:: large centered
 
+  Review of Previous Class
 
-Iterators
-
-Generators
-
-
-Projects
---------
-
-Due Dec Friday, Dec 11th, 11:59pm PST
-
-.. rst-class:: medium
-
-  (that's three days!)
-
-Push to github or email them to me.
 
 ======================
 Lightning Talks Today:
 ======================
 
-.. rst-class:: medium
+.. rst-class:: medium left
 
-    Austin Scara
 
-    Marty Pitts
+====================
+Where we've been....
+====================
+
+.. rst-class:: left
+
+  Once upon a time, there was a little scripting language called Python.
+
+  Python 100, this course, is designed to proide the basics or the core of the language.
+
+  By the end of this course you should be able to "create something useful" with Python.  
+
+
+Python 100
+----------
+
+.. rst-class:: left
+
+  "As soon as an optional advanced language feature is used by anyone in an organization, it is no longer optional--it is effectively imposed on everyone in the organization. The same holds true for externally developed software you use in your systems--if the software’s author uses an advanced or extraneous language feature, it’s no longer entirely optional for you, because you have to understand the feature to reuse or change the code."
+
+  -- Mark Lutz on Optional Language Features
+
+
+Python 200
+----------
+
+.. rst-class:: left
+
+  Also known as Internet Programming with Python, Python 200 is designed to provide the basics of web programming.
+
+  Here, already, you're going to run into Python language constructs that were once upon a time considered "optional."
+
+
+Python 300
+----------
+
+.. rst-class:: left
+
+  "Generators, decorators, slots, properties, descriptors, metaclasses, context managers, closures, super, namespace packages, unicode, function annotations, relative imports, keyword-only arguments, class and static methods, and even obscure applications of comprehensions and operator overloading.... 
+
+  If any person or program you need to work with uses such tools, they automatically become part of your required knowledge base too. The net effect of such over-engineering is to either escalate learning requirements radically, or foster a user base that only partially understands the tools they employ. This is obviously less than ideal for those hoping to use Python in simpler ways, and contradictory to the scripting motif."
+
+  -- Mark Lutz on Optional Language Features
+
+
+. . . and where we're going
+---------------------------
+
+.. rst-class:: left
+
+  We've been learning to drive this car called Python.  You'll learn more about how to drive it in Python 200.
+
+  In Python 300 we give you the tools to become a mechanic.
+
+  In the meantime you should at least be familiar with some of these language constructs....
+
+
+================
+Topics for Today
+================
 
 
 ============
@@ -74,15 +124,13 @@ Decorators
 
 .. rst-class:: left
 
-    Functions are things that generate values based on input (arguments).
+  Functions are things that generate values based on input (arguments).
 
-    In Python, functions are first-class objects.
+  In Python, functions are first-class objects.
 
-    This means that you can bind names to them, pass them around, etc, just like
-    other objects.
+  This means that you can bind names to them, pass them around, etc, just like other objects.
 
-    Because of this fact, you can write functions that take functions as
-    arguments and/or return functions as values:
+  Because of this fact, you can write functions that take functions as arguments and/or return functions as values:
 
     .. code-block:: python
 
@@ -95,8 +143,7 @@ Decorators
 A Definition
 ------------
 
-There are many things you can do with a simple pattern like this one.
-So many, that we give it a special name:
+  There are many things you can do with a simple pattern like this one.  So many, that we give it a special name:
 
 .. rst-class:: centered medium
 
@@ -499,11 +546,7 @@ Lightning Talks
 
 .. rst-class:: medium
 
-|
-|    Austin Scara
-|
-|    Marty Pitts
-|
+
 
 
 =================

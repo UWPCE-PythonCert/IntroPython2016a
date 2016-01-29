@@ -13,7 +13,7 @@ def FizzBuzz(number_count):
     '''
 
     x = 1
-    while x <= number_count:
+    while x <= number_count: # how can you also use the range function here? 
         # Get the reminder of x when divided by 3 and 5
         check_three = x % 3
         check_five = x % 5
@@ -23,7 +23,7 @@ def FizzBuzz(number_count):
             if check_three is not 0:
                 print(x)
 
-        if check_three is 0 and check_five is 0:
+        if check_three is 0 and check_five is 0: # can you combine this all into three if/elif/else statments? 
             print("FizzBuzz")
         elif check_three is 0:
             print("Fizz")
