@@ -115,9 +115,7 @@ def report(donor_list):
     '''
     report_table = []
     for donor in donor_list:
-        total_donations = 0
-        for amnt in donor[1]:
-            total_donations += amnt
+        total_donations = sum(donor[1])
         avg_donations = round(total_donations / len(donor[1]), 2)
         report_table.append([donor[0], total_donations, avg_donations])
 
