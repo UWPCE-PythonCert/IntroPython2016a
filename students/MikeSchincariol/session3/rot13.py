@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def rot13(text):
 
     # Create the translations tables to feed to str.translate()

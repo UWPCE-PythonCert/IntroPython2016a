@@ -84,8 +84,8 @@ about so far. There is no need to go any farther than that for this assignment.
 Submission
 ----------
 
-As always, put the new file in your student directory in a ``session03``
-directory, and add it to your clone early. Make frequent commits with
+As always, put the new file in your student directory and in this session's
+directory, and git add it to your repo early. Make frequent commits with
 good, clear messages about what you are doing and why.
 
 When you are done, push your changes and make a pull request.

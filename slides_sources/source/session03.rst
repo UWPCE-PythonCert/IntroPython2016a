@@ -49,7 +49,7 @@ Lightning Talks Today:
 
    Mike Schincariol
 
-   (who else?)
+   Chi Ho
 
 
 Sequences
@@ -272,7 +272,6 @@ Indexing past the end of a sequence will raise an error, slicing will not:
     Out[132]: "
 
 
-(demo)
 
 Membership
 ----------
@@ -455,11 +454,7 @@ Slicing LAB
 Lightning Talks
 ----------------
 
-   John Rudolph
-
-   Mike Schincariol
-
-   (who else?)
+  Ready.... go!
 
 
 Lists, Tuples...
@@ -938,10 +933,21 @@ For example:
     In [29]: for item in l:
        ....:     l.remove(item)
        ....:
+    
+.. nextslide:: Was this what you expected?
+
+For example:
+
+.. code-block:: ipython
+
+    In [27]: l = list(range(10))
+    In [28]: l
+    Out[28]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    In [29]: for item in l:
+       ....:     l.remove(item)
+       ....:
     In [30]: l
     Out[30]: [1, 3, 5, 7, 9]
-
-Was that what you expected?
 
 .. nextslide:: The Solution
 
@@ -1114,9 +1120,7 @@ Let's play a bit with Python lists...
 Lightning Talk
 ---------------
 
-|
-| 
-|
+    Place holder...  any more?
 
 
 Iteration
@@ -1388,7 +1392,6 @@ You can also use ``str()``
     In [256]: str(34)
     Out[256]: '34'
 
-(demo)
 
 
 String Methods
@@ -1711,12 +1714,8 @@ Next Week:
 
     **Lightning talks next week:**
 
-Andrey Gusev
 
-Cheryl Ohashi
-
-Maxwell MacCamy
-
+    (Your name here)
 
 
 

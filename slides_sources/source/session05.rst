@@ -10,11 +10,7 @@ Lightning Talks Today:
 
 .. rst-class:: medium
 
-    Michael Cimino
 
-    Pei Lin
-
-    Tiffany Ku
 
 ================
 Review/Questions
@@ -398,12 +394,7 @@ Lightning Talks
 
 .. rst-class:: medium
 
-|
-| Michael Cimino
-|
-|
-| Pei Lin
-|
+
 
 
 ============================
@@ -586,9 +577,7 @@ Lightning Talk
 
 .. rst-class:: medium
 
-|
-| Tiffany Ku
-|
+
 
 
 =======
