@@ -17,6 +17,7 @@ def initializeDict():
 
 
 def choose():
+    print('What would you like to do?')
     action = input('(type \'s\' to send a thank you message, \'c\' to create a report, or \'q\' to quit)\n')
     while (action != 's' and action != 'c' and action != 'q'):
         action = input('I\'m not doing anything until you give me one of those three letters\n')
@@ -28,14 +29,6 @@ def choose():
         return False
 
 
-def sendThanks():
-    print('sending thanks')
-
-
-def createReport():
-    print('creating report')
-
-
 def redirect(choice):
     if not choice:
         print('I\'ll be here when you need me')
@@ -45,11 +38,41 @@ def redirect(choice):
         createReport()
 
 
+def printDonors():
+    print('Here are the current donors:')
+    for d in donors:
+        print(d)
+    return ""
+
+
+def sendThanks():
+    print('Let\'s send some thanks!')
+    name = input('Give me a full name, or type \'l\' to list the current donors on file\n')
+    while name == 'l':
+        name = input(printDonors())
+    donors.setdefault(name, [])
+    while True:
+        try:
+            amount = input('How much did they give?\n')
+            amount = int(amount)
+            break
+        except ValueError:
+            print('That\'s not nice, you almost broke me\nDonations are usually positive integers')
+    donors[name].append(amount)
+    print(donors)
+
+
+def createReport():
+    print('creating report')
+
+
+
+
+
 if __name__ == '__main__':
     initializeDict()
 
     print('Welcome to the mailroom!')
-    print('What would you like to do?')
 
     choice = choose()
     redirect(choice)
