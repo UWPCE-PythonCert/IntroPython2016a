@@ -31,7 +31,7 @@ to query the user for info at the command line, you use:
 Procedure
 ---------
 
-In your student dir in the repo, create a ``session02`` dir and put in a new ``list_lab.py`` file.
+In your student dir in the repo, create a directory for today's session and put in a new ``list_lab.py`` file.
 
 The file should be an executable python script. That is to say that one
 should be able to run the script directly like so:

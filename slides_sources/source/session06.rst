@@ -11,11 +11,7 @@ Lightning Talks Today:
 
 .. rst-class:: medium
 
-    Gabriel Meringolo
 
-    Joseph Cardenas
-
-    Marc Teale
 
 ================
 Review/Questions
@@ -256,11 +252,7 @@ Lightning Talks
 
 .. rst-class:: medium
 
-    |
-    | Gabriel Meringolo
-    |
-    | Joseph Cardenas
-    |
+
 
 
 =====================================
@@ -669,9 +661,7 @@ Lightning Talk
 
 .. rst-class:: medium
 
-|
-|  Marc Teale
-|
+
 
 ==============
 dict as switch

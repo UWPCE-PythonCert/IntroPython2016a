@@ -15,11 +15,7 @@ Lightning Talks Today:
 
 .. rst-class:: medium
 
-    Erica Winberry
 
-    Robert Jenkins
-
-    Kathleen Devlin
 
 ================
 Review/Questions

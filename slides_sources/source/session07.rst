@@ -81,11 +81,7 @@ Lightning Talks Today:
 
 .. rst-class:: medium
 
- Eric Vegors
 
- Ian Cote
-
- Masako Tebbetts
 
 ===========================
 Object Oriented Programming
@@ -445,12 +441,7 @@ Lightning Talks
 
 .. rst-class:: medium
 
-|
-| Eric Vegors
-|
-| Ian Cote
-|
-| Masako Tebbetts
+
 
 =======================
 Subclassing/Inheritance
