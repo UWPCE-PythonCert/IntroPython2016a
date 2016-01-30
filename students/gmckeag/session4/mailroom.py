@@ -48,7 +48,13 @@ def get_top_level_menu_response():
 def thank_donor(donor):
     """
     """
-    print("    Thank donor: {}".format(donor))
+
+    print("""
+            Dear {name},
+
+            Thank you for your generous gift of ${amount}.
+
+                 """.format(name=donor, amount=donor_dict[donor][-1]))
 
 
 def list_donors():
@@ -82,7 +88,6 @@ def get_thank_you_menu_response():
         if user_input.lower() == 'list':
             list_donors()
         elif user_input in donor_dict:
-            thank_donor(user_input)
             prompt_for_donation = True
         elif user_input[0].upper() == 'Q':
             selection = user_option_dict['quit']
@@ -90,6 +95,7 @@ def get_thank_you_menu_response():
             prompt_for_donation = True
 
         if prompt_for_donation:
+            selection = user_input
             if user_input not in donor_dict:
                 donor_dict[user_input] = []
             donation_amount = input('Enter amount of donation $: ')
@@ -105,7 +111,11 @@ def get_thank_you_menu_response():
 def send_thank_you():
     """
     """
-    get_thank_you_menu_response()
+    selection = get_thank_you_menu_response()
+    if selection != user_option_dict['quit']:
+        thank_donor(selection)
+
+
 
 
 def display_donor_report():
