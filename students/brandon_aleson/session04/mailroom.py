@@ -45,8 +45,7 @@ def printDonors():
     return ""
 
 
-def sendThanks():
-    print('Let\'s send some thanks!')
+def donorInput():
     name = input('Give me a full name, or type \'l\' to list the current donors on file\n')
     while name == 'l':
         name = input(printDonors())
@@ -59,14 +58,23 @@ def sendThanks():
         except ValueError:
             print('That\'s not nice, you almost broke me\nDonations are usually positive integers')
     donors[name].append(amount)
-    print(donors)
+    return (name, amount)
+
+
+def sendEmail(name, amount):
+    print('What a nice person!')
+    print('Let\'s send them this heartfelt email:')
+    print('Dear {}:\nThank you for your donation of ${}.\nYou\'re great!'.format(name, amount))
+
+
+def sendThanks():
+    print('Let\'s send some thanks!')
+    name, amount = donorInput()
+    sendEmail(name, amount)
 
 
 def createReport():
     print('creating report')
-
-
-
 
 
 if __name__ == '__main__':
