@@ -75,11 +75,12 @@ def get_thank_you_menu_response():
     selection = user_option_dict[0]
     while selection == user_option_dict[0]:
 
+        prompt_for_donation = False
+
         user_input = input(prompt)
 
         if user_input.lower() == 'list':
             list_donors()
-            promt_for_donation = False
         elif user_input in donor_dict:
             thank_donor(user_input)
             prompt_for_donation = True
@@ -89,12 +90,12 @@ def get_thank_you_menu_response():
             prompt_for_donation = True
 
         if prompt_for_donation:
-            if user_input not in donar_dict:
-                donar_dict[user_input] = []
+            if user_input not in donor_dict:
+                donor_dict[user_input] = []
             donation_amount = input('Enter amount of donation $: ')
             try:
                 donation_amount = int(donation_amount)
-                donar_dict[user_input].append(donation_amount)
+                donor_dict[user_input].append(donation_amount)
             except:
                 selection = user_option_dict[0]
 
