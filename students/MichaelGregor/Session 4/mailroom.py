@@ -72,18 +72,23 @@ def send_thank_you():
 
 
 def donor_management(full_name):
-    print("**************************************************")
-    print("                      {}                         ".format(full_name))
-    print("*                                                *")
-    print("* Choose and option                              *")
-    print("* 1. Add a donation                              *")
-    print("* 2. Send Thank You email                        *")
-    print("* 3. Go Back                                     *")
-    print("*                                                *")
-    print("**************************************************")
+
     option = ''
+
     while not (option == '1' or option == '2' or option == '3'):
+
+        clear_screen()
+        print("**************************************************")
+        print("                      {}                         ".format(full_name))
+        print("*                                                *")
+        print("* Choose and option                              *")
+        print("* 1. Add a donation                              *")
+        print("* 2. Send Thank You email                        *")
+        print("* 3. Go Back                                     *")
+        print("*                                                *")
+        print("**************************************************")
         option = input(":")
+
     if option == '1':
         add_donor_donation(full_name)
     elif option == '2':
@@ -93,6 +98,8 @@ def donor_management(full_name):
 
 
 def create_report():
+
+    clear_screen()
 
     donors = get_donor_names()
 
@@ -146,8 +153,8 @@ def add_donor_donation(full_name):
     donations.append(donation_amount)
     donor_list.update({full_name: donations})
 
-    print("A ${.2f} donation has been added to {} donation history")
-    time.sleep(3)
+    print("A ${:.2f} donation has been added to {}'s donation history".format(donation_amount, full_name))
+    input("Press Enter to continue")
 
     donor_management(full_name)
 
@@ -160,7 +167,7 @@ def send_email(full_name):
         total_donations += donation
 
     print("Dear {},\n".format(full_name))
-    print("Thank you for you donations which have totaled up to ${:.2f}!  We greatly appreciate you generosity and you can "
+    print("Thank you for you donations which have totaled up to ${:.2f}!  We greatly appreciate your generosity and you can "
           "be assured that these funds will be put to good use.\n\nIf you have any questions at all, please don't "
           "hesitate to contact me at mgregor@hahaigotyourmoney.com\n\nMichael Gregor\nDirector of Deception".format(total_donations))
 
