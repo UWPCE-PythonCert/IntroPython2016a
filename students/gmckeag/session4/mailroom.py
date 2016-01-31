@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from operator import itemgetter
+import json
+import os.path
 
 user_option_dict = {0: 'Unknown', 1: 'Send Thank You', 2: "Create Report", 'quit': 'quit', 'list': 'List donor names'}
 
-donor_dict = {'Fred Barnes': [200, 550, 125],
-              'Mary Jane': [2500, 25],
-              'Eric Idol': [400000, 250, 1],
-              'Lucy Love': [25, 25],
-              'Mr Trump': [1]
-              }
+default_donor_dict = {
+    'Fred Barnes': [200, 550, 125],
+    'Mary Jane': [2500, 25],
+    'Eric Idol': [400000, 250, 1],
+    'Lucy Love': [25, 25],
+    'Mr Trump': [1]
+}
+donor_dict = None
 
 
 def get_top_level_menu_response():
-    """
-    """
+    """ Display top level menur and query user for response """
     prompt = """
     ** Mailroom Menu Options **
 
@@ -45,8 +48,7 @@ def get_top_level_menu_response():
 
 
 def thank_donor(donor):
-    """
-    """
+    """ Display thank you email message to donor """
     print("""
             Dear {name},
 
@@ -56,8 +58,7 @@ def thank_donor(donor):
 
 
 def list_donors():
-    """
-    """
+    """ Display list of donors  """
     print('\n    Donors')
     print('    -------------------')
     for donor in donor_dict:
@@ -65,8 +66,7 @@ def list_donors():
 
 
 def get_thank_you_menu_response():
-    """
-    """
+    """ Display 'send thank you menu and prompt for response """
     prompt = """
     ** Send Thank You Menu Options **
 
@@ -93,22 +93,25 @@ def get_thank_you_menu_response():
             prompt_for_donation = True
 
         if prompt_for_donation:
-            selection = user_input
-            if user_input not in donor_dict:
-                donor_dict[user_input] = []
-            donation_amount = input('Enter amount of donation $: ')
-            try:
-                donation_amount = int(donation_amount)
-                donor_dict[user_input].append(donation_amount)
-            except:
-                selection = user_option_dict[0]
+            donation_amount = input('Enter amount of donation (or Q to quit) $: ')
+            if donation_amount[0].upper() != 'Q':
+                selection = user_input
+                if user_input not in donor_dict:
+                    donor_dict[user_input] = []
+
+                try:
+                    donation_amount = int(donation_amount)
+                    donor_dict[user_input].append(donation_amount)
+                except:
+                    selection = user_option_dict[0]
+            else:
+                selection = user_option_dict['quit']
 
     return selection
 
 
 def send_thank_you():
-    """
-    """
+    """ get response to send thank you menu and if a new donation is entered thank the donow """
     selection = get_thank_you_menu_response()
     if selection != user_option_dict['quit']:
         thank_donor(selection)
@@ -116,6 +119,9 @@ def send_thank_you():
 
 def display_donor_report():
     """
+    Print donor report
+
+    Print table of donors in descending order of total donations given
     """
     donor_list = []
     for donor in donor_dict:
@@ -135,10 +141,29 @@ def display_donor_report():
                 total=sum(donor_dict[donor])))
 
 
-def main():
-    """
-    mailroom
-    """
+def load_donor_data(filename):
+    """ load donor data from json file """
+    global donor_dict
+    if not os.path.exists(filename):
+        donor_dict = default_donor_dict
+    else:
+        with open(filename) as donor_data_file:
+            json_string = donor_data_file.read()
+            donor_dict = json.loads(json_string)
+            donor_data_file.close()
+
+
+def save_donor_data(filename):
+    """ save donor data to json file    """
+    global donor_dict
+    with open(filename, 'w') as donor_data_file:
+        json_string = json.dumps(donor_dict)
+        donor_data_file.write(json_string)
+        donor_data_file.close()
+
+
+def run_mailroom_loop():
+    """ Mailroom run loop  """
     done = False
     while not done:
         user_selection = get_top_level_menu_response()
@@ -148,6 +173,15 @@ def main():
             send_thank_you()
         elif user_selection == user_option_dict[2]:
             display_donor_report()
+
+
+def main():
+    """ main """
+    DONOR_DATA_FILENAME = 'donor_data.json'
+
+    load_donor_data(DONOR_DATA_FILENAME)
+    run_mailroom_loop()
+    save_donor_data(DONOR_DATA_FILENAME)
 
 if __name__ == "__main__":
     main()
