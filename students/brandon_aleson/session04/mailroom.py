@@ -75,8 +75,27 @@ def sendThanks():
     sendEmail(name, amount)
 
 
+def statSorter(sorter):
+    return sorter[4]
+
+
+def computeSortedStats():
+    stats = []
+    for d, a in donors.items():
+        stats.append([d, a])
+    for item in stats:
+        item.append(len(item[1]))
+        item.append(int((sum(item[1]))/(len(item[1]))))
+        item.append(sum(item[1]))
+    return sorted(stats, key=statSorter)
+
+
 def createReport():
-    print('creating report')
+    print('crunching the numbers...')
+    input()
+
+    statList = computeSortedStats()
+    print(statList)
 
 
 if __name__ == '__main__':
