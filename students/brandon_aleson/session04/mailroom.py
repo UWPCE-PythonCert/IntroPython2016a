@@ -76,7 +76,7 @@ def sendThanks():
 
 
 def statSorter(sorter):
-    return sorter[4]
+    return sorter[3]
 
 
 def computeSortedStats():
@@ -87,15 +87,23 @@ def computeSortedStats():
         item.append(len(item[1]))
         item.append(int((sum(item[1]))/(len(item[1]))))
         item.append(sum(item[1]))
+        del item[1]
     return sorted(stats, key=statSorter)
+
+
+def printReport(statList):
+    print('{:-^80}'.format('DONOR REPORT'))
+    print('{:<20}{:<20}{:<20}{:<20}'.format('DONOR NAME', '# OF DONATIONS', 'AVERAGE AMOUNT', 'TOTAL DONATED'))
+    for item in statList:
+        print('{:<20}{:<20}{:<20}{:,}'.format(item[0], item[1], item[2], item[3]))
+    print('{:-^80}'.format('--'))
 
 
 def createReport():
     print('crunching the numbers...')
     input()
-
     statList = computeSortedStats()
-    print(statList)
+    printReport(statList)
 
 
 if __name__ == '__main__':
