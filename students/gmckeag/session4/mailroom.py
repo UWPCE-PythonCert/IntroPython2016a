@@ -4,7 +4,7 @@ from operator import itemgetter
 import json
 import os.path
 
-user_option_dict = {0: 'Unknown', 1: 'Send Thank You', 2: "Create Report", 'quit': 'quit', 'list': 'List donor names'}
+user_option_dict = {0: 'Unknown', 'SendThankYou': 'Send Thank You', 'CreateDonorReport': "Create Report", 'Quit': 'Quit', 'list': 'List donor names'}
 
 default_donor_dict = {
     'Fred Barnes': [200, 550, 125],
@@ -19,12 +19,12 @@ donor_dict = None
 def get_top_level_menu_response():
     """ Display top level menur and query user for response """
     prompt = """
-    ** Mailroom Menu Options **
+    *** Mailroom Menu Options ***
 
     Select from the following:
     1 --- Send a thank you
     2 --- Create a report
-    Q --- To quit
+    Q --- To Quit
     > Enter 1, 2 or Q : """
 
     selection = user_option_dict[0]
@@ -33,11 +33,11 @@ def get_top_level_menu_response():
         user_input = input(prompt)
 
         if user_input == '1':
-            selection = user_option_dict[1]
+            selection = user_option_dict['SendThankYou']
         elif user_input == '2':
-            selection = user_option_dict[2]
+            selection = user_option_dict['CreateDonorReport']
         elif user_input[0].upper() == 'Q':
-            selection = user_option_dict['quit']
+            selection = user_option_dict['Quit']
         else:
             selection = user_option_dict[0]
             print('    Unrecognized input, please try again\n')
@@ -88,7 +88,7 @@ def get_thank_you_menu_response():
         elif user_input in donor_dict:
             prompt_for_donation = True
         elif user_input[0].upper() == 'Q':
-            selection = user_option_dict['quit']
+            selection = user_option_dict['Quit']
         else:
             prompt_for_donation = True
 
@@ -105,15 +105,15 @@ def get_thank_you_menu_response():
                 except:
                     selection = user_option_dict[0]
             else:
-                selection = user_option_dict['quit']
+                selection = user_option_dict['Quit']
 
     return selection
 
 
-def send_thank_you():
+def run_send_thank_you_menu():
     """ get response to send thank you menu and if a new donation is entered thank the donow """
     selection = get_thank_you_menu_response()
-    if selection != user_option_dict['quit']:
+    if selection != user_option_dict['Quit']:
         thank_donor(selection)
 
 
@@ -164,14 +164,14 @@ def save_donor_data(filename):
 
 def run_mailroom_loop():
     """ Mailroom run loop  """
-    done = False
-    while not done:
+    user_selection =  user_option_dict[0]
+    while user_selection != user_option_dict['Quit']:
         user_selection = get_top_level_menu_response()
-        if user_selection == user_option_dict['quit']:
+        if user_selection == user_option_dict['Quit']:
             done = True
-        elif user_selection == user_option_dict[1]:
-            send_thank_you()
-        elif user_selection == user_option_dict[2]:
+        elif user_selection == user_option_dict['SendThankYou']:
+            run_send_thank_you_menu()
+        elif user_selection == user_option_dict['CreateDonorReport']:
             display_donor_report()
 
 
