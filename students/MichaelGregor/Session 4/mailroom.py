@@ -96,7 +96,7 @@ def donor_management(full_name):
 
         clear_screen()
         print("**************************************************")
-        print("                      {}                         ".format(full_name))
+        print("                {}                         ".format(full_name))
         print("*                                                *")
         print("* Choose and option                              *")
         print("* 1. Add a donation                              *")
@@ -147,9 +147,9 @@ def create_report():
         donor_final_report_list.update({name: donor_report_list})       # total amount of donations.
 
     print("*****************************************************************")
-    print("*                            DONOR REPORT                       *")
+    print("*                        DONOR REPORT                           *")
     print("*                                                               *")
-    print("*  NAME                   TOTAL    NUMBER     AVERAGE           *")
+    print("   {0:20}     {1:7} {2:9}{3:5}".format("NAME", "TOTAL", "NUMBER", "AVERAGE"))
 
 
     # Woot, my only stack overflow answer in this program.  So we are sorting each name in the dictionary by the
@@ -160,7 +160,7 @@ def create_report():
 
     for name,value in sorted(donor_totals_list.items(), key=itemgetter(1), reverse=True):
         donor_report = get_donor_donations_data(name, final=True)
-        print("   {0:22}${1:3.2f}{2:8}     ${3:.2f}".format(name, donor_report[0], donor_report[2], donor_report[1]))
+        print("   {0:20}  ${1:9} {2:7}  ${3:.2f}".format(name, donor_report[0], donor_report[2], donor_report[1]))
 
     print("*                                                               *")
     print("*****************************************************************")
@@ -178,7 +178,7 @@ def add_donor_donation(full_name):
     :return: Donor name (full_name)
     """
 
-    donations = []
+    donations = get_donor_donations_data(full_name)
     print("Please enter a donation amount for {}".format(full_name))
     donation_amount = ''
 
@@ -210,7 +210,7 @@ def send_email(full_name):
         total_donations += donation
 
     print("Dear {},\n".format(full_name))
-    print("Thank you for you donations which have totaled up to ${:.2f}!  We greatly appreciate your generosity and you can "
+    print("Thank you for your donations which have totaled up to ${:.2f}!  We greatly appreciate your generosity and you can "
           "be assured that these funds will be put to good use.\n\nIf you have any questions at all, please don't "
           "hesitate to contact me at mgregor@hahaigotyourmoney.com\n\nMichael Gregor\nDirector of Deception".format(total_donations))
 
