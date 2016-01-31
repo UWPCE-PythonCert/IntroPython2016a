@@ -31,11 +31,13 @@ def choose():
 
 def redirect(choice):
     if not choice:
-        print('I\'ll be here when you need me')
+        return False
     elif choice == 's':
         sendThanks()
+        return True
     elif choice == 'c':
         createReport()
+        return True
 
 
 def printDonors():
@@ -79,8 +81,12 @@ def createReport():
 
 if __name__ == '__main__':
     initializeDict()
+    loop = True
 
     print('Welcome to the mailroom!')
 
-    choice = choose()
-    redirect(choice)
+    while loop:
+        choice = choose()
+        loop = redirect(choice)
+
+    print('I\'ll be here when you need me')
