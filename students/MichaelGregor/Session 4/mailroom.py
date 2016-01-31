@@ -44,7 +44,10 @@ def send_thank_you():
 
     full_name = input("Please provide the full name: ")
 
-    if full_name not in get_donor_names():
+    if full_name == "list":
+        show_donor_list()
+
+    elif full_name not in get_donor_names():
 
         create_new_name = ''
 
@@ -59,19 +62,38 @@ def send_thank_you():
             create_new_donor(full_name)
         else:
             show_main_menu()
+    elif full_name in get_donor_names():
 
-    else:
-        show_donor_list()
+        print("**************************************************")
+        print("                      {}                         ")
+        print("*                                                *")
+        print("* Choose and option                              *")
+        print("* 1. Add a donation                              *")
+        print("* 2. Send Thank You email                        *")
+        print("*                                                *")
+        print("**************************************************")
+
+        option = ''
+        while not (option == '1' or option == '2'):
+
+
+
+
 
 def create_new_donor(new_donor):
 
     donations = []
+    print("Please enter a donation amount for {}".format(new_donor))
+    donation_amount = ''
 
+    while not donation_amount.isdigit():
+        donation_amount = input("No decimals please:$")
 
-
+    donation_amount = float(donation_amount)
+    donations.append(donation_amount)
     donor_list.update({new_donor: donations})
 
-    print(new_donor)
+    show_main_menu()
 
 def create_report():
 
@@ -114,14 +136,18 @@ def show_donor_list():
 
     clear_screen()
 
-    
+    names = get_donor_names()
 
     print("**************************************************")
     print("*                                                *")
-    print("*    {}              ${.2f}")
+    print("*                   DONORS                       *")
+    print("*                                                *")
+    for name in names:
+        print("                  {}                          ".format(name))
+    print("*                                                *")
+    print("**************************************************")
 
-    print(donor_list.values())
-
+    send_thank_you()
 
 def main():
 
