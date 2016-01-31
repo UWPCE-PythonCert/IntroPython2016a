@@ -22,22 +22,13 @@ def choose():
     while (action != 's' and action != 'c' and action != 'q'):
         action = input('I\'m not doing anything until you give me one of those three letters\n')
     if action == 's':
-        return(action)
-    elif action == 'c':
-        return(action)
-    elif action == 'q':
-        return False
-
-
-def redirect(choice):
-    if not choice:
-        return False
-    elif choice == 's':
         sendThanks()
         return True
-    elif choice == 'c':
+    elif action == 'c':
         createReport()
         return True
+    elif action == 'q':
+        return False
 
 
 def printDonors():
@@ -66,13 +57,14 @@ def donorInput():
 def sendEmail(name, amount):
     print('What a nice person!')
     print('Let\'s send them this heartfelt email:')
-    print('Dear {}:\nThank you for your donation of ${}.\nYou\'re great!'.format(name, amount))
+    print('Dear {},\nThank you for your donation of ${:,}.\nYou\'re great!'.format(name, amount))
 
 
 def sendThanks():
     print('Let\'s send some thanks!')
     name, amount = donorInput()
     sendEmail(name, amount)
+    input()
 
 
 def statSorter(sorter):
@@ -104,6 +96,7 @@ def createReport():
     input()
     statList = computeSortedStats()
     printReport(statList)
+    input()
 
 
 if __name__ == '__main__':
@@ -113,7 +106,6 @@ if __name__ == '__main__':
     print('Welcome to the mailroom!')
 
     while loop:
-        choice = choose()
-        loop = redirect(choice)
+        loop = choose()
 
     print('I\'ll be here when you need me')
