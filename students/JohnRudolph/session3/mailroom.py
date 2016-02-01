@@ -81,7 +81,8 @@ def sendThanks(getName):
 	If donor not in dic then append new donor and add amount
 	'''
 	if getName.lower() == 'list':
-		print(ownerDic.keys())
+		for key in sorted(ownerDic):
+			print(key)
 		getName = input("Input a full name or 'list'\n")
 		sendThanks(getName)		
 	elif getName in ownerDic.keys():
@@ -143,8 +144,16 @@ if __name__ == '__main__':
 
 	import random
 
-	#create an arbitrary # of donors - 5 per assignment directions
-	numDonors = 5
+	check = None
+	while check == None:
+		try:
+			#create an arbitrary # of donors - 5 per assignment directions
+			numDonors = int(input('Enter number (int) of donors to generate\n'))
+			check = True
+		except:
+			print('You did not enter a valid int - Try again!')
+	
+
 	# create the initial list of donors
 	donorList = createDonors(numDonors)
 	#create an empty dictionary - will be populated in loop below
