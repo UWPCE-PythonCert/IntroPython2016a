@@ -1,6 +1,4 @@
 
-#Mailroom assignment detail found at http://uwpce-pythoncert.github.io/IntroPython2016a/exercises/mailroom.html#exercise-mailroom
-
 '''
 ################################################################################
 						GENERATE RANDOM DONOR LIST
