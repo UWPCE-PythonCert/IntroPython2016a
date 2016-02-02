@@ -108,30 +108,36 @@ def emailThanks(getName):
 						DONORS REPORT FUNCTIONS
 ################################################################################
 '''
+def getKey(item):
+	'''
+	Function used to sort second item in a list of lists
+	'''
+	return item[1]
+
 def createtopDonors():
 	'''
-	Creates a new dictionary with total donations, donation count and avg donations
-	Loops through master donations dic creates list of donations
-	Total Donations are used as new dic key
-	Returns the new dic sorted by key (total donations)
+	Creates a new list with total donations, donation count and avg donations
+	by looping over master donor dictionary
+	New list is sorted based on total donation
 	'''
-	sortDic = {}
+	sortList = []
 	for key in ownerDic:
 		totalDon = sum(list(ownerDic[key]))
 		countDon = len((list(ownerDic[key])))
 		avgDon = int(totalDon/countDon)
-		sortDic[totalDon] = [key, totalDon, countDon, avgDon]
+		sortList.append([key, totalDon, countDon, avgDon])
 
-	return(sortDic)
+	return(sorted(sortList, key=getKey, reverse=True))
 
 def outputTopDonors(topDonors):
 	'''
-	This function loops through the top donors dictionary
-	Sorts key (total donations) and prints values using tab formatting
+	This function loops through the sorted top donors list
+	And prints each itemn in tabular format
 	'''
-	sortDonors = sorted(topDonors, reverse=True)
-	for key in sortDonors:
-		print('{}\t{}\t{}\t{}'.format(*list(topDonors[key])))	
+	print('Donor Name\tTotal\tCount\tAverage')
+	for x in topDonors:
+		print('{}\t{}\t{}\t{}'.format(*x))
+
 
 '''
 ################################################################################
