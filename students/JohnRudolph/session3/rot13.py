@@ -7,7 +7,7 @@ def getnumref(let):
 	Second if checks if letter is Lowcase a-z and performs ROT13
 	If not Upcase or Lowcase A-Z or a-z then retain ordinal of character
 	'''
-	if ord("A") <= ord(let) <= ord('Z'):
+	if ord("A") <= ord(let) <= ord('Z'): # nice use of ord! 
 		if ord(let) + 13 <= ord('Z'):
 			return ord(let) + 13
 		else:
