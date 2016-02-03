@@ -21,9 +21,9 @@ def rot13(codestr, ENcode=False):
     '''Code or decode a string based on a 13 letter shift to the right.  An optional second arguement: when True
     it will ENcode, when it is False it will DEcode the first alpha arguement. '''
 
-    intab =  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    outtab = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
-    assert len(intab) == len(outtab), "lengths are not the same."
+    intab =  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" # write these outside the loop so they don't have to get
+    outtab = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM" # recreated every time :)
+    assert len(intab) == len(outtab), "lengths are not the same." # why are you checking the lengths here? 
     if ENcode == False:
         answer = (codestr.translate(str.maketrans(outtab, intab)))
     else:
