@@ -1,5 +1,6 @@
-#!/Library/Frameworks/Python.framework/Versions/3.5/bin/python3
+#!/usr/bin/env python3
 
+# Initial Account Information:
 donor_records = {
     'Scrooge McDuck': [
         1000.00,
@@ -29,24 +30,37 @@ donor_records = {
 }
 
 def send_thank_you(name, amount):
+    """Prints out Thank You notes to donors"""
     print("Dear, {}".format(name))
     print("Thank you so much for your donation of ${}!".format(amount))
     print("We very much appreciate all the support.")
 
 def create_report(accounts):
+    """Prints out a report of all the donations in the database"""
+
     donations = []
+
+    # Sum all the donations in all the accounts to sort donation amounts
     for key in accounts:
         donations.append(sum(accounts[key]))
+
+    # Sort the accounts from least generous to most
     donations.sort()
+
+    # Print Headers
     print("{:20}{:16}{:21}{:16}".format("Name", "Donations", "Ave. Amt.", "Total"))
     print("{:20}{:16}{:21}{:16}".format("----", "---------", "---------", "-----"))
+
+    # Iterate backwards through the sorted list
     for i in donations[::-1]:
         for key in accounts:
+            # Print accounts associated with the sorted amounts
+            # Fix: Assumes no two donors donated the exact amount
             if i == sum(accounts[key]):
                 print("{:20}{:4d}        ${:12.2f}    ${:12.2f}".format(key, len(accounts[key]), sum(accounts[key]) / len(accounts[key]), i))
 
-
 if __name__ == '__main__':
+    """Only run this if the script is called directly"""
     is_working = True
     while is_working:
         print("Welcome!  Would you like to:")
