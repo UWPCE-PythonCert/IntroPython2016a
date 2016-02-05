@@ -437,7 +437,7 @@ File Writing
         outfile.write("this is line: %i\n"%i)
     outfile.close()
 
-    with open('output.txt', 'w'):
+    with open('output.txt', 'w') as f:
         for i in range(10):
            f.write("this is line: %i\n"%i)
 
@@ -456,8 +456,8 @@ Commonly Used Methods
 
     f.close()
 
-StringIO
---------
+Stream IO
+---------
 
 .. code-block:: python
 
@@ -573,10 +573,7 @@ the languages that have been used.
 
 Extra credit: keep track of how many students specified each language.
 
-If you've got git set up right, ``git pull upstream master`` should update
-your repo. Otherwise, you can get it from gitHub:
 
-``https://github.com/UWPCE-PythonCert/IntroPython2015/blob/master/Examples/students.txt``
 
 
 
@@ -779,7 +776,7 @@ Nope: the *type* is the problem::
 
 but should you be checking type anyway? (EAFP)
 
-Exceptions Lab
+Lab: Exceptions
 --------------
 
 A number of you already did this -- so do it at home if you haven't
@@ -1011,7 +1008,7 @@ Let's do that next!
 Test Driven development demo
 ----------------------------
 
-In ``Examples/Session06/test_cigar_party.py``
+In ``Examples/Session05/test_cigar_party.py``
 
 
 Lab: Testing
