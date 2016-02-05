@@ -22,12 +22,10 @@ def test_1():
 
 
 def test_2():
-
     assert cigar_party(50, False) is True
 
 
 def test_3():
-
     assert cigar_party(70, True) is True
 
 
