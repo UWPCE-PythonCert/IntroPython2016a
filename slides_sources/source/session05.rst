@@ -1,188 +1,591 @@
 .. include:: include.rst
 
 *************************************************
-Session Five: Exceptions, Testing, Comprehensions
+Session Five: Strings, Files, Exceptions, Testing
 *************************************************
 
-======================
-Lightning Talks Today:
-======================
 
-.. rst-class:: medium
+Announcements
+=============
+
+Review & Questions
+==================
+
+Homework
+========
+
+Code review -- let's take a look.
 
 
-
+Lightening talks
 ================
-Review/Questions
-================
 
-Review of Previous Class
-------------------------
-
-  * Dictionaries
-  * Sets
-  * File processing, etc.
-
-.. nextslide::
-
-.. rst-class:: center large
-
-  How many of you finished ALL the homework?
-
-.. nextslide::
-
-.. rst-class:: center large
-
-  Sorry about that!
-
-.. nextslide::
-
-.. rst-class:: medium
-
-    * That was a lot.
-
-.. rst-class:: medium
-
-.. rst-class:: build
-
-    * But it's all good stuff.
-
-    * I'll take time to go over it in class.
+Today’s lightening talks will be from:
 
 
-Homework review
----------------
 
-Homework Questions?
 
-My Solutions to all the exercises in the class repo in:
 
-``Solutions/Session04``
+Strings
+=======
 
-A few tidbits ....
+.. rst-class:: left
 
-Sorting stuff in dictionaries:
--------------------------------
-
-dicts aren't sorted, so what if you want to do something in a sorted way?
-
-The "standard" way:
+Quick review: a string literal creates a string type:
 
 .. code-block:: python
 
-  for key in sorted(d.keys()):
-      ...
+    "this is a string"
 
-Other options:
+    'So is this'
 
-.. code-block:: python
+    "And maybe y'all need something like this!"
 
-    collections.OrderedDict
+    """and this also"""
 
-Also other nifty stuff in the ``collections`` module:
+.. rst-class:: left
 
-https://docs.python.org/3.5/library/collections.html
+You can also use ``str()``
 
+.. code-block:: ipython
 
-PEP 8 reminder
+    In [256]: str(34)
+    Out[256]: '34'
+
+String Manipulation
+-------------------
+
+``split`` and ``join``:
+
+.. code-block:: ipython
+
+    In [167]: csv = "comma, separated, values"
+    In [168]: csv.split(', ')
+    Out[168]: ['comma', 'separated', 'values']
+    In [169]: psv = '|'.join(csv.split(', '))
+    In [170]: psv
+    Out[170]: 'comma|separated|values'
+
+Case Switching
 --------------
 
-PEP 8 (Python Enhancement Proposal 8): https://www.python.org/dev/peps/pep-0008/
+.. code-block:: ipython
 
-Is the "official" style guide for Python code.
+    In [171]: sample = 'A long string of words'
+    In [172]: sample.upper()
+    Out[172]: 'A LONG STRING OF WORDS'
+    In [173]: sample.lower()
+    Out[173]: 'a long string of words'
+    In [174]: sample.swapcase()
+    Out[174]: 'a LONG STRING OF WORDS'
+    In [175]: sample.title()
+    Out[175]: 'A Long String Of Words'
 
-Strictly speaking, you only need to follow it for code in the standard library.
+Testing
+-------
 
-But style matters -- consistent style makes your code easier to read and understand.
+.. code-block:: ipython
 
-So **follow PEP 8**
+    In [181]: number = "12345"
+    In [182]: number.isnumeric()
+    Out[182]: True
+    In [183]: number.isalnum()
+    Out[183]: True
+    In [184]: number.isalpha()
+    Out[184]: False
+    In [185]: fancy = "Th!$ $tr!ng h@$ $ymb0l$"
+    In [186]: fancy.isalnum()
+    Out[186]: False
 
-*Exception* -- if you have a company style guide follow that instead.
-
-try the "pep8" module on your code::
-
-  $ python3 -m pip install pep8
-  $ pep8 my_python_file
-
-(demo)
-
-Naming things...
-----------------
-
-It matters what names you give your variables.
-
-Python has rules about what it *allows*
-
-PEP8 has rules for style: capitalization, and underscores and all that.
-
-But you still get to decide within those rules.
-
-So use names that make sense to the reader.
-
-Naming Guidelines
+String Literals
 -----------------
 
-Only use single-letter names for things with limited scope: indexes and teh like:
+Common Escape Sequences::
+
+    \\  Backslash (\)
+    \a  ASCII Bell (BEL)
+    \b  ASCII Backspace (BS)
+    \n  ASCII Linefeed (LF)
+    \r  ASCII Carriage Return (CR)
+    \t  ASCII Horizontal Tab (TAB)
+    \ooo  Character with octal value ooo
+    \xhh  Character with hex value hh
+
+for example -- for tab-separted values:
+
+.. code-block:: ipython
+
+    In [25]: s = "these\tare\tseparated\tby\ttabs"
+
+    In [26]: print(s)
+    these   are separated    by  tabs
+
+https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals
+https://docs.python.org/3/library/stdtypes.html#string-methods
+
+Raw Strings
+------------
+
+Add an ``r`` in front of the string literal:
+
+Escape Sequences Ignored
+
+.. code-block:: ipython
+
+    In [408]: print("this\nthat")
+    this
+    that
+    In [409]: print(r"this\nthat")
+    this\nthat
+
+**Gotcha**
+
+.. code-block:: ipython
+
+    In [415]: r"\"
+    SyntaxError: EOL while scanning string literal
+
+(handy for regex, windows paths...)
+
+Ordinal values
+--------------
+
+Characters in strings are stored as numeric values:
+
+* "ASCII" values: 1-127
+
+* Unicode values -- 1 - 1,114,111 (!!!)
+
+To get the value:
+
+.. code-block:: ipython
+
+    In [109]: for i in 'Chris':
+       .....:     print(ord(i), end=' ')
+    67 104 114 105 115
+    In [110]: for i in (67,104,114,105,115):
+       .....:     print(chr(i), end='')
+    Chris
+
+(these days, stick with ASCII, or use full Unicode: more on that in a few weeks)
+
+Building Strings
+----------------
+
+You can, but please don't do this:
 
 .. code-block:: python
 
-    for i, item in enumerate(a_sequence):
-        do_something(i, item)
+    'Hello ' + name + '!'
 
-**Don't** use a name like "item", when there is a meaning to what the item is:
+(I know -- we did that in the grid_printing excercise)
 
-.. code-block:: python
-
-    for name in all_the_names:
-        do_something_with(name)
-
-Use plurals for collections of things:
+Do this instead:
 
 .. code-block:: python
 
-    names = ['Fred', 'George', ...]
+    'Hello {}!'.format(name)
+
+It's much faster and safer, and easier to modify as code gets complicated.
+
+https://docs.python.org/3/library/string.html#string-formatting
+
+Old and New string formatting
+-----------------------------
+
+back in early python days, there was the string formatting operator: ``%``
+
+.. code-block:: python
+
+    " a string: %s and a number: %i "%("text", 45)
+
+This is very similar to C-style string formatting (`sprintf`).
+
+It's still around, and handy --- but ...
+
+The "new" ``format()`` method is more powerful and flexible, so we'll focus on that in this class.
+
+.. nextslide:: String Formatting
+
+The string ``format()`` method:
+
+.. code-block:: ipython
+
+    In [62]: "A decimal integer is: {:d}".format(34)
+    Out[62]: 'A decimal integer is: 34'
+
+    In [63]: "a floating point is: {:f}".format(34.5)
+    Out[63]: 'a floating point is: 34.500000'
+
+    In [64]: "a string is the default: {}".format("anything")
+    Out[64]: 'a string is the default: anything'
+
+Multiple placeholders
+---------------------
+
+.. code-block:: ipython
+
+    In [65]: "the number is {} is {}".format('five', 5)
+    Out[65]: 'the number is five is 5'
+
+    In [66]: "the first 3 numbers are {}, {}, {}".format(1,2,3)
+    Out[66]: 'the first 3 numbers are 1, 2, 3'
+
+The counts must agree:
+
+.. code-block:: ipython
+
+    In [67]: "string with {} formatting {}".format(1)
+    ---------------------------------------------------------------------------
+    IndexError                                Traceback (most recent call last)
+    <ipython-input-67-a079bc472aca> in <module>()
+    ----> 1 "string with {} formatting {}".format(1)
+
+    IndexError: tuple index out of range
+
+Named placeholders
+------------------
+
+.. code-block:: ipython
+
+
+    In [69]: "Hello, {name}, whaddaya know?".format(name="Joe")
+    Out[69]: 'Hello, Joe, whaddaya know?'
+
+You can use values more than once, and skip values:
+
+.. code-block:: ipython
+
+    In [73]: "Hi, {name}. Howzit, {name}?".format(name='Bob')
+    Out[73]: 'Hi, Bob. Howzit, Bob?'
 
 .. nextslide::
 
-**Do** re-use names when the use is essentially the same, and you don't need the old one:
+The format operator works with string variables, too:
+
+.. code-block:: ipython
+
+    In [80]: s = "{:d} / {:d} = {:f}"
+
+    In [81]: a, b = 12, 3
+
+    In [82]: s.format(a, b, a/b)
+    Out[82]: '12 / 3 = 4.000000'
+
+So you can dynamically build a format string
+
+Complex Formatting
+------------------
+
+There is a complete syntax for specifying all sorts of options.
+
+It's well worth your while to spend some time getting to know this
+`formatting language`_. You can accomplish a great deal just with this.
+
+.. _formatting language: https://docs.python.org/3/library/string.html#format-specification-mini-language
+
+``input``
+---------
+
+.. rst-class:: left
+
+For some of the exercises, you'll need to interact with a user at the
+command line.
+
+There's a nice built in function to do this - ``input``:
+
+.. code-block:: ipython
+
+    In [85]: fred = input('type something-->')
+    type something-->I've typed something
+
+    In [86]: print(fred)
+    I've typed something
+
+This will display a prompt to the user, allowing them to input text and
+allowing you to bind that input to a symbol.
+
+Lab: String Formatting
+----------------------
+
+Let's play with these a bit:
+
+:ref:`exercise_string_formatting`
+
+
+
+Files
+=====
+
+Text Files
 
 .. code-block:: python
 
-    line = line.strip()
-    line = line.replace(",", " ")
-    ....
+    f = open('secrets.txt')
+    secret_data = f.read()
+    f.close()
 
-Here's a nice talk about naming:
+``secret_data`` is a string
 
-http://pyvideo.org/video/3792/name-things-once-0
+NOTE: these days, you probably need to use Unicode for text -- we'll get to that next week
+
+.. nextslide::
+
+Binary Files
+
+.. code-block:: python
+
+    f = open('secrets.bin', 'rb')
+    secret_data = f.read()
+    f.close()
+
+``secret_data`` is a byte string
+
+(with arbitrary bytes in it -- well, not arbitrary -- whatever is in the file.)
+
+(See the ``struct``  module to unpack binary data )
 
 
-Code Review
+.. nextslide::
+
+
+File Opening Modes
+
+.. code-block:: python
+
+    f = open('secrets.txt', [mode])
+    'r', 'w', 'a'
+    'rb', 'wb', 'ab'
+    r+, w+, a+
+    r+b, w+b, a+b
+
+
+These follow the Unix conventions, and aren't all that well documented
+in the Python docs. But these BSD docs make it pretty clear:
+
+http://www.manpagez.com/man/3/fopen/
+
+**Gotcha** -- 'w' modes always clear the file
+
+.. nextslide:: Text File Notes
+
+Text is default
+
+  * Newlines are translated: ``\r\n -> \n``
+  *   -- reading and writing!
+  * Use \*nix-style in your code: ``\n``
+
+
+Gotcha:
+
+  * no difference between text and binary on \*nix
+  * breaks on Windows
+
+File Reading
 ------------
 
-.. rst-class:: center medium
+Reading part of a file
 
-Anyone stuck or confused that's willing to volunteer for a live code review?
+.. code-block:: python
 
-My Solutions
--------------
+    header_size = 4096
+    f = open('secrets.txt')
+    secret_header = f.read(header_size)
+    secret_rest = f.read()
+    f.close()
 
-Anyone look at my solutions?
+.. nextslide::
 
-(yeah, not much time for that...)
 
-Anything in particular you'd like me to go over?
+Common Idioms
 
-==========
+.. code-block:: python
+
+    for line in open('secrets.txt'):
+        print(line)
+
+(the file object is an iterator!)
+
+.. code-block:: python
+
+    f = open('secrets.txt')
+    while True:
+        line = f.readline()
+        if not line:
+            break
+        do_something_with_line()
+
+.. nextslide::
+
+We will learn more about the keyword with later, but for now, just understand
+the syntax and the advantage over the try-finally block:
+
+.. code-block:: python
+
+ with open('workfile', 'r') as f:
+     read_data = f.read()
+ f.closed
+ True
+
+File Writing
+------------
+
+.. code-block:: python
+
+    outfile = open('output.txt', 'w')
+    for i in range(10):
+        outfile.write("this is line: %i\n"%i)
+    outfile.close()
+
+    with open('output.txt', 'w') as f:
+        for i in range(10):
+           f.write("this is line: %i\n"%i)
+
+File Methods
+------------
+
+Commonly Used Methods
+
+.. code-block:: python
+
+    f.read() f.readline()  f.readlines()
+
+    f.write(str) f.writelines(seq)
+
+    f.seek(offset)   f.tell() # for binary files, mostly
+
+    f.close()
+
+Stream IO
+---------
+
+.. code-block:: python
+
+    In [417]: import io
+    In [420]: f = io.StringIO()
+    In [421]: f.write("somestuff")
+    In [422]: f.seek(0)
+    In [423]: f.read()
+    Out[423]: 'somestuff'
+    Out[424]: stuff = f.getvalue()
+    Out[425]: f.close()
+
+(handy for testing file handling code...)
+
+There is also cStringIO -- a bit faster.
+
+.. code-block:: python
+
+    from cStringIO import StringIO
+
+Paths
+-----
+
+Paths are generally handled with simple strings (or Unicode strings)
+
+Relative paths:
+
+.. code-block:: python
+
+    'secret.txt'
+    './secret.txt'
+
+Absolute paths:
+
+.. code-block:: python
+
+    '/home/chris/secret.txt'
+
+
+Either work with ``open()`` , etc.
+
+(working directory only makes sense with command-line programs...)
+
+os module
+----------
+
+.. code-block:: python
+
+    os.getcwd()
+    os.chdir(path)
+    os.path.abspath()
+    os.path.relpath()
+
+
+.. nextslide:: os.path module
+
+.. code-block:: python
+
+    os.path.split()
+    os.path.splitext()
+    os.path.basename()
+    os.path.dirname()
+    os.path.join()
+
+
+(all platform independent)
+
+.. nextslide:: directories
+
+.. code-block:: python
+
+    os.listdir()
+    os.mkdir()
+    os.walk()
+
+(higher level stuff in ``shutil``  module)
+
+pathlib
+-------
+
+``pathlib`` is a package for handling paths in an OO way:
+
+http://pathlib.readthedocs.org/en/pep428/
+
+All the stuff in os.path and more:
+
+.. code-block:: ipython
+
+    In [64]: import pathlib
+    In [65]: pth = pathlib.Path('./')
+    In [66]: pth.is_dir()
+    Out[66]: True
+    In [67]: pth.absolute()
+    Out[67]: PosixPath('/Users/Chris/PythonStuff/UWPCE/IntroPython2015')
+    In [68]: for f in pth.iterdir():
+                 print(f)
+    junk2.txt
+    junkfile.txt
+    ...
+
+Lab: Files
+----------
+
+In the class repo, in:
+
+``Examples\students.txt``
+
+You will find the list I generated of all the students in the class, and
+what programming languages they have used in the past.
+
+Write a little script that reads that file, and generates a list of all
+the languages that have been used.
+
+Extra credit: keep track of how many students specified each language.
+
+
+
+
+
+
+
 Exceptions
 ==========
 
 A really nifty python feature -- really handy!
 
-Exceptions
-----------
-
-Another Branching structure:
+Another Branching structure
+---------------------------
 
 .. code-block:: python
 
@@ -205,7 +608,6 @@ Never Do this:
         process(f)   # never called if file missing
     except:
         print "couldn't open missing.txt"
-
 
 Exceptions
 ----------
@@ -266,7 +668,6 @@ Only handle the exception if the code can and will do something about it.
 
 (much better debugging info when an error does occur)
 
-
 Exceptions -- finally
 ---------------------
 
@@ -282,7 +683,6 @@ Exceptions -- finally
         do_some_clean-up
 
 The ``finally:``  clause will always run
-
 
 Exceptions -- else
 -------------------
@@ -322,7 +722,6 @@ Particularly useful if you catch more than one exception:
     except (IOError, BufferError, OSError) as the_error:
         do_something_with (the_error)
 
-
 Raising Exceptions
 -------------------
 
@@ -341,7 +740,6 @@ when you call it:
 
     In [515]: divide (12,0)
     ZeroDivisionError: b can not be zero
-
 
 Built in Exceptions
 -------------------
@@ -378,209 +776,17 @@ Nope: the *type* is the problem::
 
 but should you be checking type anyway? (EAFP)
 
-===
-LAB
-===
-
-Exceptions Lab:
+Lab: Exceptions
+--------------
 
 A number of you already did this -- so do it at home if you haven't
 
 :ref:`exercise_exceptions_lab`
 
 
-Lightning Talks
-----------------
 
-.. rst-class:: medium
 
 
-
-
-============================
-List and Dict Comprehensions
-============================
-
-List comprehensions
--------------------
-
-A bit of functional programming
-
-consider this common ``for`` loop structure:
-
-.. code-block:: python
-
-    new_list = []
-    for variable in a_list:
-        new_list.append(expression)
-
-This can be expressed with a single line using a "list comprehension"
-
-.. code-block:: python
-
-    new_list = [expression for variable in a_list]
-
-
-.. nextslide::
-
-What about nested for loops?
-
-.. code-block:: python
-
-    new_list = []
-    for var in a_list:
-        for var2 in a_list2:
-            new_list.append(expression)
-
-Can also be expressed in one line:
-
-.. code-block:: python
-
-    new_list =  [exp for var in a_list for var2 in a_list2]
-
-You get the "outer product", i.e. all combinations.
-
-(demo)
-
-.. nextslide::
-
-But usually you at least have a conditional in the loop:
-
-.. code-block:: python
-
-    new_list = []
-    for variable in a_list:
-        if something_is_true:
-            new_list.append(expression)
-
-You can add a conditional to the comprehension:
-
-.. code-block:: python
-
-    new_list = [expr for var in a_list if something_is_true]
-
-
-(demo)
-
-.. nextslide::
-
-Examples:
-
-.. code-block:: ipython
-
-    In [341]: [x**2 for x in range(3)]
-    Out[341]: [0, 1, 4]
-
-    In [342]: [x+y for x in range(3) for y in range(5,7)]
-    Out[342]: [5, 6, 6, 7, 7, 8]
-
-    In [343]: [x*2 for x in range(6) if not x%2]
-    Out[343]: [0, 4, 8]
-
-
-
-.. nextslide::
-
-Remember this from earlier today?
-
-.. code-block:: python
-
-    [name for name in dir(__builtin__) if "Error" in name]
-    ['ArithmeticError',
-     'AssertionError',
-     'AttributeError',
-     'BufferError',
-     'EOFError',
-     ....
-
-
-Set Comprehensions
-------------------
-
-You can do it with sets, too:
-
-.. code-block:: python
-
-    new_set = { value for variable in a_sequence }
-
-
-same as for loop:
-
-.. code-block:: python
-
-    new_set = set()
-    for key in a_list:
-        new_set.add(value)
-
-
-.. nextslide::
-
-Example: finding all the vowels in a string...
-
-.. code-block:: ipython
-
-    In [19]: s = "a not very long string"
-
-    In [20]: vowels = set('aeiou')
-
-    In [21]: { l for l in s if l in vowels }
-    Out[21]: {'a', 'e', 'i', 'o'}
-
-Side note: why did I do ``set('aeiou')`` rather than just `aeiou` ?
-
-
-Dict Comprehensions
--------------------
-
-Also with dictionaries
-
-.. code-block:: python
-
-    new_dict = { key:value for variable in a_sequence}
-
-
-same as for loop:
-
-.. code-block:: python
-
-    new_dict = {}
-    for key in a_list:
-        new_dict[key] = value
-
-
-
-.. nextslide::
-
-Example
-
-.. code-block:: ipython
-
-    In [22]: { i: "this_%i"%i for i in range(5) }
-    Out[22]: {0: 'this_0', 1: 'this_1', 2: 'this_2',
-              3: 'this_3', 4: 'this_4'}
-
-
-(not as useful with the ``dict()``  constructor...)
-
-===
-LAB
-===
-
-List comps exercises:
-
-:ref:`exercise_comprehensions`
-
-
-
-Lightning Talk
-----------------
-
-.. rst-class:: medium
-
-
-
-
-=======
 Testing
 =======
 
@@ -617,7 +823,6 @@ block.
 
     Python provides testing systems to help.
 
-
 Standard Library: ``unittest``
 -------------------------------
 
@@ -630,7 +835,6 @@ More or less a port of ``Junit`` from Java
 A bit verbose: you have to write classes & methods
 
 (And we haven't covered that yet!)
-
 
 Using ``unittest``
 -------------------
@@ -722,7 +926,7 @@ There are several other options for running tests in Python.
 
 * `pytest`: http://pytest.org/latest/
 
-* ... (many frameworks supply their own test runners)
+* ... And many frameworks supply their own test runners
 
 Both are very capable and widely used. I have a personal preference for pytest -- so we'll use it for this class
 
@@ -767,8 +971,6 @@ partly from these files.
 
 Let's take a few minutes to look these files over.
 
-[demo]
-
 .. nextslide:: What's Happening Here.
 
 When you run the ``py.test`` command, ``pytest`` starts in your current
@@ -803,9 +1005,14 @@ the code that fixes these tests.
 
 Let's do that next!
 
-===
-LAB
-===
+Test Driven development demo
+----------------------------
+
+In ``Examples/Session05/test_cigar_party.py``
+
+
+Lab: Testing
+------------
 
 Pick an example from codingbat:
 
@@ -817,18 +1024,15 @@ Do a bit of test-driven development on it:
  * write a few tests using the examples from the site.
  * then write the function, and fix it 'till it passes the tests.
 
-Do at least two of these...
+Do at least two of them.
 
-=========
 Homework
 =========
 
 Catch up!
 ---------
 
-
 * Finish the LABs from today
-  - Exceptions lab
 
 * Catch up from last week.
 
@@ -841,9 +1045,33 @@ Catch up!
   - https://docs.python.org/3.5/library/collections.html
   - here's a good overview: https://pymotw.com/3/collections/
 
-====================================
-Material to review before next week:
-====================================
+
+Paths and File Processing
+--------------------------
+
+* write a program which prints the full path to all files in the current
+  directory, one per line
+
+* write a program which copies a file from a source, to a destination
+  (without using shutil, or the OS copy command)
+
+  - advanced: make it work for any size file: i.e. don't read the entire
+    contents of the file into memory at once.
+
+  - Note that if you want it to do any kind of file, you need to open the files in binary mode:
+    ``open(filename, 'rb')`` (or ``'wb'`` for writing.)
+
+* update mailroom from last week to:
+
+  - Use dicts where appropriate
+  - Write a full set of letters to everyone to individual files on disk
+  - See if you can use a dict to switch between the users selections
+  - Try to use a dict and the .format() method to do the letter as one
+    big template -- rather than building up a big string in parts.
+
+
+Material to review before next week
+-----------------------------------
 
  * Dive into Python3: 7.2 -- 7.3
    http://www.diveintopython3.net/iterators.html#defining-classes
@@ -854,7 +1082,7 @@ Material to review before next week:
  * LPTHW: 40 -- 44
    http://learnpythonthehardway.org/book/ex40.html
 
-[note that in py3 you dont need to inherit from object]
+[Note that in py3 you don't need to inherit from object]
 
 Talk by Raymond Hettinger:
 

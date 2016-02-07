@@ -8,10 +8,10 @@ def rot13(s):
     :return string
     """
 
-    from_table = 'abcdefghijklmnopqrstuvwxyz'
+    from_table += 'abcdefghijklmnopqrstuvwxyz'
     from_table += from_table.upper()
 
-    to_table = 'nopqrstuvwxyzabcdefghijklm'
+    to_table += 'nopqrstuvwxyzabcdefghijklm'
     to_table += to_table.upper()
 
     rot13_encoding_table = str.maketrans(from_table, to_table)
@@ -30,3 +30,4 @@ if __name__ == '__main__':
     print(rot13('Zntargvp sebz bhgfvqr arne pbeare'))
 
 
+# nicely done! 

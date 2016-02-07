@@ -10,7 +10,7 @@ Session Ten
   to Mechanic
 
 
-=====================
+
 Web Development Class
 =====================
 
@@ -21,7 +21,7 @@ Web Development Class
 
   Guest speaker
 
-================
+
 Review/Questions
 ================
 
@@ -30,14 +30,14 @@ Review/Questions
   Review of Previous Class
 
 
-======================
+
 Lightning Talks Today:
 ======================
 
 .. rst-class:: medium left
 
 
-====================
+
 Where we've been....
 ====================
 
@@ -94,12 +94,12 @@ Python 300
   In the meantime you should at least be familiar with some of these language constructs....
 
 
-================
+
 Topics for Today
 ================
 
 
-============
+
 Code Review?
 ============
 
@@ -116,7 +116,7 @@ Code Review?
     3) Go over someone's project code -- anyone stuck on something?
 
 
-==========
+
 Decorators
 ==========
 
@@ -548,8 +548,6 @@ Lightning Talks
 
 
 
-
-=================
 Context Managers
 =================
 
@@ -819,7 +817,8 @@ Or, we can allow them to propagate:
 
 
 LAB
-----
+---
+
 **Timing Context Manager**
 
 Create a context manager that will print the elapsed time taken to

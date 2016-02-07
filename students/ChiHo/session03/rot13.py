@@ -19,7 +19,7 @@ def rot13(s):
                 encrypted_message += chr( ((ord(letter) - ord('A') + 13) % 26) + ord('A') )
             else:
                 # This is a lower case letter.
-                encrypted_message += chr( ((ord(letter) - ord('a') + 13) % 26) + ord('a') )
+                encrypted_message += chr( ((ord(letter) - ord('a') + 13) % 26) + ord('a') )  # great!
         else:
             encrypted_message += letter
     else:
