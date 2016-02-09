@@ -10,4 +10,17 @@ Put here so we can write unit tests for them ourselves
 
 
 def sleep_in(weekday, vacation):
-    return not (weekday and vacation)
+    if vacation is True:
+        return True
+    elif weekday is False:
+        return True
+    else:
+        return False
+
+
+def sumdouble(a, b):
+    if a == b:
+        return (a + b) * 2
+    else:
+        return(a + b)
+
