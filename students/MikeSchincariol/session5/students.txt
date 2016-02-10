@@ -1,0 +1,24 @@
+Bindhu, Krishna: 
+Bounds, Brennen: English
+Gregor, Michael: English
+Holmer, Deana: SQL, English
+Kumar, Pradeep: English, Hindi, Python, shell, d2k, SQL, Perl
+Rees, Susan: English, Latin, HTML, CSS, Javascript, Ruby, SQL
+Rudolph, John: English, Python, Sass, R, Basic
+Solomon, Tsega: C, C++, Perl, VHDL, Verilog, Specman
+Warren, Benjamin: English
+Aleson, Brandon: English
+Chang, Jaemin: English
+Chinn, Kyle: English
+Derdouri, Abderrazak: English
+Fannin, Calvin: C#, SQL, R
+Gaffney, Thomas: SQL, Python, R, VBA, English
+Glogowski, Bryan: Basic, Pascal, C, Perl, Ruby
+Ganzalez, Luis: Basic, C++, Python, English, Spanish
+Ho, Chi Kin: English
+McKeag, Gregory: C, Lisp, C++, Objective-C, SQL, R, Pascal, Ada, Perl, Prolog, Scheme, Assembley
+Myerscough, Damian: 
+Newton, Michael: Python, Perl, Matlab
+Sarpangala, Kishan: 
+Schincariol, Mike: Python, C#, C, Tcl, VBA, Perl, Bash, VHDL, Verilog, Matlab
+Zhao, Yuanrui: 
