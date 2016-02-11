@@ -44,3 +44,5 @@ if __name__ == "__main__":
     result = rot13(test_val)
     assert(result == '"Magnetic from outside near corner"')
     print("Test {0} OK: {1} -> {2}".format(2, test_val, result))
+    
+# great job both encrypting and decrpyting without requiring the user to spcecify which

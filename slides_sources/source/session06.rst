@@ -1,84 +1,483 @@
+
+
 .. include:: include.rst
 
-********************************************************************
-Session Six: Advanced Argument Passing, lambda, functions as objects
-********************************************************************
-
-
-======================
-Lightning Talks Today:
-======================
-
-.. rst-class:: medium
+Session Six: Exceptions, Testing and Advanced Argument Passing
+**************************************************************
 
 
 
-================
-Review/Questions
-================
+Announcements
+=============
 
-Review of Previous Class
+Review & Questions
+==================
+
+Homework
+========
+
+Code review -- let's take a look.
+
+
+Lightning talks
+===============
+
+| |lightning-session06a|
+| |lightning-session06b|
+| |lightning-session06c|
+| |lightning-session06d|
+| |lightning-session06e|
+|
+
+
+Framing
+=======
+
+You've just started a new job, or you've inherited a project as a contractor.  Your task is to migrate a system from Python 2.something to Python 3.something.  All of the frameworks and major libraries in the system are years behind current versions.  There are thousands of lines of code spread across dozens of modules.  And you're moving from Oracle to Postgres.  What do you do?
+
+You are the CTO of a new big data company.  Your CEO wants you to open the your Python API so that third-party developers, your clients, can supply their own functions to crunch data on your systems.  What do you do?
+
+
+
+Exceptions
+==========
+
+.. code-block:: python
+
+    try:
+        do_something()
+        f = open('missing.txt')
+        process(f)   # never called if file missing
+    except IOError:
+        print("couldn't open missing.txt")
+
+Exceptions
+----------
+
+Use Exceptions, rather than your own tests:
+
+Don't do this:
+
+.. code-block:: python
+
+    do_something()
+    if os.path.exists('missing.txt'):
+        f = open('missing.txt')
+        process(f)   # never called if file missing
+
+It will almost always work -- but the almost will drive you crazy
+
+.. nextslide::
+
+Example from homework
+
+.. code-block:: python
+
+    if num_in.isdigit():
+        num_in = int(num_in)
+
+but -- ``int(num_in)`` will only work if the string can be converted to an integer.
+
+So you can do
+
+.. code-block:: python
+
+    try:
+        num_in = int(num_in)
+    except ValueError:
+        print("Input must be an integer, try again.")
+
+Or let the Exception be raised....
+
+
+.. nextslide:: EAFP
+
+
+"it's Easier to Ask Forgiveness than Permission"
+
+ -- Grace Hopper
+
+
+http://www.youtube.com/watch?v=AZDWveIdqjY
+
+(PyCon talk by Alex Martelli)
+
+.. nextslide:: Do you catch all Exceptions?
+
+For simple scripts, let exceptions happen.
+
+Only handle the exception if the code can and will do something about it.
+
+(much better debugging info when an error does occur)
+
+Exceptions -- finally
+---------------------
+
+.. code-block:: python
+
+    try:
+        do_something()
+        f = open('missing.txt')
+        process(f)   # never called if file missing
+    except IOError:
+        print("couldn't open missing.txt")
+    finally:
+        do_some_clean-up
+
+The ``finally:``  clause will always run
+
+Exceptions -- else
+-------------------
+
+.. code-block:: python
+
+    try:
+        do_something()
+        f = open('missing.txt')
+    except IOError:
+        print("couldn't open missing.txt")
+    else:
+        process(f) # only called if there was no exception
+
+Advantage:
+
+you know where the Exception came from
+
+Exceptions -- using them
 ------------------------
 
-* Exceptions
+.. code-block:: python
 
-* Comprehensions
+    try:
+        do_something()
+        f = open('missing.txt')
+    except IOError as the_error:
+        print(the_error)
+        the_error.extra_info = "some more information"
+        raise
 
-* Testing
-
-===============
-Homework review
-===============
-
-Homework Questions?
-
-Notes from Homework:
---------------------
-
-Comparing to "singletons":
-
-Use:
-
-``if something is None``
-
-Not:
-
-``if something == None``
-
-(also ``True`` and ``False``)
-
-rich comparisons: numpy
-
-(demo)
-
-.. nextslide::
-
-Binary mode for files:
+Particularly useful if you catch more than one exception:
 
 .. code-block:: python
 
-    infile = open(infilename, 'rb')
-    outfile = open(outfilename, 'wb')
+    except (IOError, BufferError, OSError) as the_error:
+        do_something_with (the_error)
 
-|
-|
-
-You don't actually need to use the result of a list comp:
+Raising Exceptions
+-------------------
 
 .. code-block:: python
 
-    for i, st in zip( divisors, sets):
-        [ st.add(j) for j in range(21) if not j%i ]
+    def divide(a,b):
+        if b == 0:
+            raise ZeroDivisionError("b can not be zero")
+        else:
+            return a / b
+
+
+when you call it:
+
+.. code-block:: ipython
+
+    In [515]: divide (12,0)
+    ZeroDivisionError: b can not be zero
+
+Built in Exceptions
+-------------------
+
+You can create your own custom exceptions
+
+But...
+
+.. code-block:: python
+
+    exp = \
+     [name for name in dir(__builtin__) if "Error" in name]
+    len(exp)
+    32
+
+
+For the most part, you can/should use a built in one
 
 .. nextslide::
 
-Apropos of today's topics:
+Choose the best match you can for the built in Exception you raise.
 
-Python functions are objects, so if you dont call them, you do'nt get an error, you jsut get the function object, ususally not what you want::
+Example (from last week's exercises)::
+
+  if (not isinstance(m, int)) or (not isinstance(n, int)):
+      raise ValueError
+
+Is it the *value* or the input the problem here?
+
+Nope: the *type* is the problem::
+
+  if (not isinstance(m, int)) or (not isinstance(n, int)):
+      raise TypeError
+
+but should you be checking type anyway? (EAFP)
+
+Lab: Exceptions
+---------------
+
+A number of you already did this -- so do it at home if you haven't
+
+:ref:`exercise_exceptions_lab`
+
+
+
+
+
+Testing
+=======
+
+.. rst-class:: build left
+.. container::
+
+    You've already seen some a very basic testing strategy.
+
+    You've written some tests using that strategy.
+
+    These tests were pretty basic, and a bit awkward in places (testing error
+    conditions in particular).
+
+    .. rst-class:: centered
+
+    **It gets better**
+
+Test Runners
+------------
+
+So far our tests have been limited to code in an ``if __name__ == "__main__":``
+block.
+
+.. rst-class:: build
+
+* They are run only when the file is executed
+* They are always run when the file is executed
+* You can't do anything else when the file is executed without running tests.
+
+.. rst-class:: build
+.. container::
+
+    This is not optimal.
+
+    Python provides testing systems to help.
+
+Standard Library: ``unittest``
+-------------------------------
+
+The original testing system in Python.
+
+``import unittest``
+
+More or less a port of ``Junit`` from Java
+
+A bit verbose: you have to write classes & methods
+
+(And we haven't covered that yet!)
+
+Using ``unittest``
+-------------------
+
+You write subclasses of the ``unittest.TestCase`` class:
+
+.. code-block:: python
+
+    # in test.py
+    import unittest
+
+    class MyTests(unittest.TestCase):
+        def test_tautology(self):
+            self.assertEquals(1, 1)
+
+Then you run the tests by using the ``main`` function from the ``unittest``
+module:
+
+.. code-block:: python
+
+    # in test.py
+    if __name__ == '__main__':
+        unittest.main()
+
+.. nextslide:: Testing Your Code
+
+This way, you can write your code in one file and test it from another:
+
+.. code-block:: python
+
+    # in my_mod.py
+    def my_func(val1, val2):
+        return val1 * val2
+
+    # in test_my_mod.py
+    import unittest
+    from my_mod import my_func
+
+    class MyFuncTestCase(unittest.TestCase):
+        def test_my_func(self):
+            test_vals = (2, 3)
+            expected = reduce(lambda x, y: x * y, test_vals)
+            actual = my_func(*test_vals)
+            self.assertEquals(expected, actual)
+
+    if __name__ == '__main__':
+        unittest.main()
+
+.. nextslide:: Advantages of ``unittest``
+
+.. rst-class:: build
+.. container::
+
+    The ``unittest`` module is pretty full featured
+
+    It comes with the standard Python distribution, no installation required.
+
+    It provides a wide variety of assertions for testing all sorts of situations.
+
+    It allows for a setup and tear down workflow both before and after all tests and before and after each test.
+
+    It's well known and well understood.
+
+.. nextslide:: Disadvantages:
+
+.. rst-class:: build
+.. container::
+
+
+    It's Object Oriented, and quite heavy.
+
+      - modeled after Java's ``junit`` and it shows...
+
+    It uses the framework design pattern, so knowing how to use the features
+    means learning what to override.
+
+    Needing to override means you have to be cautious.
+
+    Test discovery is both inflexible and brittle.
+
+    And there is no built-in parameterized testing.
+
+Other Options
+-------------
+
+There are several other options for running tests in Python.
+
+* `Nose`: https://nose.readthedocs.org/
+
+* `pytest`: http://pytest.org/latest/
+
+* ... And many frameworks supply their own test runners
+
+Both are very capable and widely used. I have a personal preference for pytest -- so we'll use it for this class
+
+Installing ``pytest``
+---------------------
+
+The first step is to install the package:
+
+.. code-block:: bash
+
+    $ python3 -m pip install pytest
+
+Once this is complete, you should have a ``py.test`` command you can run
+at the command line:
+
+.. code-block:: bash
+
+    $ py.test
+
+If you have any tests in your repository, that will find and run them.
+
+.. rst-class:: build
+.. container::
+
+    **Do you?**
+
+Pre-existing Tests
+------------------
+
+Let's take a look at some examples.
+
+``IntroToPython\Examples\Session05``
+
+`` $ py.test``
+
+You can also run py.test on a particular test file:
+
+``py.test test_this.py``
+
+The results you should have seen when you ran ``py.test`` above come
+partly from these files.
+
+Let's take a few minutes to look these files over.
+
+.. nextslide:: What's Happening Here.
+
+When you run the ``py.test`` command, ``pytest`` starts in your current
+working directory and searches the filesystem for things that might be tests.
+
+It follows some simple rules:
+
+.. rst-class:: build
+
+* Any python file that starts with ``test_`` or ``_test`` is imported.
+* Any functions in them that start with ``test_`` are run as tests.
+* Any classes that start with ``Test`` are treated similarly, with methods that begin with ``test_`` treated as tests.
+
+
+.. nextslide:: pytest
+
+This test running framework is simple, flexible and configurable.
+
+`Read the documentation`_ for more information.
+
+.. _Read the documentation: http://pytest.org/latest/getting-started.html#getstarted
+
+.. nextslide:: Test Driven Development
+
+What we've just done here is the first step in what is called **Test Driven
+Development**.
+
+A bunch of tests exist, but the code to make them pass does not yet exist.
+
+The red you see in the terminal when we run our tests is a goad to us to write
+the code that fixes these tests.
+
+Let's do that next!
+
+Test Driven development demo
+----------------------------
+
+In ``Examples/Session05/test_cigar_party.py``
+
+
+Lab: Testing
+------------
+
+Pick an example from codingbat:
+
+``http://codingbat.com``
+
+Do a bit of test-driven development on it:
+
+ * run something on the web site.
+ * write a few tests using the examples from the site.
+ * then write the function, and fix it 'till it passes the tests.
+
+Do at least two of them.
+
+Advanced Argument Passing
+=========================
+
+Calling a function
+------------------
+
+Python functions are objects, so if you don't call them, you don't get an error, you just get the function object, usually not what you want::
 
         elif donor_name.lower == "exit":
 
-this is comparing the string ``lower`` method to the string "exit" and theyare never going to be equal!
+This is comparing the string ``lower`` method to the string "exit" and they are never going to be equal!
 
 That should be::
 
@@ -86,20 +485,6 @@ That should be::
 
 This is actually a pretty common typo -- keep an eye out for it when you get strange errors, or something just doesn't seem to be getting triggered.
 
-============================
-Test Driven development demo
-============================
-
-We did some of this last class -- but I want to really drive it home :-)
-
-In ``Examples/Session06/test_cigar_party.py``
-
-
-=========================
-Advanced Argument Passing
-=========================
-
-This is a very, very nift Python feature -- it really lets you write dynamic programs.
 
 Keyword arguments
 -----------------
@@ -164,7 +549,6 @@ Defaults are evaluated when the function is defined
 
 This is a **very** important point -- I will repeat it!
 
-
 Function arguments in variables
 -------------------------------
 
@@ -183,7 +567,6 @@ function arguments are really just
 
     >>> f(*position, **size)
     position: 3, 4 -- shape: 20, 10
-
 
 Function parameters in variables
 --------------------------------
@@ -228,8 +611,8 @@ And pass to ``format()``with ``**``
     In [26]: "My name is {first} {last}".format(**d)
     Out[26]: 'My name is Chris Barker'
 
-LAB
-----
+Lab: Keyword Arguments
+----------------------
 
 .. rst-class:: medium
 
@@ -247,425 +630,14 @@ LAB
 * Have it pull the parameters out with ``*args, **kwargs``
   - and print those
 
-Lightning Talks
-----------------
 
-.. rst-class:: medium
 
+Switch/case
+-----------
 
+Python does not have a switch/case statement.  Why not?
 
-
-=====================================
-A bit more on mutability (and copies)
-=====================================
-
-mutable objects
-----------------
-
-We've talked about this: mutable objects can have their contents changed in place.
-
-Immutable objects can not.
-
-This has implications when you have a container with mutable objects in it:
-
-.. code-block:: ipython
-
-    In [28]: list1 = [ [1,2,3], ['a','b'] ]
-
-one way to make a copy of a list:
-
-.. code-block:: ipython
-
-    In [29]: list2 = list1[:]
-
-    In [30]: list2 is list1
-    Out[30]: False
-
-they are different lists.
-
-.. nextslide::
-
-What if we set an element to a new value?
-
-.. code-block:: ipython
-
-    In [31]: list1[0] = [5,6,7]
-
-    In [32]: list1
-    Out[32]: [[5, 6, 7], ['a', 'b']]
-
-    In [33]: list2
-    Out[33]: [[1, 2, 3], ['a', 'b']]
-
-So they are independent.
-
-.. nextslide::
-
-But what if we mutate an element?
-
-.. code-block:: ipython
-
-    In [34]: list1[1].append('c')
-
-    In [35]: list1
-    Out[35]: [[5, 6, 7], ['a', 'b', 'c']]
-
-    In [36]: list2
-    Out[36]: [[1, 2, 3], ['a', 'b', 'c']]
-
-uuh oh! mutating an element in one list mutated the one in the other list.
-
-.. nextslide::
-
-Why is that?
-
-.. code-block:: ipython
-
-    In [38]: list1[1] is list2[1]
-    Out[38]: True
-
-The elements are the same object!
-
-This is known as a "shallow" copy -- Python doesn't want to copy more than it needs to, so in this case, it makes a new list, but does not make copies of the contents.
-
-Same for dicts (and any container type -- even tuples!)
-
-If the elements are immutable, it doesn't really make a differnce -- but be very careful with mutable elements.
-
-
-The copy module
-----------------
-
-most objects have a way to make copies (``dict.copy()`` for instance).
-
-but if not, you can use the ``copy`` module to make a copy:
-
-.. code-block:: ipython
-
-    In [39]: import copy
-
-    In [40]: list3 = copy.copy(list2)
-
-    In [41]: list3
-    Out[41]: [[1, 2, 3], ['a', 'b', 'c']]
-
-This is also a shallow copy.
-
-.. nextslide::
-
-But there is another option:
-
-.. code-block:: ipython
-
-    In [3]: list1
-    Out[3]: [[1, 2, 3], ['a', 'b', 'c']]
-
-    In [4]: list2 = copy.deepcopy(list1)
-
-    In [5]: list1[0].append(4)
-
-    In [6]: list1
-    Out[6]: [[1, 2, 3, 4], ['a', 'b', 'c']]
-
-    In [7]: list2
-    Out[7]: [[1, 2, 3], ['a', 'b', 'c']]
-
-``deepcopy`` recurses through the object, making copies of everything as it goes.
-
-.. nextslide::
-
-
-I happened on this thread on stack overflow:
-
-http://stackoverflow.com/questions/3975376/understanding-dict-copy-shallow-or-deep
-
-The OP is pretty confused -- can you sort it out?
-
-Make sure you understand the difference between a reference, a shallow copy, and a deep copy.
-
-Mutables as default arguments:
-------------------------------
-
-Another "gotcha" is using mutables as default arguments:
-
-.. code-block:: ipython
-
-    In [11]: def fun(x, a=[]):
-       ....:     a.append(x)
-       ....:     print(a)
-       ....:
-
-This makes sense: maybe you'd pass in a specific list, but if not, the default is an empty list.
-
-But:
-
-.. code-block:: ipython
-
-    In [12]: fun(3)
-    [3]
-
-    In [13]: fun(4)
-    [3, 4]
-
-Huh?!
-
-.. nextslide::
-
-Remember that that default argument is defined when the function is created: there will be only one list, and every time the function is called, that same list is used.
-
-
-The solution:
-
-The standard practice for such a mutable default argument:
-
-.. code-block:: ipython
-
-    In [15]: def fun(x, a=None):
-       ....:     if a is None:
-       ....:         a = []
-       ....:     a.append(x)
-       ....:     print(a)
-    In [16]: fun(3)
-    [3]
-    In [17]: fun(4)
-    [4]
-
-You get a new list every time the function is called
-
-
-
-===================
-Anonymous functions
-===================
-
-lambda
-------
-
-.. code-block:: ipython
-
-    In [171]: f = lambda x, y: x+y
-    In [172]: f(2,3)
-    Out[172]: 5
-
-Content of function can only be an expression -- not a statement
-
-Anyone remember what the difference is?
-
-Called "Anonymous": it doesn't get a name.
-
-.. nextslide::
-
-It's a python object, it can be stored in a list or other container
-
-.. code-block:: ipython
-
-    In [7]: l = [lambda x, y: x+y]
-    In [8]: type(l[0])
-    Out[8]: function
-
-
-And you can call it:
-
-.. code-block:: ipython
-
-    In [9]: l[0](3,4)
-    Out[9]: 7
-
-
-Functions as first class objects
----------------------------------
-
-You can do that with "regular" functions too:
-
-.. code-block:: ipython
-
-    In [12]: def fun(x,y):
-       ....:     return x+y
-       ....:
-    In [13]: l = [fun]
-    In [14]: type(l[0])
-    Out[14]: function
-    In [15]: l[0](3,4)
-    Out[15]: 7
-
-
-
-======================
-Functional Programming
-======================
-
-No real consensus about what that means.
-
-But there are some "classic" methods available in Python.
-
-map
----
-
-``map``  "maps" a function onto a sequence of objects -- It applies the function to each item in the list, returning another list
-
-
-.. code-block:: ipython
-
-    In [23]: l = [2, 5, 7, 12, 6, 4]
-    In [24]: def fun(x):
-                 return x*2 + 10
-    In [25]: map(fun, l)
-    Out[25]: [14, 20, 24, 34, 22, 18]
-
-
-But if it's a small function, and you only need it once:
-
-.. code-block:: ipython
-
-    In [26]: map(lambda x: x*2 + 10, l)
-    Out[26]: [14, 20, 24, 34, 22, 18]
-
-
-filter
-------
-
-``filter``  "filters" a sequence of objects with a boolean function --
-It keeps only those for which the function is True -- filtering our the rest.
-
-To get only the even numbers:
-
-.. code-block:: ipython
-
-    In [27]: l = [2, 5, 7, 12, 6, 4]
-    In [28]: filter(lambda x: not x%2, l)
-    Out[28]: [2, 12, 6, 4]
-
-If you pass ``None`` to ``filter()``, you get only items that evaluate to true:
-
-.. code-block:: ipython
-
-    In [1]: l = [1, 0, 2.3, 0.0, 'text', '', [1,2], [], False, True, None ]
-
-    In [2]: filter(None, l)
-    Out[2]: [1, 2.3, 'text', [1, 2], True]
-
-
-reduce
-------
-
-``reduce``  "reduces" a sequence of objects to a single object with a function that combines two arguments
-
-To get the sum:
-
-.. code-block:: ipython
-
-    In [30]: l = [2, 5, 7, 12, 6, 4]
-    In [31]: reduce(lambda x,y: x+y, l)
-    Out[31]: 36
-
-
-To get the product:
-
-.. code-block:: ipython
-
-    In [32]: reduce(lambda x,y: x*y, l)
-    Out[32]: 20160
-
-or
-
-.. code-block:: ipython
-
-    In [13]: import operator
-    In [14]: reduce(operator.mul, l)
-    Out[14]: 20160
-
-Comprehensions
---------------
-
-Couldn't you do all this with comprehensions?
-
-Yes:
-
-.. code-block:: ipython
-
-    In [33]: [x+2 + 10 for x in l]
-    Out[33]: [14, 17, 19, 24, 18, 16]
-
-    In [34]: [x for x in l if not x%2]
-    Out[34]: [2, 12, 6, 4]
-
-    In [6]: l
-    Out[6]: [1, 0, 2.3, 0.0, 'text', '', [1, 2], [], False, True, None]
-    In [7]: [i for i in l if i]
-    Out[7]: [1, 2.3, 'text', [1, 2], True]
-
-(Except Reduce)
-
-But Guido thinks almost all uses of reduce are really ``sum()``
-
-Functional Programming
-----------------------
-
-Comprehensions and map, filter, reduce are all "functional programming" approaches}
-
-``map, filter``  and ``reduce``  pre-date comprehensions in Python's history
-
-Some people like that syntax better
-
-And "map-reduce" is a big concept these days for parallel processing of "Big Data" in NoSQL databases.
-
-(Hadoop, MongoDB, etc.)
-
-
-A bit more about lambda
-------------------------
-
-It is very useful for specifying sorting as well:
-
-.. code-block:: ipython
-
-    In [55]: lst = [("Chris","Barker"), ("Fred", "Jones"), ("Zola", "Adams")]
-
-    In [56]: lst.sort()
-
-    In [57]: lst
-    Out[57]: [('Chris', 'Barker'), ('Fred', 'Jones'), ('Zola', 'Adams')]
-
-    In [58]: lst.sort(key=lambda x: x[1])
-
-    In [59]: lst
-    Out[59]: [('Zola', 'Adams'), ('Chris', 'Barker'), ('Fred', 'Jones')]
-
-lambda in keyword arguments
-----------------------------
-
-.. code-block:: ipython
-
-    In [186]: l = []
-    In [187]: for i in range(3):
-        l.append(lambda x, e=i: x**e)
-       .....:
-    In [189]: for f in l:
-        print(f(3))
-    1
-    3
-    9
-
-Note when the keyword argument is evaluated: this turns out to be very handy!
-
-===
-LAB
-===
-
-Here's an exercise to try out some of this:
-
-:ref:`exercise_lambda_magic`
-
-Lightning Talk
---------------
-
-.. rst-class:: medium
-
-
-
-==============
-dict as switch
-==============
+https://www.python.org/dev/peps/pep-3103/
 
 What to use instead of "switch-case"?
 
@@ -685,12 +657,12 @@ A number of languages have a "switch-case" construct::
             return "nothing";
     };
 
-How do you spell this in python?
+How do you say this in Python?
 
 ``if-elif`` chains
--------------------
+------------------
 
-The obvious way to spell it is a chain of ``elif`` statements:
+The obvious way to say it is a chain of ``elif`` statements:
 
 .. code-block:: python
 
@@ -705,154 +677,37 @@ The obvious way to spell it is a chain of ``elif`` statements:
 
 And there is nothing wrong with that, but....
 
-.. nextslide::
+Dict as switch
+--------------
 
-The ``elif`` chain is neither elegant nor efficient. There are a number of ways to spell it in python -- but one elgant one is to use a dict:
+The ``elif`` chain is neither elegant nor efficient. There are a number of ways to say it in python -- but one elegant one is to use a dict:
 
 .. code-block:: python
 
     arg_dict = {0:"zero", 1:"one", 2: "two"}
         dict.get(argument, "nothing")
 
-Simple, elegant, and fast.
+Simple, elegant and fast.
 
 You can do a dispatch table by putting functions as the value.
 
 Example: Chris' mailroom2 solution.
 
-==============================
-Closures and function Currying
-==============================
 
-Defining specialized functions on the fly
 
-Closures
---------
 
-"Closures" and "Currying" are cool CS terms for what is really just defining functions on the fly.
+Lab: Functions as objects
+-------------------------
 
-you can find a "proper" definition here:
-
-https://en.wikipedia.org/wiki/Closure_(computer_programming)
-
-but I even have trouble following that.
-
-So let's go straight to an example:
-
-.. nextslide::
-
-.. code-block:: python
-
-    def counter(start_at=0):
-        count = [start_at]
-        def incr():
-            count[0] += 1
-            return count[0]
-        return incr
-
-What's going on here?
-
-We have stored the ``start_at`` value in a list.
-
-Then defined a function, ``incr`` that adds one to the value in the list, and returns that value.
-
-[ Quiz: why is it: ``count = [start_at]``, rather than just ``count=start_at`` ]
-
-.. nextslide::
-
-So what type of object do you get when you call ``counter()``?
-
-.. code-block:: ipython
-
-    In [37]: c = counter(start_at=5)
-
-    In [38]: type(c)
-    Out[38]: function
-
-So we get a function back -- makes sense. The ``def`` defines a function, and that function is what's getting returned.
-
-Being a function, we can, of course, call it:
-
-.. code-block:: ipython
-
-    In [39]: c()
-    Out[39]: 6
-
-    In [40]: c()
-    Out[40]: 7
-
-Each time is it called, it increments the value by one.
-
-.. nextslide::
-
-But what happens if we call ``counter()`` multiple times?
-
-.. code-block:: ipython
-
-    In [41]: c1 = counter(5)
-
-    In [42]: c2 = counter(10)
-
-    In [43]: c1()
-    Out[43]: 6
-
-    In [44]: c2()
-    Out[44]: 11
-
-So each time ``counter()`` is called, a new function is created. And that function has its own copy of the ``count`` object. This is what makes in a "closure" -- it carries with it the scope in which is was created.
-
-the returned ``incr`` function is a "curried" function -- a function with some parameters pre-specified.
-
-``functools.partial``
----------------------
-
-The ``functools`` module in the standard library provides utilities for working with functions:
-
-https://docs.python.org/3.5/library/functools.html
-
-Creating a curried function turns out to be common enough that the ``functools.partial`` function provides an optimized way to do it:
-
-What functools.partial does is:
-
- * Makes a new version of a function with one or more arguments already filled in.
- * The new version of a function documents itself.
-
-Example:
-
-.. code-block:: python
-
-    def power(base, exponent):
-        """returns based raised to the give exponent"""
-        return base ** exponent
-
-Simple enough. but what if we wanted a specialized ``square`` and ``cube`` function?
-
-We can use ``functools.partial`` to *partially* evaluate the function, giving us a specialized version:
-
-square = partial(power, exponent=2)
-cube = partial(power, exponent=3)
-
-===
-LAB
-===
-
-Let's use some of this ability to use functions a objects for something useful:
+Let's use some of this ability to use functions as objects for something useful:
 
 :ref:`exercise_trapezoidal_rule`
 
-Some reading on these topics:
+Review framing questions
+========================
 
-http://www.pydanny.com/python-partials-are-fun.html
 
-https://pymotw.com/2/functools/
-
-http://www.programiz.com/python-programming/closure
-
-https://www.clear.rice.edu/comp130/12spring/curry/
-
-========
 Homework
 ========
 
-Finish up the Labs
-
+Finish the Labs
