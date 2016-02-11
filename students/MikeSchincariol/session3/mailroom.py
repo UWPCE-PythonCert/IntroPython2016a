@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-import os
-import os.path
+
 def show_main_menu():
     ''' Present the menu to find out what the user wants to do. '''
     ''' Returns an int giving the menu item selected. '''
