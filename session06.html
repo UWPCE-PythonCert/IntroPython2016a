@@ -94,9 +94,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#lightning-talks">Lightning talks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#framing">Framing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#another-branching-structure">Another Branching structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exceptions-finally">Exceptions &#8211; finally</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exceptions-else">Exceptions &#8211; else</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exceptions-using-them">Exceptions &#8211; using them</a></li>
@@ -124,14 +122,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#passing-a-dict-to-str-format">Passing a dict to str.format()</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lab-keyword-arguments">Lab: Keyword Arguments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#switch-case">Switch/case</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">switch-case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">switch-case</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#if-elif-chains"><code class="docutils literal"><span class="pre">if-elif</span></code> chains</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dict-as-switch">Dict as switch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lab-functions-as-objects">Lab: Functions as objects</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#review-framing-questions">Review framing questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Homework</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="session07.html">Object Oriented Programming</a></li>
@@ -216,9 +214,6 @@
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<p>A really nifty python feature &#8211; really handy!</p>
-<div class="section" id="another-branching-structure">
-<h3>Another Branching structure<a class="headerlink" href="#another-branching-structure" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
@@ -227,21 +222,8 @@
     <span class="k">print</span><span class="p">(</span><span class="s">&quot;couldn&#39;t open missing.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
 <div class="section" id="id1">
 <h3>Exceptions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Never Do this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">()</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
-    <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c"># never called if file missing</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;couldn&#39;t open missing.txt&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>Exceptions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Use Exceptions, rather than your own tests:</p>
 <p>Don&#8217;t do this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">do_something</span><span class="p">()</span>
@@ -659,8 +641,8 @@ you know how this nifty trick works:</p>
 <p><a class="reference external" href="https://www.python.org/dev/peps/pep-3103/">https://www.python.org/dev/peps/pep-3103/</a></p>
 <p>What to use instead of &#8220;switch-case&#8221;?</p>
 </div>
-<div class="section" id="id3">
-<h3>switch-case<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>switch-case<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>A number of languages have a &#8220;switch-case&#8221; construct:</p>
 <div class="highlight-python"><div class="highlight"><pre>switch(argument) {
     case 0:
@@ -711,8 +693,8 @@ you know how this nifty trick works:</p>
 <div class="section" id="review-framing-questions">
 <h2>Review framing questions<a class="headerlink" href="#review-framing-questions" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="id4">
-<h2>Homework<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>Homework<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Finish the Labs</p>
 </div>
 </div>

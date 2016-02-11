@@ -42,11 +42,6 @@ You are the CTO of a new big data company.  Your CEO wants you to open the your 
 Exceptions
 ==========
 
-A really nifty python feature -- really handy!
-
-Another Branching structure
----------------------------
-
 .. code-block:: python
 
     try:
@@ -55,19 +50,6 @@ Another Branching structure
         process(f)   # never called if file missing
     except IOError:
         print("couldn't open missing.txt")
-
-Exceptions
-----------
-Never Do this:
-
-.. code-block:: python
-
-    try:
-        do_something()
-        f = open('missing.txt')
-        process(f)   # never called if file missing
-    except:
-        print "couldn't open missing.txt"
 
 Exceptions
 ----------
@@ -173,7 +155,6 @@ Exceptions -- using them
         print(the_error)
         the_error.extra_info = "some more information"
         raise
-
 
 Particularly useful if you catch more than one exception:
 
