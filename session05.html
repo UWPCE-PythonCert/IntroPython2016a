@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Session Five: Strings, Files, Exceptions, Testing &mdash; Introduction To Python 1.3 documentation</title>
+  <title>Session Five: Files, Streams &amp; String IO &mdash; Introduction To Python 1.3 documentation</title>
   
 
   
@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="Introduction To Python 1.3 documentation" href="index.html"/>
-        <link rel="next" title="Session Six: Advanced Argument Passing, lambda, functions as objects" href="session06.html"/>
+        <link rel="next" title="Session Six: Exceptions, Testing and Advanced Argument Passing" href="session06.html"/>
         <link rel="prev" title="Session Four: Lists, Iteration, Strings, Dictionaries, Sets" href="session04.html"/> 
 
   
@@ -86,7 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="session02.html">Session Two: gitHub, Functions, Booleans and Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session03.html">Session Three: Sequences, Iteration and String Formatting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session04.html">Session Four: Lists, Iteration, Strings, Dictionaries, Sets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Session Five: Strings, Files, Exceptions, Testing</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Session Five: Files, Streams &amp; String IO</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#announcements">Announcements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#review-questions">Review &amp; Questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework">Homework</a></li>
@@ -118,30 +118,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#lab-files">Lab: Files</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#another-branching-structure">Another Branching structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exceptions-finally">Exceptions &#8211; finally</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exceptions-else">Exceptions &#8211; else</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#exceptions-using-them">Exceptions &#8211; using them</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#raising-exceptions">Raising Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#built-in-exceptions">Built in Exceptions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lab-exceptions">Lab: Exceptions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">Testing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#test-runners">Test Runners</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#standard-library-unittest">Standard Library: <code class="docutils literal"><span class="pre">unittest</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-unittest">Using <code class="docutils literal"><span class="pre">unittest</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#other-options">Other Options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installing-pytest">Installing <code class="docutils literal"><span class="pre">pytest</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pre-existing-tests">Pre-existing Tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#test-driven-development-demo">Test Driven development demo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lab-testing">Lab: Testing</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">Homework</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Homework</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#catch-up">Catch up!</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#paths-and-file-processing">Paths and File Processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#material-to-review-before-next-week">Material to review before next week</a></li>
@@ -149,7 +126,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="session06.html">Session Six: Advanced Argument Passing, lambda, functions as objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session06.html">Session Six: Exceptions, Testing and Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session07.html">Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session08.html">Session Eight: More OO: Properties, Special methods.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session09.html">Session Nine: Iterators, Iterables, and Generators</a></li>
@@ -188,7 +165,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Session Five: Strings, Files, Exceptions, Testing</li>
+    <li>Session Five: Files, Streams &amp; String IO</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -202,8 +179,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="session-five-strings-files-exceptions-testing">
-<h1>Session Five: Strings, Files, Exceptions, Testing<a class="headerlink" href="#session-five-strings-files-exceptions-testing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="session-five-files-streams-string-io">
+<h1>Session Five: Files, Streams &amp; String IO<a class="headerlink" href="#session-five-files-streams-string-io" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="announcements">
 <h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -630,320 +607,8 @@ the languages that have been used.</p>
 <p>Extra credit: keep track of how many students specified each language.</p>
 </div>
 </div>
-<div class="section" id="exceptions">
-<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
-<p>A really nifty python feature &#8211; really handy!</p>
-<div class="section" id="another-branching-structure">
-<h3>Another Branching structure<a class="headerlink" href="#another-branching-structure" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">()</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
-    <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c"># never called if file missing</span>
-<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;couldn&#39;t open missing.txt&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="id1">
-<h3>Exceptions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Never Do this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">()</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
-    <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c"># never called if file missing</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s">&quot;couldn&#39;t open missing.txt&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>Exceptions<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Use Exceptions, rather than your own tests:</p>
-<p>Don&#8217;t do this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">do_something</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">):</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
-    <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c"># never called if file missing</span>
-</pre></div>
-</div>
-<p>It will almost always work &#8211; but the almost will drive you crazy</p>
-<p>Example from homework</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">num_in</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
-    <span class="n">num_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_in</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>but &#8211; <code class="docutils literal"><span class="pre">int(num_in)</span></code> will only work if the string can be converted to an integer.</p>
-<p>So you can do</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
-    <span class="n">num_in</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num_in</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Input must be an integer, try again.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Or let the Exception be raised....</p>
-<p>&#8220;it&#8217;s Easier to Ask Forgiveness than Permission&#8221;</p>
-<blockquote>
-<div>&#8211; Grace Hopper</div></blockquote>
-<p><a class="reference external" href="http://www.youtube.com/watch?v=AZDWveIdqjY">http://www.youtube.com/watch?v=AZDWveIdqjY</a></p>
-<p>(PyCon talk by Alex Martelli)</p>
-<p>For simple scripts, let exceptions happen.</p>
-<p>Only handle the exception if the code can and will do something about it.</p>
-<p>(much better debugging info when an error does occur)</p>
-</div>
-<div class="section" id="exceptions-finally">
-<h3>Exceptions &#8211; finally<a class="headerlink" href="#exceptions-finally" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">()</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
-    <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c"># never called if file missing</span>
-<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;couldn&#39;t open missing.txt&quot;</span><span class="p">)</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="n">do_some_clean</span><span class="o">-</span><span class="n">up</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal"><span class="pre">finally:</span></code>  clause will always run</p>
-</div>
-<div class="section" id="exceptions-else">
-<h3>Exceptions &#8211; else<a class="headerlink" href="#exceptions-else" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">()</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;couldn&#39;t open missing.txt&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">process</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c"># only called if there was no exception</span>
-</pre></div>
-</div>
-<p>Advantage:</p>
-<p>you know where the Exception came from</p>
-</div>
-<div class="section" id="exceptions-using-them">
-<h3>Exceptions &#8211; using them<a class="headerlink" href="#exceptions-using-them" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
-    <span class="n">do_something</span><span class="p">()</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">the_error</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">the_error</span><span class="p">)</span>
-    <span class="n">the_error</span><span class="o">.</span><span class="n">extra_info</span> <span class="o">=</span> <span class="s">&quot;some more information&quot;</span>
-    <span class="k">raise</span>
-</pre></div>
-</div>
-<p>Particularly useful if you catch more than one exception:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">except</span> <span class="p">(</span><span class="ne">IOError</span><span class="p">,</span> <span class="n">BufferError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_error</span><span class="p">:</span>
-    <span class="n">do_something_with</span> <span class="p">(</span><span class="n">the_error</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="raising-exceptions">
-<h3>Raising Exceptions<a class="headerlink" href="#raising-exceptions" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">divide</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ZeroDivisionError</span><span class="p">(</span><span class="s">&quot;b can not be zero&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
-</pre></div>
-</div>
-<p>when you call it:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [515]: </span><span class="n">divide</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="go">ZeroDivisionError: b can not be zero</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="built-in-exceptions">
-<h3>Built in Exceptions<a class="headerlink" href="#built-in-exceptions" title="Permalink to this headline">¶</a></h3>
-<p>You can create your own custom exceptions</p>
-<p>But...</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">exp</span> <span class="o">=</span> \
- <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
-<span class="mi">32</span>
-</pre></div>
-</div>
-<p>For the most part, you can/should use a built in one</p>
-<p>Choose the best match you can for the built in Exception you raise.</p>
-<p>Example (from last week&#8217;s exercises):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span>
-</pre></div>
-</div>
-<p>Is it the <em>value</em> or the input the problem here?</p>
-<p>Nope: the <em>type</em> is the problem:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span>
-</pre></div>
-</div>
-<p>but should you be checking type anyway? (EAFP)</p>
-</div>
-<div class="section" id="lab-exceptions">
-<h3>Lab: Exceptions<a class="headerlink" href="#lab-exceptions" title="Permalink to this headline">¶</a></h3>
-<p>A number of you already did this &#8211; so do it at home if you haven&#8217;t</p>
-<p><a class="reference internal" href="exercises/exceptions_lab.html#exercise-exceptions-lab"><span>Exceptions Lab</span></a></p>
-</div>
-</div>
-<div class="section" id="id3">
-<h2>Testing<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="build left container">
-<p>You&#8217;ve already seen some a very basic testing strategy.</p>
-<p>You&#8217;ve written some tests using that strategy.</p>
-<p>These tests were pretty basic, and a bit awkward in places (testing error
-conditions in particular).</p>
-<p class="centered"><strong>It gets better</strong></p>
-</div>
-<div class="section" id="test-runners">
-<h3>Test Runners<a class="headerlink" href="#test-runners" title="Permalink to this headline">¶</a></h3>
-<p>So far our tests have been limited to code in an <code class="docutils literal"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code>
-block.</p>
-<ul class="build simple">
-<li>They are run only when the file is executed</li>
-<li>They are always run when the file is executed</li>
-<li>You can&#8217;t do anything else when the file is executed without running tests.</li>
-</ul>
-<div class="build container">
-<p>This is not optimal.</p>
-<p>Python provides testing systems to help.</p>
-</div>
-</div>
-<div class="section" id="standard-library-unittest">
-<h3>Standard Library: <code class="docutils literal"><span class="pre">unittest</span></code><a class="headerlink" href="#standard-library-unittest" title="Permalink to this headline">¶</a></h3>
-<p>The original testing system in Python.</p>
-<p><code class="docutils literal"><span class="pre">import</span> <span class="pre">unittest</span></code></p>
-<p>More or less a port of <code class="docutils literal"><span class="pre">Junit</span></code> from Java</p>
-<p>A bit verbose: you have to write classes &amp; methods</p>
-<p>(And we haven&#8217;t covered that yet!)</p>
-</div>
-<div class="section" id="using-unittest">
-<h3>Using <code class="docutils literal"><span class="pre">unittest</span></code><a class="headerlink" href="#using-unittest" title="Permalink to this headline">¶</a></h3>
-<p>You write subclasses of the <code class="docutils literal"><span class="pre">unittest.TestCase</span></code> class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># in test.py</span>
-<span class="kn">import</span> <span class="nn">unittest</span>
-
-<span class="k">class</span> <span class="nc">MyTests</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">test_tautology</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Then you run the tests by using the <code class="docutils literal"><span class="pre">main</span></code> function from the <code class="docutils literal"><span class="pre">unittest</span></code>
-module:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># in test.py</span>
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>This way, you can write your code in one file and test it from another:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># in my_mod.py</span>
-<span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="n">val1</span><span class="p">,</span> <span class="n">val2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">val1</span> <span class="o">*</span> <span class="n">val2</span>
-
-<span class="c"># in test_my_mod.py</span>
-<span class="kn">import</span> <span class="nn">unittest</span>
-<span class="kn">from</span> <span class="nn">my_mod</span> <span class="kn">import</span> <span class="n">my_func</span>
-
-<span class="k">class</span> <span class="nc">MyFuncTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">test_my_func</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">test_vals</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-        <span class="n">expected</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_vals</span><span class="p">)</span>
-        <span class="n">actual</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">(</span><span class="o">*</span><span class="n">test_vals</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">actual</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</pre></div>
-</div>
-<div class="build container">
-<p>The <code class="docutils literal"><span class="pre">unittest</span></code> module is pretty full featured</p>
-<p>It comes with the standard Python distribution, no installation required.</p>
-<p>It provides a wide variety of assertions for testing all sorts of situations.</p>
-<p>It allows for a setup and tear down workflow both before and after all tests and before and after each test.</p>
-<p>It&#8217;s well known and well understood.</p>
-</div>
-<div class="build container">
-<p>It&#8217;s Object Oriented, and quite heavy.</p>
-<blockquote>
-<div><ul class="simple">
-<li>modeled after Java&#8217;s <code class="docutils literal"><span class="pre">junit</span></code> and it shows...</li>
-</ul>
-</div></blockquote>
-<p>It uses the framework design pattern, so knowing how to use the features
-means learning what to override.</p>
-<p>Needing to override means you have to be cautious.</p>
-<p>Test discovery is both inflexible and brittle.</p>
-<p>And there is no built-in parameterized testing.</p>
-</div>
-</div>
-<div class="section" id="other-options">
-<h3>Other Options<a class="headerlink" href="#other-options" title="Permalink to this headline">¶</a></h3>
-<p>There are several other options for running tests in Python.</p>
-<ul class="simple">
-<li><cite>Nose</cite>: <a class="reference external" href="https://nose.readthedocs.org/">https://nose.readthedocs.org/</a></li>
-<li><cite>pytest</cite>: <a class="reference external" href="http://pytest.org/latest/">http://pytest.org/latest/</a></li>
-<li>... And many frameworks supply their own test runners</li>
-</ul>
-<p>Both are very capable and widely used. I have a personal preference for pytest &#8211; so we&#8217;ll use it for this class</p>
-</div>
-<div class="section" id="installing-pytest">
-<h3>Installing <code class="docutils literal"><span class="pre">pytest</span></code><a class="headerlink" href="#installing-pytest" title="Permalink to this headline">¶</a></h3>
-<p>The first step is to install the package:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>python3 -m pip install pytest
-</pre></div>
-</div>
-<p>Once this is complete, you should have a <code class="docutils literal"><span class="pre">py.test</span></code> command you can run
-at the command line:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>py.test
-</pre></div>
-</div>
-<p>If you have any tests in your repository, that will find and run them.</p>
-<div class="build container">
-<strong>Do you?</strong></div>
-</div>
-<div class="section" id="pre-existing-tests">
-<h3>Pre-existing Tests<a class="headerlink" href="#pre-existing-tests" title="Permalink to this headline">¶</a></h3>
-<p>Let&#8217;s take a look at some examples.</p>
-<p><code class="docutils literal"><span class="pre">IntroToPython\Examples\Session05</span></code></p>
-<p>`` $ py.test``</p>
-<p>You can also run py.test on a particular test file:</p>
-<p><code class="docutils literal"><span class="pre">py.test</span> <span class="pre">test_this.py</span></code></p>
-<p>The results you should have seen when you ran <code class="docutils literal"><span class="pre">py.test</span></code> above come
-partly from these files.</p>
-<p>Let&#8217;s take a few minutes to look these files over.</p>
-<p>When you run the <code class="docutils literal"><span class="pre">py.test</span></code> command, <code class="docutils literal"><span class="pre">pytest</span></code> starts in your current
-working directory and searches the filesystem for things that might be tests.</p>
-<p>It follows some simple rules:</p>
-<ul class="build simple">
-<li>Any python file that starts with <code class="docutils literal"><span class="pre">test_</span></code> or <code class="docutils literal"><span class="pre">_test</span></code> is imported.</li>
-<li>Any functions in them that start with <code class="docutils literal"><span class="pre">test_</span></code> are run as tests.</li>
-<li>Any classes that start with <code class="docutils literal"><span class="pre">Test</span></code> are treated similarly, with methods that begin with <code class="docutils literal"><span class="pre">test_</span></code> treated as tests.</li>
-</ul>
-<p>This test running framework is simple, flexible and configurable.</p>
-<p><a class="reference external" href="http://pytest.org/latest/getting-started.html#getstarted">Read the documentation</a> for more information.</p>
-<p>What we&#8217;ve just done here is the first step in what is called <strong>Test Driven
-Development</strong>.</p>
-<p>A bunch of tests exist, but the code to make them pass does not yet exist.</p>
-<p>The red you see in the terminal when we run our tests is a goad to us to write
-the code that fixes these tests.</p>
-<p>Let&#8217;s do that next!</p>
-</div>
-<div class="section" id="test-driven-development-demo">
-<h3>Test Driven development demo<a class="headerlink" href="#test-driven-development-demo" title="Permalink to this headline">¶</a></h3>
-<p>In <code class="docutils literal"><span class="pre">Examples/Session05/test_cigar_party.py</span></code></p>
-</div>
-<div class="section" id="lab-testing">
-<h3>Lab: Testing<a class="headerlink" href="#lab-testing" title="Permalink to this headline">¶</a></h3>
-<p>Pick an example from codingbat:</p>
-<p><code class="docutils literal"><span class="pre">http://codingbat.com</span></code></p>
-<p>Do a bit of test-driven development on it:</p>
-<blockquote>
-<div><ul class="simple">
-<li>run something on the web site.</li>
-<li>write a few tests using the examples from the site.</li>
-<li>then write the function, and fix it &#8216;till it passes the tests.</li>
-</ul>
-</div></blockquote>
-<p>Do at least two of them.</p>
-</div>
-</div>
-<div class="section" id="id4">
-<h2>Homework<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2>Homework<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="catch-up">
 <h3>Catch up!<a class="headerlink" href="#catch-up" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -1011,7 +676,7 @@ big template &#8211; rather than building up a big string in parts.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="session06.html" class="btn btn-neutral float-right" title="Session Six: Advanced Argument Passing, lambda, functions as objects" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="session06.html" class="btn btn-neutral float-right" title="Session Six: Exceptions, Testing and Advanced Argument Passing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="session04.html" class="btn btn-neutral" title="Session Four: Lists, Iteration, Strings, Dictionaries, Sets" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
