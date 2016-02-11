@@ -722,16 +722,6 @@ Let's use some of this ability to use functions as objects for something useful:
 
 :ref:`exercise_trapezoidal_rule`
 
-Some reading on these topics:
-
-http://www.pydanny.com/python-partials-are-fun.html
-
-https://pymotw.com/2/functools/
-
-http://www.programiz.com/python-programming/closure
-
-https://www.clear.rice.edu/comp130/12spring/curry/
-
 Review framing questions
 ========================
 
@@ -739,5 +729,4 @@ Review framing questions
 Homework
 ========
 
-Finish up the Labs
-
+Finish the Labs
