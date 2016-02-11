@@ -732,8 +732,8 @@ http://www.programiz.com/python-programming/closure
 
 https://www.clear.rice.edu/comp130/12spring/curry/
 
-Review framing question
------------------------
+Review framing questions
+========================
 
 
 Homework
