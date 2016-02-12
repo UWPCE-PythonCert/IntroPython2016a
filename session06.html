@@ -125,6 +125,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">switch-case</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#if-elif-chains"><code class="docutils literal"><span class="pre">if-elif</span></code> chains</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dict-as-switch">Dict as switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch-with-functions">Switch with functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#lab-functions-as-objects">Lab: Functions as objects</a></li>
 </ul>
 </li>
@@ -214,6 +215,7 @@
 </div>
 <div class="section" id="exceptions">
 <h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>What might go wrong here?</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">try</span><span class="p">:</span>
     <span class="n">do_something</span><span class="p">()</span>
     <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;missing.txt&#39;</span><span class="p">)</span>
@@ -682,6 +684,25 @@ you know how this nifty trick works:</p>
 <p>Simple, elegant and fast.</p>
 <p>You can do a dispatch table by putting functions as the value.</p>
 <p>Example: Chris&#8217; mailroom2 solution.</p>
+</div>
+<div class="section" id="switch-with-functions">
+<h3>Switch with functions<a class="headerlink" href="#switch-with-functions" title="Permalink to this headline">¶</a></h3>
+<p>What would this be like if you used functions instead? Think of the possibilities.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="k">def</span> <span class="nf">my_zero_func</span><span class="p">():</span>
+<span class="go">return &quot;I&#39;m zero&quot;</span>
+
+<span class="gp">In [12]: </span><span class="k">def</span> <span class="nf">my_one_func</span><span class="p">():</span>
+<span class="go">    return &quot;I&#39;m one&quot;</span>
+
+<span class="gp">In [13]: </span><span class="n">switch_func_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">    0: my_zero_func,</span>
+<span class="go">    1: my_one_func,</span>
+<span class="go">}</span>
+
+<span class="gp">In [14]: </span><span class="n">switch_func_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)()</span>
+<span class="gh">Out[14]: </span><span class="go">&quot;I&#39;m zero&quot;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="lab-functions-as-objects">
 <h3>Lab: Functions as objects<a class="headerlink" href="#lab-functions-as-objects" title="Permalink to this headline">¶</a></h3>

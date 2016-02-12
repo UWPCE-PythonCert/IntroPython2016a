@@ -42,6 +42,8 @@ You are the CTO of a new big data company.  Your CEO wants you to open the your 
 Exceptions
 ==========
 
+What might go wrong here?
+
 .. code-block:: python
 
     try:
@@ -693,6 +695,28 @@ You can do a dispatch table by putting functions as the value.
 Example: Chris' mailroom2 solution.
 
 
+
+
+Switch with functions
+---------------------
+
+What would this be like if you used functions instead? Think of the possibilities.
+
+.. code-block:: ipython
+
+    In [11]: def my_zero_func():
+    return "I'm zero"
+    
+    In [12]: def my_one_func():
+        return "I'm one"
+    
+    In [13]: switch_func_dict = {
+        0: my_zero_func,
+        1: my_one_func,
+    }
+    
+    In [14]: switch_func_dict.get(0)()
+    Out[14]: "I'm zero"
 
 
 Lab: Functions as objects
