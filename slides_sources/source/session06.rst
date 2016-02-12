@@ -547,7 +547,6 @@ Defaults are evaluated when the function is defined
     In [160]: fun()
     x is: 4
 
-This is a **very** important point -- I will repeat it!
 
 Function arguments in variables
 -------------------------------
