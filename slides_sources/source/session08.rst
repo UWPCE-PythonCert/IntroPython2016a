@@ -25,9 +25,7 @@ Lightning Talks Today:
 
 .. rst-class:: medium
 
-  Robert Ryan Leslie
 
-  Ryan Morin
 
 
 Personal Project
@@ -247,9 +245,7 @@ Lightning talks:
 
 .. rst-class:: medium
 
-  Robert Ryan Leslie
 
-  Ryan Morin
 
 
 ========================
