@@ -86,13 +86,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../session01.html">Session One: Introductions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session02.html">Session Two: gitHub, Functions, Booleans and Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session03.html">Session Three: Sequences, Iteration and String Formatting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session04.html">Session Four: Dictionaries, Sets, and Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session05.html">Session Five: Exceptions, Testing, Comprehensions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session06.html">Session Six: Advanced Argument Passing, lambda, functions as objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session04.html">Session Four: Lists, Iteration, Strings, Dictionaries, Sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session05.html">Session Five: Files, Streams &amp; String IO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session06.html">Session Six: Exceptions, Testing and Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session07.html">Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session08.html">Session Eight: More OO: Properties, Special methods.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session09.html">Session Nine: Iterators, Iterables, and Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session10.html">Session Ten: Decorators and Context Managers &#8211; Wrap Up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session10.html">Session Ten</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Exercises</a><ul class="current">
@@ -168,12 +168,9 @@
 <h3>Exceptions Lab<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Improving <code class="docutils literal"><span class="pre">input</span></code></p>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">input()</span></code>  function can generate two exceptions: <code class="docutils literal"><span class="pre">EOFError</span></code>
-or <code class="docutils literal"><span class="pre">KeyboardInterrupt</span></code>  on end-of-file(EOF) or canceled input.</li>
-<li>Create a wrapper function, perhaps <code class="docutils literal"><span class="pre">safe_input()</span></code>  that returns <code class="docutils literal"><span class="pre">None</span></code>
-rather rather than raising these exceptions, when the user enters <code class="docutils literal"><span class="pre">^C</span></code>  for Keyboard Interrupt, or <code class="docutils literal"><span class="pre">^D</span></code> (<code class="docutils literal"><span class="pre">^Z</span></code>  on Windows) for End Of File.</li>
-<li>Update your mailroom program to use exceptions (and IBAFP) to handle
-malformed numeric input</li>
+<li>The <code class="docutils literal"><span class="pre">input()</span></code>  function can generate two exceptions: <code class="docutils literal"><span class="pre">EOFError</span></code> or <code class="docutils literal"><span class="pre">KeyboardInterrupt</span></code>  on end-of-file(EOF) or canceled input.</li>
+<li>Create a wrapper function, perhaps <code class="docutils literal"><span class="pre">safe_input()</span></code>  that returns <code class="docutils literal"><span class="pre">None</span></code> rather rather than raising these exceptions, when the user enters <code class="docutils literal"><span class="pre">^C</span></code>  for Keyboard Interrupt, or <code class="docutils literal"><span class="pre">^D</span></code> (<code class="docutils literal"><span class="pre">^Z</span></code>  on Windows) for End Of File.</li>
+<li>Update your mailroom program to use exceptions to handle malformed numeric input.</li>
 </ul>
 </div>
 </div>
