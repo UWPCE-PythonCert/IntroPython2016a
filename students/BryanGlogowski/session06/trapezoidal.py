@@ -16,7 +16,7 @@ def trapz(fun, a, b):
     step = (float(b) - float(a)) / 200.0
 
     for i in frange(float(a),float(b),step):
-        area += fun(i) * step
+        area += ((fun(i) + fun(i+step)) / 2.0) * step
 
     return area
 
@@ -33,7 +33,18 @@ def t(x):
 
 # Assert my answers are similar to a Trapezoidal Rule Calculator
 
-assert round(trapz(s, 0, 10),2) == round(10.1810116595807,2)
-assert round(trapz(l, 0, 10),2) == round(50.0,2)
-assert round(trapz(t, 0, 10),1) == round(16.5054761640473,1)
+# ...with a specified precision:
+precision = 5
+
+print(round(trapz(s, 0, 10),precision))
+print(round(10.1810116595807,precision))
+assert round(trapz(s, 0, 10),precision) == round(10.1810116595807,precision)
+
+print(round(trapz(l, 0, 10),precision))
+print(round(50.0,precision))
+assert round(trapz(l, 0, 10),precision) == round(50.0,precision)
+
+print(round(trapz(t, 0, 10),precision))
+print(round(16.5054761640473,precision))
+assert round(trapz(t, 0, 10),precision) == round(16.5054761640473,precision)
 
