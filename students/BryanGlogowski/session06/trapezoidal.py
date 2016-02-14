@@ -31,6 +31,9 @@ def s(x):
 def t(x):
     return math.tan(x)
 
+def st(x):
+    return math.tan(x) * math.sin(x)
+
 # Assert my answers are similar to a Trapezoidal Rule Calculator
 
 # ...with a specified precision:
@@ -48,3 +51,8 @@ print(round(trapz(t, 0, 10),precision))
 print(round(16.5054761640473,precision))
 assert round(trapz(t, 0, 10),precision) == round(16.5054761640473,precision)
 
+# More tests...
+assert round(trapz(st, 0, 10),precision) == round(9.8923666153375,precision)
+assert round(trapz(st, 10, 20),precision) == round(9.44777265586442,precision)
+assert round(trapz(st, -10, 20),precision) == round(58.5233631220135,precision)
+assert round(trapz(st, -10.2, 20.53),precision) == round(-0.409523489721687,precision)
