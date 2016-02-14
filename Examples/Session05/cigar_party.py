@@ -10,3 +10,6 @@ Return True if the party with the given values is successful,
 or False otherwise.
 """
 
+
+def cigar_party(cigars, is_weekend):
+    pass
