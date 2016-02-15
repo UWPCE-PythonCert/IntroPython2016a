@@ -1,0 +1,8 @@
+import os
+import os.path
+
+print("FD")
+for item in os.listdir(os.curdir):
+    print("{0}{1}: {2}".format("*" if os.path.isdir(item) else " ",
+                               "*" if not(os.path.isdir(item)) else " ",
+                               item))
