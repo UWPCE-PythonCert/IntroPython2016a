@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>List Lab &mdash; Introduction To Python 1.3 documentation</title>
+  <title>Passing functions to functions &mdash; Introduction To Python 1.3 documentation</title>
   
 
   
@@ -32,8 +32,8 @@
   
     <link rel="top" title="Introduction To Python 1.3 documentation" href="../index.html"/>
         <link rel="up" title="Exercises" href="index.html"/>
-        <link rel="next" title="String Formatting Lab" href="string_formatting.html"/>
-        <link rel="prev" title="Slicing Lab" href="slicing.html"/> 
+        <link rel="next" title="Trapezoidal Rule" href="trapezoid.html"/>
+        <link rel="prev" title="Comprehensions Lab" href="comprehensions_lab.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -98,17 +98,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Exercises</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html#contents">Contents:</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html#session-2">Session 2:</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html#session-3">Session 3:</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="slicing.html">Slicing Lab</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="">List Lab</a></li>
-<li class="toctree-l4"><a class="reference internal" href="string_formatting.html">String Formatting Lab</a></li>
-<li class="toctree-l4"><a class="reference internal" href="rot13.html">ROT13</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mailroom.html">Mailroom</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#session-3">Session 3:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#session-4">Session 4:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#session-5">Session 5:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#session-6">Session 6:</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#session-6">Session 6:</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="">Passing functions to functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="trapezoid.html">Trapezoidal Rule</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#session-7">Session 7:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#session-8">Session 8:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#session-9">Session 9:</a></li>
@@ -149,11 +146,11 @@
       
           <li><a href="index.html">Exercises</a> &raquo;</li>
       
-    <li>List Lab</li>
+    <li>Passing functions to functions</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/exercises/list_lab.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/exercises/functions_as_args.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,79 +160,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="list-lab">
-<span id="exercise-list-lab"></span><h1>List Lab<a class="headerlink" href="#list-lab" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="learning-about-lists">
-<h2>Learning about lists<a class="headerlink" href="#learning-about-lists" title="Permalink to this headline">¶</a></h2>
-<p>After:</p>
-<p><a class="reference external" href="http://www.upriss.org.uk/python/session5.html">http://www.upriss.org.uk/python/session5.html</a></p>
+  <div class="section" id="passing-functions-to-functions">
+<span id="exercise-slicing"></span><h1>Passing functions to functions<a class="headerlink" href="#passing-functions-to-functions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="goal">
-<h3>Goal:<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h3>
-<p>Learn the basic ins and outs of Python lists.</p>
+<h2>Goal<a class="headerlink" href="#goal" title="Permalink to this headline">¶</a></h2>
+<p>Practice passing functions as arguments to other functions</p>
 </div>
-<div class="section" id="hint">
-<h3>hint<a class="headerlink" href="#hint" title="Permalink to this headline">¶</a></h3>
-<p>to query the user for info at the command line, you use:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">response</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">&quot;a prompt for the user &gt; &quot;</span><span class="p">)</span>
+<div class="section" id="scenario">
+<h2>Scenario<a class="headerlink" href="#scenario" title="Permalink to this headline">¶</a></h2>
+<p>You are a game designer working on a scoring system.  You have several different categories of weapons: hand weapons, guns, and flower power weapons.  In each of these categories of weapon there is a small, a medium and a large weapon.  Your task is to write a scoring function that takes two arguments and returns an integer which represets the score value of the specified size of the specified weapon.</p>
+<p>The first argument to the scoring function is itself a function that represents the cagetory of weapon, be it a hand weapon, a gun or a weapon of the dreaded flower power variety.</p>
+<p>The second argument to the scoring function is one of three strings: small, medium or large.</p>
+<p>The score for weapons across the various categories follow the fibonacci scale such that acceptance tests for the scoring function follow the following pattern.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test_scoring</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">hand_weapon</span><span class="p">,</span> <span class="s">&#39;small&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">hand_weapon</span><span class="p">,</span> <span class="s">&#39;medium&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">hand_weapon</span><span class="p">,</span> <span class="s">&#39;large&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">gun</span><span class="p">,</span> <span class="s">&#39;small&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">gun</span><span class="p">,</span> <span class="s">&#39;medium&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">gun</span><span class="p">,</span> <span class="s">&#39;large&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">13</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">flower_power</span><span class="p">,</span> <span class="s">&#39;small&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">21</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">flower_power</span><span class="p">,</span> <span class="s">&#39;medium&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">34</span>
+    <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">flower_power</span><span class="p">,</span> <span class="s">&#39;large&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">55</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">response</span></code> will be a string of whatever the user types (until a &lt;return&gt;).</p>
-</div>
-<div class="section" id="procedure">
-<h3>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h3>
-<p>In your student dir in the repo, create a directory for today&#8217;s session and put in a new <code class="docutils literal"><span class="pre">list_lab.py</span></code> file.</p>
-<p>The file should be an executable python script. That is to say that one
-should be able to run the script directly like so:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>./list_lab.py
+<p>Your task is to fill out the following functions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">hand_weapon</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">gun</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">flower_power</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="n">weapon_type</span><span class="p">,</span> <span class="n">weapon_size</span><span class="p">):</span>
+    <span class="k">pass</span>
 </pre></div>
-</div>
-<p>(At least on OS-X and Linux)</p>
-<p>&#8211; you do that with this command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>chmod +x list_lab.py
-</pre></div>
-</div>
-<p>(The +x means make this executable)</p>
-<p>Add the file to your clone of the repository and commit changes frequently
-while working on the following tasks. When you are done, push your changes to
-GitHub and issue a pull request.</p>
-<p>(if you are struggling with git &#8211; just write the code for now)</p>
-<p>When the script is run, it should accomplish the following four series of
-actions:</p>
-<ul class="simple">
-<li>Create a list that contains &#8220;Apples&#8221;, &#8220;Pears&#8221;, &#8220;Oranges&#8221; and &#8220;Peaches&#8221;.</li>
-<li>Display the list.</li>
-<li>Ask the user for another fruit and add it to the end of the list.</li>
-<li>Display the list.</li>
-<li>Ask the user for a number and display the number back to the user and the
-fruit corresponding to that number (on a 1-is-first basis).</li>
-<li>Add another fruit to the beginning of the list using &#8220;+&#8221; and display the
-list.</li>
-<li>Add another fruit to the beginning of the list using insert() and display the list.</li>
-<li>Display all the fruits that begin with &#8220;P&#8221;, using a for loop.</li>
-</ul>
-<p>Using the list created in series 1 above:</p>
-<ul class="simple">
-<li>Display the list.</li>
-<li>Remove the last fruit from the list.</li>
-<li>Display the list.</li>
-<li>Ask the user for a fruit to delete and find it and delete it.</li>
-<li>(Bonus: Multiply the list times two. Keep asking until a match is found. Once found, delete all occurrences.)</li>
-</ul>
-<p>Again, using the list from series 1:</p>
-<ul class="simple">
-<li>Ask the user for input displaying a line like &#8220;Do you like apples?&#8221;</li>
-<li>for each fruit in the list (making the fruit all lowercase).</li>
-<li>For each &#8220;no&#8221;, delete that fruit from the list.</li>
-<li>For any answer that is not &#8220;yes&#8221; or &#8220;no&#8221;, prompt the user to answer with one
-of those two values (a while loop is good here):</li>
-<li>Display the list.</li>
-</ul>
-<p>Once more, using the list from series 1:</p>
-<ul class="simple">
-<li>Make a copy of the list and reverse the letters in each fruit in the copy.</li>
-<li>Delete the last item of the original list. Display the original list and the
-copy.</li>
-</ul>
 </div>
 </div>
 </div>
@@ -247,10 +208,10 @@ copy.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="string_formatting.html" class="btn btn-neutral float-right" title="String Formatting Lab" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="trapezoid.html" class="btn btn-neutral float-right" title="Trapezoidal Rule" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="slicing.html" class="btn btn-neutral" title="Slicing Lab" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="comprehensions_lab.html" class="btn btn-neutral" title="Comprehensions Lab" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
