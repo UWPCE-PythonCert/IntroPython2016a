@@ -36,12 +36,18 @@ def send_a_thank_you(donors_dict):
             for donor_name in sorted(donors_dict):
                 print(donor_name)
         else:
+
             # Prompt the user for a donation amount.
             donation_amount = input("Enter a donation amount: $")
+            while True:
+                try:
 
-            while not donation_amount.isdecimal():
-                # Re-prompt the user for a donation amount.
-                donation_amount = input("Enter a donation amount: $")
+                    float(donation_amount)
+                except:
+                    # Re-prompt the user for a donation amount.
+                    donation_amount = input("Enter a donation amount: $")
+                else:
+                    break
 
             # Round the donation amount to 2 decimal places.
             donation_amount = round(float(donation_amount), 2)
