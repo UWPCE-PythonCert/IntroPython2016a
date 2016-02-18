@@ -1,49 +1,32 @@
+
+
 .. include:: include.rst
 
-***************************
-Object Oriented Programming
-***************************
-
-.. rst-class:: medium centered
-
-.. container::
-
-  Classes
-
-  Instances
-
-  Class and instance attributes
-
-  Subclassing
-
-  Overriding methods
+Session Seven: Object Oriented Programming
+******************************************
 
 
-================
-Review/Questions
-================
+Announcements
+=============
 
-Review of Previous Class
-------------------------
+Review & Questions
+==================
 
-.. rst-class:: medium
-  Advanced Argument passing
+Homework Review
+===============
 
-  Lambda
+Code review -- let's take a look.
 
-  Functions as Objects
 
-Homework review
----------------
 
-Homework Questions?
+Homework Review: Trapezoid
+--------------------------
 
 Did you all get a trapedzoidal rule function working?
 
 Anyone get the "passing through of arguments"?
 
 How about the adaptive solutions?
-
 
 Notes on Floating point
 -----------------------
@@ -68,61 +51,35 @@ Some notes about FP issues:
 
 https://docs.python.org/3.5/tutorial/floatingpoint.html
 
-Code Review
------------
 
-Anyone unsatisfied with their solution -- or stuck?
+Lightning Talks
+===============
 
-Let's do a code review!
+| |lightning-session07a|
+| |lightning-session07b|
+| |lightning-session07c|
+| |lightning-session07d|
+| |lightning-session07e|
+|
 
+Framing
+=======
 
-Lightning Talks Today:
------------------------
+In the Beginning there was the GOTO.
 
-.. rst-class:: medium
-
-
-
-===========================
-Object Oriented Programming
-===========================
-
-A Core approach to organizing code.
-
-I'm going to go through this fast.
-
-So we can get to the actual coding.
+And in fact, there wasn't even that.
 
 
-Object Oriented Programming
----------------------------
 
-More about Python implementation than OO design/strengths/weaknesses
+Programming Paradigms
+=====================
 
-One reason for this:
-
-Folks can't even agree on what OO "really" means
-
-See: The Quarks of Object-Oriented Development
-
-  - Deborah J. Armstrong
-
-http://agp.hx0.ru/oop/quarks.pdf
+https://en.wikipedia.org/wiki/Programming_paradigm
 
 
-.. nextslide::
 
-Is Python a "True" Object-Oriented Language?
-
-(Doesn't support full encapsulation, doesn't *require*
-classes,  etc...)
-
-.. nextslide::
-
-.. rst-class:: center large
-
-    I don't Care!
-
+Software Design
+---------------
 
 Good software design is about code re-use, clean separation of concerns,
 refactorability, testability, etc...
@@ -131,19 +88,7 @@ OO can help with all that, but:
   * It doesn't guarantee it
   * It can get in the way
 
-.. nextslide::
-
-Python is a Dynamic Language
-
-That clashes with "pure" OO
-
-Think in terms of what makes sense for your project
- -- not any one paradigm of software design.
-
-
-.. nextslide::
-
-So what is "object oriented programming"?
+What is Object Oriented Programming?
 
 |
     "Objects can be thought of as wrapping their data
@@ -155,56 +100,52 @@ So what is "object oriented programming"?
 
 http://en.wikipedia.org/wiki/Object-oriented_programming
 
+
 .. nextslide::
 
 Even simpler:
-
 
 "Objects are data and the functions that act on them in one place."
 
 This is the core of "encapsulation"
 
-In Python: just another namespace.
 
-.. nextslide::
+The Dominant Model
+------------------
 
-The OO buzzwords:
+OO is the dominant model for the past couple decades, but it is not the only model, and languages such as Python increasingly mix and blend among models.
 
-  * data abstraction
-  * encapsulation
-  * modularity
-  * polymorphism
-  * inheritance
+Object Oriented Concepts
+------------------------
 
-Python does all of this, though it doesn't enforce it.
+.. rst-class:: medium centered
 
-.. nextslide::
+.. container::
 
-You can do OO in C
+  Classes
 
-(see the GTK+ project)
+  Instances or Objects
 
+  Encapsulation
 
-"OO languages" give you some handy tools to make it easier (and safer):
+  Class and instance attributes
 
-  * polymorphism (duck typing gives you this anyway)
-  * inheritance
+  Subclassing
 
+  Overriding methods
 
-.. nextslide::
+  Operator Overloading
 
-OO is the dominant model for the past couple decades
+  Polymorphism
 
-You will need to use it:
+  Dynamic Dispatch
 
-- It's a good idea for a lot of problems
+  
 
-- You'll need to work with OO packages
+  
 
-(Even a fair bit of the standard library is Object Oriented)
-
-
-.. nextslide:: Some definitions
+Definitions
+-----------
 
 class
   A category of objects: particular data and behavior: A "circle" (same as a type in python)
@@ -222,16 +163,78 @@ attribute
 method
   A function that belongs to a class
 
+Python and OO
+-------------
+
+Is Python a "True" Object-Oriented Language?
+
+What are its strengths and weaknesses vis-a-vis OO?
+
+It does not support full encapsulation, i.e., it does not require classes,  etc.
+
+
 .. nextslide::
 
-.. rst-class:: center
+Folks can't even agree on what OO "really" means
 
-    Note that in python, functions are first class objects, so a method *is* an attribute
+See: The Quarks of Object-Oriented Development
+
+  - Deborah J. Armstrong
+
+http://agp.hx0.ru/oop/quarks.pdf
 
 
-==============
+.. nextslide::
+
+Think in terms of what makes sense for your project
+ -- not any one paradigm of software design.
+
+
+.. nextslide::
+
+OO Buzzwords
+
+  * data abstraction
+  * encapsulation
+  * modularity
+  * polymorphism
+  * inheritance
+
+Python provides for all of this, though it doesn't enforce or require any of it.
+
+Python's roots
+--------------
+
+|  C
+|  C with Classes (aka C++)
+|  Modula2
+|
+
+
+You can do OO in C
+------------------
+
+Which today is not considered an OO Language.
+
+See the GTK+ project.
+
+OO languages give you some handy tools to make it easier (and safer):
+
+  * polymorphism (duck typing gives you this)
+  * inheritance
+
+You will need to understand OO
+------------------------------
+
+- It's a good idea for a lot of problems
+
+- You'll need to work with OO packages
+
+(Even a fair bit of the standard library is Object Oriented)
+
 Python Classes
 ==============
+
 
 .. rst-class:: left
 
@@ -251,8 +254,7 @@ Python Classes
 
     It is created when the statement is run -- much like ``def``
 
-Python Classes
---------------
+A simple class
 
 About the simplest class you can write
 
@@ -271,9 +273,8 @@ About the simplest class you can write
     >>> p.x
     1
 
-.. nextslide::
-
-Basic Structure of a real class:
+Basic Structure of a class
+--------------------------
 
 .. code-block:: python
 
@@ -294,9 +295,8 @@ Basic Structure of a real class:
 
 see: ``Examples/Session07/simple_classes.py``
 
-.. nextslide::
-
 The Initializer
+---------------
 
 The ``__init__``  special method is called when a new instance of a class is created.
 
@@ -316,8 +316,8 @@ It gets the arguments passed when you call the class object:
 
     Point(x, y)
 
-.. nextslide::
-
+Self
+----
 
 What is this ``self`` thing?
 
@@ -330,7 +330,6 @@ The instance of the class is passed as the first parameter for every method.
     class Point:
         def a_function(self, x, y):
     ...
-
 
 Does this look familiar from C-style procedural programming?
 
@@ -351,7 +350,8 @@ That's where all the instance-specific data is.
             self.x = x
             self.y = y
 
-.. nextslide::
+Class Attributes
+----------------
 
 Anything assigned in the class scope is a class attribute -- every
 instance of the class shares the same one.
@@ -371,13 +371,11 @@ The class is one namespace, the instance is another.
     >>> p3.get_color()
      'red'
 
-
 class attributes are accessed with ``self``  also.
 
 
-.. nextslide::
-
-Typical methods:
+Typical methods
+---------------
 
 .. code-block:: python
 
@@ -395,9 +393,9 @@ Methods take some parameters, manipulate the attributes in ``self``.
 
 They may or may not return something useful.
 
-.. nextslide::
 
-Gotcha!
+Arity Gotcha
+------------
 
 .. code-block:: python
 
@@ -414,10 +412,16 @@ Huh???? I only gave 2
 
 ``self`` is implicitly passed in for you by python.
 
-(demo of bound vs. unbound methods)
+Functions (methods) are First Class
+-----------------------------------
 
-LAB
-----
+.. rst-class:: center
+
+    Note that in python, functions are first class objects, so a method *is* an attribute
+
+
+LAB: Classes
+------------
 
 Let's say you need to render some html...
 
@@ -431,21 +435,12 @@ Details in:
 
 :ref:`exercise_html_renderer`
 
-Let's get a start with step 1. in class.
-
-I'll give you a few minutes to think about it -- then we'll get started as a group.
-
-
-Lightning Talks
-----------------
-
-.. rst-class:: medium
+Do Step 1. in class and then wait to do the rest until after discussing Subclassing and Inheritance.
 
 
 
-=======================
-Subclassing/Inheritance
-=======================
+Subclassing & Inheritance
+=========================
 
 Inheritance
 -----------
@@ -526,21 +521,11 @@ all the instances will have the new method
 
 Here's a program design suggestion:
 
-"""
-
-Whenever you override a method, the interface of the new method should be the same as the old.  It should takethe same parameters, return the same type, and obey the same preconditions and postconditions.
+Whenever you override a method, the interface of the new method should be the same as the old.  It should take the same parameters, return the same type, and obey the same preconditions and postconditions.
 
 If you obey this rule, you will find that any function designed to work with an instance of a superclass, like a Deck, will also work with instances of subclasses like a Hand or PokerHand.  If you violate this rule, your code will collapse like (sorry) a house of cards.
 
-"""
 
-|
-| [ThinkPython 18.10]
-|
-| ( Demo of class vs. instance attributes )
-
-
-===================
 More on Subclassing
 ===================
 
@@ -568,6 +553,7 @@ exception to: "don't change the method signature" rule.
 
 More subclassing
 ----------------
+
 You can also call the superclass' other methods:
 
 .. code-block:: python
@@ -585,7 +571,6 @@ You can also call the superclass' other methods:
 
 There is nothing special about ``__init__``  except that it gets called
 automatically when you instantiate an instance.
-
 
 When to Subclass
 ----------------
@@ -612,7 +597,6 @@ or
 
 You only want to subclass list if your class could be used anywhere a list can be used.
 
-
 Attribute resolution order
 --------------------------
 
@@ -635,7 +619,6 @@ https://www.python.org/download/releases/2.3/mro/
 
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
-
 What are Python classes, really?
 --------------------------------
 
@@ -653,7 +636,6 @@ Python classes are:
 
 
 That's about it -- really!
-
 
 Type-Based dispatch
 -------------------
@@ -685,43 +667,8 @@ https://www.python.org/download/releases/2.3/mro/
 
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
-
-Wrap Up
--------
-
-Thinking OO in Python:
-
-Think about what makes sense for your code:
-
-* Code re-use
-* Clean APIs
-* ...
-
-Don't be a slave to what OO is *supposed* to look like.
-
-Let OO work for you, not *create* work for you
-
-.. nextslide::
-
-OO in Python:
-
-The Art of Subclassing: *Raymond Hettinger*
-
-http://pyvideo.org/video/879/the-art-of-subclassing
-
-"classes are for code re-use -- not creating taxonomies"
-
-Stop Writing Classes: *Jack Diederich*
-
-http://pyvideo.org/video/880/stop-writing-classes
-
-"If your class has only two methods -- and one of them is ``__init__``
--- you don't need a class"
-
-
-===
-LAB
-===
+LAB: Subclassing & Inheritance
+------------------------------
 
 .. rst-class:: left medium
 
@@ -738,35 +685,8 @@ Now we have a base class, and we can:
 
 These are the core OO approaches
 
-
-===================
-More on Subclassing
-===================
-
-.. rst-class:: left
-
-    This is a great talk (yes, I'm repeating):
-
-    The Art of Subclassing: *Raymond Hettinger*
-
-    http://pyvideo.org/video/879/the-art-of-subclassing
-
-    If you haven't watched it,  It's well worth your time
-
-What's a Subclass For?
-----------------------
-
-The most salient points from that video are as follows:
-
-* **Subclassing is not for Specialization**
-
-* **Subclassing is for Reusing Code**
-
-* **Bear in mind that the subclass is in charge**
-
-
 Multiple Inheritance
---------------------
+====================
 
 Multiple inheritance: Inheriting from more than one class
 
@@ -784,7 +704,8 @@ Simply provide more than one parent.
 
 (calls to the super class ``__init__``  are optional -- case dependent)
 
-.. nextslide:: Method Resolution Order
+MRO: Method Resolution Order
+----------------------------
 
 .. code-block:: python
 
@@ -804,33 +725,6 @@ Attributes are located bottom-to-top, left-to-right
 * ... also left to right ...
 
 http://python-history.blogspot.com/2010/06/method-resolution-order.html
-
-.. nextslide:: Mix-ins
-
-So why would you want to do this? One reason:  *mixins*
-
-Provides an subset of expected functionality in a re-usable package.
-
-Huh? this is why --
-
-Hierarchies are not always simple:
-
-* Animal
-
-  * Mammal
-
-    * GiveBirth()
-
-  * Bird
-
-    * LayEggs()
-
-Where do you put a Platypus?
-
-Real World Example: `FloatCanvas`_
-
-.. _FloatCanvas: https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L485
-
 
 ``super()``
 -----------
@@ -878,22 +772,101 @@ http://rhettinger.wordpress.com/2011/05/26/super-considered-super/
 
 (Both worth reading....)
 
-========
+Mix-ins
+-------
+
+So why would you want to do this? One reason:  *mixins*
+
+Provides an subset of expected functionality in a re-usable package.
+
+Huh? this is why --
+
+Hierarchies are not always simple:
+
+* Animal
+
+  * Mammal
+
+    * GiveBirth()
+
+  * Bird
+
+    * LayEggs()
+
+Where do you put a Platypus?
+
+Real World Example: `FloatCanvas`_
+
+.. _FloatCanvas: https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L485
+
+Subclassing vs Composition
+==========================
+
+
+Composition
+-----------
+
+
+
+Review framing questions
+========================
+
+Think about OO in Python:
+
+Think about what makes sense for your code:
+
+* Code re-use
+* Clean APIs
+* ...
+
+Don't be a slave to what OO is *supposed* to look like.
+
+Let OO work for you, not *create* work for you
+
+
 Homework
 ========
 
-Complete your html renderer.
+Complete labs.
 
-Watch those videos:
 
-Python class toolkit: *Raymond Hettinger* -- https://youtu.be/HTLu2DFOdTg
+Readings
+========
+
+
+The Art of Subclassing
+----------------------
+
+The Art of Subclassing by *Raymond Hettinger*
+
+http://pyvideo.org/video/879/the-art-of-subclassing
+
+The most salient points from that video are as follows:
+
+* **Subclassing is not for Specialization**
+
+* **Classes and subclassing are for code re-use -- not creating taxonomies**
+
+* **Bear in mind that the subclass is in charge**
+
+
+Stop Writing Classes
+--------------------
+
+Stop Writing Classes by *Jack Diederich*
+
+http://pyvideo.org/video/880/stop-writing-classes
+
+"If your class has only two methods -- and one of them is ``__init__``
+-- you don't need a class"
+
+
+Python Class Toolkit
+--------------------
+
+Python Class Toolkit by *Raymond Hettinger*
+
+https://youtu.be/HTLu2DFOdTg
 
 https://speakerdeck.com/pyconslides/pythons-class-development-toolkit-by-raymond-hettinger
-
-The Art of Subclassing: *Raymond Hettinger* -- http://pyvideo.org/video/879/the-art-of-subclassing
-
-Stop Writing Classes: *Jack Diederich* -- http://pyvideo.org/video/880/stop-writing-classes
-
-Read up on super()
-
 
