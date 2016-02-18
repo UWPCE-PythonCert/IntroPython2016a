@@ -11,6 +11,12 @@ def trapz(fun, a, b, num_steps, **kwargs):
 
     :param b: the end point for the integration
     :type b: a numeric value
+
+    :param num_steps: The number of integratiion steps to undertake.
+    :type num_steps: a numeric integer value
+
+    :param kwargs: Arguments passed to 'fun' when calling 'fun'
+    :type kwargs: Keyword arguments
     """
     STEP_SIZE = (b-a)/num_steps
 
