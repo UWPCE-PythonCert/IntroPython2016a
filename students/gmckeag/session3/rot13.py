@@ -23,10 +23,7 @@ def rot13(s):
 
 if __name__ == '__main__':
     s1 = 'abcdEFG This is a Little Thing with 3423t23t0~~2#@ junk IN the Middle  123\n'
-    s2 = rot13(s1)
-    s3 = rot13(s2)
-    assert s1 == s3
-
+    assert rot13(rot13(s1)) == s1
     print(rot13('Zntargvp sebz bhgfvqr arne pbeare'))
 
 

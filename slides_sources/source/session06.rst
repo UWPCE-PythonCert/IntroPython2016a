@@ -42,10 +42,7 @@ You are the CTO of a new big data company.  Your CEO wants you to open the your 
 Exceptions
 ==========
 
-A really nifty python feature -- really handy!
-
-Another Branching structure
----------------------------
+What might go wrong here?
 
 .. code-block:: python
 
@@ -55,19 +52,6 @@ Another Branching structure
         process(f)   # never called if file missing
     except IOError:
         print("couldn't open missing.txt")
-
-Exceptions
-----------
-Never Do this:
-
-.. code-block:: python
-
-    try:
-        do_something()
-        f = open('missing.txt')
-        process(f)   # never called if file missing
-    except:
-        print "couldn't open missing.txt"
 
 Exceptions
 ----------
@@ -173,7 +157,6 @@ Exceptions -- using them
         print(the_error)
         the_error.extra_info = "some more information"
         raise
-
 
 Particularly useful if you catch more than one exception:
 
@@ -566,7 +549,6 @@ Defaults are evaluated when the function is defined
     In [160]: fun()
     x is: 4
 
-This is a **very** important point -- I will repeat it!
 
 Function arguments in variables
 -------------------------------
@@ -713,6 +695,28 @@ You can do a dispatch table by putting functions as the value.
 Example: Chris' mailroom2 solution.
 
 
+
+
+Switch with functions
+---------------------
+
+What would this be like if you used functions instead? Think of the possibilities.
+
+.. code-block:: ipython
+
+    In [11]: def my_zero_func():
+    return "I'm zero"
+    
+    In [12]: def my_one_func():
+        return "I'm one"
+    
+    In [13]: switch_func_dict = {
+        0: my_zero_func,
+        1: my_one_func,
+    }
+    
+    In [14]: switch_func_dict.get(0)()
+    Out[14]: "I'm zero"
 
 
 Lab: Functions as objects
