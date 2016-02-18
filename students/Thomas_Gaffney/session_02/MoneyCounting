@@ -1,0 +1,10 @@
+def enterACoin (coinName)
+	input("Enter the number of "+coinName+":")
+	try: 
+	    int(input)
+	    return int(input)
+	except:
+		print("Please enter an integer")
+		enterACoin(coinName)
+
+enterACoin("Nickels")

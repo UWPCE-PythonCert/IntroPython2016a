@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-
 def show_main_menu():
     ''' Present the menu to find out what the user wants to do. '''
     ''' Returns an int giving the menu item selected. '''
@@ -69,43 +68,70 @@ def thank(donor_list):
     '''
     while True:
         print("")
-        full_name = input("[Full Name|'list'|'back'] --> ")
-        if full_name == "list":
+        cmd = input("[Full Name|'list'|'thank_all'|'back'] --> ").lower()
+        if cmd == "list":
             print_donors(donors)
             continue
-        elif full_name == "back":
+        elif cmd == "back":
             break
+        elif cmd == "thank_all":
+            # The user wants to print thank-you's to all donors
+            # Loop over all the donors, find the total sum donated. Then craft
+            # a thank-you message and write it to both the terminal and to disk.
+            for donor in donor_list:
+                donor_name = donor[0]
+                donation_sum = sum(donor[1])
 
-        # Adding a donation and printing a thank-you.
-        # First check if the donor is in the list already, if not add them.
-        if not(is_donor_in_list(donors, full_name)):
-            donor_list.append([full_name, []])
+                msg = ("\n"
+                       "Dear {0}, \n"
+                       "\n"
+                       "Thank you for your generous donations totalling ${1}.\n"
+                       "Trundle and Biffs all over the world will benefit from your kindness!\n"
+                       "\n"
+                       "Yours Truely,\n"
+                       "  Bing Flaherty").format(donor_name, donation_sum)
+                print(msg)
+                with open("{0}_thank_you.txt".format(donor_name), "w") as fd:
+                    fd.writelines(msg)
 
-        # Get the donation amount...
-        while True:
-            amnt = input("Donation amount --> ")
-            try:
-                amnt = int(amnt)
-                break
-            except:
-                print("Invalid donation amount. Please try again. Input only numbers")
-            finally:
-                pass
-        # Find the donor entry in the donor list and append the donation amount
-        donor_entry_idx = find_donor_idx(donor_list, full_name)
-        donor_entry = donor_list[donor_entry_idx]
-        donor_entry[1].append(amnt)
+        else:
+            # The user provided a name to add to the list.
+            # Adding a donation and printing a thank-you.
+            # First check if the donor is in the list already, if not add them.
+            full_name = cmd.title()
+            if not(is_donor_in_list(donors, full_name)):
+                donor_list.append([full_name, []])
 
-        # Compose thank-you message and print to the terminal
-        msg = ("\n"
-               "Dear {0}, \n"
-               "\n"
-               "Thank you for your generous donation of ${1}.\n"
-               "Trundle and Biffs all over the world will benefit from your kindness\n"
-               "\n"
-               "Yours Truely,\n"
-               "  Bing Flaherty")
-        print(msg.format(full_name, amnt))
+            # Get the donation amount...
+            while True:
+                amnt = input("Donation amount --> ")
+                try:
+                    amnt = int(amnt)
+                    break
+                except:
+                    print("Invalid donation amount. Please try again. Input only numbers")
+                finally:
+                    pass
+            # Find the donor entry in the donor list and append the donation amount
+            donor_entry_idx = find_donor_idx(donor_list, full_name)
+            donor_entry = donor_list[donor_entry_idx]
+            donor_entry[1].append(amnt)
+
+            # Compose thank-you message and print to the terminal and a file
+            msg = ("\n"
+                   "Dear {0}, \n"
+                   "\n"
+                   "Thank you for your generous donation of ${1}.\n"
+                   "Trundle and Biffs all over the world will benefit from your kindness!\n"
+                   "\n"
+                   "Yours Truely,\n"
+                   "  Bing Flaherty").format(full_name, amnt)
+            print(msg)
+            with open("{0}_thank_you.txt".format(full_name), "w") as fd:
+                fd.writelines(msg)
+
+
+
 
 
 
