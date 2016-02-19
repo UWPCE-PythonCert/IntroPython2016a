@@ -54,7 +54,7 @@
 .. |lightning-session06d| replace:: (anyone?)
 .. |lightning-session06e| replace:: (anyone?)
 
-.. |lightning-session07a| replace:: Krishna Bindhu
+.. |lightning-session07a| replace:: (anyone?)
 .. |lightning-session07b| replace:: Michael Gregor
 .. |lightning-session07c| replace:: Tsega Solomon
 .. |lightning-session07d| replace:: Yuanrui (Robert) Zhao
@@ -64,7 +64,7 @@
 .. |lightning-session08b| replace:: Michael Newton
 .. |lightning-session08c| replace:: Abderrazak Derdouri
 .. |lightning-session08d| replace:: Brennen Bounds
-.. |lightning-session08e| replace:: (anyone?)
+.. |lightning-session08e| replace:: Krishna Bindhu
 
 .. |lightning-session09a| replace:: Damian Myerscough
 .. |lightning-session09b| replace:: Kishan Sarpangala
