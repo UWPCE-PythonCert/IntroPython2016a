@@ -154,7 +154,7 @@ instance
   A particular object of a class: a specific circle
 
 object
-  The general case of a instance -- really any value (in Python anyway)
+  The general case of an instance -- really any value (in Python anyway)
 
 attribute
   Something that belongs to an object (or class): generally thought of
@@ -649,23 +649,12 @@ You'll see code that looks like this:
       else:
           Do_something_else
 
-
-Usually better to use "duck typing" (polymorphism)
-
-But when it's called for:
+When it's called for:
 
     * ``isinstance()``
     * ``issubclass()``
 
-.. nextslide::
 
-GvR: "Five Minute Multi- methods in Python":
-
-http://www.artima.com/weblogs/viewpost.jsp?thread=101605
-
-https://www.python.org/download/releases/2.3/mro/
-
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
 
 LAB: Subclassing & Inheritance
 ------------------------------
@@ -684,129 +673,6 @@ Now we have a base class, and we can:
 * Subclass overriding the ``__init__``
 
 These are the core OO approaches
-
-Multiple Inheritance
-====================
-
-Multiple inheritance: Inheriting from more than one class
-
-Simply provide more than one parent.
-
-.. code-block:: python
-
-    class Combined(Super1, Super2, Super3):
-        def __init__(self, something, something else):
-            # some custom initialization here.
-            Super1.__init__(self, ......)
-            Super2.__init__(self, ......)
-            Super3.__init__(self, ......)
-            # possibly more custom initialization
-
-(calls to the super class ``__init__``  are optional -- case dependent)
-
-MRO: Method Resolution Order
-----------------------------
-
-.. code-block:: python
-
-    class Combined(Super1, Super2, Super3)
-
-Attributes are located bottom-to-top, left-to-right
-
-* Is it an instance attribute ?
-* Is it a class attribute ?
-* Is it a superclass attribute ?
-
-  - Is  it an attribute of the left-most superclass?
-  - Is  it an attribute of the next superclass?
-  - and so on up the hierarchy...
-
-* Is it a super-superclass attribute ?
-* ... also left to right ...
-
-http://python-history.blogspot.com/2010/06/method-resolution-order.html
-
-``super()``
------------
-
-``super()``: use it to call a superclass method, rather than explicitly calling
-the unbound method on the superclass.
-
-instead of:
-
-.. code-block:: python
-
-    class A(B):
-        def __init__(self, *args, **kwargs)
-            B.__init__(self, *argw, **kwargs)
-            ...
-
-You can do:
-
-.. code-block:: python
-
-    class A(B):
-        def __init__(self, *args, **kwargs)
-            super().__init__(*argw, **kwargs)
-            ...
-
-.. nextslide:: Caveats
-
-Caution: There are some subtle differences with multiple inheritance.
-
-You can use explicit calling to ensure that the 'right' method is called.
-
-.. rst-class:: medium
-
-    **Background**
-
-Two seminal articles about ``super()``:
-
-"Super Considered Harmful" -- James Knight
-
-https://fuhm.net/super-harmful/
-
-"super() considered super!"  --  Raymond Hettinger
-
-http://rhettinger.wordpress.com/2011/05/26/super-considered-super/
-
-(Both worth reading....)
-
-Mix-ins
--------
-
-So why would you want to do this? One reason:  *mixins*
-
-Provides an subset of expected functionality in a re-usable package.
-
-Huh? this is why --
-
-Hierarchies are not always simple:
-
-* Animal
-
-  * Mammal
-
-    * GiveBirth()
-
-  * Bird
-
-    * LayEggs()
-
-Where do you put a Platypus?
-
-Real World Example: `FloatCanvas`_
-
-.. _FloatCanvas: https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L485
-
-Subclassing vs Composition
-==========================
-
-
-Composition
------------
-
-
 
 Review framing questions
 ========================
@@ -827,7 +693,15 @@ Let OO work for you, not *create* work for you
 Homework
 ========
 
-Complete labs.
+Let's say you need to render some html.
+
+The goal is to build a set of classes that render an html
+page.
+
+We'll start with a single class, then add some sub-classes
+to specialize the behavior
+
+:ref:`exercise_html_renderer`
 
 
 Readings
@@ -870,3 +744,17 @@ https://youtu.be/HTLu2DFOdTg
 
 https://speakerdeck.com/pyconslides/pythons-class-development-toolkit-by-raymond-hettinger
 
+
+
+Multiple Inheritance and the Diamond Problem
+--------------------------------------------
+
+https://en.wikipedia.org/wiki/Multiple_inheritance
+
+https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem
+
+Method Resolution Order
+
+https://www.python.org/download/releases/2.3/mro/
+
+http://python-history.blogspot.com/2010/06/method-resolution-order.html
