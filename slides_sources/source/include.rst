@@ -55,16 +55,16 @@
 .. |lightning-session06e| replace:: (anyone?)
 
 .. |lightning-session07a| replace:: Krishna Bindhu
-.. |lightning-session07b| replace:: Deana Holmer
+.. |lightning-session07b| replace:: Michael Gregor
 .. |lightning-session07c| replace:: Tsega Solomon
 .. |lightning-session07d| replace:: Yuanrui (Robert) Zhao
-.. |lightning-session07e| replace:: Michael Gregor
+.. |lightning-session07e| replace:: (anyone?)
 
 .. |lightning-session08a| replace:: Calvin Fannin
 .. |lightning-session08b| replace:: Michael Newton
 .. |lightning-session08c| replace:: Abderrazak Derdouri
 .. |lightning-session08d| replace:: Brennen Bounds
-.. |lightning-session08e| replace:: (anyone else?)
+.. |lightning-session08e| replace:: (anyone?)
 
 .. |lightning-session09a| replace:: Damian Myerscough
 .. |lightning-session09b| replace:: Kishan Sarpangala
