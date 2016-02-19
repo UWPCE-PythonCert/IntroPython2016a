@@ -15,7 +15,7 @@ def line(x,A,w)
 def quadratic(x, A=0, B=0, C=0):
     return A * x**2 + B * x + C
 
-def trapz(quadratic,a,b,A,B,C):
+def trapz(quadratic,a,b,n,A,B,C):
 #def trapz(line,a,b):
     """
     Compute the area under the curve defined by
@@ -31,10 +31,10 @@ def trapz(quadratic,a,b,A,B,C):
     :type b: a numeric value
     """
     f1 = 0  
-    for i in range(99):
-        f1 += quadratic(a+ (b-a)/100*(i + 1),A,B,C)
+    for i in range(n-1):
+        f1 += quadratic(a+ (b-a)/n*(i + 1),A,B,C)
 #        f1 += line(a+ (b-a)/100*(i + 1))
-    area = (b-a)/100*((quadratic(a,A,B,C)+quadratic(b,A,B,C))/2+f1)
+    area = (b-a)/n*((quadratic(a,A,B,C)+quadratic(b,A,B,C))/2+f1)
 #    area = (b-a)/100*((line(a)+line(b))/2+f1)
     return area
 #   pass
@@ -46,9 +46,9 @@ def trapz(quadratic,a,b,A,B,C):
 
 """
 coef = {'A':1,'B':3,'C':2}
-area = trapz(quadratic,0,10,**coef)
+area = trapz(quadratic,0,10,1000000,**coef)
 #area = trapz(line,0,10)
 
 print(area)
 
-#How to pass function?
+
