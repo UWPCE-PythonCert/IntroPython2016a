@@ -48,8 +48,7 @@ What I was not able to accomplish:
   to start printing using the format print string details.  Also, how do these buffers all line up - for the title row and
   detail row to fit (without trial and error) - do I count up the buffer spaces or something?
   3. was not able to get the sum of the dictionary values to fit in a report with the details of the donations in the same report in a simple way.
-  I had to use nested nested loops.  **from dive into python3 - 2.7.3:  call the key and then the item so: dict[key][value item index], but this results in a tuple index out of range - IndexError
-
+  I had to use nested nested loops.
 
 """
 
@@ -417,5 +416,3 @@ while(True):
 
 #salutation to the user
 print("\nSee you next time.")
-
-
