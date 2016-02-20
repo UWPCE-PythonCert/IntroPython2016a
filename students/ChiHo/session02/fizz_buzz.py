@@ -10,25 +10,41 @@ def fizz_buzz(n):
        divisible by 3 with "Fizz", numbers divisible by 5 with "Buzz".
        Numbers divisible by both factors should display "FizzBuzz".
     """
+
+    # for i in range(1, n+1):
+    #     if i % 3 == 0:
+    #         if i % 5 == 0:  # divisible by 3 and 5
+    #             print('FizzBuzz')
+    #         else:  # divisible by 3 only
+    #             print('Fizz')
+    #     elif i % 5 == 0:  # divisible by 5 only
+    #         print('Buzz')
+    #     else:  # neither divisible by 3 nor divisible by 5
+    #         print(i)
+
+    # Chi -- I can see that you're trying to be more efficient, but
+    # you're sacraficing readability for little performance gain.
+    # Readability counts because it helps in thinking about your code.
+    # Compare your code above to these minor revisions....
+
     for i in range(1, n+1):
-        if i % 3 == 0:
-            if i % 5 == 0:  # divisible by 3 and 5
-                print('FizzBuzz')
-            else:  # divisible by 3 only
-                print('Fizz')
-        elif i % 5 == 0:  # divisible by 5 only
+        if i % 3 == 0 and i % 5 == 0:
+            print('FizzBuzz')
+        elif i % 5 == 0:
             print('Buzz')
-        else:  # neither divisible by 3 nor divisible by 5
+        elif i % 3 == 0:
+            print('Fizz')
+        else:
             print(i)
 
 if __name__ == '__main__':
-    # Test Case 1: n = 1
-    fizz_buzz(1)
-    # Test Case 2: n = 3
-    fizz_buzz(3)
-    # Test case 3: n = 5
-    fizz_buzz(5)
-    # Test case 4: n = 10
-    fizz_buzz(10)
-    # Test case 5: n = 16
+    # # Test Case 1: n = 1
+    # fizz_buzz(1)
+    # # Test Case 2: n = 3
+    # fizz_buzz(3)
+    # # Test case 3: n = 5
+    # fizz_buzz(5)
+    # # Test case 4: n = 10
+    # fizz_buzz(10)
+    # # Test case 5: n = 16
     fizz_buzz(16)
