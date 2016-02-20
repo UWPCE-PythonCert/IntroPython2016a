@@ -28,7 +28,7 @@ print ("your updated list" , fruitLst)
 #add another fruit to the beginning of the list using +
 anotherfruit = [input("what other fruit would you like to add to the front of the list?")] # now it is a list item input
 fruitLst = anotherfruit + fruitLst
-print ("your list with {}:\n\t{}".format(anotherfruit[0],fruitLst))
+print ("your list with {} looks like this:\n\t{}".format(anotherfruit[0],fruitLst))
 
 #add another fruit to the beginning of the list using insert
 anotherfruit2 = input("what second fruit would you like to add to the front of the list?") #now it is a string input
@@ -52,14 +52,14 @@ x= fruitLst.pop(-1)
 print("now here is your list without the last item: {} ".format(x), end ="")
 print("\t{}".format(fruitLst))
 for indx,item in enumerate(fruitLst):
-    print("\t{} )  {}".format((indx+1),item))
+    print("\t{} )  {}".format((indx+1),item.strip()))#*********
 dislike = int(input("select an item number to be deleted:"))
 dislikefruit = fruitLst[dislike-1]
 fruitLst.pop((dislike-1))
 
 print("So, you don't like {}.  Here is the remaining list:{}".format(dislikefruit, fruitLst))
 
-#start for bonus
+#start for bonus - multiply list and delete all instances of disliked fruit
 oldfruitLst = copyfruitLst[:]
 print("\nOK - lets go back to the old list you had:",oldfruitLst)
 oldfruitLst = oldfruitLst + oldfruitLst *2
@@ -69,7 +69,7 @@ for x in oldfruitLst:
 print("whoops we multiplied your list{}, but we lost all the {}!  where did it go?".format(oldfruitLst,dislikefruit))
 
 
-#new questions
+#new questions - loop through list to ask yes or no if they like.  delete all occurances
 
 fruitset = set(copyfruitLst) # drop any duplicates by turning list into a set
 fruitLst = list(fruitset) #return it back into a list
@@ -95,7 +95,7 @@ print("this is your new list of favorites",fruitLstlwr)
 rvrscopy_fruitLst = fruitLst[:]
 print("fruitlist:" , fruitLst)
 print("rvrscopy_fruitLst is", rvrscopy_fruitLst)
-for item in rvrscopy_fruitLst:
+for item in fruitLst: #iterate on one list
     print ("item",item)
     if len(item)>1:
         first = item[0]
@@ -103,31 +103,30 @@ for item in rvrscopy_fruitLst:
         newitem = last + item[1:-1] + first
     else: newitem = item
     print("newitem is",newitem)
-    rvrscopy_fruitLst.append(newitem)
+    rvrscopy_fruitLst.append(newitem)#update and make changes to the other list
     rvrscopy_fruitLst.remove(item)
-print("original list is: ", fruitLst)
-print("new rvrsed list is: ",rvrscopy_fruitLst)
+print("original list is: ", fruitLst) #yea it works now - iterate on one list, and make changes to the other copy of the list
+print("new rvrsed list is: ",rvrscopy_fruitLst) #yea it works now !!!
 print("now we can get rid of the last entry in our fruit salad:  lets nix {}".format(fruitLst.pop()),fruitLst)
 
 
-# HOW  - start a new list I guess
-#so see solution below!!!!!!!!!!!
+# start with a list and a list copy
+# this time change all the letters to go backward, not just switch first and last letter
 
+print("\n\n\n duplicate of last excercise is below - for grins - now that it works")
 fruitLst = list(fruitset)
 rvrscopy_fruitLst = fruitLst[:]  #this is creating the shallow copy - so how do we NOT do this???
 print("fruitlist:" , fruitLst)
 print("rvrscopy_fruitLst is", rvrscopy_fruitLst)
 brandnew_list = []
 for item in rvrscopy_fruitLst:
-    print ("item",item)
-    if len(item)>1:
-        first = item[0]
-        last = item[-1]
-        newitem = last + item[1:-1] + first
+    print ("item is: ",item)
+    if len(item)>1: #if each word in the list is longer than one letter, then swap first and last letter
+        newitem = item[::-1]
     else: newitem = item
-    print("newitem is",newitem)
+    print("newitem is: ",newitem)
     brandnew_list.append(newitem)
 
 print("original list is: ", fruitLst)
-print("new rvrsed list is: ",brandnew_list)
+print("new rvrsed brand new list is: ",brandnew_list)
 print("now we can get rid of the last entry in our fruit salad:  lets nix {}".format(fruitLst.pop()),fruitLst)

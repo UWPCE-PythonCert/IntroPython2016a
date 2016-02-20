@@ -2,7 +2,7 @@
 #-------------------------------------------------#
 # Title: Mailroom - Week3/4 assignment
 # Dev:   BBounds
-# Date:  February 14 2016
+# Date:  February 1 2016
 #Class: Python 2016a
 Instructor: Rick Riehle / TA: Summer Rae
 #-------------------------------------------------#
@@ -13,7 +13,10 @@ The script should accomplish the following goals:
 
 It should have a data structure that holds a list of your donors and a history of the amounts
 they have donated. This structure should be populated at first with at least five donors, with
-between 1 and 3 donations each.  The script should prompt the user (you) to choose from a menu of 2 actions:
+
+
+between 1 and 3 donations each
+The script should prompt the user (you) to choose from a menu of 2 actions:
      Send a Thank You or Create a Report.
 
 
@@ -38,18 +41,6 @@ Using string formatting, format the output rows as nicely as possible. The end r
 After printing this report, return to the original prompt.
 At any point, the user should be able to quit their current task and return to the original prompt. ### NEED HELP  HERE
 From the original prompt, the user should be able to quit the script cleanly
-
-
-
-What I was not able to accomplish:
-  1. to dig into the list of values and pull, say..  donation #2 of 3 from the list in the dictionary's value.
-  2. I was not able to answer all my string formatting goals, but i did get pretty good results.  for example, if I
-  start up a new print string, (continuing from a prior end="" print line, how do I create a buffer to tell the new print line where
-  to start printing using the format print string details.  Also, how do these buffers all line up - for the title row and
-  detail row to fit (without trial and error) - do I count up the buffer spaces or something?
-  3. was not able to get the sum of the dictionary values to fit in a report with the details of the donations in the same report in a simple way.
-  I had to use nested nested loops.  **from dive into python3 - 2.7.3:  call the key and then the item so: dict[key][value item index], but this results in a tuple index out of range - IndexError
-
 
 """
 
@@ -417,5 +408,6 @@ while(True):
 
 #salutation to the user
 print("\nSee you next time.")
+
 
 

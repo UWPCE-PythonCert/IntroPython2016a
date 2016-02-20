@@ -1,0 +1,104 @@
+--
+--   Package File Template
+--
+--   Purpose: This package defines supplemental types, subtypes, 
+--      constants, and functions 
+--
+--   To use any of the example code shown below, uncomment the lines and modify as necessary
+--
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+
+package project_components_pkg is
+
+  component character_decoder is
+      generic (CLOCK_FREQUENCY  : integer := 40_000_000);
+      Port ( clk                : in  STD_LOGIC;
+             charFromUART_valid : in  STD_LOGIC;
+             charFromUART       : in  STD_LOGIC_VECTOR(7 downto 0);  
+             LED_hi             : out STD_LOGIC;
+             LED_lo             : out STD_LOGIC;
+             send_character     : out STD_LOGIC;
+             character_to_send  : out STD_LOGIC_VECTOR (7 downto 0)
+          );
+  end component character_decoder;
+
+  component decoder is
+      generic (CLOCK_FREQUENCY  : integer := 40_000_000);
+      Port ( clk                : in  STD_LOGIC;
+             charFromUART_valid : in  STD_LOGIC;
+             charFromUART       : in  STD_LOGIC_VECTOR(7 downto 0);  
+             LED_hi             : out STD_LOGIC;
+             LED_lo             : out STD_LOGIC;
+             send_character     : out STD_LOGIC;
+             character_to_send  : out STD_LOGIC_VECTOR (7 downto 0)
+          );
+  end component decoder;  
+
+  component character_encoder is
+      Port ( clk               : in  STD_LOGIC;
+             character_decoded : in  STD_LOGIC;
+             character_to_send : in  STD_LOGIC_VECTOR (7 downto 0);
+             tx_ready          : in  STD_LOGIC;
+             parallelDataIn    : out STD_LOGIC_VECTOR (7 downto 0);
+             transmitRequest   : out STD_LOGIC;
+             DIP_dbncd         : in  STD_LOGIC_VECTOR (3 downto 0)
+           );
+  end component character_encoder;
+
+  component debouncer is
+      generic (DELAY_VALUE     : integer := 4_000_000);     -- 100 ms at 40 MHz
+      Port ( clk        : in  STD_LOGIC;
+             signal_in  : in  STD_LOGIC;
+             signal_out : out STD_LOGIC
+          );
+  end component debouncer;
+  
+  component UART is
+      generic (BAUD_RATE  : integer := 19200;
+               CLOCK_RATE  : integer := 100000000);   
+      port ( reset           : in  STD_LOGIC;
+             clock           : in  STD_LOGIC;
+             serialDataIn    : in  STD_LOGIC;
+             parallelDataOut : out STD_LOGIC_VECTOR (7 downto 0);
+             dataValid       : out STD_LOGIC;
+             parallelDataIn  : in  STD_LOGIC_VECTOR (7 downto 0);
+             transmitRequest : in  STD_LOGIC;
+             txIsReady       : out STD_LOGIC;
+             serialDataOut   : out STD_LOGIC
+           );
+  end component UART;  
+  
+  component UART_baudRateGenerator is
+      generic (BAUD_RATE  : integer := 19200;
+              CLOCK_RATE : integer := 100000000); 
+      port ( reset              : in  STD_LOGIC;
+             clock              : in  STD_LOGIC;
+             baudRateEnable     : out STD_LOGIC;
+             baudRateEnable_x16 : out STD_LOGIC
+           );
+  end component UART_baudRateGenerator;  
+  
+  component UART_transmitter is
+      Port ( reset           : in  STD_LOGIC;
+             clock           : in  STD_LOGIC;
+             baudRateEnable  : in  STD_LOGIC;
+             parallelDataIn  : in  STD_LOGIC_VECTOR (7 downto 0);
+             transmitRequest : in  STD_LOGIC;
+             ready           : out STD_LOGIC;
+             serialDataOut   : out STD_LOGIC
+           );
+  end component UART_transmitter;  
+     
+  component UART_receiver is
+      Port ( reset              : in  STD_LOGIC;
+             clock              : in  STD_LOGIC;
+             baudRateEnable_x16 : in  STD_LOGIC;
+             serialDataIn       : in  STD_LOGIC;
+             parallelDataOut    : out  STD_LOGIC_VECTOR (7 downto 0);
+             dataValid          : out  STD_LOGIC
+           );
+  end component UART_receiver;  
+
+end project_components_pkg;

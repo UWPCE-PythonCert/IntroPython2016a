@@ -50,9 +50,9 @@ if __name__ == "__main__":
     print("hi there - this is a main file and can run this script directly")
 else:
     raise Exception("This file was not created to be imported")
+
 # set up imaginary donor information for use in the script
 dictall ={}
-
 
 # input made-up values into a dictionary - very inefficeint - better to pull from a file (but had problems)
 
@@ -70,72 +70,56 @@ dictall.update(d4)
 dictall.update(d5)
 dictall.update(d6)
 
-print ("dictall = ",dictall)
+print ("Here is the printout of dictall = ",dictall)
 
 
 # for fun, unpack the key and make a new key in a new dictionary with re-ordered values (like in a letter)
 dictsalutation = {}
+sdictsalutation = {} #sorted dic
 
 def print_report():
 
-    srtdictall = {}
-    #srtdictall = sorted(dictall,key= sum(list(dictall.values()))) *** need to figure out sort by value
     print("\n\t  Donor's Report: \n\t _________________\n")
-    for tplKey, lstValue in dictall.items():
-        donations = 0
-        count = 0
+    count = 0
+    nameall =(),
+    for tplKey, lstValue in dictall.items(): # dictionary as it is first built up
         #print(strKey + " / " + strValue + "\t")
         #print("type ofkey",type(strKey))
         firstn = tplKey[0]
         lastn = tplKey[1]
         saluten = tplKey[2]
-        nameall = saluten + " " + firstn + " " + lastn
+        nameall = (saluten, firstn, lastn)
         dictsalutation[nameall] = lstValue
-        #print( "Dear", nameall)
-        #print("type of value",type(lstValue))
+        count +=1
+    #print("{} item(s) added to dictionary. Here is dictionary now: {}".format(count,dictsalutation))
+
+    for tplKey, lstValue in dictsalutation.items(): # preparing to try a sorted dictionary
+
         donations = sum(lstValue)
         count = (len(lstValue))
+        avg_donation = 0
         try:
             avg_donation = donations/count
         except ZeroDivisionError:
             avg_donation = 0
-
         except Exception as e:
             print(e)
 
-        print("{} {} has made {:d} donation(s) for a total of ${:f}"
-        "which is an ave of {:f}".format(firstn,lastn,count,donations,avg_donation))
+        print("{} {} {} has made {:d} donation(s) for a total of ${:f}"
+        " (which is an ave of {:f})".format(tplKey[0],tplKey[1],tplKey[2],len(lstValue),sum(lstValue),avg_donation))
 
     input("\n\ttype any key to continue")
 
-print(dictall)
+'''
+print_report()
+print("ran print report")
+print("this is print of dictall", dictall)
 print("*****")
 print(dictsalutation)
 print("***** - now sorted")
 print(sorted(dictsalutation))
 print("***** - now back to unsorted - is it still there?")
 print(dictsalutation)
-
-
-
-'''
-def problem_user():
-    print("you stink. ")
-    return
-
-#def verify(a, count = 0):
-    like = "no"
-    print("You entered: ",  a)
-    like = input("Is this correct?  Hit 'enter'' for yes or type 'no'").lower
-    if like == "" or like == "yes":
-        return a
-    else:
-        new_a = input("please input your data again: ")
-        count +=1
-        if count == 3:
-            print("you seem to be having problems.")
-            problem_user()
-        verify(new_a)
 '''
 
 def print_thanks(donors_fullname):
@@ -151,15 +135,17 @@ def add_new_donor():
     mr =(donor_salutation)
     key = (f , l , mr)
     print("the type of key created to dictionary is: ", type(key), "is" , key)
-    return (key)
+    print("Thank you, got the new donor.  Now I will post to the dictionary.")
+    add_new_donor_to_dictionary(key)
 
 def add_new_donor_to_dictionary(unposted_new_donor):
-    if unposted_new_donor in dictall:
-        print("name already in dictionary.")
+    f,l,mr = unposted_new_donor
+    if (f,l,mr) in dictsalutation:
+        print("{} already in dictionary.".format(unposted_new_donor))
         return
     else:
-        dictall[unposted_new_donor] = [] #update the dictionary with a new key with empty list value
-        dictsalutation[unposted_new_donor] = [] #update the salutation dictionary too (with new key with empty list value
+        dictall[(f,l,mr)] = [] #update the dictionary with a new key with empty list value
+        dictsalutation[(f,l,mr)] = [] #update the salutation dictionary too (with new key with empty list value
         message = "Completed set up of new donor (added to dictionary):"
         print ("{} {}".format(message,unposted_new_donor))
         return unposted_new_donor
@@ -198,12 +184,19 @@ def list_donors():
     print("temp# \t donor name \t\t donation history \n "
           "--------------------------------------------------------")
     count = 0
-    for tplkey,lstvalue in sorted(dictsalutation.items()):
-        print ("No: {} \t {} \t\t {}".format((count+1),tplkey,lstvalue),sep="\t\t")
+
+    for tplkey, lstvalue in dictsalutation.items():
+
+        print ("No: {} \t {} \t\t {}".format((count+1),(tplkey[0],tplkey[1],tplkey[2]),lstvalue),sep="\t\t")
         count += 1
     input("\n\ttype enter to proceed")
 
 # create a menu
+
+
+
+print_report()
+
 while(True):
     print ("""
     Menu of Options:
@@ -278,7 +271,7 @@ If the user types a name in the list, use it.
 
     #4 list donors
     elif(strChoice == '4'):
-        print("here is a list of donors")
+        print("Here is a list of donors:")
         list_donors()
         continue
 
