@@ -4,11 +4,6 @@
 ###############TRAPEZOIDAL FUNCTIONS ####################
 #########################################################
 
-
-def genquadratic(x, A=1, B=1, C=1):
-    return A*x**2 + B*x + C
-
-
 def createxvector(x1, x2, step):
     '''
     Creates a vector of values from
@@ -41,8 +36,8 @@ def trap(fx, x1, x2, div, **kwargs):
     With a start value for x1 and end value x2 which is used
     And the number of intervals to split between x1 and x2
     '''
-    step = (x2 - x1) / div
     keys = kwargs
+    step = (x2 - x1) / div
     xvector = createxvector(x1, x2, step)
     yvector = createyvector(fx, xvector, **keys)
     areavector = []
@@ -55,5 +50,3 @@ def trap(fx, x1, x2, div, **kwargs):
             areavector.append(deltax * deltay)
 
     return sum(areavector)
-
-print(trap(genquadratic, 0, 100, 20, A=2, B=2, C=2))
