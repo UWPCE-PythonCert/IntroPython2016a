@@ -19,7 +19,7 @@ The first argument to the scoring function is itself a function that represents 
 
 The second argument to the scoring function is one of three strings: small, medium or large.  
 
-The score for weapons across the various categories follow the fibonacci scale such that acceptance tests for the scoring function follow the following pattern.
+The score for weapons across the various categories follow the fibonacci scale such that acceptance tests for the scoring function follow the following pattern.  Keep in mind that you need not do any math to get the tests to pass.
 
 .. code-block:: python
 
