@@ -1,58 +1,25 @@
+
+
 .. include:: include.rst
 
-**************************************************************************
-Session Eight: More OO: Properties, Special methods.
-**************************************************************************
+Session Eight: Object Oriented Programming
+******************************************
+
+Object Oriented Programming continued...
 
 
-================
-Review/Questions
-================
+Announcements
+=============
 
-Review of Previous Class
-------------------------
+Review & Questions
+==================
 
-* Basic OO Concepts
+Homework
+========
 
-  * Classes
-  * class vs. instance attributes
-  * subclassing
-  * overriding methods / attributes
+Code review -- let's take a look.
 
 
-Lightning Talks Today:
------------------------
-
-.. rst-class:: medium
-
-
-
-
-Personal Project
------------------
-
-The bulk of the homework for the rest of the class will be a personal project:
-
-* It can be for fun, or something you need for your job.
-* It should be large enough to take a few weeks homework time to do.
-* **It should demostrate that you can do something useful with python.**
-* It should follow PEP8 (https://www.python.org/dev/peps/pep-0008)
-* It should have unit tests!
-* Ideally, it will be in version control (gitHub)
-* I don't require any specific python features (i.e. classes): use
-  what is appropriate for your project
-
-* Due the Friday after the last class (December 11)
-
-|
-|  By next week, send me a project proposal: short and sweet.
-|
-
-Homework review
----------------
-
-* html renderer
-* Test-driven development
 
 Homework Notes:
 ---------------
@@ -76,16 +43,157 @@ empty, then the loop is a do-nothing operation:
 
 * anyone stuck that wants to work through your code?
 
-==========
+
+Lightning Talks
+===============
+
+| |lightning-session08a|
+| |lightning-session08b|
+| |lightning-session08c|
+| |lightning-session08d|
+| |lightning-session08e|
+|
+
+Framing
+=======
+
+
+Multiple Inheritance
+====================
+
+Multiple inheritance: Inheriting from more than one class
+
+Simply provide more than one parent.
+
+.. code-block:: python
+
+    class Combined(Super1, Super2, Super3):
+        def __init__(self, something, something else):
+            # some custom initialization here.
+            Super1.__init__(self, ......)
+            Super2.__init__(self, ......)
+            Super3.__init__(self, ......)
+            # possibly more custom initialization
+
+(calls to the super class ``__init__``  are optional -- case dependent)
+
+MRO: Method Resolution Order
+----------------------------
+
+.. code-block:: python
+
+    class Combined(Super1, Super2, Super3)
+
+Attributes are located bottom-to-top, left-to-right
+
+* Is it an instance attribute ?
+* Is it a class attribute ?
+* Is it a superclass attribute ?
+
+  - Is  it an attribute of the left-most superclass?
+  - Is  it an attribute of the next superclass?
+  - and so on up the hierarchy...
+
+* Is it a super-superclass attribute ?
+* ... also left to right ...
+
+http://python-history.blogspot.com/2010/06/method-resolution-order.html
+
+``super()``
+-----------
+
+``super()``: use it to call a superclass method, rather than explicitly calling
+the unbound method on the superclass.
+
+instead of:
+
+.. code-block:: python
+
+    class A(B):
+        def __init__(self, *args, **kwargs)
+            B.__init__(self, *argw, **kwargs)
+            ...
+
+You can do:
+
+.. code-block:: python
+
+    class A(B):
+        def __init__(self, *args, **kwargs)
+            super().__init__(*argw, **kwargs)
+            ...
+
+.. nextslide:: Caveats
+
+Caution: There are some subtle differences with multiple inheritance.
+
+You can use explicit calling to ensure that the 'right' method is called.
+
+.. rst-class:: medium
+
+    **Background**
+
+Two seminal articles about ``super()``:
+
+"Super Considered Harmful" -- James Knight
+
+https://fuhm.net/super-harmful/
+
+"super() considered super!"  --  Raymond Hettinger
+
+http://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+
+(Both worth reading....)
+
+Mix-ins
+-------
+
+So why would you want to do this? One reason:  *mixins*
+
+Provides an subset of expected functionality in a re-usable package.
+
+Huh? this is why --
+
+Hierarchies are not always simple:
+
+* Animal
+
+  * Mammal
+
+    * GiveBirth()
+
+  * Bird
+
+    * LayEggs()
+
+Where do you put a Platypus?
+
+Real World Example: `FloatCanvas`_
+
+.. _FloatCanvas: https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L485
+
+Subclassing vs Composition
+==========================
+
+
+Composition
+-----------
+
+
+
 Properties
 ==========
+
+https://en.wikipedia.org/wiki/Property_%28programming%29#Python
+
+
+Attributes are clear and concise
+--------------------------------
 
 .. rst-class:: left
 .. container::
 
     One of the strengths of Python is lack of clutter.
-
-    Attributes are simple and concise:
 
     .. code-block:: ipython
 
@@ -100,8 +208,10 @@ Properties
         Out[9]: 8
 
 
-Getter and Setters?
--------------------
+And we want to maintain this clarity.
+
+Getter and Setters
+------------------
 
 But what if you need to add behavior later?
 
@@ -132,12 +242,12 @@ But what if you need to add behavior later?
     Out[9]: 8
 
 
-<shudder> This is ugly and verbose -- `Java`_?
+This is verbose -- `Java`_?
 
 .. _Java: http://dirtsimple.org/2004/12/python-is-not-java.html
 
-properties
------------
+Properties
+----------
 
 .. code-block:: ipython
 
@@ -157,13 +267,14 @@ properties
 
 Now the interface is like simple attribute access!
 
-.. nextslide::
+Decorators
+----------
 
 What's up with the "@" symbols?
 
-Those are "decorations" it's a syntax for wrapping functions up with something special.
+Those are "decorations" it is a syntax for wrapping functions up with something special.
 
-We'll cover that in detail in a couple weeks, but for now -- just copy the syntax.
+We will cover decorators in detail in another part of the program, but for now just copy the syntax.
 
 .. code-block:: python
 
@@ -179,8 +290,8 @@ means: make a property called x with this as the "getter".
 
 means: make the "setter" of the 'x' property this new function
 
-"Read Only" Attributes
-----------------------
+Read Only Attributes
+--------------------
 
 You do not need to define a setter. If you don't, you get a "read only" attribute:
 
@@ -207,8 +318,7 @@ You do not need to define a setter. If you don't, you get a "read only" attribut
 Deleters
 ---------
 
-If you want to do something special when a property is deleted, you can define
-a deleter is well:
+If you want to do something special when a property is deleted, you can define a deleter as well:
 
 .. code-block:: ipython
 
@@ -229,10 +339,8 @@ what you want.
 
 [demo: :download:`properties_example.py <../../Examples/Session08/properties_example.py>`]
 
-
-===
-LAB
-===
+LAB: Properties, class methods, special methods
+===============================================
 
 Let's use some of this to build a nice class to represent a Circle.
 
@@ -240,15 +348,7 @@ For now, Let's do steps 1-4 of:
 
 :ref:`exercise_circle_class`
 
-Lightning talks:
------------------
 
-.. rst-class:: medium
-
-
-
-
-========================
 Static and Class Methods
 ========================
 
@@ -269,7 +369,6 @@ Static and Class Methods
     .. rst-class:: centered
 
     **But what if you don't want or need an instance?**
-
 
 Static Methods
 --------------
@@ -300,9 +399,7 @@ A *static method* is a method that doesn't get self:
 
     Where are static methods useful?
 
-    Usually they aren't
-
-    99% of the time, it's better just to write a module-level function
+    Usually they aren't.  It is often better just to write a module-level function.
 
     An example from the Standard Library (tarfile.py):
 
@@ -319,7 +416,6 @@ A *static method* is a method that doesn't get self:
                 if remainder > 0:
                     payload += (BLOCKSIZE - remainder) * NUL
                 return payload
-
 
 Class Methods
 -------------
@@ -426,9 +522,9 @@ well.
 For the Circle Lab: use a class method to make an alternate constructor that takes
 the diameter instead.
 
-===============
-Special Methods
-===============
+
+Special Methods & Protocols
+===========================
 
 .. rst-class:: left
 .. container::
@@ -450,7 +546,8 @@ Pronounced "dunder" (or "under-under")
 
 try: ``dir(2)``  or ``dir(list)``
 
-.. nextslide:: Generally Useful Special Methods
+Generally Useful Special Methods
+--------------------------------
 
 Most classes should at least have these special methods:
 
@@ -463,7 +560,6 @@ Most classes should at least have these special methods:
 
   (ideally: ``eval( repr(something) ) == something``)
 
-(demo)
 
 Protocols
 ----------
@@ -473,13 +569,12 @@ Protocols
 
     The set of special methods needed to emulate a particular type of Python object is called a *protocol*.
 
-    Your classes can "become" like Python built-in classes by implementing the
-    methods in a given protocol.
+    Your classes can "become" like Python built-in classes by implementing the methods in a given protocol.
 
     Remember, these are more *guidelines* than laws.  Implement what you need.
 
-
-.. nextslide:: The Numerics Protocol
+The Numerics Protocol
+---------------------
 
 Do you want your class to behave like a number? Implement these methods:
 
@@ -498,7 +593,8 @@ Do you want your class to behave like a number? Implement these methods:
     object.__xor__(self, other)
     object.__or__(self, other)
 
-.. nextslide:: The Container Protocol
+The Container Protocol
+----------------------
 
 Want to make a container type? Here's what you need:
 
@@ -515,8 +611,8 @@ Want to make a container type? Here's what you need:
     object.__setslice__(self, i, j, sequence)
     object.__delslice__(self, i, j)
 
-
-.. nextslide:: An Example
+An Example
+----------
 
 Each of these methods supports a common Python operation.
 
@@ -535,11 +631,10 @@ implement ``__add__``:
 
 [a more complete example may be seen :download:`here <../../Examples/Session08/vector.py>`]
 
+Protocols in Summary
+--------------------
 
-.. nextslide:: Summary
-
-Use special methods when you want your class to act like a "standard" class in
-some way.
+Use special methods when you want your class to act like a "standard" class in some way.
 
 Look up the special methods you need and define them.
 
@@ -548,25 +643,22 @@ There's more to read about the details of implementing these methods:
 * https://docs.python.org/3.5/reference/datamodel.html#special-method-names
 * http://www.rafekettler.com/magicmethods.html
 
-===
-LAB
-===
+LAB: Properties, class methods, special methods continued
+=========================================================
 
-Let's complete our nifty Circle class:
+Let's complete our Circle class:
 
 Steps 5-8 of:
 
 :ref:`exercise_circle_class`
 
 
-=========================
 Emulating Standard types
 =========================
 
 .. rst-class:: medium
 
   Making your classes behave like the built-ins
-
 
 Callable classes
 -----------------
@@ -651,7 +743,6 @@ Then you can do:
 
     result = callable_instance(some_arguments)
 
-
 Writing your own sequence type
 -------------------------------
 
@@ -703,41 +794,20 @@ The key ones are:
 |  ``__contains__`` | for ``x in seq``      |
 +-------------------+-----------------------+
 
-====
-LAB
-====
+LAB: Callables & Sparse Arrays
+------------------------------
 
-.. rst-class:: medium
+Code Structure, Modules, and Namespaces
+=======================================
 
-    Let's do the previous motivating examples.
+.. rst-class:: center large
 
-Callables:
------------
+How to get what you want when you want it.
 
-Write a class for a quadratic equation.
-
-* The initializer for that class should take the parameters: ``a, b, c``
-
-* It should store those parameters as attributes.
-
-* The resulting instance should evaluate the function when called, and return the result:
+Review framing questions
+========================
 
 
-.. code-block:: python
-
-    my_quad = Quadratic(a=2, b=3, c=1)
-
-    my_quad(0)
-
-Sparse Array:
--------------
-
-Write a class for a sparse array:
-
-:ref:`exercise_sparse_array`
-
-
-========
 Homework
 ========
 
@@ -754,3 +824,7 @@ Homework
   Python 3 Object Oriented Programming: *Dusty Phillips*
 
   (Dusty is a local boy and co-founder of PuPPy)
+
+
+Readings
+========
