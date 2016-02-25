@@ -187,6 +187,12 @@ class Br(SelfClosingTag):
         super().__init__(content, **kwargs)
         self.tag = "br"
 
+class Meta(SelfClosingTag):
+    def __init__(self, content=None, **kwargs):
+        super().__init__(content, **kwargs)
+        self.tag = "meta"
+        self.attr['charset']="UTF-8"
+
 
 class A(Element):
     def __init__(self, link, content):
