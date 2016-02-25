@@ -60,8 +60,8 @@
 .. |lightning-session07d| replace:: Yuanrui (Robert) Zhao
 .. |lightning-session07e| replace:: (anyone?)
 
-.. |lightning-session08a| replace:: Calvin Fannin
-.. |lightning-session08b| replace:: Michael Newton
+.. |lightning-session08a| replace:: Deana Holmer
+.. |lightning-session08b| replace:: Calvin Fannin
 .. |lightning-session08c| replace:: Abderrazak Derdouri
 .. |lightning-session08d| replace:: Brennen Bounds
 .. |lightning-session08e| replace:: Krishna Bindhu
@@ -76,4 +76,4 @@
 .. |lightning-session10b| replace:: Luis Ganzalez
 .. |lightning-session10c| replace:: Pradeep Kumar
 .. |lightning-session10d| replace:: Kyle Chinn
-.. |lightning-session10e| replace:: (anyone?)
+.. |lightning-session10e| replace:: Michael Newton

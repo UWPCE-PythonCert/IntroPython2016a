@@ -1,58 +1,28 @@
+
+
 .. include:: include.rst
 
-**************************************************************************
-Session Eight: More OO: Properties, Special methods.
-**************************************************************************
+
+Session Eight: Object Oriented Programming
+******************************************
+
+Object Oriented Programming continued...
 
 
-================
-Review/Questions
-================
-
-Review of Previous Class
-------------------------
-
-* Basic OO Concepts
-
-  * Classes
-  * class vs. instance attributes
-  * subclassing
-  * overriding methods / attributes
+Announcements
+=============
 
 
-Lightning Talks Today:
------------------------
-
-.. rst-class:: medium
+Review & Questions
+==================
 
 
+Homework
+========
+
+Code review -- let's take a look.
 
 
-Personal Project
------------------
-
-The bulk of the homework for the rest of the class will be a personal project:
-
-* It can be for fun, or something you need for your job.
-* It should be large enough to take a few weeks homework time to do.
-* **It should demostrate that you can do something useful with python.**
-* It should follow PEP8 (https://www.python.org/dev/peps/pep-0008)
-* It should have unit tests!
-* Ideally, it will be in version control (gitHub)
-* I don't require any specific python features (i.e. classes): use
-  what is appropriate for your project
-
-* Due the Friday after the last class (December 11)
-
-|
-|  By next week, send me a project proposal: short and sweet.
-|
-
-Homework review
----------------
-
-* html renderer
-* Test-driven development
 
 Homework Notes:
 ---------------
@@ -76,16 +46,231 @@ empty, then the loop is a do-nothing operation:
 
 * anyone stuck that wants to work through your code?
 
-==========
+
+Lightning Talks
+===============
+
+| |lightning-session08a|
+| |lightning-session08b|
+| |lightning-session08c|
+| |lightning-session08d|
+| |lightning-session08e|
+|
+
+
+Framing
+=======
+
+
+Multiple Inheritance
+====================
+
+Multiple inheritance: Inheriting from more than one class.
+
+Simply provide more than one parent.
+
+.. code-block:: python
+
+    class Combined(Parent1, Parent2, Parent3):
+        def __init__(self, something, something else):
+            # some custom initialization here.
+            Parent1.__init__(self, ......)
+            Parent2.__init__(self, ......)
+            Parent3.__init__(self, ......)
+            # possibly more custom initialization
+
+Calls to the parent class ``__init__``  are optional and case dependent.
+
+
+
+Purpose
+-------
+
+What was the purpose behind inheritance?  
+
+Code reuse.
+
+
+What is the purpose behind multiple inheritance?  
+
+Code reuse.
+
+
+What wasn't the purpose of inheritance?
+
+Building massive class hierarchies for their own sake.
+
+
+What isn't the purpose of multiple inheritance?
+
+Building massive class hierarchies for their own sake.
+
+
+Python's Multiple Inheritance Model
+-----------------------------------
+
+Cooperative Multiple Inheritance
+
+Emphasis on cooperative!
+
+* Play by the rules and everybody benefits (parents, descendants).
+* Play by the rules and nobody gets hurt (yourself, mostly).
+* We're all adults here.
+
+What could go wrong?
+
+
+
+The Diamond Problem
+-------------------
+
+With Python "new style" classes everything is descended from 'object'.  Thus, the moment you invoke multiple inheritance you have the diamond problem.
+
+https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem
+
+
+
+``super()``
+-----------
+
+``super()``: use it to call a superclass method, rather than explicitly calling the unbound method on the superclass.
+
+instead of:
+
+.. code-block:: python
+
+    class A(B):
+        def __init__(self, *args, **kwargs)
+            B.__init__(self, *argw, **kwargs)
+            ...
+
+You can do:
+
+.. code-block:: python
+
+    class A(B):
+        def __init__(self, *args, **kwargs)
+            super().__init__(*argw, **kwargs)
+            ...
+
+MRO: Method Resolution Order
+----------------------------
+
+.. code-block:: python
+
+    class Combined(Super1, Super2, Super3)
+
+Attributes are located bottom-to-top, left-to-right
+
+* Is it an instance attribute ?
+* Is it a class attribute ?
+* Is it a superclass attribute ?
+
+  - Is  it an attribute of the left-most superclass?
+  - Is  it an attribute of the next superclass?
+  - and so on up the hierarchy...
+
+* Is it a super-superclass attribute ?
+* ... also left to right ...
+
+http://python-history.blogspot.com/2010/06/method-resolution-order.html
+
+Super's Superpowers
+-------------------
+
+It works out -- dynamically at runtime -- which classes are in the delegation order.
+
+Do not be afraid.  And be very afraid.
+
+
+
+Dependency Injection
+--------------------
+
+Super() is the right way to do dependency injection.
+
+https://en.wikipedia.org/wiki/Dependency_injection
+
+Compare with Monkey Patching as done in other languages.
+
+https://en.wikipedia.org/wiki/Monkey_patch
+
+
+
+Argument Passing
+----------------
+
+Remember that super does not only delegate to your superclass, it delegates to any class in the MRO.
+
+Therefore you must be prepared to call any other class's method in the hierarchy and be prepared to be called from any other class's method.
+
+The general rule is to pass all arguments you received on to the super function.  If classes can take differing arguments, accept *args and **kwargs.
+
+
+Two seminal articles
+--------------------
+
+"Super Considered Harmful" -- James Knight
+
+https://fuhm.net/super-harmful/
+
+"Super() considered super!"  --  Raymond Hettinger
+
+http://rhettinger.wordpress.com/2011/05/26/super-considered-super/
+
+(Both worth reading....)
+
+Composition
+===========
+
+
+
+Composition vs Inheritance
+--------------------------
+
+Composition does virtually the same thing as multiple inheritance, in the sense that it allows your class to reuse the functionality of other classes.
+
+With inheritance you are thinking in terms of 'is-a' relationships.
+
+With composition you are thinking in terms of 'has-a' relationships.
+
+Composition is more explicit than inheritance and it avoids the complexity of super().  It of course also gains nothing from super()'s superpowers.
+
+
+An example
+----------
+
+.. code-block:: python
+
+    class Other(object):
+
+        def __init__(self):
+            print("Other __init__()")
+
+
+    class MyComposedClass(object):
+    """ I inherit from object """
+
+        def __init__(self):
+            self.other = Other()  # I contain Other()
+
+Remember: 'has-a' not 'is-a'
+
+
+
 Properties
 ==========
+
+https://en.wikipedia.org/wiki/Property_%28programming%29#Python
+
+
+Attributes are clear and concise
+--------------------------------
 
 .. rst-class:: left
 .. container::
 
     One of the strengths of Python is lack of clutter.
-
-    Attributes are simple and concise:
 
     .. code-block:: ipython
 
@@ -100,8 +285,10 @@ Properties
         Out[9]: 8
 
 
-Getter and Setters?
--------------------
+And we want to maintain this clarity.
+
+Getter and Setters
+------------------
 
 But what if you need to add behavior later?
 
@@ -132,12 +319,12 @@ But what if you need to add behavior later?
     Out[9]: 8
 
 
-<shudder> This is ugly and verbose -- `Java`_?
+This is verbose -- `Java`_?
 
 .. _Java: http://dirtsimple.org/2004/12/python-is-not-java.html
 
-properties
------------
+Properties
+----------
 
 .. code-block:: ipython
 
@@ -157,13 +344,14 @@ properties
 
 Now the interface is like simple attribute access!
 
-.. nextslide::
+Decorators
+----------
 
 What's up with the "@" symbols?
 
-Those are "decorations" it's a syntax for wrapping functions up with something special.
+Those are "decorations" it is a syntax for wrapping functions up with something special.
 
-We'll cover that in detail in a couple weeks, but for now -- just copy the syntax.
+We will cover decorators in detail in another part of the program, but for now just copy the syntax.
 
 .. code-block:: python
 
@@ -179,8 +367,8 @@ means: make a property called x with this as the "getter".
 
 means: make the "setter" of the 'x' property this new function
 
-"Read Only" Attributes
-----------------------
+Read Only Attributes
+--------------------
 
 You do not need to define a setter. If you don't, you get a "read only" attribute:
 
@@ -207,8 +395,7 @@ You do not need to define a setter. If you don't, you get a "read only" attribut
 Deleters
 ---------
 
-If you want to do something special when a property is deleted, you can define
-a deleter is well:
+If you want to do something special when a property is deleted, you can define a deleter as well:
 
 .. code-block:: ipython
 
@@ -229,10 +416,8 @@ what you want.
 
 [demo: :download:`properties_example.py <../../Examples/Session08/properties_example.py>`]
 
-
-===
-LAB
-===
+LAB: Properties, class methods, special methods
+===============================================
 
 Let's use some of this to build a nice class to represent a Circle.
 
@@ -240,15 +425,7 @@ For now, Let's do steps 1-4 of:
 
 :ref:`exercise_circle_class`
 
-Lightning talks:
------------------
 
-.. rst-class:: medium
-
-
-
-
-========================
 Static and Class Methods
 ========================
 
@@ -269,7 +446,6 @@ Static and Class Methods
     .. rst-class:: centered
 
     **But what if you don't want or need an instance?**
-
 
 Static Methods
 --------------
@@ -300,9 +476,7 @@ A *static method* is a method that doesn't get self:
 
     Where are static methods useful?
 
-    Usually they aren't
-
-    99% of the time, it's better just to write a module-level function
+    Usually they aren't.  It is often better just to write a module-level function.
 
     An example from the Standard Library (tarfile.py):
 
@@ -319,7 +493,6 @@ A *static method* is a method that doesn't get self:
                 if remainder > 0:
                     payload += (BLOCKSIZE - remainder) * NUL
                 return payload
-
 
 Class Methods
 -------------
@@ -426,9 +599,9 @@ well.
 For the Circle Lab: use a class method to make an alternate constructor that takes
 the diameter instead.
 
-===============
-Special Methods
-===============
+
+Special Methods & Protocols
+===========================
 
 .. rst-class:: left
 .. container::
@@ -450,7 +623,8 @@ Pronounced "dunder" (or "under-under")
 
 try: ``dir(2)``  or ``dir(list)``
 
-.. nextslide:: Generally Useful Special Methods
+Generally Useful Special Methods
+--------------------------------
 
 Most classes should at least have these special methods:
 
@@ -463,7 +637,6 @@ Most classes should at least have these special methods:
 
   (ideally: ``eval( repr(something) ) == something``)
 
-(demo)
 
 Protocols
 ----------
@@ -473,13 +646,12 @@ Protocols
 
     The set of special methods needed to emulate a particular type of Python object is called a *protocol*.
 
-    Your classes can "become" like Python built-in classes by implementing the
-    methods in a given protocol.
+    Your classes can "become" like Python built-in classes by implementing the methods in a given protocol.
 
     Remember, these are more *guidelines* than laws.  Implement what you need.
 
-
-.. nextslide:: The Numerics Protocol
+The Numerics Protocol
+---------------------
 
 Do you want your class to behave like a number? Implement these methods:
 
@@ -498,7 +670,8 @@ Do you want your class to behave like a number? Implement these methods:
     object.__xor__(self, other)
     object.__or__(self, other)
 
-.. nextslide:: The Container Protocol
+The Container Protocol
+----------------------
 
 Want to make a container type? Here's what you need:
 
@@ -515,8 +688,8 @@ Want to make a container type? Here's what you need:
     object.__setslice__(self, i, j, sequence)
     object.__delslice__(self, i, j)
 
-
-.. nextslide:: An Example
+An Example
+----------
 
 Each of these methods supports a common Python operation.
 
@@ -535,11 +708,10 @@ implement ``__add__``:
 
 [a more complete example may be seen :download:`here <../../Examples/Session08/vector.py>`]
 
+Protocols in Summary
+--------------------
 
-.. nextslide:: Summary
-
-Use special methods when you want your class to act like a "standard" class in
-some way.
+Use special methods when you want your class to act like a "standard" class in some way.
 
 Look up the special methods you need and define them.
 
@@ -548,25 +720,22 @@ There's more to read about the details of implementing these methods:
 * https://docs.python.org/3.5/reference/datamodel.html#special-method-names
 * http://www.rafekettler.com/magicmethods.html
 
-===
-LAB
-===
+LAB: Properties, class methods, special methods continued
+=========================================================
 
-Let's complete our nifty Circle class:
+Let's complete our Circle class:
 
 Steps 5-8 of:
 
 :ref:`exercise_circle_class`
 
 
-=========================
 Emulating Standard types
 =========================
 
 .. rst-class:: medium
 
   Making your classes behave like the built-ins
-
 
 Callable classes
 -----------------
@@ -651,7 +820,6 @@ Then you can do:
 
     result = callable_instance(some_arguments)
 
-
 Writing your own sequence type
 -------------------------------
 
@@ -703,16 +871,11 @@ The key ones are:
 |  ``__contains__`` | for ``x in seq``      |
 +-------------------+-----------------------+
 
-====
-LAB
-====
+LAB: Callables & Sparse Arrays
+------------------------------
 
-.. rst-class:: medium
-
-    Let's do the previous motivating examples.
-
-Callables:
------------
+Callables
+---------
 
 Write a class for a quadratic equation.
 
@@ -729,28 +892,303 @@ Write a class for a quadratic equation.
 
     my_quad(0)
 
-Sparse Array:
--------------
+Sparse Array
+------------
 
 Write a class for a sparse array:
 
 :ref:`exercise_sparse_array`
 
+Code Structure, Modules, and Namespaces
+=======================================
 
-========
+.. rst-class:: center large
+
+How to get what you want when you want it.
+
+Code Structure
+--------------
+
+In Python, the structure of your code is determined by whitespace.
+
+How you *indent* your code determines how it is structured
+
+::
+
+    block statement:
+        some code body
+        some more code body
+        another block statement:
+            code body in
+            that block
+
+The colon that terminates a block statement is also important...
+
+.. nextslide:: One-liners
+
+You can put a one-liner after the colon:
+
+.. code-block:: ipython
+
+    In [167]: x = 12
+    In [168]: if x > 4: print(x)
+    12
+
+But this should only be done if it makes your code **more** readable.
+
+
+.. nextslide:: Spaces vs. Tabs
+
+Whitespace is important in Python.
+
+An indent *could* be:
+
+* Any number of spaces
+* A tab
+* A mix of tabs and spaces:
+
+If you want anyone to take you seriously as a Python developer:
+
+.. rst-class:: centered
+
+**Always use four spaces -- really!**
+
+`(PEP 8)`_
+
+.. _(PEP 8): http://legacy.python.org/dev/peps/pep-0008/
+
+
+.. nextslide:: Spaces Elsewhere
+
+Other than indenting -- space doesn't matter, technically.
+
+.. code-block:: python
+
+    x = 3*4+12/func(x,y,z)
+    x = 3*4 + 12 /   func (x,   y, z)
+
+But you should strive for proper style.  Read `PEP 8`_ and install a linter in
+your editor.
+
+.. _PEP 8: http://legacy.python.org/dev/peps/pep-0008/
+
+Modules and Packages
+--------------------
+
+Python is all about *namespaces* --  the "dots"
+
+``name.another_name``
+
+The "dot" indicates that you are looking for a name in the *namespace* of the
+given object. It could be:
+
+* name in a module
+* module in a package
+* attribute of an object
+* method of an object
+
+
+.. nextslide:: Modules
+
+A module is simply a namespace.
+
+It might be a single file, or it could be a collection of files that define a
+shared API.
+
+To a first approximation, you can think of the files you write that end in
+``.py`` as modules.
+
+.. nextslide:: Packages
+
+A package is a module with other modules in it.
+
+On a filesystem, this is represented as a directory that contains one or more
+``.py`` files, one of which **must** be called ``__init__.py``.
+
+When you have a package, you can import the package, or any of the modules
+inside it.
+
+.. nextslide:: importing modules
+
+.. code-block:: python
+
+    import modulename
+    from modulename import this, that
+    import modulename as a_new_name
+    from modulename import this as that
+
+
+importing from packages
+-----------------------
+
+.. code-block:: python
+
+    import packagename.modulename
+    from packagename.modulename import this, that
+    from package import modulename
+
+http://effbot.org/zone/import-confusion.htm
+
+.. nextslide::
+
+.. code-block:: python
+
+    from modulename import *
+
+.. rst-class:: centered large
+
+**Don't do this!**
+
+import
+------
+
+When you import a module, or a symbol from a module, the Python code is
+*compiled* to **bytecode**.
+
+The result is a ``module.pyc`` file.
+
+Then after compiling, all the code in the module is run **at the module scope**.
+
+For this reason, it is good to avoid module-scope statements that have global
+side-effects.
+
+Re-import
+----------
+
+The code in a module is NOT re-run when imported again
+
+It must be explicitly reloaded to be re-run
+
+.. code-block:: python
+
+    import modulename
+    reload(modulename)
+
+.. ifslides::
+
+    .. rst-class:: centered
+
+    (demo)
+
+
+.. nextslide:: Running a Module
+
+In addition to importing modules, you can run them.
+
+There are a few ways to do this:
+
+.. rst-class:: build
+
+* ``$ python hello.py``   -- must be in current working directory
+* ``$ python -m hello``   -- any module on PYTHONPATH anywhere on the system
+* ``$ ./hello.py``        -- put ``#!/usr/env/python``  at top of module (Unix)
+* ``In [149]: run hello.py``     -- at the IPython prompt -- running a module brings its names into the interactive namespace
+
+
+.. nextslide:: Running a Module
+
+Like importing, running a module executes all statements at the module level.
+
+But there's an important difference.
+
+When you *import* a module, the value of the symbol ``__name__`` in the module
+is the same as the filename.
+
+When you *run* a module, the value of the symbol ``__name__`` is ``__main__``.
+
+This allows you to create blocks of code that are executed *only when you run a module*
+
+.. code-block:: python
+
+    if __name__ == '__main__':
+        # Do something interesting here
+        # It will only happen when the module is run
+
+.. nextslide:: "main" blocks
+
+This is useful in a number of cases.
+
+You can put code here that lets your module be a utility *script*
+
+You can put code here that demonstrates the functions contained in your module
+
+You can put code here that proves that your module works.
+
+
+Import Interactions
+-------------------
+
+Let's experiment with importing different ways:
+
+.. code-block:: ipython
+
+    In [3]: import math
+
+    In [4]: math.<TAB>
+    math.acos       math.degrees    math.fsum       math.pi
+    math.acosh      math.e          math.gamma      math.pow
+    math.asin       math.erf        math.hypot      math.radians
+    math.asinh      math.erfc       math.isinf      math.sin
+    math.atan       math.exp        math.isnan      math.sinh
+    math.atan2      math.expm1      math.ldexp      math.sqrt
+    math.atanh      math.fabs       math.lgamma     math.tan
+    math.ceil       math.factorial  math.log        math.tanh
+    math.copysign   math.floor      math.log10      math.trunc
+    math.cos        math.fmod       math.log1p
+    math.cosh       math.frexp      math.modf
+
+.. nextslide::
+
+.. code-block:: ipython
+
+    In [6]: math.sqrt(4)
+    Out[6]: 2.0
+    In [7]: import math as m
+    In [8]: m.sqrt(4)
+    Out[8]: 2.0
+    In [9]: from math import sqrt
+    In [10]: sqrt(4)
+    Out[10]: 2.0
+
+
+.. nextslide::
+
+Experiment with importing different ways:
+
+.. code-block:: python
+
+    import sys
+    print sys.path
+    import os
+    print os.path
+
+You wouldn't want to import * those!
+
+  -- check out
+
+.. code-block:: python
+
+    os.path.split('/foo/bar/baz.txt')
+    os.path.join('/foo/bar', 'baz.txt')
+
+Review framing questions
+========================
+
+
 Homework
 ========
 
-.. rst-class:: left
+Complete the Circle class
 
-  Complete the Circle class
+Complete the Sparse Array class
 
-  Complete the Sparse Array class
+Refactor mailroom to use classes.
 
-  Decide what you are going to do for your project, and send me a simple proposal. Get started if you can.
 
-  Good book:
 
-  Python 3 Object Oriented Programming: *Dusty Phillips*
+Readings
+========
 
-  (Dusty is a local boy and co-founder of PuPPy)
+Python 3 Object Oriented Programming: *Dusty Phillips*
+
+(Dusty is a local boy and co-founder of PuPPy)
