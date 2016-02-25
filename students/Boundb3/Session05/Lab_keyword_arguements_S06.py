@@ -3,7 +3,7 @@
 
 #1: write a function that 4 operational parameters with defaults
 
-def pic_color(**kwargs):
+def pic_color(**kwargs): #b3 notes later:  I think you could also input defined arguements in here too, but not sure
     print("fore color is {fore_color} and back color is always {back_color}.  The link is {link}, but if you used it, it is {visited_color}.".format(**d))
 
 
