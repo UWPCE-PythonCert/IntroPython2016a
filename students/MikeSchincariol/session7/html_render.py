@@ -196,5 +196,5 @@ class Meta(SelfClosingTag):
 
 class A(Element):
     def __init__(self, link, content):
-        super().__init__(content, link=link)
+        super().__init__(content, href=link)
         self.tag = "a"
