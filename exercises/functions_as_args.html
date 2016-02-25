@@ -89,20 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../session04.html">Session Four: Lists, Iteration, Strings, Dictionaries, Sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session05.html">Session Five: Files, Streams &amp; String IO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session06.html">Session Six: Exceptions, Testing and Advanced Argument Passing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html">Announcements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#review-questions">Review &amp; Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#homework-review">Homework Review</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#lightning-talks">Lightning Talks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#framing">Framing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#object-oriented-programming">Object Oriented Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#python-classes">Python Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#subclassing-inheritance">Subclassing &amp; Inheritance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#more-on-subclassing">More on Subclassing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#multiple-inheritance">Multiple Inheritance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#review-framing-questions">Review framing questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#homework">Homework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session07.html#readings">Readings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../session08.html">Session Eight: More OO: Properties, Special methods.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session07.html">Session Seven: Object Oriented Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session08.html">Session Seven: Object Oriented Programming</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session09.html">Session Nine: Iterators, Iterables, and Generators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../session10.html">Session Ten</a></li>
 </ul>
@@ -183,7 +171,7 @@
 <p>You are a game designer working on a scoring system.  You have several different categories of weapons: hand weapons, guns, and flower power weapons.  In each of these categories of weapon there is a small, a medium and a large weapon.  Your task is to write a scoring function that takes two arguments and returns an integer which represets the score value of the specified size of the specified weapon.</p>
 <p>The first argument to the scoring function is itself a function that represents the cagetory of weapon, be it a hand weapon, a gun or a weapon of the dreaded flower power variety.</p>
 <p>The second argument to the scoring function is one of three strings: small, medium or large.</p>
-<p>The score for weapons across the various categories follow the fibonacci scale such that acceptance tests for the scoring function follow the following pattern.</p>
+<p>The score for weapons across the various categories follow the fibonacci scale such that acceptance tests for the scoring function follow the following pattern.  Keep in mind that you need not do any math to get the tests to pass.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test_scoring</span><span class="p">():</span>
     <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">hand_weapon</span><span class="p">,</span> <span class="s">&#39;small&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
     <span class="k">assert</span> <span class="n">score</span><span class="p">(</span><span class="n">hand_weapon</span><span class="p">,</span> <span class="s">&#39;medium&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>

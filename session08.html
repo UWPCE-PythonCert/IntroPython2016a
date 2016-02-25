@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Session Eight: More OO: Properties, Special methods. &mdash; Introduction To Python 1.3 documentation</title>
+  <title>Session Eight: Object Oriented Programming &mdash; Introduction To Python 1.3 documentation</title>
   
 
   
@@ -89,26 +89,42 @@
 <li class="toctree-l1"><a class="reference internal" href="session05.html">Session Five: Files, Streams &amp; String IO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session06.html">Session Six: Exceptions, Testing and Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session07.html">Session Seven: Object Oriented Programming</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Session Eight: More OO: Properties, Special methods.</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#review-questions">Review/Questions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#review-of-previous-class">Review of Previous Class</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lightning-talks-today">Lightning Talks Today:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#personal-project">Personal Project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#homework-review">Homework review</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Session Eight: Object Oriented Programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#announcements">Announcements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#review-questions">Review &amp; Questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#homework">Homework</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#homework-notes">Homework Notes:</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#lightning-talks">Lightning Talks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#framing">Framing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multiple-inheritance">Multiple Inheritance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#purpose">Purpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-s-multiple-inheritance-model">Python&#8217;s Multiple Inheritance Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-diamond-problem">The Diamond Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#super"><code class="docutils literal"><span class="pre">super()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mro-method-resolution-order">MRO: Method Resolution Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#super-s-superpowers">Super&#8217;s Superpowers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependency-injection">Dependency Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#argument-passing">Argument Passing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#two-seminal-articles">Two seminal articles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#composition">Composition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#composition-vs-inheritance">Composition vs Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#an-example">An example</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#getter-and-setters">Getter and Setters?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">properties</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#read-only-attributes">&#8220;Read Only&#8221; Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes-are-clear-and-concise">Attributes are clear and concise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getter-and-setters">Getter and Setters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decorators">Decorators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-only-attributes">Read Only Attributes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#deleters">Deleters</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#lab">LAB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#lightning-talks">Lightning talks:</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#lab-properties-class-methods-special-methods">LAB: Properties, class methods, special methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#static-and-class-methods">Static and Class Methods</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#static-methods">Static Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#class-methods">Class Methods</a></li>
@@ -116,12 +132,17 @@
 <li class="toctree-l3"><a class="reference internal" href="#alternate-constructors">Alternate Constructors</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#special-methods">Special Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#special-methods-protocols">Special Methods &amp; Protocols</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-s-in-a-name">What&#8217;s in a Name?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generally-useful-special-methods">Generally Useful Special Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#protocols">Protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-numerics-protocol">The Numerics Protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-container-protocol">The Container Protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">An Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocols-in-summary">Protocols in Summary</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">LAB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lab-properties-class-methods-special-methods-continued">LAB: Properties, class methods, special methods continued</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#emulating-standard-types">Emulating Standard types</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#callable-classes">Callable classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#callables">&#8220;Callables&#8221;</a></li>
@@ -129,14 +150,23 @@
 <li class="toctree-l3"><a class="reference internal" href="#writing-your-own-sequence-type">Writing your own sequence type</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#a-sparse-array">A Sparse array</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-sequence-protocol">The Sequence protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lab-callables-sparse-arrays">LAB: Callables &amp; Sparse Arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Callables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sparse-array">Sparse Array</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">LAB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Callables:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sparse-array">Sparse Array:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-structure-modules-and-namespaces">Code Structure, Modules, and Namespaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-structure">Code Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modules-and-packages">Modules and Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importing-from-packages">importing from packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import">import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#re-import">Re-import</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-interactions">Import Interactions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#homework">Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#review-framing-questions">Review framing questions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readings">Readings</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="session09.html">Session Nine: Iterators, Iterables, and Generators</a></li>
@@ -175,7 +205,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Session Eight: More OO: Properties, Special methods.</li>
+    <li>Session Eight: Object Oriented Programming</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -189,54 +219,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="session-eight-more-oo-properties-special-methods">
-<h1>Session Eight: More OO: Properties, Special methods.<a class="headerlink" href="#session-eight-more-oo-properties-special-methods" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="session-eight-object-oriented-programming">
+<h1>Session Eight: Object Oriented Programming<a class="headerlink" href="#session-eight-object-oriented-programming" title="Permalink to this headline">¶</a></h1>
+<p>Object Oriented Programming continued...</p>
+<div class="section" id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="review-questions">
-<h2>Review/Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="review-of-previous-class">
-<h3>Review of Previous Class<a class="headerlink" href="#review-of-previous-class" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Basic OO Concepts<ul>
-<li>Classes</li>
-<li>class vs. instance attributes</li>
-<li>subclassing</li>
-<li>overriding methods / attributes</li>
-</ul>
-</li>
-</ul>
+<h2>Review &amp; Questions<a class="headerlink" href="#review-questions" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="lightning-talks-today">
-<h3>Lightning Talks Today:<a class="headerlink" href="#lightning-talks-today" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="medium section" id="personal-project">
-<h3>Personal Project<a class="headerlink" href="#personal-project" title="Permalink to this headline">¶</a></h3>
-<p>The bulk of the homework for the rest of the class will be a personal project:</p>
-<ul class="simple">
-<li>It can be for fun, or something you need for your job.</li>
-<li>It should be large enough to take a few weeks homework time to do.</li>
-<li><strong>It should demostrate that you can do something useful with python.</strong></li>
-<li>It should follow PEP8 (<a class="reference external" href="https://www.python.org/dev/peps/pep-0008">https://www.python.org/dev/peps/pep-0008</a>)</li>
-<li>It should have unit tests!</li>
-<li>Ideally, it will be in version control (gitHub)</li>
-<li>I don&#8217;t require any specific python features (i.e. classes): use
-what is appropriate for your project</li>
-<li>Due the Friday after the last class (December 11)</li>
-</ul>
-<div class="line-block">
-<div class="line"><br /></div>
-<div class="line-block">
-<div class="line">By next week, send me a project proposal: short and sweet.</div>
-<div class="line"><br /></div>
-</div>
-</div>
-</div>
-<div class="section" id="homework-review">
-<h3>Homework review<a class="headerlink" href="#homework-review" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>html renderer</li>
-<li>Test-driven development</li>
-</ul>
-</div>
+<div class="section" id="homework">
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
+<p>Code review &#8211; let&#8217;s take a look.</p>
 <div class="section" id="homework-notes">
 <h3>Homework Notes:<a class="headerlink" href="#homework-notes" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">**kwargs</span></code> will always define a <code class="docutils literal"><span class="pre">kwargs</span></code> dict: it just may be empty.</p>
@@ -255,11 +249,160 @@ empty, then the loop is a do-nothing operation:</p>
 </ul>
 </div>
 </div>
+<div class="section" id="lightning-talks">
+<h2>Lightning Talks<a class="headerlink" href="#lightning-talks" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Deana Holmer</div>
+<div class="line">Calvin Fannin</div>
+<div class="line">Abderrazak Derdouri</div>
+<div class="line">Brennen Bounds</div>
+<div class="line">Krishna Bindhu</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="framing">
+<h2>Framing<a class="headerlink" href="#framing" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="multiple-inheritance">
+<h2>Multiple Inheritance<a class="headerlink" href="#multiple-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>Multiple inheritance: Inheriting from more than one class.</p>
+<p>Simply provide more than one parent.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Combined</span><span class="p">(</span><span class="n">Parent1</span><span class="p">,</span> <span class="n">Parent2</span><span class="p">,</span> <span class="n">Parent3</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">something</span><span class="p">,</span> <span class="n">something</span> <span class="k">else</span><span class="p">):</span>
+        <span class="c"># some custom initialization here.</span>
+        <span class="n">Parent1</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">......</span><span class="p">)</span>
+        <span class="n">Parent2</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">......</span><span class="p">)</span>
+        <span class="n">Parent3</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">......</span><span class="p">)</span>
+        <span class="c"># possibly more custom initialization</span>
+</pre></div>
+</div>
+<p>Calls to the parent class <code class="docutils literal"><span class="pre">__init__</span></code>  are optional and case dependent.</p>
+<div class="section" id="purpose">
+<h3>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h3>
+<p>What was the purpose behind inheritance?</p>
+<p>Code reuse.</p>
+<p>What is the purpose behind multiple inheritance?</p>
+<p>Code reuse.</p>
+<p>What wasn&#8217;t the purpose of inheritance?</p>
+<p>Building massive class hierarchies for their own sake.</p>
+<p>What isn&#8217;t the purpose of multiple inheritance?</p>
+<p>Building massive class hierarchies for their own sake.</p>
+</div>
+<div class="section" id="python-s-multiple-inheritance-model">
+<h3>Python&#8217;s Multiple Inheritance Model<a class="headerlink" href="#python-s-multiple-inheritance-model" title="Permalink to this headline">¶</a></h3>
+<p>Cooperative Multiple Inheritance</p>
+<p>Emphasis on cooperative!</p>
+<ul class="simple">
+<li>Play by the rules and everybody benefits (parents, descendants).</li>
+<li>Play by the rules and nobody gets hurt (yourself, mostly).</li>
+<li>We&#8217;re all adults here.</li>
+</ul>
+<p>What could go wrong?</p>
+</div>
+<div class="section" id="the-diamond-problem">
+<h3>The Diamond Problem<a class="headerlink" href="#the-diamond-problem" title="Permalink to this headline">¶</a></h3>
+<p>With Python &#8220;new style&#8221; classes everything is descended from &#8216;object&#8217;.  Thus, the moment you invoke multiple inheritance you have the diamond problem.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem">https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem</a></p>
+</div>
+<div class="section" id="super">
+<h3><code class="docutils literal"><span class="pre">super()</span></code><a class="headerlink" href="#super" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">super()</span></code>: use it to call a superclass method, rather than explicitly calling the unbound method on the superclass.</p>
+<p>instead of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">B</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">argw</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>You can do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">argw</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mro-method-resolution-order">
+<h3>MRO: Method Resolution Order<a class="headerlink" href="#mro-method-resolution-order" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Combined</span><span class="p">(</span><span class="n">Super1</span><span class="p">,</span> <span class="n">Super2</span><span class="p">,</span> <span class="n">Super3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Attributes are located bottom-to-top, left-to-right</p>
+<ul class="simple">
+<li>Is it an instance attribute ?</li>
+<li>Is it a class attribute ?</li>
+<li>Is it a superclass attribute ?<ul>
+<li>Is  it an attribute of the left-most superclass?</li>
+<li>Is  it an attribute of the next superclass?</li>
+<li>and so on up the hierarchy...</li>
+</ul>
+</li>
+<li>Is it a super-superclass attribute ?</li>
+<li>... also left to right ...</li>
+</ul>
+<p><a class="reference external" href="http://python-history.blogspot.com/2010/06/method-resolution-order.html">http://python-history.blogspot.com/2010/06/method-resolution-order.html</a></p>
+</div>
+<div class="section" id="super-s-superpowers">
+<h3>Super&#8217;s Superpowers<a class="headerlink" href="#super-s-superpowers" title="Permalink to this headline">¶</a></h3>
+<p>It works out &#8211; dynamically at runtime &#8211; which classes are in the delegation order.</p>
+<p>Do not be afraid.  And be very afraid.</p>
+</div>
+<div class="section" id="dependency-injection">
+<h3>Dependency Injection<a class="headerlink" href="#dependency-injection" title="Permalink to this headline">¶</a></h3>
+<p>Super() is the right way to do dependency injection.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Dependency_injection">https://en.wikipedia.org/wiki/Dependency_injection</a></p>
+<p>Compare with Monkey Patching as done in other languages.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Monkey_patch">https://en.wikipedia.org/wiki/Monkey_patch</a></p>
+</div>
+<div class="section" id="argument-passing">
+<h3>Argument Passing<a class="headerlink" href="#argument-passing" title="Permalink to this headline">¶</a></h3>
+<p>Remember that super does not only delegate to your superclass, it delegates to any class in the MRO.</p>
+<p>Therefore you must be prepared to call any other class&#8217;s method in the hierarchy and be prepared to be called from any other class&#8217;s method.</p>
+<p>The general rule is to pass all arguments you received on to the super function.  If classes can take differing arguments, accept <a href="#id1"><span class="problematic" id="id2">*</span></a>args and <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs.</p>
+</div>
+<div class="section" id="two-seminal-articles">
+<h3>Two seminal articles<a class="headerlink" href="#two-seminal-articles" title="Permalink to this headline">¶</a></h3>
+<p>&#8220;Super Considered Harmful&#8221; &#8211; James Knight</p>
+<p><a class="reference external" href="https://fuhm.net/super-harmful/">https://fuhm.net/super-harmful/</a></p>
+<p>&#8220;Super() considered super!&#8221;  &#8211;  Raymond Hettinger</p>
+<p><a class="reference external" href="http://rhettinger.wordpress.com/2011/05/26/super-considered-super/">http://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a></p>
+<p>(Both worth reading....)</p>
+</div>
+</div>
+<div class="section" id="composition">
+<h2>Composition<a class="headerlink" href="#composition" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="composition-vs-inheritance">
+<h3>Composition vs Inheritance<a class="headerlink" href="#composition-vs-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Composition does virtually the same thing as multiple inheritance, in the sense that it allows your class to reuse the functionality of other classes.</p>
+<p>With inheritance you are thinking in terms of &#8216;is-a&#8217; relationships.</p>
+<p>With composition you are thinking in terms of &#8216;has-a&#8217; relationships.</p>
+<p>Composition is more explicit than inheritance and it avoids the complexity of super().  It of course also gains nothing from super()&#8217;s superpowers.</p>
+</div>
+<div class="section" id="an-example">
+<h3>An example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Other</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Other __init__()&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyComposedClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="sd">&quot;&quot;&quot; I inherit from object &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">other</span> <span class="o">=</span> <span class="n">Other</span><span class="p">()</span>  <span class="c"># I contain Other()</span>
+</pre></div>
+</div>
+<p>Remember: &#8216;has-a&#8217; not &#8216;is-a&#8217;</p>
+</div>
+</div>
 <div class="section" id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Property_%28programming%29#Python">https://en.wikipedia.org/wiki/Property_%28programming%29#Python</a></p>
+<div class="section" id="attributes-are-clear-and-concise">
+<h3>Attributes are clear and concise<a class="headerlink" href="#attributes-are-clear-and-concise" title="Permalink to this headline">¶</a></h3>
 <div class="left container">
 <p>One of the strengths of Python is lack of clutter.</p>
-<p>Attributes are simple and concise:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span>
 <span class="go">        def __init__(self):</span>
 <span class="go">                self.x = 5</span>
@@ -272,8 +415,10 @@ empty, then the loop is a do-nothing operation:</p>
 </pre></div>
 </div>
 </div>
+<p>And we want to maintain this clarity.</p>
+</div>
 <div class="section" id="getter-and-setters">
-<h3>Getter and Setters?<a class="headerlink" href="#getter-and-setters" title="Permalink to this headline">¶</a></h3>
+<h3>Getter and Setters<a class="headerlink" href="#getter-and-setters" title="Permalink to this headline">¶</a></h3>
 <p>But what if you need to add behavior later?</p>
 <ul class="build simple">
 <li>do some calculation</li>
@@ -296,10 +441,10 @@ empty, then the loop is a do-nothing operation:</p>
 <span class="gh">Out[9]: </span><span class="go">8</span>
 </pre></div>
 </div>
-<p>&lt;shudder&gt; This is ugly and verbose &#8211; <a class="reference external" href="http://dirtsimple.org/2004/12/python-is-not-java.html">Java</a>?</p>
+<p>This is verbose &#8211; <a class="reference external" href="http://dirtsimple.org/2004/12/python-is-not-java.html">Java</a>?</p>
 </div>
-<div class="section" id="id1">
-<h3>properties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Properties<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="go">class C:</span>
 <span class="go">    _x = None</span>
 <span class="go">    @property</span>
@@ -316,9 +461,12 @@ empty, then the loop is a do-nothing operation:</p>
 </pre></div>
 </div>
 <p>Now the interface is like simple attribute access!</p>
+</div>
+<div class="section" id="decorators">
+<h3>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline">¶</a></h3>
 <p>What&#8217;s up with the &#8220;&#64;&#8221; symbols?</p>
-<p>Those are &#8220;decorations&#8221; it&#8217;s a syntax for wrapping functions up with something special.</p>
-<p>We&#8217;ll cover that in detail in a couple weeks, but for now &#8211; just copy the syntax.</p>
+<p>Those are &#8220;decorations&#8221; it is a syntax for wrapping functions up with something special.</p>
+<p>We will cover decorators in detail in another part of the program, but for now just copy the syntax.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@property</span>
 <span class="k">def</span> <span class="nf">x</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </pre></div>
@@ -331,7 +479,7 @@ empty, then the loop is a do-nothing operation:</p>
 <p>means: make the &#8220;setter&#8221; of the &#8216;x&#8217; property this new function</p>
 </div>
 <div class="section" id="read-only-attributes">
-<h3>&#8220;Read Only&#8221; Attributes<a class="headerlink" href="#read-only-attributes" title="Permalink to this headline">¶</a></h3>
+<h3>Read Only Attributes<a class="headerlink" href="#read-only-attributes" title="Permalink to this headline">¶</a></h3>
 <p>You do not need to define a setter. If you don&#8217;t, you get a &#8220;read only&#8221; attribute:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="k">class</span> <span class="nc">D</span><span class="p">():</span>
 <span class="gp">   ....: </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
@@ -355,8 +503,7 @@ empty, then the loop is a do-nothing operation:</p>
 </div>
 <div class="section" id="deleters">
 <h3>Deleters<a class="headerlink" href="#deleters" title="Permalink to this headline">¶</a></h3>
-<p>If you want to do something special when a property is deleted, you can define
-a deleter is well:</p>
+<p>If you want to do something special when a property is deleted, you can define a deleter as well:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [11]: </span><span class="k">class</span> <span class="nc">D</span><span class="p">():</span>
 <span class="gp">   ....: </span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
 <span class="gp">   ....: </span>        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="mi">5</span>
@@ -373,16 +520,13 @@ what you want.</p>
 <p class="centered">[demo: <a class="reference download internal" href="_downloads/properties_example.py"><code class="xref download docutils literal"><span class="pre">properties_example.py</span></code></a>]</p>
 </div>
 </div>
-<div class="section" id="lab">
-<h2>LAB<a class="headerlink" href="#lab" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lab-properties-class-methods-special-methods">
+<h2>LAB: Properties, class methods, special methods<a class="headerlink" href="#lab-properties-class-methods-special-methods" title="Permalink to this headline">¶</a></h2>
 <p>Let&#8217;s use some of this to build a nice class to represent a Circle.</p>
 <p>For now, Let&#8217;s do steps 1-4 of:</p>
 <p><a class="reference internal" href="exercises/circle_class.html#exercise-circle-class"><span>Circle Class Excercise</span></a></p>
-<div class="section" id="lightning-talks">
-<h3>Lightning talks:<a class="headerlink" href="#lightning-talks" title="Permalink to this headline">¶</a></h3>
 </div>
-</div>
-<div class="medium section" id="static-and-class-methods">
+<div class="section" id="static-and-class-methods">
 <h2>Static and Class Methods<a class="headerlink" href="#static-and-class-methods" title="Permalink to this headline">¶</a></h2>
 <div class="left build container">
 <p>You&#8217;ve seen how methods of a class are <em>bound</em> to an instance when it is
@@ -413,8 +557,7 @@ long as you pass an instance of that class as the first argument.</p>
 <p class="centered">[demo: <a class="reference download internal" href="_downloads/static_method.py"><code class="xref download docutils literal"><span class="pre">static_method.py</span></code></a>]</p>
 <div class="build container">
 <p>Where are static methods useful?</p>
-<p>Usually they aren&#8217;t</p>
-<p>99% of the time, it&#8217;s better just to write a module-level function</p>
+<p>Usually they aren&#8217;t.  It is often better just to write a module-level function.</p>
 <p>An example from the Standard Library (tarfile.py):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">TarInfo</span><span class="p">:</span>
     <span class="c"># ...</span>
@@ -506,8 +649,8 @@ well.</p>
 the diameter instead.</p>
 </div>
 </div>
-<div class="section" id="special-methods">
-<h2>Special Methods<a class="headerlink" href="#special-methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="special-methods-protocols">
+<h2>Special Methods &amp; Protocols<a class="headerlink" href="#special-methods-protocols" title="Permalink to this headline">¶</a></h2>
 <div class="left container">
 <p>Special methods (also called <em>magic</em> methods) are the secret sauce to Python&#8217;s Duck typing.</p>
 <p>Defining the appropriate special methods in your classes is how you make your class act like standard classes.</p>
@@ -521,6 +664,9 @@ the diameter instead.</p>
 <p>It&#8217;s all in the double underscores...</p>
 <p>Pronounced &#8220;dunder&#8221; (or &#8220;under-under&#8221;)</p>
 <p>try: <code class="docutils literal"><span class="pre">dir(2)</span></code>  or <code class="docutils literal"><span class="pre">dir(list)</span></code></p>
+</div>
+<div class="section" id="generally-useful-special-methods">
+<h3>Generally Useful Special Methods<a class="headerlink" href="#generally-useful-special-methods" title="Permalink to this headline">¶</a></h3>
 <p>Most classes should at least have these special methods:</p>
 <dl class="docutils">
 <dt><code class="docutils literal"><span class="pre">object.__str__</span></code>:</dt>
@@ -531,16 +677,17 @@ the <em>informal</em> string representation of an object.</dd>
 <p class="last">(ideally: <code class="docutils literal"><span class="pre">eval(</span> <span class="pre">repr(something)</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">something</span></code>)</p>
 </dd>
 </dl>
-<p>(demo)</p>
 </div>
 <div class="section" id="protocols">
 <h3>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h3>
 <div class="build container">
 <p>The set of special methods needed to emulate a particular type of Python object is called a <em>protocol</em>.</p>
-<p>Your classes can &#8220;become&#8221; like Python built-in classes by implementing the
-methods in a given protocol.</p>
+<p>Your classes can &#8220;become&#8221; like Python built-in classes by implementing the methods in a given protocol.</p>
 <p>Remember, these are more <em>guidelines</em> than laws.  Implement what you need.</p>
 </div>
+</div>
+<div class="section" id="the-numerics-protocol">
+<h3>The Numerics Protocol<a class="headerlink" href="#the-numerics-protocol" title="Permalink to this headline">¶</a></h3>
 <p>Do you want your class to behave like a number? Implement these methods:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nb">object</span><span class="o">.</span><span class="n">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="n">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
@@ -556,6 +703,9 @@ methods in a given protocol.</p>
 <span class="nb">object</span><span class="o">.</span><span class="n">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="the-container-protocol">
+<h3>The Container Protocol<a class="headerlink" href="#the-container-protocol" title="Permalink to this headline">¶</a></h3>
 <p>Want to make a container type? Here&#8217;s what you need:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nb">object</span><span class="o">.</span><span class="n">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 <span class="nb">object</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
@@ -569,6 +719,9 @@ methods in a given protocol.</p>
 <span class="nb">object</span><span class="o">.</span><span class="n">__delslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="id6">
+<h3>An Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Each of these methods supports a common Python operation.</p>
 <p>For example, to make &#8216;+&#8217; work with a sequence type in a vector-like fashion,
 implement <code class="docutils literal"><span class="pre">__add__</span></code>:</p>
@@ -580,8 +733,10 @@ implement <code class="docutils literal"><span class="pre">__add__</span></code>
 </pre></div>
 </div>
 <p class="centered">[a more complete example may be seen <a class="reference download internal" href="_downloads/vector.py"><code class="xref download docutils literal"><span class="pre">here</span></code></a>]</p>
-<p>Use special methods when you want your class to act like a &#8220;standard&#8221; class in
-some way.</p>
+</div>
+<div class="section" id="protocols-in-summary">
+<h3>Protocols in Summary<a class="headerlink" href="#protocols-in-summary" title="Permalink to this headline">¶</a></h3>
+<p>Use special methods when you want your class to act like a &#8220;standard&#8221; class in some way.</p>
 <p>Look up the special methods you need and define them.</p>
 <p>There&#8217;s more to read about the details of implementing these methods:</p>
 <ul class="simple">
@@ -590,9 +745,9 @@ some way.</p>
 </ul>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>LAB<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s complete our nifty Circle class:</p>
+<div class="section" id="lab-properties-class-methods-special-methods-continued">
+<h2>LAB: Properties, class methods, special methods continued<a class="headerlink" href="#lab-properties-class-methods-special-methods-continued" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s complete our Circle class:</p>
 <p>Steps 5-8 of:</p>
 <p><a class="reference internal" href="exercises/circle_class.html#exercise-circle-class"><span>Circle Class Excercise</span></a></p>
 </div>
@@ -711,12 +866,11 @@ the set of special methods you need:</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="lab-callables-sparse-arrays">
+<h3>LAB: Callables &amp; Sparse Arrays<a class="headerlink" href="#lab-callables-sparse-arrays" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="id3">
-<h2>LAB<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p class="medium">Let&#8217;s do the previous motivating examples.</p>
-<div class="section" id="id4">
-<h3>Callables:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Callables<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>Write a class for a quadratic equation.</p>
 <ul class="simple">
 <li>The initializer for that class should take the parameters: <code class="docutils literal"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></code></li>
@@ -730,19 +884,193 @@ the set of special methods you need:</p>
 </div>
 </div>
 <div class="section" id="sparse-array">
-<h3>Sparse Array:<a class="headerlink" href="#sparse-array" title="Permalink to this headline">¶</a></h3>
+<h3>Sparse Array<a class="headerlink" href="#sparse-array" title="Permalink to this headline">¶</a></h3>
 <p>Write a class for a sparse array:</p>
 <p><a class="reference internal" href="exercises/sparse_array.html#exercise-sparse-array"><span>Sparse Array Exercise</span></a></p>
 </div>
 </div>
-<div class="section" id="homework">
-<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
-<p class="left">Complete the Circle class</p>
-<p class="left">Complete the Sparse Array class</p>
-<p class="left">Decide what you are going to do for your project, and send me a simple proposal. Get started if you can.</p>
-<p class="left">Good book:</p>
-<p class="left">Python 3 Object Oriented Programming: <em>Dusty Phillips</em></p>
-<p class="left">(Dusty is a local boy and co-founder of PuPPy)</p>
+<div class="section" id="code-structure-modules-and-namespaces">
+<h2>Code Structure, Modules, and Namespaces<a class="headerlink" href="#code-structure-modules-and-namespaces" title="Permalink to this headline">¶</a></h2>
+<p class="center large">How to get what you want when you want it.</p>
+<div class="section" id="code-structure">
+<h3>Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h3>
+<p>In Python, the structure of your code is determined by whitespace.</p>
+<p>How you <em>indent</em> your code determines how it is structured</p>
+<div class="highlight-python"><div class="highlight"><pre>block statement:
+    some code body
+    some more code body
+    another block statement:
+        code body in
+        that block
+</pre></div>
+</div>
+<p>The colon that terminates a block statement is also important...</p>
+<p>You can put a one-liner after the colon:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [167]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="gp">In [168]: </span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<p>But this should only be done if it makes your code <strong>more</strong> readable.</p>
+<p>Whitespace is important in Python.</p>
+<p>An indent <em>could</em> be:</p>
+<ul class="simple">
+<li>Any number of spaces</li>
+<li>A tab</li>
+<li>A mix of tabs and spaces:</li>
+</ul>
+<p>If you want anyone to take you seriously as a Python developer:</p>
+<p class="centered"><strong>Always use four spaces &#8211; really!</strong></p>
+<p><a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">(PEP 8)</a></p>
+<p>Other than indenting &#8211; space doesn&#8217;t matter, technically.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="mi">12</span><span class="o">/</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">/</span>   <span class="n">func</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span>   <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>But you should strive for proper style.  Read <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">PEP 8</a> and install a linter in
+your editor.</p>
+</div>
+<div class="section" id="modules-and-packages">
+<h3>Modules and Packages<a class="headerlink" href="#modules-and-packages" title="Permalink to this headline">¶</a></h3>
+<p>Python is all about <em>namespaces</em> &#8211;  the &#8220;dots&#8221;</p>
+<p><code class="docutils literal"><span class="pre">name.another_name</span></code></p>
+<p>The &#8220;dot&#8221; indicates that you are looking for a name in the <em>namespace</em> of the
+given object. It could be:</p>
+<ul class="simple">
+<li>name in a module</li>
+<li>module in a package</li>
+<li>attribute of an object</li>
+<li>method of an object</li>
+</ul>
+<p>A module is simply a namespace.</p>
+<p>It might be a single file, or it could be a collection of files that define a
+shared API.</p>
+<p>To a first approximation, you can think of the files you write that end in
+<code class="docutils literal"><span class="pre">.py</span></code> as modules.</p>
+<p>A package is a module with other modules in it.</p>
+<p>On a filesystem, this is represented as a directory that contains one or more
+<code class="docutils literal"><span class="pre">.py</span></code> files, one of which <strong>must</strong> be called <code class="docutils literal"><span class="pre">__init__.py</span></code>.</p>
+<p>When you have a package, you can import the package, or any of the modules
+inside it.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">modulename</span>
+<span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="n">this</span><span class="p">,</span> <span class="n">that</span>
+<span class="kn">import</span> <span class="nn">modulename</span> <span class="kn">as</span> <span class="nn">a_new_name</span>
+<span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="n">this</span> <span class="k">as</span> <span class="n">that</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="importing-from-packages">
+<h3>importing from packages<a class="headerlink" href="#importing-from-packages" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">packagename.modulename</span>
+<span class="kn">from</span> <span class="nn">packagename.modulename</span> <span class="kn">import</span> <span class="n">this</span><span class="p">,</span> <span class="n">that</span>
+<span class="kn">from</span> <span class="nn">package</span> <span class="kn">import</span> <span class="n">modulename</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://effbot.org/zone/import-confusion.htm">http://effbot.org/zone/import-confusion.htm</a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p class="centered large"><strong>Don&#8217;t do this!</strong></p>
+</div>
+<div class="section" id="import">
+<h3>import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h3>
+<p>When you import a module, or a symbol from a module, the Python code is
+<em>compiled</em> to <strong>bytecode</strong>.</p>
+<p>The result is a <code class="docutils literal"><span class="pre">module.pyc</span></code> file.</p>
+<p>Then after compiling, all the code in the module is run <strong>at the module scope</strong>.</p>
+<p>For this reason, it is good to avoid module-scope statements that have global
+side-effects.</p>
+</div>
+<div class="section" id="re-import">
+<h3>Re-import<a class="headerlink" href="#re-import" title="Permalink to this headline">¶</a></h3>
+<p>The code in a module is NOT re-run when imported again</p>
+<p>It must be explicitly reloaded to be re-run</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">modulename</span>
+<span class="nb">reload</span><span class="p">(</span><span class="n">modulename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition to importing modules, you can run them.</p>
+<p>There are a few ways to do this:</p>
+<ul class="build simple">
+<li><code class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">hello.py</span></code>   &#8211; must be in current working directory</li>
+<li><code class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">hello</span></code>   &#8211; any module on PYTHONPATH anywhere on the system</li>
+<li><code class="docutils literal"><span class="pre">$</span> <span class="pre">./hello.py</span></code>        &#8211; put <code class="docutils literal"><span class="pre">#!/usr/env/python</span></code>  at top of module (Unix)</li>
+<li><code class="docutils literal"><span class="pre">In</span> <span class="pre">[149]:</span> <span class="pre">run</span> <span class="pre">hello.py</span></code>     &#8211; at the IPython prompt &#8211; running a module brings its names into the interactive namespace</li>
+</ul>
+<p>Like importing, running a module executes all statements at the module level.</p>
+<p>But there&#8217;s an important difference.</p>
+<p>When you <em>import</em> a module, the value of the symbol <code class="docutils literal"><span class="pre">__name__</span></code> in the module
+is the same as the filename.</p>
+<p>When you <em>run</em> a module, the value of the symbol <code class="docutils literal"><span class="pre">__name__</span></code> is <code class="docutils literal"><span class="pre">__main__</span></code>.</p>
+<p>This allows you to create blocks of code that are executed <em>only when you run a module</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c"># Do something interesting here</span>
+    <span class="c"># It will only happen when the module is run</span>
+</pre></div>
+</div>
+<p>This is useful in a number of cases.</p>
+<p>You can put code here that lets your module be a utility <em>script</em></p>
+<p>You can put code here that demonstrates the functions contained in your module</p>
+<p>You can put code here that proves that your module works.</p>
+</div>
+<div class="section" id="import-interactions">
+<h3>Import Interactions<a class="headerlink" href="#import-interactions" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s experiment with importing different ways:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="gp">In [4]: </span><span class="n">math</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
+<span class="go">math.acos       math.degrees    math.fsum       math.pi</span>
+<span class="go">math.acosh      math.e          math.gamma      math.pow</span>
+<span class="go">math.asin       math.erf        math.hypot      math.radians</span>
+<span class="go">math.asinh      math.erfc       math.isinf      math.sin</span>
+<span class="go">math.atan       math.exp        math.isnan      math.sinh</span>
+<span class="go">math.atan2      math.expm1      math.ldexp      math.sqrt</span>
+<span class="go">math.atanh      math.fabs       math.lgamma     math.tan</span>
+<span class="go">math.ceil       math.factorial  math.log        math.tanh</span>
+<span class="go">math.copysign   math.floor      math.log10      math.trunc</span>
+<span class="go">math.cos        math.fmod       math.log1p</span>
+<span class="go">math.cosh       math.frexp      math.modf</span>
+</pre></div>
+</div>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gh">Out[6]: </span><span class="go">2.0</span>
+<span class="gp">In [7]: </span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
+<span class="gp">In [8]: </span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gh">Out[8]: </span><span class="go">2.0</span>
+<span class="gp">In [9]: </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="gp">In [10]: </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gh">Out[10]: </span><span class="go">2.0</span>
+</pre></div>
+</div>
+<p>Experiment with importing different ways:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+</div>
+<p>You wouldn&#8217;t want to import * those!</p>
+<blockquote>
+<div>&#8211; check out</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/foo/bar/baz.txt&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&#39;/foo/bar&#39;</span><span class="p">,</span> <span class="s">&#39;baz.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="review-framing-questions">
+<h2>Review framing questions<a class="headerlink" href="#review-framing-questions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>Homework<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Complete the Circle class</p>
+<p>Complete the Sparse Array class</p>
+<p>Refactor mailroom to use classes.</p>
+</div>
+<div class="section" id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Permalink to this headline">¶</a></h2>
+<p>Python 3 Object Oriented Programming: <em>Dusty Phillips</em></p>
+<p>(Dusty is a local boy and co-founder of PuPPy)</p>
 </div>
 </div>
 
