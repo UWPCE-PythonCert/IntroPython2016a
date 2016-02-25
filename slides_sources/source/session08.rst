@@ -65,22 +65,45 @@ Framing
 Multiple Inheritance
 ====================
 
-Multiple inheritance: Inheriting from more than one class
+Multiple inheritance: Inheriting from more than one class.
 
 Simply provide more than one parent.
 
 .. code-block:: python
 
-    class Combined(Super1, Super2, Super3):
+    class Combined(Parent1, Parent2, Parent3):
         def __init__(self, something, something else):
             # some custom initialization here.
-            Super1.__init__(self, ......)
-            Super2.__init__(self, ......)
-            Super3.__init__(self, ......)
+            Parent1.__init__(self, ......)
+            Parent2.__init__(self, ......)
+            Parent3.__init__(self, ......)
             # possibly more custom initialization
 
-(calls to the super class ``__init__``  are optional -- case dependent)
+Calls to the parent class ``__init__``  are optional and case dependent.
 
+
+
+Purpose
+-------
+
+What was the purpose behind inheritance?  
+
+Code reuse.
+
+
+What is the purpose behind multiple inheritance?  
+
+Code reuse.
+
+
+What wasn't the purpose of inheritance?
+
+Building massive class hierarchies for their own sake.
+
+
+What isn't the purpose of multiple inheritance?
+
+Building massive class hierarchies for their own sake.
 
 
 Python's Multiple Inheritance Model
@@ -184,14 +207,6 @@ Therefore you must be prepared to call any other class's method in the hierarchy
 The general rule is to pass all arguments you received on to the super function.  If classes can take differing arguments, accept *args and **kwargs.
 
 
-Caveats
--------
-
-Caution: There are some subtle differences with multiple inheritance.
-
-You can use explicit calling to ensure that the 'right' method is called.
-
-
 Two seminal articles
 --------------------
 
@@ -204,33 +219,6 @@ https://fuhm.net/super-harmful/
 http://rhettinger.wordpress.com/2011/05/26/super-considered-super/
 
 (Both worth reading....)
-
-Mix-ins
--------
-
-So why would you want to do this? One reason:  *mixins*
-
-Provides a subset of expected functionality in a re-usable package.
-
-Huh? this is why --
-
-Hierarchies are not always simple:
-
-* Animal
-
-  * Mammal
-
-    * GiveBirth()
-
-  * Bird
-
-    * LayEggs()
-
-Where do you put a Platypus?
-
-Real World Example: `FloatCanvas`_
-
-.. _FloatCanvas: https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L485
 
 Composition
 ===========
@@ -1190,20 +1178,17 @@ Review framing questions
 Homework
 ========
 
-.. rst-class:: left
+Complete the Circle class
 
-  Complete the Circle class
+Complete the Sparse Array class
 
-  Complete the Sparse Array class
+Refactor mailroom to use classes.
 
-  Decide what you are going to do for your project, and send me a simple proposal. Get started if you can.
-
-  Good book:
-
-  Python 3 Object Oriented Programming: *Dusty Phillips*
-
-  (Dusty is a local boy and co-founder of PuPPy)
 
 
 Readings
 ========
+
+Python 3 Object Oriented Programming: *Dusty Phillips*
+
+(Dusty is a local boy and co-founder of PuPPy)
