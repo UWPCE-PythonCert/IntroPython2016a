@@ -24,7 +24,7 @@ print_me( (2,3,4,5,6) )
 #def print_msg(t):
  #   print ("the first %i numbers are: " + ", ".join(["%i"] * len(t)) ) % ((len(t),) + t)
 
-print_msg((56,67,34,23))
+#print_msg((56,67,34,23))
 
 tpl1 = (3,4,5,6,7,8,9,1)
 playformat = "i went to the store %d times per week and  %d every  day: " + " , ".join(["%i"]*len(tpl1))
@@ -34,6 +34,6 @@ print(playformat%((len(tpl1),(len(tpl1)/2),)+ tpl1))
 list1 = ["hi", "iwent", "to", "the" ]
 a= "this is a pen: "
 b= "this is not a .."
-print(a.join(b))
+print("a.join(b) looks like this: ", a.join(b))
 print("this is a join: ", "*".join(list1))
 print (" ".join(list1))
