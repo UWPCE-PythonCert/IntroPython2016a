@@ -4,7 +4,7 @@ class Circle(object):
 
     @classmethod
     def from_diameter(cls, diameter):
-        return Circle(diameter/2)
+        return cls(diameter/2)
 
 
     def __init__(self, radius):
