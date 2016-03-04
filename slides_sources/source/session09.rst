@@ -1,414 +1,551 @@
+
+
 .. include:: include.rst
 
-**************************************************
-Session Nine: Iterators, Iterables, and Generators
-**************************************************
+Session Nine: Object Oriented Programming 3
+*******************************************
 
-.. rst-class:: large centered
 
-The tools of Pythonicity
 
+Announcements
+=============
 
-======================
-Lightning Talks Today:
-======================
+Lightning talk schedule
 
-.. rst-class:: medium
+Please Upload your lightning talk materials to your student directory.
 
-
-
-================
-Review/Questions
-================
-
-Review of complete sparse array class
-
-
-=========================
-Iterators and Generators
-=========================
-
-.. rst-class:: medium
-
-    What goes on in those for loops?
-
-Iterators and Iterables
------------------------
-
-Iteration is one of the main reasons Python code is so readable:
-
-.. code-block:: python
-
-    for x in just_about_anything:
-        do_stuff(x)
-
-An iterable is anything that can be looped over sequentially, so it does not have to be
-a "sequence": list, tuple, etc.  For example, a string is iterable.
-
-An iterator is an iterable that remembers state. All sequences are iterable, but
-not all sequences are iterators. To make a sequence an iterator, you can call it with iter:
-
-.. code-block:: python
-
-   my_iter = iter(my_sequence)
-
-Iterator Types:
-
-https://docs.python.org/3/library/stdtypes.html#iterator-types
-
-Iterables
----------
-
-To make an object iterable, you simply have to implement the __getitem__ method.
-
-.. code-block:: python
-
-    class T:
-        def __getitem__(self, position):
-        if position > 5:
-            raise IndexError
-        return position
-
-Demo
-
-
-``iter()``
------------
-
-How do you get the iterator object from an "iterable"?
-
-The iter function will make any iterable an iterator. It first looks for the __iter__
-method, and if none is found, uses get_item to create the iterator.
-
-The ``iter()`` function:
-
-.. code-block:: ipython
-
-    In [20]: iter([2,3,4])
-    Out[20]: <listiterator at 0x101e01350>
-
-    In [21]: iter("a string")
-    Out[21]: <iterator at 0x101e01090>
-
-    In [22]: iter( ('a', 'tuple') )
-    Out[22]: <tupleiterator at 0x101e01710>
-
-
-List as an Iterator:
---------------------
-
-.. code-block:: ipython
-
-    In [10]: a_list = [1,2,3]
-
-    In [11]: list_iter = iter(a_list)
-
-    In [12]: next(list_iter)
-    Out[12]: 1
-
-    In [13]: next(list_iter)
-    Out[13]: 2
-
-    In [14]: next(list_iter)
-    Out[14]: 3
-
-    In [15]: next(list_iter)
-    --------------------------------------------------
-    StopIteration     Traceback (most recent call last)
-    <ipython-input-15-1a7db9b70878> in <module>()
-    ----> 1 next(list_iter)
-    StopIteration:
-
-
-The Iterator Protocol
-----------------------
-
-The main thing that differentiates an iterator from an iterable (sequence) is that an iterator saves state.
-
-An iterator must have the following methods:
-
-.. code-block:: python
-
-    an_iterator.__iter__()
-
-Returns the iterator object itself.
-
-.. code-block:: python
-
-    an_iterator.__next__()
-
-Returns the next item from the container. If there are no further items,
-raises the ``StopIteration`` exception.
-
-
-Making an Iterator
--------------------
-
-A simple version of ``range()``
-
-.. code-block:: python
-
-    class IterateMe_1:
-        def __init__(self, stop=5):
-            self.current = 0
-            self.stop = stop
-        def __iter__(self):
-            return self
-        def __next__(self):
-            if self.current < self.stop:
-                self.current += 1
-                return self.current
-            else:
-                raise StopIteration
-
-(demo: :download:`iterator_1.py <../../Examples/Session09/iterator_1.py>`)
-
-What does ``for`` do?
-----------------------
-
-Now that we know the iterator protocol, we can write something like a for loop:
-
-
-:download:`my_for.py <../../Examples/Session09/my_for.py>`
-
-.. code-block:: python
-
-    def my_for(an_iterable, func):
-        """
-        Emulation of a for loop.
-
-        func() will be called with each item in an_iterable
-        """
-        # equiv of "for i in l:"
-        iterator = iter(an_iterable)
-        while True:
-            try:
-                i = next(iterator)
-            except StopIteration:
-                break
-            func(i)
-
-
-Itertools
----------
-
-``itertools``  is a collection of utilities that make it easy to
-build an iterator that iterates over sequences in various common ways
-
-http://docs.python.org/3/library/itertools.html
-
-NOTE:
-
-iteratables are not *only* for ``for``
-
-They can be used with anything that expects an iterable:
-
-``sum``, ``tuple``, ``sorted``, and ``list``
-
-
-LAB
+PYCON
 -----
 
-In the ``Examples/session09`` dir, you will find:
-:download:`iterator_1.py <../../Examples/Session09/iterator_1.py>`
+https://us.pycon.org/2016/
 
-* Extend (``iterator_1.py`` ) to be more like ``range()`` -- add three input parameters: ``iterator_2(start, stop, step=1)``
+This class qualifies any of us to go under the student rate.
 
-* What happens if you break from a loop and try to pick it up again:
+Review & Questions
+==================
 
-.. code-block:: python
-
-    it = IterateMe_2(2, 20, 2)
-    for i in it:
-        if i > 10:  break
-        print(i)
-
-.. code-block:: python
-
-    for i in it:
-        print(i)
-
-* Does ``range()``  behave the same?
-
-  - make yours match ``range()``
-
-  - is range an iterator or an iteratable?
+Questions emailed in over the week.
 
 
-Generators
-----------
+Homework
+========
 
-Generators
-
-* give you an iterator object
-* no access to the underlying data ... if it even exists
+Code review -- let's take a look.
 
 
-Conceptually:
-  Iterators are about various ways to loop over data.
 
-  Generators can generate the data on the fly.
+Lightning Talks
+===============
 
-Practically:
-  You can use either one either way (and a generator is one type of iterator).
+| |lightning-session09a|
+| |lightning-session09b|
+| |lightning-session09c|
+| |lightning-session09d|
+| |lightning-session09e|
+| |lightning-session09f|
+| |lightning-session09g|
+| |lightning-session09h|
+| |lightning-session09i|
+| |lightning-session09j|
+|
 
-  Generators do some of the book-keeping for you -- simpler syntax.
-
-yield
-------
-
-``yield``  is a way to make a quickie generator with a function:
-
-.. code-block:: python
-
-    def a_generator_function(params):
-        some_stuff
-        yield something
-
-Generator functions "yield" a value, rather than returning a value.
-
-State is preserved in between yields.
+Framing
+=======
 
 
-.. nextslide:: generator functions
+Static and Class Methods
+========================
 
-A function with ``yield``  in it is a "factory" for a generator
+.. rst-class:: left build
+.. container::
 
-Each time you call it, you get a new generator:
+    You've seen how methods of a class are *bound* to an instance when it is
+    created.
 
-.. code-block:: python
+    And you've seen how the argument ``self`` is then automatically passed to
+    the method when it is called.
 
-    gen_a = a_generator()
-    gen_b = a_generator()
+    And you've seen how you can call *unbound* methods on a class object so
+    long as you pass an instance of that class as the first argument.
 
-Each instance keeps its own state.
+    |
 
-Really just a shorthand for an iterator class that does the book keeping for you.
+    .. rst-class:: centered
 
-.. nextslide::
+    **But what if you don't want or need an instance?**
 
-An example: like ``range()``
+Static Methods
+--------------
 
-.. code-block:: python
-
-    def y_range(start, stop, step=1):
-        i = start
-        while i < stop:
-            yield i
-            i += step
-
-Real World Example from FloatCanvas:
-
-https://github.com/svn2github/wxPython/blob/master/3rdParty/FloatCanvas/floatcanvas/FloatCanvas.py#L100
-
-
-.. nextslide::
-
-Note:
+A *static method* is a method that doesn't get self:
 
 .. code-block:: ipython
 
-    In [164]: gen = y_range(2,6)
-    In [165]: type(gen)
-    Out[165]: generator
-    In [166]: dir(gen)
-    Out[166]:
-    ...
-     '__iter__',
-    ...
-     '__next__',
+    In [36]: class StaticAdder:
+
+       ....:     @staticmethod
+       ....:     def add(a, b):
+       ....:         return a + b
+       ....:
+
+    In [37]: StaticAdder.add(3, 6)
+    Out[37]: 9
+
+.. rst-class:: centered
+
+[demo: :download:`static_method.py <../../Examples/Session08/static_method.py>`]
 
 
-So the generator **is** an iterator
+.. nextslide:: Why?
 
-Note: A generator function can also be a method in a class
+.. rst-class:: build
+.. container::
+
+    Where are static methods useful?
+
+    Usually they aren't.  It is often better just to write a module-level function.
+
+    An example from the Standard Library (tarfile.py):
+
+    .. code-block:: python
+
+        class TarInfo:
+            # ...
+            @staticmethod
+            def _create_payload(payload):
+                """Return the string payload filled with zero bytes
+                   up to the next 512 byte border.
+                """
+                blocks, remainder = divmod(len(payload), BLOCKSIZE)
+                if remainder > 0:
+                    payload += (BLOCKSIZE - remainder) * NUL
+                return payload
+
+Class Methods
+-------------
+
+A class method gets the class object, rather than an instance, as the first
+argument
+
+.. code-block:: ipython
+
+    In [41]: class Classy:
+       ....:     x = 2
+       ....:     @classmethod
+       ....:     def a_class_method(cls, y):
+       ....:         print("in a class method: ", cls)
+       ....:         return y ** cls.x
+       ....:
+    In [42]: Classy.a_class_method(4)
+    in a class method:  <class '__main__.Classy'>
+    Out[42]: 16
+
+.. rst-class:: centered
+
+[demo: :download:`class_method.py <../../Examples/Session08/class_method.py>`]
 
 
-.. More about iterators and generators:
+Why?
+----
 
-.. http://www.learningpython.com/2009/02/23/iterators-iterables-and-generators-oh-my/
+.. rst-class:: build
+.. container::
 
-:download:`yield_example.py <../../Examples/Session09/yield_example.py>`
+    Unlike static methods, class methods are quite common.
 
-generator comprehension
+    They have the advantage of being friendly to subclassing.
+
+    Consider this:
+
+    .. code-block:: ipython
+
+        In [44]: class SubClassy(Classy):
+           ....:     x = 3
+           ....:
+
+        In [45]: SubClassy.a_class_method(4)
+        in a class method:  <class '__main__.SubClassy'>
+        Out[45]: 64
+
+Alternate Constructors
 -----------------------
 
-yet another way to make a generator:
+Because of this friendliness to subclassing, class methods are often used to
+build alternate constructors.
+
+Consider the case of wanting to build a dictionary with a given iterable of
+keys:
+
+.. code-block:: ipython
+
+    In [57]: d = dict([1,2,3])
+    ---------------------------------------------------------------------------
+    TypeError                                 Traceback (most recent call last)
+    <ipython-input-57-50c56a77d95f> in <module>()
+    ----> 1 d = dict([1,2,3])
+
+    TypeError: cannot convert dictionary update sequence element #0 to a sequence
+
+
+.. nextslide:: ``dict.fromkeys()``
+
+The stock constructor for a dictionary won't work this way. So the dict object
+implements an alternate constructor that *can*.
 
 .. code-block:: python
 
-    ￼>>> [x * 2 for x in [1, 2, 3]]
-    [2, 4, 6]
-    >>> (x * 2 for x in [1, 2, 3])
-    <generator object <genexpr> at 0x10911bf50>
-    >>> for n in (x * 2 for x in [1, 2, 3]):
-    ...   print n
-    ... 2 4 6
+    @classmethod
+    def fromkeys(cls, iterable, value=None):
+        '''OD.fromkeys(S[, v]) -> New ordered dictionary with keys from S.
+        If not specified, the value defaults to None.
+        '''
+        self = cls()
+        for key in iterable:
+            self[key] = value
+        return self
+
+(this is actually from the OrderedDict implementation in ``collections.py``)
+
+See also datetime.datetime.now(), etc....
+
+.. nextslide:: Curious?
+
+Properties, Static Methods and Class Methods are powerful features of Python's
+OO model.
+
+They are implemented using an underlying structure called *descriptors*
+
+`Here is a low level look`_ at how the descriptor protocol works.
+
+The cool part is that this mechanism is available to you, the programmer, as
+well.
+
+.. _Here is a low level look: https://docs.python.org/2/howto/descriptor.html
 
 
-More interesting if [1, 2, 3] is also a generator
+For the Circle Lab: use a class method to make an alternate constructor that takes
+the diameter instead.
 
-LAB
-----
 
-Write a few generators:
+Special Methods & Protocols
+===========================
 
-* Sum of integers
-* Doubler
-* Fibonacci sequence
-* Prime numbers
+.. rst-class:: left
+.. container::
 
-(test code in
-:download:`test_generator.py <../../Examples/Session09/test_generator.py>`)
+    Special methods (also called *magic* methods) are the secret sauce to Python's Duck typing.
 
-Descriptions:
+    Defining the appropriate special methods in your classes is how you make your class act like standard classes.
 
-Sum of the integers:
-  keep adding the next integer
+What's in a Name?
+-----------------
 
-  0 + 1 + 2 + 3 + 4 + 5 + ...
+We've seen at least one special method so far::
 
-  so the sequence is:
+    __init__
 
-  0, 1, 3, 6, 10, 15 .....
+It's all in the double underscores...
+
+Pronounced "dunder" (or "under-under")
+
+try: ``dir(2)``  or ``dir(list)``
+
+Generally Useful Special Methods
+--------------------------------
+
+Most classes should at least have these special methods:
+
+``object.__str__``:
+  Called by the str() built-in function and by the print function to compute
+  the *informal* string representation of an object.
+
+``object.__repr__``:
+  Called by the repr() built-in function to compute the *official* string representation of an object.
+
+  (ideally: ``eval( repr(something) ) == something``)
+
+
+Protocols
+----------
+
+.. rst-class:: build
+.. container::
+
+    The set of special methods needed to emulate a particular type of Python object is called a *protocol*.
+
+    Your classes can "become" like Python built-in classes by implementing the methods in a given protocol.
+
+    Remember, these are more *guidelines* than laws.  Implement what you need.
+
+The Numerics Protocol
+---------------------
+
+Do you want your class to behave like a number? Implement these methods:
+
+.. code-block:: python
+
+    object.__add__(self, other)
+    object.__sub__(self, other)
+    object.__mul__(self, other)
+    object.__floordiv__(self, other)
+    object.__mod__(self, other)
+    object.__divmod__(self, other)
+    object.__pow__(self, other[, modulo])
+    object.__lshift__(self, other)
+    object.__rshift__(self, other)
+    object.__and__(self, other)
+    object.__xor__(self, other)
+    object.__or__(self, other)
+
+The Container Protocol
+----------------------
+
+Want to make a container type? Here's what you need:
+
+.. code-block:: python
+
+    object.__len__(self)
+    object.__getitem__(self, key)
+    object.__setitem__(self, key, value)
+    object.__delitem__(self, key)
+    object.__iter__(self)
+    object.__reversed__(self)
+    object.__contains__(self, item)
+    object.__getslice__(self, i, j)
+    object.__setslice__(self, i, j, sequence)
+    object.__delslice__(self, i, j)
+
+An Example
+----------
+
+Each of these methods supports a common Python operation.
+
+For example, to make '+' work with a sequence type in a vector-like fashion,
+implement ``__add__``:
+
+.. code-block:: python
+
+    def __add__(self, v):
+        """return the element-wise vector sum of self and v
+        """
+        assert len(self) == len(v)
+        return vector([x1 + x2 for x1, x2 in zip(self, v)])
+
+.. rst-class:: centered
+
+[a more complete example may be seen :download:`here <../../Examples/Session08/vector.py>`]
+
+Protocols in Summary
+--------------------
+
+Use special methods when you want your class to act like a "standard" class in some way.
+
+Look up the special methods you need and define them.
+
+There's more to read about the details of implementing these methods:
+
+* https://docs.python.org/3.5/reference/datamodel.html#special-method-names
+* http://www.rafekettler.com/magicmethods.html
+
+LAB: Properties, class methods, special methods continued
+=========================================================
+
+Let's complete our Circle class:
+
+Steps 5-8 of:
+
+:ref:`exercise_circle_class`
+
+
+Emulating Standard types
+=========================
+
+.. rst-class:: medium
+
+  Making your classes behave like the built-ins
+
+Callable classes
+-----------------
+
+We've been using functions a lot:
+
+.. code-block:: python
+
+    def my_fun(something):
+        do_something
+        ...
+        return something
+
+And then we can call it:
+
+.. code-block:: python
+
+    result = my_fun(some_arguments)
 
 .. nextslide::
 
-Doubler:
-  Each value is double the previous value:
+But what if we need to store some data to know how to evaluate that function?
 
-  1, 2, 4, 8, 16, 32,
+Example: a function that computes a quadratic function:
 
-Fibonacci sequence:
-  The fibonacci sequence as a generator:
+.. math::
 
-  f(n) = f(n-1) + f(n-2)
+    y = a x^2 + bx + c
 
-  1, 1, 2, 3, 5, 8, 13, 21, 34...
+You could pass in a, b and c each time:
 
-Prime numbers:
-  Generate the prime numbers (numbers only divisible by them self and 1):
+.. code-block:: python
 
-  2, 3, 5, 7, 11, 13, 17, 19, 23...
+    def quadratic(x, a, b, c):
+        return a * x**2 + b * x + c
 
-Others to try:
-  Try x^2, x^3, counting by threes, x^e, counting by minus seven, ...
+But what if you are using the same a, b, and c numerous times?
 
+Or what if you need to pass this in to something
+(like map) that requires a function that takes a single argument?
 
-==========
-Next Week
-==========
+"Callables"
+-----------
 
-Decorators and Context managers -- fun stuff!
+Various places in python expect a "callable" -- something that you can
+call like a function:
 
-Cris Ewing will come by to talk about the second quarter
-web development class
+.. code-block:: python
 
-Homework
+    a_result = something(some_arguments)
+
+"something" in this case is often a function, but can be anything else
+that is "callable".
+
+What have we been introduced to recently that is "callable", but not a
+function object?
+
+Custom callable objects
+------------------------
+
+The trick is one of Python's "magic methods"
+
+.. code-block:: python
+
+    __call__(*args, **kwargs)
+
+If you define a ``__call__`` method in your class, it will be used when
+code "calls" an instance of your class:
+
+.. code-block:: python
+
+    class Callable:
+        def __init__(self, .....)
+            some_initilization
+        def __call__(self, some_parameters)
+
+Then you can do:
+
+.. code-block:: python
+
+    callable_instance = Callable(some_arguments)
+
+    result = callable_instance(some_arguments)
+
+Writing your own sequence type
+------------------------------
+
+Python has a handful of nifty sequence types built in:
+
+ * lists
+ * tuples
+ * strings
+ * ...
+
+But what if you need a sequence that isn't built in?
+
+A Sparse array
+--------------
+
+Example: Sparse Array
+
+Sometimes we have data sets that are "sparse" -- i.e. most of the values are zero.
+
+So you may not want to store a huge bunch of zeros.
+
+But you do want the array to look like a regular old sequence.
+
+So how do you do that?
+
+The Sequence protocol
+----------------------
+
+You can make your class look like a regular python sequence by defining
+the set of special methods you need:
+
+https://docs.python.org/3/reference/datamodel.html#emulating-container-types
+
+and
+
+http://www.rafekettler.com/magicmethods.html#sequence
+
+The key ones are:
+
++-------------------+-----------------------+
+|  ``__len__``      | for ``len(sequence)`` |
++-------------------+-----------------------+
+|  ``__getitem__``  | for  ``x = seq[i]``   |
++-------------------+-----------------------+
+|  ``__setitem__``  | for ``seq[i] = x``    |
++-------------------+-----------------------+
+|  ``__delitem__``  | for ``del seq[i]``    |
++-------------------+-----------------------+
+|  ``__contains__`` | for ``x in seq``      |
++-------------------+-----------------------+
+
+LAB: Callables & Sparse Arrays
+------------------------------
+
+Callables
 ---------
 
-Finish up the labs
+Write a class for a quadratic equation.
 
-Work on your project -- not much time left!
+* The initializer for that class should take the parameters: ``a, b, c``
 
-And *do* let me know what you're doing if you haven't yet!
+* It should store those parameters as attributes.
+
+* The resulting instance should evaluate the function when called, and return the result:
+
+
+.. code-block:: python
+
+    my_quad = Quadratic(a=2, b=3, c=1)
+
+    my_quad(0)
+
+Sparse Array
+------------
+
+Write a class for a sparse array:
+
+:ref:`exercise_sparse_array`
+
+Review framing questions
+========================
+
+
+Homework
+========
+
+Finish up the labs.
+
+Bring your questions to office hours.
+
+
+Readings
+========
+
+Descriptors
+-----------
+
+Hettinger on Descriptors
+
+https://docs.python.org/2/howto/descriptor.html
+
+
