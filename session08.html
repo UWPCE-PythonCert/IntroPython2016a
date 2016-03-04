@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Session Eight: Object Oriented Programming &mdash; Introduction To Python 1.3 documentation</title>
+  <title>Session Eight: Object Oriented Programming 2 &mdash; Introduction To Python 1.3 documentation</title>
   
 
   
@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="Introduction To Python 1.3 documentation" href="index.html"/>
-        <link rel="next" title="Session Nine: Iterators, Iterables, and Generators" href="session09.html"/>
+        <link rel="next" title="Session Nine: Object Oriented Programming 3" href="session09.html"/>
         <link rel="prev" title="Session Seven: Object Oriented Programming" href="session07.html"/> 
 
   
@@ -89,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="session05.html">Session Five: Files, Streams &amp; String IO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session06.html">Session Six: Exceptions, Testing and Advanced Argument Passing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="session07.html">Session Seven: Object Oriented Programming</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Session Eight: Object Oriented Programming</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Session Eight: Object Oriented Programming 2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#announcements">Announcements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#review-questions">Review &amp; Questions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#homework">Homework</a><ul>
@@ -125,52 +125,13 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#lab-properties-class-methods-special-methods">LAB: Properties, class methods, special methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#static-and-class-methods">Static and Class Methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#static-methods">Static Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#class-methods">Class Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#why">Why?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#alternate-constructors">Alternate Constructors</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#special-methods-protocols">Special Methods &amp; Protocols</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#what-s-in-a-name">What&#8217;s in a Name?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#generally-useful-special-methods">Generally Useful Special Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#protocols">Protocols</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-numerics-protocol">The Numerics Protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-container-protocol">The Container Protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">An Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#protocols-in-summary">Protocols in Summary</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#lab-properties-class-methods-special-methods-continued">LAB: Properties, class methods, special methods continued</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#emulating-standard-types">Emulating Standard types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#callable-classes">Callable classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#callables">&#8220;Callables&#8221;</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#custom-callable-objects">Custom callable objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#writing-your-own-sequence-type">Writing your own sequence type</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#a-sparse-array">A Sparse array</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-sequence-protocol">The Sequence protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#lab-callables-sparse-arrays">LAB: Callables &amp; Sparse Arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Callables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sparse-array">Sparse Array</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#code-structure-modules-and-namespaces">Code Structure, Modules, and Namespaces</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#code-structure">Code Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#modules-and-packages">Modules and Packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#importing-from-packages">importing from packages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#import">import</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#re-import">Re-import</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#import-interactions">Import Interactions</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="#review-framing-questions">Review framing questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id9">Homework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Homework</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#readings">Readings</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="session09.html">Session Nine: Iterators, Iterables, and Generators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="session10.html">Session Ten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session09.html">Session Nine: Object Oriented Programming 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="session10.html">Session Ten: Functional Programming</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="exercises/index.html">Exercises</a></li>
@@ -205,7 +166,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Session Eight: Object Oriented Programming</li>
+    <li>Session Eight: Object Oriented Programming 2</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -219,8 +180,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="session-eight-object-oriented-programming">
-<h1>Session Eight: Object Oriented Programming<a class="headerlink" href="#session-eight-object-oriented-programming" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="session-eight-object-oriented-programming-2">
+<h1>Session Eight: Object Oriented Programming 2<a class="headerlink" href="#session-eight-object-oriented-programming-2" title="Permalink to this headline">¶</a></h1>
 <p>Object Oriented Programming continued...</p>
 <div class="section" id="announcements">
 <h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">¶</a></h2>
@@ -253,10 +214,10 @@ empty, then the loop is a do-nothing operation:</p>
 <h2>Lightning Talks<a class="headerlink" href="#lightning-talks" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line">Deana Holmer</div>
-<div class="line">Calvin Fannin</div>
-<div class="line">Abderrazak Derdouri</div>
 <div class="line">Brennen Bounds</div>
-<div class="line">Krishna Bindhu</div>
+<div class="line">tbd</div>
+<div class="line">tbd</div>
+<div class="line">tbd</div>
 <div class="line"><br /></div>
 </div>
 </div>
@@ -526,543 +487,11 @@ what you want.</p>
 <p>For now, Let&#8217;s do steps 1-4 of:</p>
 <p><a class="reference internal" href="exercises/circle_class.html#exercise-circle-class"><span>Circle Class Excercise</span></a></p>
 </div>
-<div class="section" id="static-and-class-methods">
-<h2>Static and Class Methods<a class="headerlink" href="#static-and-class-methods" title="Permalink to this headline">¶</a></h2>
-<div class="left build container">
-<p>You&#8217;ve seen how methods of a class are <em>bound</em> to an instance when it is
-created.</p>
-<p>And you&#8217;ve seen how the argument <code class="docutils literal"><span class="pre">self</span></code> is then automatically passed to
-the method when it is called.</p>
-<p>And you&#8217;ve seen how you can call <em>unbound</em> methods on a class object so
-long as you pass an instance of that class as the first argument.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p class="centered"><strong>But what if you don&#8217;t want or need an instance?</strong></p>
-</div>
-<div class="section" id="static-methods">
-<h3>Static Methods<a class="headerlink" href="#static-methods" title="Permalink to this headline">¶</a></h3>
-<p>A <em>static method</em> is a method that doesn&#8217;t get self:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [36]: </span><span class="k">class</span> <span class="nc">StaticAdder</span><span class="p">:</span>
-
-<span class="gp">   ....: </span>    <span class="nd">@staticmethod</span>
-<span class="gp">   ....: </span>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-<span class="gp">   ....: </span>        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="gp">   ....:</span>
-
-<span class="gp">In [37]: </span><span class="n">StaticAdder</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
-<span class="gh">Out[37]: </span><span class="go">9</span>
-</pre></div>
-</div>
-<p class="centered">[demo: <a class="reference download internal" href="_downloads/static_method.py"><code class="xref download docutils literal"><span class="pre">static_method.py</span></code></a>]</p>
-<div class="build container">
-<p>Where are static methods useful?</p>
-<p>Usually they aren&#8217;t.  It is often better just to write a module-level function.</p>
-<p>An example from the Standard Library (tarfile.py):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">TarInfo</span><span class="p">:</span>
-    <span class="c"># ...</span>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_create_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the string payload filled with zero bytes</span>
-<span class="sd">           up to the next 512 byte border.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">blocks</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">BLOCKSIZE</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">remainder</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">payload</span> <span class="o">+=</span> <span class="p">(</span><span class="n">BLOCKSIZE</span> <span class="o">-</span> <span class="n">remainder</span><span class="p">)</span> <span class="o">*</span> <span class="n">NUL</span>
-        <span class="k">return</span> <span class="n">payload</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="class-methods">
-<h3>Class Methods<a class="headerlink" href="#class-methods" title="Permalink to this headline">¶</a></h3>
-<p>A class method gets the class object, rather than an instance, as the first
-argument</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [41]: </span><span class="k">class</span> <span class="nc">Classy</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="gp">   ....: </span>    <span class="nd">@classmethod</span>
-<span class="gp">   ....: </span>    <span class="k">def</span> <span class="nf">a_class_method</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="gp">   ....: </span>        <span class="k">print</span><span class="p">(</span><span class="s">&quot;in a class method: &quot;</span><span class="p">,</span> <span class="n">cls</span><span class="p">)</span>
-<span class="gp">   ....: </span>        <span class="k">return</span> <span class="n">y</span> <span class="o">**</span> <span class="n">cls</span><span class="o">.</span><span class="n">x</span>
-<span class="gp">   ....:</span>
-<span class="gp">In [42]: </span><span class="n">Classy</span><span class="o">.</span><span class="n">a_class_method</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="go">in a class method:  &lt;class &#39;__main__.Classy&#39;&gt;</span>
-<span class="gh">Out[42]: </span><span class="go">16</span>
-</pre></div>
-</div>
-<p class="centered">[demo: <a class="reference download internal" href="_downloads/class_method.py"><code class="xref download docutils literal"><span class="pre">class_method.py</span></code></a>]</p>
-</div>
-<div class="section" id="why">
-<h3>Why?<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h3>
-<div class="build container">
-<p>Unlike static methods, class methods are quite common.</p>
-<p>They have the advantage of being friendly to subclassing.</p>
-<p>Consider this:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [44]: </span><span class="k">class</span> <span class="nc">SubClassy</span><span class="p">(</span><span class="n">Classy</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="gp">   ....:</span>
-
-<span class="gp">In [45]: </span><span class="n">SubClassy</span><span class="o">.</span><span class="n">a_class_method</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="go">in a class method:  &lt;class &#39;__main__.SubClassy&#39;&gt;</span>
-<span class="gh">Out[45]: </span><span class="go">64</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="alternate-constructors">
-<h3>Alternate Constructors<a class="headerlink" href="#alternate-constructors" title="Permalink to this headline">¶</a></h3>
-<p>Because of this friendliness to subclassing, class methods are often used to
-build alternate constructors.</p>
-<p>Consider the case of wanting to build a dictionary with a given iterable of
-keys:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [57]: </span><span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-57-50c56a77d95f&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-
-<span class="ne">TypeError</span>: cannot convert dictionary update sequence element #0 to a sequence
-</pre></div>
-</div>
-<p>The stock constructor for a dictionary won&#8217;t work this way. So the dict object
-implements an alternate constructor that <em>can</em>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">fromkeys</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;OD.fromkeys(S[, v]) -&gt; New ordered dictionary with keys from S.</span>
-<span class="sd">    If not specified, the value defaults to None.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="bp">self</span> <span class="o">=</span> <span class="n">cls</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
-        <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-    <span class="k">return</span> <span class="bp">self</span>
-</pre></div>
-</div>
-<p>(this is actually from the OrderedDict implementation in <code class="docutils literal"><span class="pre">collections.py</span></code>)</p>
-<p>See also datetime.datetime.now(), etc....</p>
-<p>Properties, Static Methods and Class Methods are powerful features of Python&#8217;s
-OO model.</p>
-<p>They are implemented using an underlying structure called <em>descriptors</em></p>
-<p><a class="reference external" href="https://docs.python.org/2/howto/descriptor.html">Here is a low level look</a> at how the descriptor protocol works.</p>
-<p>The cool part is that this mechanism is available to you, the programmer, as
-well.</p>
-<p>For the Circle Lab: use a class method to make an alternate constructor that takes
-the diameter instead.</p>
-</div>
-</div>
-<div class="section" id="special-methods-protocols">
-<h2>Special Methods &amp; Protocols<a class="headerlink" href="#special-methods-protocols" title="Permalink to this headline">¶</a></h2>
-<div class="left container">
-<p>Special methods (also called <em>magic</em> methods) are the secret sauce to Python&#8217;s Duck typing.</p>
-<p>Defining the appropriate special methods in your classes is how you make your class act like standard classes.</p>
-</div>
-<div class="section" id="what-s-in-a-name">
-<h3>What&#8217;s in a Name?<a class="headerlink" href="#what-s-in-a-name" title="Permalink to this headline">¶</a></h3>
-<p>We&#8217;ve seen at least one special method so far:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">__init__</span>
-</pre></div>
-</div>
-<p>It&#8217;s all in the double underscores...</p>
-<p>Pronounced &#8220;dunder&#8221; (or &#8220;under-under&#8221;)</p>
-<p>try: <code class="docutils literal"><span class="pre">dir(2)</span></code>  or <code class="docutils literal"><span class="pre">dir(list)</span></code></p>
-</div>
-<div class="section" id="generally-useful-special-methods">
-<h3>Generally Useful Special Methods<a class="headerlink" href="#generally-useful-special-methods" title="Permalink to this headline">¶</a></h3>
-<p>Most classes should at least have these special methods:</p>
-<dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">object.__str__</span></code>:</dt>
-<dd>Called by the str() built-in function and by the print function to compute
-the <em>informal</em> string representation of an object.</dd>
-<dt><code class="docutils literal"><span class="pre">object.__repr__</span></code>:</dt>
-<dd><p class="first">Called by the repr() built-in function to compute the <em>official</em> string representation of an object.</p>
-<p class="last">(ideally: <code class="docutils literal"><span class="pre">eval(</span> <span class="pre">repr(something)</span> <span class="pre">)</span> <span class="pre">==</span> <span class="pre">something</span></code>)</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="protocols">
-<h3>Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h3>
-<div class="build container">
-<p>The set of special methods needed to emulate a particular type of Python object is called a <em>protocol</em>.</p>
-<p>Your classes can &#8220;become&#8221; like Python built-in classes by implementing the methods in a given protocol.</p>
-<p>Remember, these are more <em>guidelines</em> than laws.  Implement what you need.</p>
-</div>
-</div>
-<div class="section" id="the-numerics-protocol">
-<h3>The Numerics Protocol<a class="headerlink" href="#the-numerics-protocol" title="Permalink to this headline">¶</a></h3>
-<p>Do you want your class to behave like a number? Implement these methods:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nb">object</span><span class="o">.</span><span class="n">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__divmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">[,</span> <span class="n">modulo</span><span class="p">])</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__lshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__rshift__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__xor__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__or__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="the-container-protocol">
-<h3>The Container Protocol<a class="headerlink" href="#the-container-protocol" title="Permalink to this headline">¶</a></h3>
-<p>Want to make a container type? Here&#8217;s what you need:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nb">object</span><span class="o">.</span><span class="n">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__reversed__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__getslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__setslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
-<span class="nb">object</span><span class="o">.</span><span class="n">__delslice__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id6">
-<h3>An Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>Each of these methods supports a common Python operation.</p>
-<p>For example, to make &#8216;+&#8217; work with a sequence type in a vector-like fashion,
-implement <code class="docutils literal"><span class="pre">__add__</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;return the element-wise vector sum of self and v</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">vector</span><span class="p">([</span><span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">)])</span>
-</pre></div>
-</div>
-<p class="centered">[a more complete example may be seen <a class="reference download internal" href="_downloads/vector.py"><code class="xref download docutils literal"><span class="pre">here</span></code></a>]</p>
-</div>
-<div class="section" id="protocols-in-summary">
-<h3>Protocols in Summary<a class="headerlink" href="#protocols-in-summary" title="Permalink to this headline">¶</a></h3>
-<p>Use special methods when you want your class to act like a &#8220;standard&#8221; class in some way.</p>
-<p>Look up the special methods you need and define them.</p>
-<p>There&#8217;s more to read about the details of implementing these methods:</p>
-<ul class="simple">
-<li><a class="reference external" href="https://docs.python.org/3.5/reference/datamodel.html#special-method-names">https://docs.python.org/3.5/reference/datamodel.html#special-method-names</a></li>
-<li><a class="reference external" href="http://www.rafekettler.com/magicmethods.html">http://www.rafekettler.com/magicmethods.html</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="lab-properties-class-methods-special-methods-continued">
-<h2>LAB: Properties, class methods, special methods continued<a class="headerlink" href="#lab-properties-class-methods-special-methods-continued" title="Permalink to this headline">¶</a></h2>
-<p>Let&#8217;s complete our Circle class:</p>
-<p>Steps 5-8 of:</p>
-<p><a class="reference internal" href="exercises/circle_class.html#exercise-circle-class"><span>Circle Class Excercise</span></a></p>
-</div>
-<div class="section" id="emulating-standard-types">
-<h2>Emulating Standard types<a class="headerlink" href="#emulating-standard-types" title="Permalink to this headline">¶</a></h2>
-<p class="medium">Making your classes behave like the built-ins</p>
-<div class="section" id="callable-classes">
-<h3>Callable classes<a class="headerlink" href="#callable-classes" title="Permalink to this headline">¶</a></h3>
-<p>We&#8217;ve been using functions a lot:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">my_fun</span><span class="p">(</span><span class="n">something</span><span class="p">):</span>
-    <span class="n">do_something</span>
-    <span class="o">...</span>
-    <span class="k">return</span> <span class="n">something</span>
-</pre></div>
-</div>
-<p>And then we can call it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">result</span> <span class="o">=</span> <span class="n">my_fun</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>But what if we need to store some data to know how to evaluate that function?</p>
-<p>Example: a function that computes a quadratic function:</p>
-<div class="math">
-\[y = a x^2 + bx + c\]</div>
-<p>You could pass in a, b and c each time:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">quadratic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
-</pre></div>
-</div>
-<p>But what if you are using the same a, b, and c numerous times?</p>
-<p>Or what if you need to pass this in to something
-(like map) that requires a function that takes a single argument?</p>
-</div>
-<div class="section" id="callables">
-<h3>&#8220;Callables&#8221;<a class="headerlink" href="#callables" title="Permalink to this headline">¶</a></h3>
-<p>Various places in python expect a &#8220;callable&#8221; &#8211; something that you can
-call like a function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">a_result</span> <span class="o">=</span> <span class="n">something</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>&#8220;something&#8221; in this case is often a function, but can be anything else
-that is &#8220;callable&#8221;.</p>
-<p>What have we been introduced to recently that is &#8220;callable&#8221;, but not a
-function object?</p>
-</div>
-<div class="section" id="custom-callable-objects">
-<h3>Custom callable objects<a class="headerlink" href="#custom-callable-objects" title="Permalink to this headline">¶</a></h3>
-<p>The trick is one of Python&#8217;s &#8220;magic methods&#8221;</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>If you define a <code class="docutils literal"><span class="pre">__call__</span></code> method in your class, it will be used when
-code &#8220;calls&#8221; an instance of your class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Callable</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">.....</span><span class="p">)</span>
-        <span class="n">some_initilization</span>
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">some_parameters</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Then you can do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">callable_instance</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">callable_instance</span><span class="p">(</span><span class="n">some_arguments</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="writing-your-own-sequence-type">
-<h3>Writing your own sequence type<a class="headerlink" href="#writing-your-own-sequence-type" title="Permalink to this headline">¶</a></h3>
-<p>Python has a handful of nifty sequence types built in:</p>
-<blockquote>
-<div><ul class="simple">
-<li>lists</li>
-<li>tuples</li>
-<li>strings</li>
-<li>...</li>
-</ul>
-</div></blockquote>
-<p>But what if you need a sequence that isn&#8217;t built in?</p>
-</div>
-<div class="section" id="a-sparse-array">
-<h3>A Sparse array<a class="headerlink" href="#a-sparse-array" title="Permalink to this headline">¶</a></h3>
-<p>Example: Sparse Array</p>
-<p>Sometimes we have data sets that are &#8220;sparse&#8221; &#8211; i.e. most of the values are zero.</p>
-<p>So you may not want to store a huge bunch of zeros.</p>
-<p>But you do want the array to look like a regular old sequence.</p>
-<p>So how do you do that?</p>
-</div>
-<div class="section" id="the-sequence-protocol">
-<h3>The Sequence protocol<a class="headerlink" href="#the-sequence-protocol" title="Permalink to this headline">¶</a></h3>
-<p>You can make your class look like a regular python sequence by defining
-the set of special methods you need:</p>
-<p><a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-container-types">https://docs.python.org/3/reference/datamodel.html#emulating-container-types</a></p>
-<p>and</p>
-<p><a class="reference external" href="http://www.rafekettler.com/magicmethods.html#sequence">http://www.rafekettler.com/magicmethods.html#sequence</a></p>
-<p>The key ones are:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="45%" />
-<col width="55%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">__len__</span></code></td>
-<td>for <code class="docutils literal"><span class="pre">len(sequence)</span></code></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">__getitem__</span></code></td>
-<td>for  <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">seq[i]</span></code></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">__setitem__</span></code></td>
-<td>for <code class="docutils literal"><span class="pre">seq[i]</span> <span class="pre">=</span> <span class="pre">x</span></code></td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">__delitem__</span></code></td>
-<td>for <code class="docutils literal"><span class="pre">del</span> <span class="pre">seq[i]</span></code></td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">__contains__</span></code></td>
-<td>for <code class="docutils literal"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">seq</span></code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="lab-callables-sparse-arrays">
-<h3>LAB: Callables &amp; Sparse Arrays<a class="headerlink" href="#lab-callables-sparse-arrays" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id7">
-<h3>Callables<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>Write a class for a quadratic equation.</p>
-<ul class="simple">
-<li>The initializer for that class should take the parameters: <code class="docutils literal"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c</span></code></li>
-<li>It should store those parameters as attributes.</li>
-<li>The resulting instance should evaluate the function when called, and return the result:</li>
-</ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">my_quad</span> <span class="o">=</span> <span class="n">Quadratic</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">my_quad</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="sparse-array">
-<h3>Sparse Array<a class="headerlink" href="#sparse-array" title="Permalink to this headline">¶</a></h3>
-<p>Write a class for a sparse array:</p>
-<p><a class="reference internal" href="exercises/sparse_array.html#exercise-sparse-array"><span>Sparse Array Exercise</span></a></p>
-</div>
-</div>
-<div class="section" id="code-structure-modules-and-namespaces">
-<h2>Code Structure, Modules, and Namespaces<a class="headerlink" href="#code-structure-modules-and-namespaces" title="Permalink to this headline">¶</a></h2>
-<p class="center large">How to get what you want when you want it.</p>
-<div class="section" id="code-structure">
-<h3>Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h3>
-<p>In Python, the structure of your code is determined by whitespace.</p>
-<p>How you <em>indent</em> your code determines how it is structured</p>
-<div class="highlight-python"><div class="highlight"><pre>block statement:
-    some code body
-    some more code body
-    another block statement:
-        code body in
-        that block
-</pre></div>
-</div>
-<p>The colon that terminates a block statement is also important...</p>
-<p>You can put a one-liner after the colon:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [167]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="gp">In [168]: </span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span> <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="go">12</span>
-</pre></div>
-</div>
-<p>But this should only be done if it makes your code <strong>more</strong> readable.</p>
-<p>Whitespace is important in Python.</p>
-<p>An indent <em>could</em> be:</p>
-<ul class="simple">
-<li>Any number of spaces</li>
-<li>A tab</li>
-<li>A mix of tabs and spaces:</li>
-</ul>
-<p>If you want anyone to take you seriously as a Python developer:</p>
-<p class="centered"><strong>Always use four spaces &#8211; really!</strong></p>
-<p><a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">(PEP 8)</a></p>
-<p>Other than indenting &#8211; space doesn&#8217;t matter, technically.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="mi">12</span><span class="o">/</span><span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">/</span>   <span class="n">func</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span>   <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>But you should strive for proper style.  Read <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">PEP 8</a> and install a linter in
-your editor.</p>
-</div>
-<div class="section" id="modules-and-packages">
-<h3>Modules and Packages<a class="headerlink" href="#modules-and-packages" title="Permalink to this headline">¶</a></h3>
-<p>Python is all about <em>namespaces</em> &#8211;  the &#8220;dots&#8221;</p>
-<p><code class="docutils literal"><span class="pre">name.another_name</span></code></p>
-<p>The &#8220;dot&#8221; indicates that you are looking for a name in the <em>namespace</em> of the
-given object. It could be:</p>
-<ul class="simple">
-<li>name in a module</li>
-<li>module in a package</li>
-<li>attribute of an object</li>
-<li>method of an object</li>
-</ul>
-<p>A module is simply a namespace.</p>
-<p>It might be a single file, or it could be a collection of files that define a
-shared API.</p>
-<p>To a first approximation, you can think of the files you write that end in
-<code class="docutils literal"><span class="pre">.py</span></code> as modules.</p>
-<p>A package is a module with other modules in it.</p>
-<p>On a filesystem, this is represented as a directory that contains one or more
-<code class="docutils literal"><span class="pre">.py</span></code> files, one of which <strong>must</strong> be called <code class="docutils literal"><span class="pre">__init__.py</span></code>.</p>
-<p>When you have a package, you can import the package, or any of the modules
-inside it.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">modulename</span>
-<span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="n">this</span><span class="p">,</span> <span class="n">that</span>
-<span class="kn">import</span> <span class="nn">modulename</span> <span class="kn">as</span> <span class="nn">a_new_name</span>
-<span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="n">this</span> <span class="k">as</span> <span class="n">that</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="importing-from-packages">
-<h3>importing from packages<a class="headerlink" href="#importing-from-packages" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">packagename.modulename</span>
-<span class="kn">from</span> <span class="nn">packagename.modulename</span> <span class="kn">import</span> <span class="n">this</span><span class="p">,</span> <span class="n">that</span>
-<span class="kn">from</span> <span class="nn">package</span> <span class="kn">import</span> <span class="n">modulename</span>
-</pre></div>
-</div>
-<p><a class="reference external" href="http://effbot.org/zone/import-confusion.htm">http://effbot.org/zone/import-confusion.htm</a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">modulename</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-<p class="centered large"><strong>Don&#8217;t do this!</strong></p>
-</div>
-<div class="section" id="import">
-<h3>import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h3>
-<p>When you import a module, or a symbol from a module, the Python code is
-<em>compiled</em> to <strong>bytecode</strong>.</p>
-<p>The result is a <code class="docutils literal"><span class="pre">module.pyc</span></code> file.</p>
-<p>Then after compiling, all the code in the module is run <strong>at the module scope</strong>.</p>
-<p>For this reason, it is good to avoid module-scope statements that have global
-side-effects.</p>
-</div>
-<div class="section" id="re-import">
-<h3>Re-import<a class="headerlink" href="#re-import" title="Permalink to this headline">¶</a></h3>
-<p>The code in a module is NOT re-run when imported again</p>
-<p>It must be explicitly reloaded to be re-run</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">modulename</span>
-<span class="nb">reload</span><span class="p">(</span><span class="n">modulename</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>In addition to importing modules, you can run them.</p>
-<p>There are a few ways to do this:</p>
-<ul class="build simple">
-<li><code class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">hello.py</span></code>   &#8211; must be in current working directory</li>
-<li><code class="docutils literal"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">hello</span></code>   &#8211; any module on PYTHONPATH anywhere on the system</li>
-<li><code class="docutils literal"><span class="pre">$</span> <span class="pre">./hello.py</span></code>        &#8211; put <code class="docutils literal"><span class="pre">#!/usr/env/python</span></code>  at top of module (Unix)</li>
-<li><code class="docutils literal"><span class="pre">In</span> <span class="pre">[149]:</span> <span class="pre">run</span> <span class="pre">hello.py</span></code>     &#8211; at the IPython prompt &#8211; running a module brings its names into the interactive namespace</li>
-</ul>
-<p>Like importing, running a module executes all statements at the module level.</p>
-<p>But there&#8217;s an important difference.</p>
-<p>When you <em>import</em> a module, the value of the symbol <code class="docutils literal"><span class="pre">__name__</span></code> in the module
-is the same as the filename.</p>
-<p>When you <em>run</em> a module, the value of the symbol <code class="docutils literal"><span class="pre">__name__</span></code> is <code class="docutils literal"><span class="pre">__main__</span></code>.</p>
-<p>This allows you to create blocks of code that are executed <em>only when you run a module</em></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c"># Do something interesting here</span>
-    <span class="c"># It will only happen when the module is run</span>
-</pre></div>
-</div>
-<p>This is useful in a number of cases.</p>
-<p>You can put code here that lets your module be a utility <em>script</em></p>
-<p>You can put code here that demonstrates the functions contained in your module</p>
-<p>You can put code here that proves that your module works.</p>
-</div>
-<div class="section" id="import-interactions">
-<h3>Import Interactions<a class="headerlink" href="#import-interactions" title="Permalink to this headline">¶</a></h3>
-<p>Let&#8217;s experiment with importing different ways:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">math</span>
-
-<span class="gp">In [4]: </span><span class="n">math</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
-<span class="go">math.acos       math.degrees    math.fsum       math.pi</span>
-<span class="go">math.acosh      math.e          math.gamma      math.pow</span>
-<span class="go">math.asin       math.erf        math.hypot      math.radians</span>
-<span class="go">math.asinh      math.erfc       math.isinf      math.sin</span>
-<span class="go">math.atan       math.exp        math.isnan      math.sinh</span>
-<span class="go">math.atan2      math.expm1      math.ldexp      math.sqrt</span>
-<span class="go">math.atanh      math.fabs       math.lgamma     math.tan</span>
-<span class="go">math.ceil       math.factorial  math.log        math.tanh</span>
-<span class="go">math.copysign   math.floor      math.log10      math.trunc</span>
-<span class="go">math.cos        math.fmod       math.log1p</span>
-<span class="go">math.cosh       math.frexp      math.modf</span>
-</pre></div>
-</div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gh">Out[6]: </span><span class="go">2.0</span>
-<span class="gp">In [7]: </span><span class="kn">import</span> <span class="nn">math</span> <span class="kn">as</span> <span class="nn">m</span>
-<span class="gp">In [8]: </span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gh">Out[8]: </span><span class="go">2.0</span>
-<span class="gp">In [9]: </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="gp">In [10]: </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-<span class="gh">Out[10]: </span><span class="go">2.0</span>
-</pre></div>
-</div>
-<p>Experiment with importing different ways:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
-<span class="k">print</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span>
-</pre></div>
-</div>
-<p>You wouldn&#8217;t want to import * those!</p>
-<blockquote>
-<div>&#8211; check out</div></blockquote>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;/foo/bar/baz.txt&#39;</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&#39;/foo/bar&#39;</span><span class="p">,</span> <span class="s">&#39;baz.txt&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="section" id="review-framing-questions">
 <h2>Review framing questions<a class="headerlink" href="#review-framing-questions" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="id9">
-<h2>Homework<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>Homework<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>Complete the Circle class</p>
 <p>Complete the Sparse Array class</p>
 <p>Refactor mailroom to use classes.</p>
@@ -1081,7 +510,7 @@ is the same as the filename.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="session09.html" class="btn btn-neutral float-right" title="Session Nine: Iterators, Iterables, and Generators" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="session09.html" class="btn btn-neutral float-right" title="Session Nine: Object Oriented Programming 3" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="session07.html" class="btn btn-neutral" title="Session Seven: Object Oriented Programming" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
