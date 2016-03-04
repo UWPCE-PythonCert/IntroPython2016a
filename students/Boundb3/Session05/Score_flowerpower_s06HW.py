@@ -33,6 +33,10 @@ tests for the scoring function follow the following pattern.
 Your task is to fill out the following functions.
 
 code-block:: python
+#!!!!!! with Rick:  change d to SWITCH in title,
+2nd:  add a default value to the switch dict, so default of zero, and then do something with the zero
+
+
 """
 # b3 notes 2-24-2016
 # see python file test_Score_flowerpower_s06HW.py for the assertions for this file.
