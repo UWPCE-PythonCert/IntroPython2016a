@@ -101,12 +101,12 @@
 .. |lightning-session08i| replace:: tbd
 .. |lightning-session08j| replace:: tbd
 
-.. |lightning-session09a| replace:: Abderrazak Derdouri
+.. |lightning-session09a| replace:: Krishna Bindhu
 .. |lightning-session09b| replace:: Calvin Fannin
-.. |lightning-session09c| replace:: Krishna Bindhu
-.. |lightning-session09d| replace:: Damian Myerscough
-.. |lightning-session09e| replace:: Kishan Sarpangala
-.. |lightning-session09f| replace:: Jaemin Chang
+.. |lightning-session09c| replace:: tbd
+.. |lightning-session09d| replace:: tbd
+.. |lightning-session09e| replace:: Pradeep Kumar
+.. |lightning-session09f| replace:: tbd
 .. |lightning-session09g| replace:: tbd
 .. |lightning-session09h| replace:: tbd
 .. |lightning-session09i| replace:: tbd
@@ -116,9 +116,9 @@
 .. |lightning-session10b| replace:: Brandon Aleson
 .. |lightning-session10c| replace:: Susan Rees
 .. |lightning-session10d| replace:: Luis Ganzalez
-.. |lightning-session10e| replace:: Pradeep Kumar
+.. |lightning-session10e| replace:: Damian Myerscough
 .. |lightning-session10f| replace:: Kyle Chinn
 .. |lightning-session10g| replace:: Michael Newton
-.. |lightning-session10h| replace:: tbd
-.. |lightning-session10i| replace:: tbd
-.. |lightning-session10j| replace:: tbd
+.. |lightning-session10h| replace:: Kishan Sarpangala
+.. |lightning-session10i| replace:: Jaemin Chang
+.. |lightning-session10j| replace:: Abderrazak Derdouri
