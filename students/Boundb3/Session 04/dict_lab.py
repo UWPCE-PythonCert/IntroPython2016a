@@ -110,7 +110,7 @@ print (res4)
 
 #create a set with python
 s_p = set("Python")
-print(s_p)
+print("s_p is:", s_p)
 
 #add an i to it
 s_p.add("i")
