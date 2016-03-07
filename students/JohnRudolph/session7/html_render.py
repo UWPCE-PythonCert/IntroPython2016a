@@ -28,7 +28,7 @@ class Element(object):
         else:
             #if string then use TextWrapper to create render class
             #needed so that render does not need to handle both strings/classes
-            self.content.append(TextWrapper(content, self.tag))
+            self.content.append(TextWrapper(content))
 
     def render_tag(self, current_ind):
         # tag and then content for each class
@@ -61,7 +61,6 @@ class Html(Element):
 class Head(Element):
     tag = 'head'
 
-
 class Body(Element):
     tag = 'body'
 
@@ -73,7 +72,7 @@ class A(Element):
     '''
     Creates a class for an anchor link element
     Need to render opening and closing tags differently
-    Thank in parent element class
+    Than in parent element class
     Also need a special wrapper to handle link text
     '''
     tag = 'a'
@@ -167,7 +166,7 @@ class TextWrapper:
     Only has to handle class objects
     """
 
-    def __init__(self, text, indent):
+    def __init__(self, text):
         self.text = text
 
     #writes out text to file
