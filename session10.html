@@ -127,7 +127,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#closures">Closures</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#functools-partial"><code class="docutils literal"><span class="pre">functools.partial</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#recursion">Recursion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#assert"><code class="docutils literal"><span class="pre">assert</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#lab-fibonacci">Lab: Fibonacci</a></li>
@@ -372,7 +371,7 @@ It keeps only those for which the function is True &#8211; filtering our the res
 <span class="gh">Out[343]: </span><span class="go">[0, 4, 8]</span>
 </pre></div>
 </div>
-<p>Remember this from earlier today?</p>
+<p>Get creative....</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">__builtin__</span><span class="p">)</span> <span class="k">if</span> <span class="s">&quot;Error&quot;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">]</span>
 <span class="p">[</span><span class="s">&#39;ArithmeticError&#39;</span><span class="p">,</span>
  <span class="s">&#39;AssertionError&#39;</span><span class="p">,</span>
@@ -519,7 +518,7 @@ It keeps only those for which the function is True &#8211; filtering our the res
 <h3>Closures<a class="headerlink" href="#closures" title="Permalink to this headline">¶</a></h3>
 <p>&#8220;Closures&#8221; and &#8220;Currying&#8221; are cool CS terms for what is really just defining functions on the fly.</p>
 <p>you can find a &#8220;proper&#8221; definition here:</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Closure_(computer_programming">https://en.wikipedia.org/wiki/Closure_(computer_programming</a>)</p>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Closure_(computer_programming">http://en.wikipedia.org/wiki/Closure_(computer_programming</a>)</p>
 <p>but I even have trouble following that.</p>
 <p>So let&#8217;s go straight to an example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">start_at</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -605,28 +604,6 @@ integer by every integer smaller than it down to 1.</p>
 </pre></div>
 </div>
 <p>We can use a recursive function nicely to model this mathematical function</p>
-</div>
-<div class="section" id="assert">
-<h3><code class="docutils literal"><span class="pre">assert</span></code><a class="headerlink" href="#assert" title="Permalink to this headline">¶</a></h3>
-<p>Writing <code class="docutils literal"><span class="pre">tests</span></code> that demonstrate that your program works is an important part of learning to program.</p>
-<p>The python <code class="docutils literal"><span class="pre">assert</span></code> statement is useful in writing simple tests
-for your code.</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
-<span class="gp">   ...: </span>    <span class="k">return</span> <span class="n">n1</span> <span class="o">+</span> <span class="n">n2</span>
-<span class="gp">   ...:</span>
-
-<span class="gp">In [2]: </span><span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span>
-
-<span class="gp">In [3]: </span><span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span>
-
-<span class="gt">---------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g-Whitespace">                     </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-3-6731d4ac4476&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">assert</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span>
-
-<span class="ne">AssertionError</span>:
-</pre></div>
-</div>
 </div>
 </div>
 <div class="section" id="lab-fibonacci">
