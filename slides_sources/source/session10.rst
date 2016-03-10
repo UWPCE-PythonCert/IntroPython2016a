@@ -232,7 +232,7 @@ Examples:
 
 .. nextslide::
 
-Remember this from earlier today?
+Get creative....
 
 .. code-block:: python
 
@@ -435,7 +435,7 @@ Closures
 
 you can find a "proper" definition here:
 
-https://en.wikipedia.org/wiki/Closure_(computer_programming)
+http://en.wikipedia.org/wiki/Closure_(computer_programming)
 
 but I even have trouble following that.
 
@@ -564,30 +564,7 @@ integer by every integer smaller than it down to 1.
 We can use a recursive function nicely to model this mathematical function
 
 
-``assert``
-----------
 
-Writing ``tests`` that demonstrate that your program works is an important part of learning to program.
-
-The python ``assert`` statement is useful in writing simple tests
-for your code.
-
-.. code-block:: ipython
-
-    In [1]: def add(n1, n2):
-       ...:     return n1 + n2
-       ...:
-
-    In [2]: assert add(3, 4) == 7
-
-    In [3]: assert add(3, 4) == 10
-
-    ---------------------------------------------------------------------
-    AssertionError                     Traceback (most recent call last)
-    <ipython-input-3-6731d4ac4476> in <module>()
-    ----> 1 assert add(3, 4) == 10
-
-    AssertionError:
 
 Lab: Fibonacci
 ==============
