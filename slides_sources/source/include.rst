@@ -121,4 +121,4 @@
 .. |lightning-session10g| replace:: Michael Newton
 .. |lightning-session10h| replace:: Kishan Sarpangala
 .. |lightning-session10i| replace:: Jaemin Chang
-.. |lightning-session10j| replace:: Abderrazak Derdouri
+.. |lightning-session10j| replace:: tbd

@@ -700,7 +700,9 @@ Contribute to a project
 
 Go to github.com and search for something that interests you.
 
-https://github.com/search?l=Python&q=python&type=Repositories&utf8=✓
+https://github.com/explore
+
+https://github.com/search?q=python
 
 
 
