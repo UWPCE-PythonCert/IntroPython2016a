@@ -22,6 +22,7 @@ We will write a function that computes this series -- then generalize it.
 
 .. _Fibonacci Series: http://en.wikipedia.org/wiki/Fibbonaci_Series
 
+
 Step 1
 ------
 
@@ -57,6 +58,7 @@ In your ``series.py`` module, add a new function ``lucas`` that returns the
 
 Ensure that your function has a well-formed ``docstring``
 
+
 Generalizing
 ------------
 
@@ -75,8 +77,35 @@ parameters will produce other series.
 
 Ensure that your function has a well-formed ``docstring``
 
-Tests...
---------
+
+assert
+------
+
+Writing ``tests`` that demonstrate that your program works is an important part of learning to program.
+
+The python ``assert`` statement is useful in writing simple tests
+for your code.
+
+.. code-block:: ipython
+
+    In [1]: def add(n1, n2):
+       ...:     return n1 + n2
+       ...:
+
+    In [2]: assert add(3, 4) == 7
+
+    In [3]: assert add(3, 4) == 10
+
+    ---------------------------------------------------------------------
+    AssertionError                     Traceback (most recent call last)
+    <ipython-input-3-6731d4ac4476> in <module>()
+    ----> 1 assert add(3, 4) == 10
+
+    AssertionError:
+
+
+Tests
+-----
 
 Add a block of code to the end of your ``series.py``
 module. Use the block to write a series of ``assert`` statements that
@@ -90,4 +119,6 @@ your implementation. Include good commit messages that explain concisely both
 
 When you are finished, push your changes to your fork of the class repository
 in GitHub and make a pull request.
+
+
 
