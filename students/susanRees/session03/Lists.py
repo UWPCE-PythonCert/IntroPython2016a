@@ -95,16 +95,16 @@ print(likes)
 
 
 # Make a copy of the original list
-backwards_fruits = fruits[0:-1]
+backwards_fruits = fruits[:]
 
 # reverse the letters in each fruit in the copy.
-# for bwards in backwards_fruits:
-
-# print(backwards_fruits)
+for item in backwards_fruits[:]:
+    bward_item = item[::-1]
+    backwards_fruits.append(bward_item)
 
 # Delete the last item of the original list.
-# fruits.pop(-1)
+fruits.pop(-1)
 
 # Display the original list and the copy.
-# print(fruits)
-# print(backwards_fruits)
+print(fruits)
+print(backwards_fruits)

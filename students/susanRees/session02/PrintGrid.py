@@ -21,23 +21,38 @@ def print_grid(n):
     print_column()
     print_row()
 
-
 print_grid(10)
 
 
 def second_grid(x, y):
-    n = (y-1)
-    for n in range(0, n):
-        def print_rows():
+    n = (x + 1)
+    m = (n - 1)
+    for m in range(0, m):
+        def print_row():
             print('+', end=' '),
             print('-' * y, end=' '),
-        print_rows()
-        print('+')
-        def print_columns():
+        def print_rows():
+            n = (x + 1)
+            m = (n - 1)
+            for m in range (0, m):
+                print_row()
+        def print_column():
             print('|', end=' '),
             print(' ' * y, end=' '),
-        print_columns()
-        print('|')
+        def print_columns():
+            n = (x + 1)
+            m = (n - 1)
+            for m in range (0, m):
+                print_column()
+        print_rows()
+        print('+')
+        def print_mult_columns():
+            n = (y + 1)
+            m = (n - 1)
+            for m in range (0, m):
+                print_columns()
+                print('|')
+        print_mult_columns()
     print_rows()
     print('+')
-second_grid(3, 4)
+second_grid(4, 10)
