@@ -46,22 +46,21 @@ page.append("Here is a paragraph of text -- there could be more of them, but thi
 
 page.append("And here is another piece of text -- you should be able to add any number")
 
-render_page(page, "test_html_output1.html")
+render_page(page, "test_html_output1_kr.html")
 
 # ## Step 2
 # ##########
 
-# page = hr.Html()
+#page = hr.Html()
 
-# body = hr.Body()
+#body = hr.Body()
 
-# body.append(hr.P("Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text"))
+#body.append(hr.P("Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text"))
 
-# body.append(hr.P("And here is another piece of text -- you should be able to add any number"))
+#body.append(hr.P("And here is another piece of text -- you should be able to add any number"))
+#page.append(body)
 
-# page.append(body)
-
-# render_page(page, "test_html_output2.html")
+#render_page(page, "test_html_output2_krhtml")
 
 # # Step 3
 # ##########
