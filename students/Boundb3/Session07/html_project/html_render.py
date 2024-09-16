@@ -14,14 +14,14 @@ class Element(object):
     #class attributes
     tag = "element tag"
     indent = "    "
-    print("hi")
+    #print("hi from class element")
     #content = []
 
 
     def __init__(self, content=None, **attributes): ###!!!could i have added the link attribute here??
+
         #store content
         self.content = []
-
 
         # add an attributes dictionary
         self.attributes = attributes
@@ -49,7 +49,7 @@ class Element(object):
     def render_tag(self, current_ind):
         # tag and then content for each class
         attrs = "".join([' {} ="{}"'.format(key,val) for key, val in self.attributes.items()])
-        #print("this is self.attributes from render_tag:  ", self.attributes)
+        print("this is self.attributes from render_tag:  ", self.attributes)
         #indentation + tag + content
         tag_str = "{}<{}{}>".format(current_ind, self.__str__(), attrs)
         #print("from render_tag: current_ind is '{}' and tag strg is '{}'".format(current_ind, tag_str))
@@ -99,6 +99,10 @@ class P (Element):
 class Html (Element):
     tag = "html"
     print("subclass tag = : ",tag)
+
+    def render(self, file_out, current_ind= ""):
+        file_out.write("<!DOCTYPE html>\n")
+        super().render(file_out,current_ind = current_ind)
     pass
 
 class Head (Element):
@@ -164,15 +168,65 @@ class Br (SelfClosingTag):
     tag = "br"
     pass
 
-class A (Element):
+class A (OneLineTag):
     tag = "a"
 
+    def __init__(self, link, content=None, **attributes):
+        #self.attributes = "href="
+        #contentstr = "href=" + '"'+content+'"> ' + link
 
 
-    def __init__(self, content=None, link="link",**attributes):
-        self.attributes = "href="
-        contentstr = "href=" + '"'+content+'">' + link
-        super().__init__(contentstr,**attributes) #!!! not quite right - needs the format:  <a href="http://google.com"> link </a>
+        Element.__init__(self,content, **attributes) #!!! not quite right - needs the format:  <a href="http://google.com"> link </a>
+        self.attributes["href"] = link #class guided answer - THANK you!!
+        #print("a's link is:", self.link)
+        print("a's content **** is:", self.content)
+        print("a's kwrgs extract of href** is:", self.attributes["href"])
+
+
+
+    def render(self, file_out, current_ind= " default indent"):
+        print("entering a's rendering func ")
+        tag_str = '{}<{}{}"{}"> '.format(current_ind, self.__str__(),"href=", self.attributes.get("href"))
+        file_out.write(tag_str)
+
+
+        for con in self.content:
+            try:
+                #render it
+                print("\t--> con in A is: " , con)
+                file_out.write(con) #was: stuff_str.render(file_out)
+            except TypeError as e:
+                print("hit a snag: ", e, "con is: ", con)
+                con.render(file_out, current_ind + self.indent ) # was: .write(str(stuff_str)) ### watch it if it is self.tag
+
+        #write out closing tag
+            #was:
+            #stop at the closing html tag
+            #end_tag = "</{}>".format(self.tag)
+            #add that tag to the end of the file object
+            #file_out.write(end_tag)
+        file_out.write(" </{}>\n".format(self.tag))
+
+
+
+    #to over write the default __str__
+    def __str__(self):
+        return self.ToString()
+
+    def ToString(self):
+        return "a "
+
+
+    # def render_tag(self, current_ind):
+    #     # tag and then content for each class
+    #     attrs = "".join([' {} ="{}"'.format(key,val) for key, val in self.attributes.items()])
+    #     #print("this is self.attributes from render_tag:  ", self.attributes)
+    #     #indentation + tag + content
+    #     tag_str = "{}<{}{}".format(current_ind, self.__str__(), attrs) #removed the extra ">" from this tag render
+    #     #print("from render_tag: current_ind is '{}' and tag strg is '{}'".format(current_ind, tag_str))
+    #     print("a's tag string is",tag_str," and self.string is:", self.__str__())
+    #     return tag_str
+
 
         #self.link = link
     pass
@@ -192,3 +246,12 @@ class H (OneLineTag):
         self.header = switchdict[int(header)]
         self.tag = self.header
         super().__init__(content,**attributes)
+
+class Meta(SelfClosingTag):
+    tag = "meta"
+
+    def __init__(self,content=None, **attributes):
+        #dfault for charset
+        if "charset" not in attributes:
+            attributes["charset"] = "UTF-8"
+        SelfClosingTag.__init__(self,content,**attributes)
